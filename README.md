@@ -38,12 +38,12 @@ When you understand flow, you can work effectively with AI coding assistants (Cl
 
 ### You'll learn:
 
-✓ **Mental models** for understanding software systems
-✓ **Architectural thinking** before implementation details
-✓ **Vocabulary** to communicate with teams and AI assistants
-✓ **Progressive complexity** from CLI apps → web apps → fullstack → deployment
-✓ **Real-world practices** like version control, ADRs, and testing
-✓ **LLM-assisted workflows** that amplify your design thinking
+- ✓ **Mental models** for understanding software systems
+- ✓ **Architectural thinking** before implementation details
+- ✓ **Vocabulary** to communicate with teams and AI assistants
+- ✓ **Progressive complexity** from CLI apps → web apps → fullstack → deployment
+- ✓ **Real-world practices** like version control, ADRs, and testing
+- ✓ **LLM-assisted workflows** that amplify your design thinking
 
 ---
 
