@@ -1,4 +1,4 @@
-# devfoundry
+# DevFoundry
 
 **Build Your Way to Financial Independence: Software as Accessible Leverage**
 
