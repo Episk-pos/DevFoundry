@@ -124,24 +124,20 @@ Apply [Protocol Thinking](protocol-thinking.md):
 
 **Example: Expense reporting friction**
 
-```
-Actors:
+**Actors:**
 - Employee (wants reimbursement, hates paperwork)
 - Manager (wants oversight, hates approving)
 - Finance (wants compliance, accurate records)
 - Vendor (sells goods/services)
 
-Current protocol:
-Employee → saves receipt → enters into system → attaches receipt
-→ Manager → reviews → approves
-→ Finance → processes → reimburses
+**Current protocol:**
+> Employee → saves receipt → enters into system → attaches receipt → Manager → reviews → approves → Finance → processes → reimburses
 
-Failures:
+**Failures:**
 - Receipt management (paper, photos, lost)
 - Data entry (manual, error-prone)
 - Approval bottleneck (manager backlog)
 - Policy compliance (unclear rules)
-```
 
 Understanding the protocol reveals **specific intervention points**.
 
