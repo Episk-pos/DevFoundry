@@ -254,18 +254,19 @@ Friction-to-opportunity is not a one-time event. It's a **continuous practice**.
 
 ### The Idea Pipeline
 
-```
-Noticed friction → Friction log
-↓
-Analyzed friction → Understanding
-↓
-Evaluated opportunity → Priority list
-↓
-Tested small → Learning
-↓
-Validated ideas → Building candidates
-↓
-Built solutions → Products/tools
+```mermaid
+flowchart TD
+    A[Noticed friction] --> B[Friction log]
+    B --> C[Analyzed friction]
+    C --> D[Understanding]
+    D --> E[Evaluated opportunity]
+    E --> F[Priority list]
+    F --> G[Tested small]
+    G --> H[Learning]
+    H --> I[Validated ideas]
+    I --> J[Building candidates]
+    J --> K[Built solutions]
+    K --> L[Products/tools]
 ```
 
 Most ideas don't make it through. That's fine. The goal is continuous flow, not batting average.

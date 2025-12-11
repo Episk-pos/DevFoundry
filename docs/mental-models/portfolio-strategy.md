@@ -79,10 +79,16 @@ Characteristics:
 
 ### The Process
 
-```
-Notice friction → Build small → Launch → Learn → Iterate or move on
-     ↓                                              ↓
-   Next friction ←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←←
+```mermaid
+flowchart LR
+    A[Notice friction] --> B[Build small]
+    B --> C[Launch]
+    C --> D[Learn]
+    D --> E{Traction?}
+    E -->|Yes| F[Iterate & grow]
+    E -->|No| G[Move on]
+    F --> D
+    G --> A
 ```
 
 **Key insight**: Not everything you build will succeed. That's fine. Each attempt:
