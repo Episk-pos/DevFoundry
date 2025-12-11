@@ -92,9 +92,68 @@ Not every opportunity is a billion-dollar business. Not every friction is worth 
 
 ---
 
+## The Consequence: Financial Independence
+
+Let's be explicit about where this leads.
+
+If software is leverage, and leverage enables output disproportionate to input, then **one person can build things that generate ongoing revenue**. Not millions necessarily — but enough.
+
+### The Math That Changes Everything
+
+Traditional thinking: "I need a job that pays $80k/year."
+
+Portfolio thinking: "I need 5-8 small products that each generate $1-2k/month."
+
+- Tool A: $800/month
+- Tool B: $1,200/month
+- Info product: $600/month
+- Tool C: $1,500/month
+- Consulting from reputation: $2,000/month
+
+**Total: $6,100/month** — enough to live on in many places.
+
+None of these is a "successful startup." Together? **Financial independence.**
+
+### Serial Solopreneurship
+
+The strategy isn't to bet everything on one big idea. It's to **build a portfolio of small, sustainable income streams**:
+
+1. Notice friction
+2. Build something small that solves it
+3. Charge money for it
+4. If it works, maintain and grow it
+5. If it doesn't, learn and move on
+6. Repeat
+
+Some products will fail. Some will generate a few hundred a month. Some might surprise you. The portfolio approach means **no single failure is catastrophic**, and successes compound.
+
+### What This Looks Like
+
+- **Micro-SaaS**: Small software tools for niche problems ($500-5,000/month)
+- **Info products**: Courses, templates, guides (passive, spiky income)
+- **Productized services**: Standardized offerings at fixed prices
+- **Tools you built for yourself**: Your automation, shared with others
+
+The goal isn't to build the next unicorn. It's to **build enough small things that you're no longer dependent on a single employer**.
+
+### Why Now?
+
+This has always been theoretically possible. What's changed:
+
+- **AI dramatically accelerates building** — One person can now do what took a team
+- **Distribution is global and instant** — Your niche audience is reachable
+- **Infrastructure is commoditized** — Hosting, payments, everything is cheap
+- **Open source provides the foundation** — You're not starting from zero
+
+The window is open. The question is whether you'll walk through it.
+
+> *For the full strategy, see [The Portfolio Strategy](mental-models/portfolio-strategy.md)*
+
+---
+
 ## What Actually Matters
 
-Building something that makes money is nice. But money isn't the point.
+Building something that makes money is nice. But let's be clear: **financial independence is a means, not an end**.
 
 **Building something that provides value to real people — and being able to see that value, and get feedback from those people — that's what drives this work.**
 
@@ -163,9 +222,15 @@ Let's discover this process together.
 4. **Protocols are everywhere** — And most broken things are broken protocols
 5. **Your uniqueness matters** — You notice what others miss
 6. **Friction is opportunity** — Every frustration is a potential solution
-7. **Value beats money** — Building for real people is the reward
-8. **Community accelerates learning** — We're building this together
+7. **Financial independence is achievable** — A portfolio of small products can sustain you
+8. **Value drives everything** — Building for real people is the reward and the path
+9. **Community accelerates learning** — We're building this together
 
 ---
 
-*This thesis informs everything in DevFoundry — the curriculum, the examples, the community. If you want to go deeper, start with [Flow-Based Development](mental-models/flow-based-dev.md) and [Protocol Thinking](mental-models/protocol-thinking.md).*
+*This thesis informs everything in DevFoundry — the curriculum, the examples, the community. If you want to go deeper:*
+
+- *[The Portfolio Strategy](mental-models/portfolio-strategy.md) — Building toward financial independence*
+- *[Protocol Thinking](mental-models/protocol-thinking.md) — Seeing systems and opportunities*
+- *[Friction to Opportunity](mental-models/friction-to-opportunity.md) — From noticed problems to solutions*
+- *[Flow-Based Development](mental-models/flow-based-dev.md) — Building software with clarity*

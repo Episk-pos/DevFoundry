@@ -1,6 +1,6 @@
 # devfoundry
 
-**Software as Accessible Leverage: A Curriculum for Building in the AI Age**
+**Build Your Way to Financial Independence: Software as Accessible Leverage**
 
 ---
 
@@ -12,11 +12,24 @@ With modern AI tools and decades of open-source infrastructure, any individual c
 
 The barrier to entry isn't capital or connections. **The barrier is understanding.**
 
-If you've never been inside a software company, you might not know: the nature of the process, how we think about solving problems, what patterns we apply, what tools are at our disposal — *what's even possible*.
+### Where This Leads: Financial Independence
 
-DevFoundry exists to close that gap.
+If software is leverage, and you can build software, then you can build **ongoing revenue streams** that don't require trading your time for money.
 
-> *Read the full [DevFoundry Thesis](docs/thesis.md)*
+Not a unicorn. Not a billion-dollar exit. Something better: **a portfolio of small products that collectively cover your living expenses**.
+
+| Traditional Path | Portfolio Path |
+|------------------|----------------|
+| One employer | Multiple income streams |
+| Trade time for money | Build assets that generate revenue |
+| Dependent on job market | Dependent on providing value |
+| One point of failure | Diversified, resilient |
+
+The strategy: **serial solopreneurship** — build small, sustainable software products. Some will fail. Some will generate a few hundred a month. The portfolio approach means no single failure is catastrophic, and successes compound.
+
+DevFoundry teaches you how.
+
+> *Read the full [DevFoundry Thesis](docs/thesis.md) and [The Portfolio Strategy](docs/mental-models/portfolio-strategy.md)*
 
 ---
 
@@ -44,6 +57,8 @@ When you understand flow, you can work effectively with AI coding assistants (Cl
 
 ### You should explore devfoundry if you:
 
+- Want to build your way to financial independence through software
+- Are interested in serial solopreneurship or lifestyle businesses
 - Want to build software but feel overwhelmed by "learn to code" tutorials
 - Have some coding experience but struggle to design complete systems
 - Work with software teams and want to understand how systems are built
@@ -86,6 +101,7 @@ devfoundry/
 | I want to...                          | Go here                                      |
 |---------------------------------------|----------------------------------------------|
 | Understand the core thesis            | [docs/thesis.md](docs/thesis.md)             |
+| Learn the portfolio strategy          | [docs/mental-models/portfolio-strategy.md](docs/mental-models/portfolio-strategy.md) |
 | Understand the curriculum roadmap     | [docs/overview.md](docs/overview.md)         |
 | Learn how to use this repo            | [docs/how-to-use-this-repo.md](docs/how-to-use-this-repo.md) |
 | Look up software terms                | [docs/glossary.md](docs/glossary.md)         |
@@ -278,18 +294,20 @@ You are free to use, adapt, and share this material with attribution.
 Ready to begin? Start here:
 
 **Understand the vision:**
-- [docs/thesis.md](docs/thesis.md) — Why software is accessible leverage
-- [docs/mental-models/protocol-thinking.md](docs/mental-models/protocol-thinking.md) — See systems as protocols
-- [docs/mental-models/friction-to-opportunity.md](docs/mental-models/friction-to-opportunity.md) — Turn problems into solutions
+- [docs/thesis.md](docs/thesis.md) — Why software is the path to financial independence
+- [docs/mental-models/portfolio-strategy.md](docs/mental-models/portfolio-strategy.md) — The serial solopreneur playbook
+- [docs/mental-models/friction-to-opportunity.md](docs/mental-models/friction-to-opportunity.md) — Turn problems into products
+- [docs/mental-models/protocol-thinking.md](docs/mental-models/protocol-thinking.md) — See systems and opportunities everywhere
 
 **Learn to build:**
 - [docs/overview.md](docs/overview.md) — See the full curriculum roadmap
 - [curriculum/part-1-foundations/01-what-software-is.md](curriculum/part-1-foundations/01-what-software-is.md) — Begin learning
 
 **Join the community:**
-- [community/](community/) — Connect with others building software
-- [community/problems/](community/problems/) — See what needs solving
+- [community/](community/) — Connect with others building toward independence
+- [community/problems/](community/problems/) — See friction waiting to be solved
+- [community/projects/](community/projects/) — See what others are building
 
 ---
 
-**Built for people who want to understand systems, build solutions, and create value — together.**
+**Built for people who want to build their way to freedom — together.**
