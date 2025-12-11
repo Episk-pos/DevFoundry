@@ -4,6 +4,16 @@
 
 ---
 
+## The Vision
+
+Software is the most accessible form of leverage ever created. With modern AI tools, any individual can build software solutions — the barrier isn't capital or connections, it's **understanding**.
+
+This curriculum exists to provide that understanding: not just how to write code, but how to think about software, see protocols everywhere, and turn noticed friction into working solutions.
+
+> *Read the full [DevFoundry Thesis](thesis.md)*
+
+---
+
 ## Curriculum Philosophy
 
 This curriculum teaches software development by building **mental models** and **architectural intuition** first, then introducing implementation details. The goal is not to memorize syntax, but to understand:
@@ -12,6 +22,8 @@ This curriculum teaches software development by building **mental models** and *
 - Why architectural decisions matter
 - How to communicate with teams and AI assistants
 - How to think in terms of components, flows, and constraints
+- How to see protocols and friction everywhere
+- How to turn problems into solutions
 
 ### Why This Approach Works
 
@@ -33,13 +45,16 @@ This curriculum inverts that:
 
 By the end of this curriculum, you will:
 
-✓ Understand software as **systems of collaborating components**
-✓ Read and create **architectural diagrams** (module, runtime, deployment views)
-✓ Make and document **architecture decisions** using ADRs
-✓ Build progressively complex applications (CLI → web → SPA → fullstack → deployed)
-✓ Use **AI assistants effectively** through architecture-first prompting
-✓ Navigate **real-world developer workflows** (git, testing, deployment)
-✓ Speak the **vocabulary** of professional software teams
+- Understand software as **systems of collaborating components**
+- Read and create **architectural diagrams** (module, runtime, deployment views)
+- Make and document **architecture decisions** using ADRs
+- Build progressively complex applications (CLI → web → SPA → fullstack → deployed)
+- Use **AI assistants effectively** through architecture-first prompting
+- Navigate **real-world developer workflows** (git, testing, deployment)
+- Speak the **vocabulary** of professional software teams
+- See **protocols everywhere** and understand why things break
+- Turn **friction into opportunity** — noticing problems and building solutions
+- Have the foundation to **build your own products** from scratch
 
 ---
 
@@ -326,21 +341,23 @@ Apply everything you've learned by building your own application:
 
 You'll have the foundation to:
 
+- **Build your own products** — From noticed friction to working solution
+- **Become a one-person software company** — You now have the leverage
 - **Learn any framework** (Vue, Svelte, Angular) by understanding the patterns
 - **Read technical documentation** with comprehension
 - **Contribute to open source** projects confidently
-- **Build your own projects** with architectural clarity
 - **Collaborate with developers** using shared vocabulary
 - **Interview for software roles** with system design knowledge
 - **Continue learning** through advanced courses, books, and practice
 
 ### Recommended next steps:
 
-1. **Build more projects** — Apply the patterns to new domains
-2. **Join open source** — Contribute to real codebases
-3. **Deep dive specialization** — Pick frontend, backend, or fullstack and go deeper
-4. **Learn system design** — Study distributed systems, scalability, performance
-5. **Teach others** — The best way to solidify your knowledge
+1. **Notice friction** — Start a friction log, apply [protocol thinking](mental-models/protocol-thinking.md)
+2. **Build something small** — Pick one problem, solve it, ship it
+3. **Join the community** — Share what you notice, learn from others ([community/](../community/))
+4. **Build in public** — Document your journey, attract collaborators
+5. **Deep dive** — Pick a specialization and go deeper
+6. **Teach others** — The best way to solidify your knowledge
 
 ---
 
@@ -352,10 +369,20 @@ You'll have the foundation to:
 - **Discussions**: Use GitHub Discussions for broader questions
 - **Contributing**: See CONTRIBUTING.md for how to improve this curriculum
 
+### Join the Community
+
+DevFoundry is more than a curriculum — it's a community of people building software together.
+
+- [community/](../community/) — Overview and how to participate
+- [community/problems/](../community/problems/) — Friction documented by the community
+- [community/projects/](../community/projects/) — Active work being built in public
+- [community/showcases/](../community/showcases/) — Completed projects and success stories
+
 ### Additional Resources
 
+- [docs/thesis.md](thesis.md) — The DevFoundry thesis on software as leverage
 - [docs/glossary.md](glossary.md) — Software vocabulary reference
-- [docs/mental-models/](mental-models/) — Deep dives on key concepts
+- [docs/mental-models/](mental-models/) — Protocol thinking, friction to opportunity, and more
 - [prompts/](../prompts/) — LLM prompt templates
 - [adr/](../adr/) — Architecture decision records
 
