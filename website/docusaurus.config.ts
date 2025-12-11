@@ -13,7 +13,7 @@ const config: Config = {
 
   // GitHub Pages deployment config
   url: 'https://episk-pos.github.io',
-  baseUrl: '/devfoundry/',
+  baseUrl: '/DevFoundry/',
   organizationName: 'episk-pos',
   projectName: 'devfoundry',
   deploymentBranch: 'gh-pages',
