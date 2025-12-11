@@ -17,13 +17,18 @@ A collection of resources that community members have found valuable for buildin
 
 *Add more as discovered*
 
-### AI-Assisted Development
+### AI-Assisted Development (TUI Agents)
 
-Tools for building with AI:
+Terminal-based AI agents with image/multimodal support:
 
-- **Claude Code** — AI-assisted development in the terminal
-- **Cursor** — AI-powered code editor
-- **GitHub Copilot** — Code completion and generation
+- **Claude Code** — Anthropic's TUI agent for Claude, supports image input
+- **OpenCode** — Open-source TUI agent supporting multiple providers
+- **Gemini CLI** — Google's terminal agent with multimodal capabilities
+- **Codex CLI** — OpenAI's command-line coding assistant
+- **Qwen Code CLI** — Alibaba's terminal coding agent
+- **Mistral Vibe CLI** — Mistral's command-line coding assistant
+
+*Focus: Tools that work in the terminal and support image input for richer context*
 
 *Add more as discovered*
 

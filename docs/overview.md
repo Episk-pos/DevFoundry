@@ -45,16 +45,16 @@ This curriculum inverts that:
 
 By the end of this curriculum, you will:
 
-✓ Understand software as **systems of collaborating components**
-✓ Read and create **architectural diagrams** (module, runtime, deployment views)
-✓ Make and document **architecture decisions** using ADRs
-✓ Build progressively complex applications (CLI → web → SPA → fullstack → deployed)
-✓ Use **AI assistants effectively** through architecture-first prompting
-✓ Navigate **real-world developer workflows** (git, testing, deployment)
-✓ Speak the **vocabulary** of professional software teams
-✓ See **protocols everywhere** and understand why things break
-✓ Turn **friction into opportunity** — noticing problems and building solutions
-✓ Have the foundation to **build your own products** from scratch
+- Understand software as **systems of collaborating components**
+- Read and create **architectural diagrams** (module, runtime, deployment views)
+- Make and document **architecture decisions** using ADRs
+- Build progressively complex applications (CLI → web → SPA → fullstack → deployed)
+- Use **AI assistants effectively** through architecture-first prompting
+- Navigate **real-world developer workflows** (git, testing, deployment)
+- Speak the **vocabulary** of professional software teams
+- See **protocols everywhere** and understand why things break
+- Turn **friction into opportunity** — noticing problems and building solutions
+- Have the foundation to **build your own products** from scratch
 
 ---
 

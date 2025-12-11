@@ -189,11 +189,14 @@ When evaluating what to build, consider:
 - Can it run while you sleep?
 - Does it require customer support?
 
-### Moat
+### Sustainable Advantage
 
-- Why won't someone copy this immediately?
-- What's your unique advantage?
-- Is there lock-in or switching cost?
+- Why would customers choose you over alternatives?
+- What's your unique insight or advantage?
+- Do you provide genuine value that keeps customers coming back?
+- Are you building trust through openness, quality, and reliability?
+
+*Note: Focus on being genuinely valuable, not on trapping customers. The best retention comes from products people love, not switching costs.*
 
 ### Fit with Portfolio
 
