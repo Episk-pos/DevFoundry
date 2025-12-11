@@ -1,12 +1,28 @@
 # devfoundry
 
-**Flow-Based Development: A Curriculum for Modern Software Architecture**
+**Software as Accessible Leverage: A Curriculum for Building in the AI Age**
+
+---
+
+## The Thesis
+
+**Software is the most accessible form of leverage ever created.**
+
+With modern AI tools and decades of open-source infrastructure, any individual can become a software company. One person. A computer. An internet connection. That's the startup cost.
+
+The barrier to entry isn't capital or connections. **The barrier is understanding.**
+
+If you've never been inside a software company, you might not know: the nature of the process, how we think about solving problems, what patterns we apply, what tools are at our disposal — *what's even possible*.
+
+DevFoundry exists to close that gap.
+
+> *Read the full [DevFoundry Thesis](docs/thesis.md)*
 
 ---
 
 ## What is devfoundry?
 
-**devfoundry** is an educational repository designed to teach software architecture, systems thinking, and AI-assisted development to a diverse audience — from total beginners to experienced engineers, from mechanical engineers to videographers, from project managers to self-taught developers.
+**devfoundry** is an educational repository and community designed to teach software architecture, systems thinking, and AI-assisted development to anyone willing to learn — from total beginners to experienced engineers, from mechanical engineers to videographers, from project managers to self-taught developers.
 
 This isn't just a coding tutorial. It's a **mental model builder** that teaches you to think about software the way professional architects do: as systems of collaborating components, flowing data, and conscious design decisions.
 
@@ -52,25 +68,37 @@ When you understand flow, you can work effectively with AI coding assistants (Cl
 ```
 devfoundry/
 ├── docs/               # Core concepts, mental models, glossary
+│   └── mental-models/  # Protocol thinking, friction to opportunity, etc.
 ├── curriculum/         # Structured learning modules (Parts I-IV)
 ├── examples/           # Progressive lemonade stand implementations
 ├── exercises/          # Hands-on practice activities
 ├── prompts/            # LLM prompt templates and strategies
-└── adr/                # Architecture Decision Records
+├── adr/                # Architecture Decision Records
+└── community/          # Problems, projects, and collaboration
+    ├── problems/       # Friction documented by the community
+    ├── projects/       # Active work being built
+    ├── showcases/      # Completed projects and stories
+    └── resources/      # Curated tools and materials
 ```
 
 ### Quick Navigation
 
 | I want to...                          | Go here                                      |
 |---------------------------------------|----------------------------------------------|
+| Understand the core thesis            | [docs/thesis.md](docs/thesis.md)             |
 | Understand the curriculum roadmap     | [docs/overview.md](docs/overview.md)         |
 | Learn how to use this repo            | [docs/how-to-use-this-repo.md](docs/how-to-use-this-repo.md) |
 | Look up software terms                | [docs/glossary.md](docs/glossary.md)         |
 | Understand the philosophy             | [docs/mental-models/](docs/mental-models/)   |
+| Learn protocol thinking               | [docs/mental-models/protocol-thinking.md](docs/mental-models/protocol-thinking.md) |
+| Turn friction into opportunity        | [docs/mental-models/friction-to-opportunity.md](docs/mental-models/friction-to-opportunity.md) |
 | Start learning (total beginner)       | [curriculum/part-1-foundations/](curriculum/part-1-foundations/) |
 | See working code examples             | [examples/](examples/)                       |
 | Get LLM prompt templates              | [prompts/](prompts/)                         |
 | Understand design decisions           | [adr/](adr/)                                 |
+| Join the community                    | [community/](community/)                     |
+| Share a problem to solve              | [community/problems/](community/problems/)   |
+| See what others are building          | [community/projects/](community/projects/)   |
 
 ---
 
@@ -120,6 +148,28 @@ By the end, you'll understand:
 
 ---
 
+## Community
+
+DevFoundry isn't just a curriculum — it's a community of people building software together.
+
+### What We Do
+
+- **Collect problems** — Document friction that people want solved
+- **Build in public** — Share the journey, not just the result
+- **Learn together** — Help each other level up
+- **Create value** — Build things that help real people
+
+### Get Involved
+
+- Browse [community/problems/](community/problems/) to see what friction others have noticed
+- Share your own friction — the unique things *you* notice are your superpower
+- Pick a problem and start building — small is fine, start somewhere
+- Share what you learn — your journey helps others
+
+> *See the full [Community Guide](community/README.md)*
+
+---
+
 ## Philosophy & Principles
 
 This curriculum is built on these core beliefs:
@@ -141,6 +191,12 @@ This curriculum reflects how modern software is actually built: version control,
 
 ### 6. LLMs as Amplifiers
 AI coding assistants work best when you provide architectural context, constraints, and clear specifications. This curriculum teaches you to do that.
+
+### 7. Protocols Are Everywhere
+The world is full of protocols — rules governing how actors interact. Broken things are usually broken protocols. Learning to see protocols gives you "bits to think with" that transfer far beyond software.
+
+### 8. Friction Is Opportunity
+Every frustration is a potential solution waiting to be built. Your unique perspective helps you notice friction that others miss. Software gives you the leverage to address it.
 
 ---
 
@@ -221,10 +277,19 @@ You are free to use, adapt, and share this material with attribution.
 
 Ready to begin? Start here:
 
-👉 **[docs/overview.md](docs/overview.md)** — See the full curriculum roadmap
-👉 **[docs/how-to-use-this-repo.md](docs/how-to-use-this-repo.md)** — Learn how to navigate
-👉 **[curriculum/part-1-foundations/01-what-software-is.md](curriculum/part-1-foundations/01-what-software-is.md)** — Begin learning
+**Understand the vision:**
+- [docs/thesis.md](docs/thesis.md) — Why software is accessible leverage
+- [docs/mental-models/protocol-thinking.md](docs/mental-models/protocol-thinking.md) — See systems as protocols
+- [docs/mental-models/friction-to-opportunity.md](docs/mental-models/friction-to-opportunity.md) — Turn problems into solutions
+
+**Learn to build:**
+- [docs/overview.md](docs/overview.md) — See the full curriculum roadmap
+- [curriculum/part-1-foundations/01-what-software-is.md](curriculum/part-1-foundations/01-what-software-is.md) — Begin learning
+
+**Join the community:**
+- [community/](community/) — Connect with others building software
+- [community/problems/](community/problems/) — See what needs solving
 
 ---
 
-**Built with ❤️ for learners who want to understand systems, not just memorize syntax.**
+**Built for people who want to understand systems, build solutions, and create value — together.**
