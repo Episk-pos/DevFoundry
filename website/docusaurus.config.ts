@@ -70,12 +70,6 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'curriculumSidebar',
-          position: 'left',
-          label: 'Curriculum',
-        },
-        {
           href: 'https://github.com/episk-pos/devfoundry',
           label: 'GitHub',
           position: 'right',
