@@ -173,11 +173,7 @@ React has been dominant since ~2015. This means:
 
 This isn't theoretical. Try asking an AI for help with React vs. a newer framework. The quality difference is noticeable.
 
-### 2. Job Market Reality
-
-As of 2024, React dominates frontend job postings. Whether or not it's "the best" is irrelevant — it's where the jobs are.
-
-### 3. Ecosystem Maturity
+### 2. Ecosystem Maturity
 
 - Extensive documentation
 - Thousands of tutorials
@@ -185,9 +181,11 @@ As of 2024, React dominates frontend job postings. Whether or not it's "the best
 - Comprehensive tooling
 - Active community
 
-### 4. Transferable Concepts
+When you're building products solo or with a small team, you want to leverage existing solutions, not fight your tools.
 
-React's concepts (components, props, state, hooks) transfer to other frameworks. Learning React makes learning Vue or Svelte easier, not harder.
+### 3. Transferable Concepts
+
+React's concepts (components, props, state, hooks) transfer to other frameworks. Learning React makes learning Vue or Svelte easier, not harder. If you later decide a different framework fits your product better, the mental models carry over.
 
 ---
 
