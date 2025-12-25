@@ -10,6 +10,13 @@ description: From First Principles to LLM-Accelerated Software Creation
 
 ---
 
+:::info[Curriculum Status]
+**Part I: Foundations** — Modules 01-06 complete ✓
+**Parts II-IV** — Coming soon
+
+We're actively developing this curriculum. Part I covers the foundations you need to start building with AI assistance. More content is on the way!
+:::
+
 ## The Vision
 
 Software is the most accessible form of leverage ever created. With modern AI tools, any individual can build software solutions — the barrier isn't capital or connections, it's **understanding**.
@@ -66,49 +73,48 @@ By the end of this curriculum, you will:
 
 ## Curriculum Structure
 
-### Part I: Foundations of Software Systems (Weeks 1-4)
+### Part I: Foundations ✓
 
 **Goal**: Build mental models for understanding what software is and how it works.
 
-| Module | Topic | Key Concepts | Milestone |
-|--------|-------|--------------|-----------|
-| 01 | What Software Is (and Isn't) | Programs as recipes, I/O/P model, lemonade stand CLI | Run your first program |
-| 02 | Anatomy of Modern Projects | Languages, architectures, desktop vs web vs mobile | Understand the landscape |
-| 03 | Deep Dive: Web Architecture | Browser triad (HTML/CSS/JS), client/server, SPA | Mental model of the web |
-| 04 | Tooling Overview | Compilers, linters, package managers, what `npm run dev` does | Navigate a real project |
+| Module | Topic | Key Concepts |
+|--------|-------|--------------|
+| 01 | [What Software Is](curriculum/part-1-foundations/what-software-is) | Programs as recipes, I/O/P model |
+| 02 | [Anatomy of Projects](curriculum/part-1-foundations/anatomy-of-projects) | Languages, architectures, project structure |
+| 03 | [How the Web Works](curriculum/part-1-foundations/how-the-web-works) | HTTP, HTML/CSS/JS, browser dev tools |
+| 04 | [Types as Communication](curriculum/part-1-foundations/types-as-communication) | TypeScript for AI-assisted development |
+| 05 | [Build Tools](curriculum/part-1-foundations/build-tools) | npm, bundlers, the JavaScript ecosystem |
+| 06 | [Frontend Frameworks](curriculum/part-1-foundations/frontend-frameworks-react) | Why frameworks exist, React basics |
 
-**Hands-on**: Build a CLI lemonade stand, then upgrade it to run in a browser.
+**Hands-on examples**: Hello World → Lemonade CLI → Static Web → TypeScript CLI
 
 ---
 
-### Part II: How Teams Build Software (Weeks 5-8)
+### Part II: How Teams Build Software — *Coming Soon*
 
 **Goal**: Learn professional practices that enable collaboration and quality.
 
-| Module | Topic | Key Concepts | Milestone |
-|--------|-------|--------------|-----------|
-| 05 | UX/UI Fundamentals | User journeys, wireframes, design systems, Tailwind | Design before coding |
-| 06 | Development Methodologies | Agile, TDD (light intro), why process matters | Understand team workflows |
-| 07 | Git and Collaboration | Repos, commits, branches, PRs, CI/CD | Make your first PR |
-| 08 | Architecture Decision Records | Documenting "why", staying aligned with AI | Write your first ADR |
+| Module | Topic | Key Concepts |
+|--------|-------|--------------|
+| 07 | UX/UI Fundamentals | User journeys, wireframes, design systems |
+| 08 | Git and Collaboration | Repos, commits, branches, PRs, CI/CD |
+| 09 | Architecture Decision Records | Documenting "why", staying aligned with AI |
 
 **Hands-on**: Collaborate on a feature using git, write ADRs, create UI wireframes.
 
 ---
 
-### Part III: LLM-Assisted Development (Weeks 9-14)
+### Part III: Building Complete Applications — *Coming Soon*
 
 **Goal**: Build a complete application using AI assistants, learning architectural evolution.
 
-| Stage | What You Build | New Concepts | Architecture Focus |
-|-------|----------------|--------------|-------------------|
-| 1 | Static website | HTML/CSS/JS files, DOM manipulation | Module view |
-| 2 | Interactive UI | Event handlers, state, dynamic updates | Component-connector view |
-| 3 | Single-Page App | React, components, routing, bundling | Component hierarchy |
-| 4 | Fullstack App | Express backend, REST API, database | Client/server allocation |
-| 5 | Deployed App | Hosting, environment variables, CI/CD | Deployment view |
+| Stage | What You Build | New Concepts |
+|-------|----------------|--------------|
+| 1 | React SPA | Components, state, routing, bundling |
+| 2 | Fullstack App | Express backend, REST API, database |
+| 3 | Deployed App | Hosting, environment variables, CI/CD |
 
-**Hands-on**: Build the **Lemonade Stand** progressively across all five stages.
+**Hands-on**: Build the **Lemonade Stand** progressively through React, fullstack, and deployment.
 
 Each stage includes:
 - What's new and why
@@ -120,13 +126,13 @@ Each stage includes:
 
 ---
 
-### Part IV: Historical Context (Week 15)
+### Part IV: Historical Context — *Coming Soon*
 
 **Goal**: Understand why modern architectures exist (optional but enriching).
 
 | Module | Topic | Why It Matters |
 |--------|-------|----------------|
-| 11 | Evolution of the Web | CGI/PHP → AJAX → SPAs → WASM | Contextualizes your knowledge |
+| — | Evolution of the Web | CGI/PHP → AJAX → SPAs → WASM |
 
 **Outcome**: You'll see modern React apps not as "just how things are," but as solutions to specific historical problems.
 

@@ -473,7 +473,7 @@ You'll learn:
 - How modern projects are structured
 - Why tool chains exist
 
-*(Coming soon)*
+👉 [Module 02: Anatomy of Projects](anatomy-of-projects)
 
 ---
 
