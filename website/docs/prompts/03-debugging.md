@@ -23,7 +23,39 @@ This template is for:
 
 ---
 
+## TUI Tools vs Chat Tools
+
+### With TUI Tools (Claude Code, Codex CLI, etc.)
+
+TUI tools can see your files directly, so debugging is more conversational:
+
+```
+The calculateTotal function in src/pricing.js is returning NaN.
+Can you look at it and figure out why?
+```
+
+For visual bugs, attach a screenshot:
+```
+The order total isn't displaying correctly.
+[attach screenshot]
+Here's what I expect to see: [describe or attach expected screenshot]
+```
+
+The AI can:
+- Read the file itself
+- Check related files for context
+- Run the code to reproduce the issue
+- Make a fix and test it
+
+### With Chat Tools (Fallback)
+
+If you're using a chat-based tool, you'll need to provide code and error messages explicitly. The detailed template below is designed for this scenario.
+
+---
+
 ## The Debugging Template
+
+This template is most useful for **chat-based tools** where AI can't see your code. With TUI tools, you can often just describe the problem and let the AI explore.
 
 ```
 **Context**: [System and file description]
@@ -479,8 +511,8 @@ This is called **rubber duck debugging** — explaining the problem to something
 5. ✓ List what you've already tried
 6. ✓ Provide enough context (tech stack, file location)
 
-**Remember**: AI can only debug what it can see. The more information you provide, the faster you'll get to the fix.
+**Remember**: With TUI tools, AI can see your files and run your code — the more context you provide about *what's wrong*, the faster you'll get to the fix.
 
 ---
 
-**Got a bug?** Use the template above and paste into your AI assistant!
+**Got a bug?** Describe the problem clearly. If using a TUI tool, it can read your code directly. If using chat, use the template above.

@@ -54,7 +54,7 @@ function createOrder(items, customer) {
 }
 ```
 
-When you paste this into an AI and ask "add discount logic," the AI must guess:
+When you ask an AI to "add discount logic," the AI must guess:
 - Is `items` an array of objects? Strings? Numbers?
 - Does `customer` have an `id` property? A `loyaltyPoints` property?
 - Should the function return a number? An object? Mutate something?
@@ -95,7 +95,7 @@ function createOrder(items: OrderItem[], customer: Customer): Order {
 }
 ```
 
-When you paste this and ask "add discount logic," the AI:
+When you ask the same question with typed code, the AI:
 - Knows `items` is an array of objects with `price` and `quantity`
 - Knows `customer` has `loyaltyPoints` to potentially use
 - Knows it must return an `Order` with specific fields

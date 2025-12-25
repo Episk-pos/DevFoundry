@@ -294,11 +294,20 @@ This is the power of types: change the contract, and the compiler shows you ever
 
 ### Exercise 3: Ask AI to Add a Feature
 
+**With TUI tools (Claude Code, Codex CLI, etc.):**
+
+```
+Look at src/types.ts in this project.
+I want to add a loyalty points system where customers earn 1 point per dollar spent.
+How should I modify the types and logic?
+```
+
+**With chat tools (fallback):**
+
 1. Copy the contents of `types.ts` into an AI chat
 2. Ask: "Add a loyalty points system where customers earn 1 point per dollar spent"
-3. Compare the response to what you'd get from the JavaScript version
 
-Reflect: How did having explicit types change the AI's response?
+**Compare**: Also try this with the JavaScript version (Lemonade CLI). How did having explicit types change the AI's response?
 
 ---
 
@@ -355,13 +364,31 @@ This is useful in CI/CD pipelines and before committing.
 
 ## Using AI with This Codebase
 
-When pasting code for AI assistance, include:
+### With TUI Tools (Recommended)
+
+TUI tools like Claude Code and Codex CLI can read your files directly:
+
+```
+Look at src/types.ts and src/order.ts.
+I want to add a "buy 3 get 1 free" promotion for cookies.
+How should I modify the discount logic?
+```
+
+The tool reads the files itself — no copy-paste needed. It has complete context about your data shapes.
+
+**Point to types first:**
+```
+Read src/types.ts — these are my type definitions.
+Now look at src/order.ts. I want to add quantity-based discounts.
+```
+
+### With Chat Tools (Fallback)
+
+If using a chat-based tool, include:
 
 1. **Always include `types.ts`** — It's the foundation
 2. **Include the specific file you're working on**
 3. **Describe what you want to add**
-
-Example prompt:
 
 ```
 Here are my type definitions:
@@ -373,8 +400,6 @@ Here's my order module:
 I want to add a "buy 3 get 1 free" promotion for cookies.
 How should I modify the discount logic?
 ```
-
-The AI now has complete context about your data shapes.
 
 ---
 

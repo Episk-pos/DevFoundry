@@ -510,37 +510,39 @@ setCount(prevCount => prevCount + 1);  // Gets latest value
 
 ## Using AI with React
 
-### Effective Prompts
+With TUI tools (Claude Code, Codex CLI, etc.), you don't need to copy-paste code — the AI can read your files directly.
 
-**Include types:**
+### Effective Requests
+
+**Point to files:**
 ```
-I have this TypeScript interface:
-
-interface MenuItem {
-  id: number;
-  name: string;
-  price: number;
-}
-
-Create a React component that displays a list of MenuItems with an "Add to Cart" button for each.
+Look at src/components/MenuItem.tsx.
+I want to add an "Add to Cart" button that calls the onAdd prop.
+Can you implement this?
 ```
 
-**Include context:**
+**Use screenshots for UI issues:**
 ```
-I'm using React with TypeScript and Vite.
-I have a parent component that manages order state.
-Create a child component that displays order totals and emits a "checkout" event.
+The menu items aren't aligning correctly.
+[attach screenshot]
+Can you check the CSS in MenuItem.tsx and fix the layout?
 ```
 
-**Include error messages:**
+**Describe the error:**
 ```
-I'm getting this error:
-"Cannot update a component while rendering a different component"
+I'm getting "Cannot update a component while rendering a different component"
+when I click the checkout button.
+Can you look at src/components/OrderSummary.tsx and figure out what's wrong?
+```
 
-Here's my code:
-[paste code]
+### With Chat Tools (Fallback)
 
-What's causing this and how do I fix it?
+If using a chat-based tool, include the relevant code and types:
+```
+Here's my MenuItem interface and component:
+[paste types and code]
+
+I want to add an "Add to Cart" button.
 ```
 
 ### AI Strengths with React

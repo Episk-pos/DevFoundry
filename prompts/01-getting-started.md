@@ -6,212 +6,276 @@
 
 ## Introduction
 
-AI coding assistants (Claude, ChatGPT, GitHub Copilot, Cursor, etc.) are powerful tools for learning and building software. But they work best when you guide them with **clear, contextual prompts**.
+AI coding assistants are powerful tools for learning and building software. But not all AI tools are equal — and the way you use them matters.
 
 This guide helps you:
-- Understand what AI assistants can and can't do
-- Write your first effective prompts
-- Avoid common beginner mistakes
+- Understand the difference between chat-based and terminal-based AI tools
+- Write effective prompts for AI-assisted development
+- Leverage tools that can see your code, run commands, and view screenshots
 - Build confidence in AI-assisted learning
 
 ---
 
-## What AI Assistants Are Good At
+## Types of AI Coding Tools
 
-✓ **Explaining concepts** in beginner-friendly terms
-✓ **Generating boilerplate code** following patterns you specify
-✓ **Debugging** when you provide context and symptoms
-✓ **Suggesting implementations** based on requirements
-✓ **Refactoring code** to improve clarity or structure
-✓ **Creating diagrams** (like Mermaid syntax)
-✓ **Answering "why"** questions about code or architecture
+### Chat-Based Tools
+
+Traditional AI interfaces (ChatGPT web, Claude.ai) where you:
+- Copy-paste code into a text box
+- Manually describe your project
+- Copy-paste responses back into your editor
+
+These work, but require constant context-switching and manual work.
+
+### Terminal/TUI-Based Tools
+
+Modern development tools (Claude Code, Codex CLI, OpenCode, Cursor, Aider) that:
+- **Read your files directly** — No copy-pasting needed
+- **Run commands** — Execute tests, builds, and scripts
+- **View screenshots** — See UI errors, design issues, terminal output
+- **Make edits** — Modify files with your approval
+- **Understand your project** — See package.json, directory structure, git history
+
+**DevFoundry recommends TUI-based tools** because they match how developers actually work: in the terminal, with full project context.
 
 ---
 
-## What AI Assistants Struggle With
+## Why Terminal-Based Tools Are Better for Learning
 
-✗ **Guessing your intent** when prompts are vague
-✗ **Remembering your project** without context in each prompt
-✗ **Magic fixes** when the problem isn't clearly described
-✗ **Choosing architecture** without knowing your constraints
-✗ **Reading your mind** about style, conventions, or requirements
+### No Context Loss
 
-**Key insight**: AI assistants are **autocomplete for systems**, not magic. Give them structure, and they'll amplify your thinking.
+Chat-based:
+```
+"Here's my function... [copy 50 lines]... and here's the file that imports it... [copy 30 more lines]..."
+```
+
+Terminal-based:
+```
+"Look at src/order.ts — why is calculateTotal returning undefined?"
+```
+
+The tool already sees your code. You describe the *problem*, not the *context*.
+
+### Immediate Feedback
+
+Chat-based:
+```
+1. AI suggests a fix
+2. You copy it to your editor
+3. You run the code
+4. It fails
+5. You copy the error back to chat
+6. Repeat...
+```
+
+Terminal-based:
+```
+1. AI suggests a fix and applies it
+2. AI runs the code
+3. AI sees the error and iterates
+4. You approve the working solution
+```
+
+### Visual Debugging
+
+Terminal-based tools can view screenshots. This enables:
+- "Here's a screenshot of the UI — why is the button in the wrong place?"
+- "This error dialog appeared — what does it mean?"
+- "The layout looks broken on mobile — here's what I see"
+
+---
+
+## Setting Up a TUI Tool
+
+### Claude Code
+
+```bash
+# Install
+npm install -g @anthropic-ai/claude-code
+
+# Run in your project directory
+cd my-project
+claude
+```
+
+### Codex CLI
+
+```bash
+# Install
+npm install -g @openai/codex
+
+# Run
+codex
+```
+
+### Basic Usage
+
+Once running, you interact conversationally:
+
+```
+You: What files are in this project?
+
+Claude: I can see the following structure:
+├── src/
+│   ├── index.ts
+│   ├── menu.ts
+│   └── order.ts
+├── package.json
+└── tsconfig.json
+
+Would you like me to explain any of these files?
+```
 
 ---
 
 ## Your First Prompt: Understanding Code
 
-### Template
+### With a TUI Tool
 
 ```
 I'm learning programming with the devfoundry curriculum.
-I'm looking at [EXAMPLE NAME] (examples/[PATH]).
+I'm looking at the lemonade-cli example.
 
-Here's the code:
-[PASTE CODE]
+Can you read src/order.ts and explain:
+1. What does calculateTotal do?
+2. Why does it use reduce?
+3. What would happen if items was empty?
 
-Questions:
-1. [SPECIFIC QUESTION 1]
-2. [SPECIFIC QUESTION 2]
-3. [SPECIFIC QUESTION 3]
-
-Please explain in beginner-friendly terms with examples.
+Please explain in beginner-friendly terms.
 ```
 
-### Example (Filled In)
+The tool reads the file directly — no pasting needed.
+
+### With a Chat Tool (Fallback)
+
+If you're using a chat-based tool, you'll need to provide context:
 
 ```
 I'm learning programming with the devfoundry curriculum.
-I'm looking at the "Hello World" example (examples/00-hello-world-console).
+Here's code from the lemonade-cli example (src/order.ts):
 
-Here's the code:
-```javascript
-function sayHello() {
-  console.log("Hello, World!");
-}
-
-sayHello();
-```
+[paste the code]
 
 Questions:
-1. What does `function` mean?
-2. Why do we need parentheses after `sayHello`?
-3. What happens if I remove the line `sayHello();`?
-
-Please explain in beginner-friendly terms with examples.
+1. What does calculateTotal do?
+...
 ```
 
 ---
 
 ## Your Second Prompt: Modifying Code
 
-### Template
+### With a TUI Tool
 
 ```
-I'm working on [EXAMPLE NAME] from devfoundry.
+I want to modify the lemonade-cli to add a new menu item:
+- "Frozen Lemonade" for $3.25
 
-Current code:
-[PASTE CODE]
-
-I want to modify it to:
-- [CHANGE 1]
-- [CHANGE 2]
-
-Please show me how to modify [FILENAME] to do this.
-Explain what changes you made and why.
+Please:
+1. Show me where menu items are defined
+2. Add the new item
+3. Run the app to verify it works
 ```
 
-### Example (Filled In)
+The tool will:
+- Find the menu data
+- Show you the change before making it
+- Apply the edit (with your approval)
+- Run `npm start` to verify
+
+### With a Chat Tool (Fallback)
 
 ```
-I'm working on the "Hello World" example from devfoundry.
+Here's my menu.ts file:
+[paste code]
 
-Current code:
-```javascript
-function sayHello() {
-  console.log("Hello, World!");
-}
-
-sayHello();
+I want to add "Frozen Lemonade" for $3.25.
+Show me the updated code.
 ```
 
-I want to modify it to:
-- Accept a name as a parameter
-- Print "Hello, [name]!" instead of "Hello, World!"
-- Call it twice with different names
+Then you manually copy the result back.
 
-Please show me how to modify hello.js to do this.
-Explain what changes you made and why.
+---
+
+## Debugging with Screenshots
+
+One of the most powerful features of TUI tools is screenshot input.
+
+### Example: UI Bug
+
+```
+The order summary isn't displaying correctly.
+[attach screenshot of broken UI]
+
+Here's what it should look like:
+[attach screenshot of expected UI or describe it]
+
+Can you find and fix the CSS issue?
+```
+
+### Example: Error Dialog
+
+```
+I'm getting this error when I click the submit button:
+[attach screenshot of error]
+
+What's causing this and how do I fix it?
+```
+
+### Example: Terminal Error
+
+```
+The build is failing with this error:
+[attach screenshot of terminal output]
+
+What's wrong?
 ```
 
 ---
 
-## Your Third Prompt: Explaining Errors
+## What AI Assistants Are Good At
 
-### Template
-
-```
-I'm running [EXAMPLE NAME] and getting an error.
-
-Code:
-[PASTE CODE]
-
-Command I ran:
-[COMMAND]
-
-Error message:
-[PASTE ERROR]
-
-What does this error mean and how do I fix it?
-```
-
-### Example (Filled In)
-
-```
-I'm running the Hello World example and getting an error.
-
-Code:
-```javascript
-function sayHello() {
-  console.log("Hello, World!");
-}
-```
-
-Command I ran:
-node hello.js
-
-Error message:
-(nothing prints)
-
-What does this error mean and how do I fix it?
-```
+✓ **Explaining concepts** in beginner-friendly terms
+✓ **Generating boilerplate code** following patterns in your project
+✓ **Debugging** when they can see your code and errors
+✓ **Refactoring** while maintaining your existing patterns
+✓ **Running tests** and fixing failures iteratively
+✓ **Reading documentation** and applying it to your code
 
 ---
 
-## Prompt Principles for Beginners
+## What AI Assistants Struggle With
 
-### 1. Be Specific
+✗ **Guessing your intent** when prompts are vague
+✗ **Choosing architecture** without knowing your constraints
+✗ **Making decisions** that depend on business context you haven't shared
+✗ **Knowing your preferences** for style, naming, etc.
 
-❌ **Vague**: "How do I make a website?"
-✅ **Specific**: "How do I create an HTML file that displays 'Hello, World!' in a browser?"
-
-### 2. Provide Context
-
-❌ **No context**: "Why isn't this working?"
-✅ **With context**: "I'm following the devfoundry tutorial. This code should print 'Hello' but nothing appears. Here's what I tried..."
-
-### 3. Ask One Thing at a Time
-
-❌ **Too broad**: "Explain JavaScript"
-✅ **Focused**: "What does the `function` keyword do in JavaScript?"
-
-### 4. Show Your Work
-
-❌ **No attempt**: "Write me a program"
-✅ **Show effort**: "I tried this code [paste], but it doesn't work. I expected [X] but got [Y]."
+**Key insight**: AI assistants are **collaborators**, not oracles. They work *with* your project context, not in isolation.
 
 ---
 
 ## Common Beginner Mistakes
 
-### Mistake 1: Vague Requests
+### Mistake 1: Being Too Vague
 
-❌ "Build me an app"
+❌ "Fix my code"
 
-**Problem**: AI doesn't know what kind, what features, what tech stack.
+**Problem**: Which code? What's broken? What should it do?
 
-✅ "I'm following the lemonade stand example. Show me how to add a 'Clear Order' button that resets the order list."
+✅ "The calculateTotal function in src/order.ts is returning NaN. Can you find out why?"
 
 ---
 
-### Mistake 2: No Code Provided
+### Mistake 2: Providing No Context (Chat Tools)
 
 ❌ "My function doesn't work"
 
-**Problem**: AI can't see what you're doing.
+**Problem**: Chat tools can't see your code.
 
-✅ "Here's my function: [paste code]. Expected output: [X]. Actual output: [Y]. What's wrong?"
+✅ "Here's my function: [paste code]. Expected output: X. Actual output: Y."
+
+With TUI tools, this isn't an issue — they can see your files.
 
 ---
 
@@ -219,9 +283,9 @@ What does this error mean and how do I fix it?
 
 ❌ "Make this faster"
 
-**Problem**: AI doesn't know what "this" is or what "faster" means.
+**Problem**: Faster how? What's the current performance? What's acceptable?
 
-✅ "This function processes 1000 items and takes 5 seconds. Here's the code: [paste]. How can I optimize it?"
+✅ "This function processes 1000 items and takes 5 seconds. Can you profile it and suggest optimizations?"
 
 ---
 
@@ -247,39 +311,28 @@ I understand that components are reusable UI pieces.
 
 I don't understand how props work.
 
-Can you explain how to pass data from a parent component to a child component?
-Use a simple example (like a greeting component that takes a name).
+Can you show me in the lemonade-react example how data flows
+from App.tsx to the MenuItem component?
 ```
 
 ---
 
-### Exploring Code
+### Exploring a File
 
 ```
-I'm reading [FILE] from the [EXAMPLE NAME] example.
-
-Code:
-[PASTE SNIPPET]
-
-Questions:
-1. What does line [X] do?
-2. Why is [THING] necessary?
-3. What would happen if I changed [Y] to [Z]?
+Can you read [FILE] and explain:
+1. What is this file's responsibility?
+2. What are the main functions/components?
+3. How does it connect to other files?
 ```
 
 **Example**:
 ```
-I'm reading App.jsx from the lemonade stand SPA example.
-
-Code:
-```jsx
-const [orders, setOrders] = useState([]);
-```
-
-Questions:
-1. What does `useState` do?
-2. Why is there an empty array `[]`?
-3. What would happen if I changed `[]` to `null`?
+Can you read src/order.ts from the lemonade-cli-typescript example
+and explain:
+1. What is this file's responsibility?
+2. What are the main functions?
+3. How does it use the types from types.ts?
 ```
 
 ---
@@ -296,124 +349,79 @@ I want to try: [CHANGE]
 Questions:
 1. Will this break anything?
 2. What should I expect to happen?
-3. How can I undo it if it doesn't work?
-```
-
-**Example**:
-```
-I want to experiment with the Hello World example.
-
-Current behavior: Prints "Hello, World!" once
-
-I want to try: Print it 10 times using a loop
-
-Questions:
-1. Will this break anything?
-2. What should I expect to happen?
-3. How do I write a loop in JavaScript?
+3. Can you make the change so I can test it?
 ```
 
 ---
 
-## Building Confidence
+## Iteration and Conversation
 
-### Start Small
+Good AI-assisted development is conversational:
 
-Don't ask AI to build entire apps. Ask for:
-- Explanations of single concepts
-- Modifications to existing code
-- Help with specific errors
-
-**Goal**: Understand every line of code the AI generates.
-
----
-
-### Iterate
-
-First attempt might not be perfect. That's OK!
-
-**Pattern**:
-1. Ask for something
-2. Try it
-3. Ask follow-up questions
-4. Refine until you understand
-
-**Example iteration**:
 ```
-Prompt 1: "Show me how to add a parameter to sayHello"
-[AI responds]
+You: Why is the discount not applying in calculateTotal?
 
-Prompt 2: "I tried that, but I want to use two parameters (first name and last name)"
-[AI responds]
+AI: Looking at order.ts... The discount logic checks if subtotal >= 10,
+    but I see subtotal is calculated after the discount check.
+    Would you like me to fix the order of operations?
 
-Prompt 3: "How do I handle the case where last name is optional?"
-[AI responds]
+You: Yes, and add a test to make sure it works.
+
+AI: I'll fix the function and create a test file. Here's what I'm changing...
+    [shows diff]
+    Should I apply this?
+
+You: Yes.
+
+AI: Done. Running the tests now... All passing.
 ```
 
----
-
-### Ask "Why"
-
-Don't just accept code. Ask why it works.
-
-❌ Copy-paste AI code without understanding
-✅ "Why did you use `const` instead of `let`?"
-✅ "Why is this function defined inside the component?"
-✅ "What's the purpose of this line?"
+This flow is natural with TUI tools — impossible with copy-paste chat.
 
 ---
 
 ## Graduated Prompting Examples
 
-As you progress through devfoundry, your prompts will evolve:
+As you progress through devfoundry, your prompts evolve:
 
 ### Week 1: Total Beginner
 
 ```
-"What does the `console.log()` function do?
-Show me a simple example."
+"What does the console.log() function do?
+Show me a simple example in a new file."
 ```
 
 ### Week 4: Understanding Basics
 
 ```
-"In the lemonade CLI example, there's a function called `calculateTotal`.
-It uses `reduce`. What does `reduce` do?
-Can you show me step-by-step what happens with this data: [...] ?"
+"In the lemonade-cli example, can you read src/order.ts?
+I don't understand what reduce does.
+Walk me through it step-by-step with the actual data from menu.ts."
 ```
 
-### Week 8: Building with Context
+### Week 8: Building Features
 
 ```
-"I'm building a lemonade stand SPA (React, see devfoundry examples/03).
+"I want to add input validation to the lemonade-cli:
+- Quantity must be a positive number
+- Item ID must exist in the menu
 
-Current structure:
-- App.jsx (state: {orders, total})
-- OrderForm.jsx (user input)
-
-I want to add validation: quantity must be > 0.
-
-Where should validation happen? In the form or in App?
-Show me how to implement it."
+Where should this validation happen?
+Can you implement it and show me how to test it?"
 ```
 
 ### Week 12: Architecture-First
 
 ```
-"Per devfoundry's lemonade fullstack example, I have:
-- React frontend (client/)
-- Express backend (server/)
+"I'm planning to add user accounts to the lemonade fullstack example.
 
-I want to add user accounts.
+Before we write code, can you:
+1. Read the current project structure
+2. Propose where auth logic should live
+3. Identify what new files we need
+4. Consider security implications
 
-In the allocation view:
-- Where should password hashing happen (client or server)?
-- Where should session tokens be stored?
-
-In the module view:
-- What new files/routes do I need?
-
-Please provide an architectural plan before showing code."
+Then we'll implement it together."
 ```
 
 ---
@@ -423,53 +431,98 @@ Please provide an architectural plan before showing code."
 ### Good times to use AI:
 
 ✓ **Explaining unfamiliar syntax** you encountered
-✓ **Debugging specific errors** with error messages
+✓ **Debugging specific errors** — especially with screenshots
 ✓ **Understanding concepts** from the curriculum
 ✓ **Brainstorming approaches** before implementing
 ✓ **Reviewing your code** for issues
+✓ **Running and testing** changes iteratively
 
 ### Times to struggle first:
 
-⚠ **Exercises** — Try yourself before asking
+⚠ **Exercises** — Try yourself before asking (that's how you learn)
 ⚠ **Design decisions** — Think through tradeoffs first
-⚠ **Debugging** — Check obvious things (typos, file paths) first
+⚠ **Simple debugging** — Check obvious things (typos, file paths) first
 
 **Balance**: Use AI to accelerate learning, not replace thinking.
 
 ---
 
-## Next Steps
+## Best Practices
 
-### Practice These Prompts
+### 1. Let the Tool See Your Project
 
-1. Pick an example from devfoundry
-2. Use the "Understanding Code" template
-3. Ask 3 specific questions
-4. Try the AI's answers
-5. Ask follow-up questions
+Start the TUI tool in your project root. Let it understand your structure.
 
-### Move to Advanced Templates
+### 2. Be Specific About Goals
 
-Once comfortable:
-- [02-architecture-first.md](02-architecture-first.md) — Building features
-- [03-debugging.md](03-debugging.md) — Systematic debugging
-- [04-reading-code.md](04-reading-code.md) — Understanding larger codebases
+Not "fix this" but "make this function return X when given Y."
+
+### 3. Ask for Explanations
+
+Don't just accept code changes. Ask:
+- "Why did you use const instead of let?"
+- "What does this line do?"
+- "What would happen if I removed this?"
+
+### 4. Review Before Approving
+
+TUI tools show you changes before applying them. Read the diffs. Understand what's changing.
+
+### 5. Use Screenshots for Visual Problems
+
+UI issues, error dialogs, terminal output — a picture is worth a thousand words of description.
 
 ---
 
 ## Summary
 
-**Effective AI-assisted learning**:
+| Aspect | Chat Tools | TUI Tools |
+|--------|------------|-----------|
+| Code access | Copy-paste | Direct file access |
+| Running commands | Manual | Automatic |
+| Visual input | Describe in words | Screenshots |
+| Iteration speed | Slow (copy-paste loop) | Fast (approve and run) |
+| Context | Provide each time | Persistent project context |
 
-1. ✓ Be specific and provide context
-2. ✓ Show your code and what you tried
-3. ✓ Ask one thing at a time
-4. ✓ Iterate and refine
-5. ✓ Always ask "why"
-6. ✓ Understand every line of generated code
-
-**Remember**: AI assistants are **learning partners**, not replacements for thinking. Use them to amplify your understanding, not bypass it.
+**For DevFoundry learners**: Start with a TUI tool if possible. The experience is dramatically better, especially when learning.
 
 ---
 
-**Ready to start?** Open your AI assistant and try the "Understanding Code" template with the Hello World example!
+## Quick Reference
+
+### Starting a Session
+
+```
+cd my-project
+claude  # or codex, or your tool of choice
+```
+
+### Understanding Code
+
+```
+Read [file] and explain [specific question]
+```
+
+### Making Changes
+
+```
+I want to [change]. Can you implement it and run the tests?
+```
+
+### Debugging
+
+```
+[describe problem or attach screenshot]
+What's causing this?
+```
+
+### Learning
+
+```
+I don't understand [concept].
+Show me an example in [file] from this project.
+```
+
+---
+
+*The best prompts give AI context and ask specific questions. With TUI tools, the context is automatic — you just need to ask.*
