@@ -34,6 +34,7 @@ Each curriculum module contains exercises integrated into the content:
 | [Part I, Module 02: Anatomy of Projects](/docs/curriculum/part-1-foundations/anatomy-of-projects) | 5 exercises | Language categories, architecture types, project structure, tool chains |
 | [Part I, Module 03: How the Web Works](/docs/curriculum/part-1-foundations/how-the-web-works) | 4 exercises | Network inspection, HTML/CSS/JS, HTTP protocol, dev tools |
 | [Part I, Module 04: Types as Communication](/docs/curriculum/part-1-foundations/types-as-communication) | 4 exercises | Adding types, designing types, AI comparison, type errors |
+| [Part I, Module 05: Build Tools](/docs/curriculum/part-1-foundations/build-tools) | 4 exercises | package.json, build process, type errors, npm scripts |
 
 **Format**: Exercises appear with collapsible `<details>` tags containing solutions. Try the exercise, then expand to check your work.
 
@@ -185,6 +186,12 @@ The best exercise is one you create for yourself:
 2. Design Types for a Feature — Create loyalty program types
 3. Types and AI Assistance — Compare typed vs untyped AI responses
 4. Find the Type Error — Spot bugs without running code
+
+**Module 05: Build Tools**
+1. Explore package.json — Understand scripts and dependencies
+2. Understand the Build — Compile TypeScript and examine output
+3. Break the Build — Introduce type errors and observe behavior
+4. Add a Script — Create a demo script with preset arguments
 
 **Example: Hello World Console**
 1. Change the greeting message
