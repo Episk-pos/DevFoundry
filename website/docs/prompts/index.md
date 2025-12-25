@@ -24,10 +24,10 @@ This directory contains **prompt templates** for working with AI assistants (Cla
 |----------|---------|-------------|
 | [Getting Started](01-getting-started) | First-time AI assistant usage | Starting your journey |
 | [Architecture First](02-architecture-first) | Building features | Adding functionality |
-| Debugging | Fixing issues | Something doesn't work |
-| Reading Code | Understanding unfamiliar code | Exploring codebases |
-| Designing Features | Planning before coding | Starting a new feature |
-| Iterative Refinement | Improving existing code | Refactoring, optimizing |
+| [Debugging](03-debugging) | Fixing issues | Something doesn't work |
+| [Reading Code](04-reading-code) | Understanding unfamiliar code | Exploring codebases |
+| [Designing Features](05-designing-features) | Planning before coding | Starting a new feature |
+| [Iterative Refinement](06-iterative-refinement) | Improving existing code | Refactoring, optimizing |
 
 ---
 
@@ -265,4 +265,5 @@ Have a prompt pattern that works well? Submit a PR with:
 **Building something?** Use this:
 👉 [Architecture First](02-architecture-first)
 
-**Something broken?** Use debugging template (to be created)
+**Something broken?** Use this:
+👉 [Debugging](03-debugging)
