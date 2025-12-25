@@ -35,6 +35,7 @@ Each curriculum module contains exercises integrated into the content:
 | [Part I, Module 03: How the Web Works](/docs/curriculum/part-1-foundations/how-the-web-works) | 4 exercises | Network inspection, HTML/CSS/JS, HTTP protocol, dev tools |
 | [Part I, Module 04: Types as Communication](/docs/curriculum/part-1-foundations/types-as-communication) | 4 exercises | Adding types, designing types, AI comparison, type errors |
 | [Part I, Module 05: Build Tools](/docs/curriculum/part-1-foundations/build-tools) | 4 exercises | package.json, build process, type errors, npm scripts |
+| [Part I, Module 06: Frontend Frameworks](/docs/curriculum/part-1-foundations/frontend-frameworks-react) | 4 exercises | Framework problems, component reading, debugging, AI prompts |
 
 **Format**: Exercises appear with collapsible `<details>` tags containing solutions. Try the exercise, then expand to check your work.
 
@@ -192,6 +193,12 @@ The best exercise is one you create for yourself:
 2. Understand the Build — Compile TypeScript and examine output
 3. Break the Build — Introduce type errors and observe behavior
 4. Add a Script — Create a demo script with preset arguments
+
+**Module 06: Frontend Frameworks and React**
+1. Identify the Hard Problems — Find sync issues in vanilla JS
+2. Read a React Component — Understand props and rendering
+3. Fix the Bug — Diagnose stale closure issue
+4. Ask AI for a Component — Practice effective prompting
 
 **Example: Hello World Console**
 1. Change the greeting message
