@@ -33,6 +33,7 @@ Each curriculum module contains exercises integrated into the content:
 | [Part I, Module 01: What Software Is](/docs/curriculum/part-1-foundations/what-software-is) | 4 exercises | I/O/P model, predicting output, modification, design |
 | [Part I, Module 02: Anatomy of Projects](/docs/curriculum/part-1-foundations/anatomy-of-projects) | 5 exercises | Language categories, architecture types, project structure, tool chains |
 | [Part I, Module 03: How the Web Works](/docs/curriculum/part-1-foundations/how-the-web-works) | 4 exercises | Network inspection, HTML/CSS/JS, HTTP protocol, dev tools |
+| [Part I, Module 04: Types as Communication](/docs/curriculum/part-1-foundations/types-as-communication) | 4 exercises | Adding types, designing types, AI comparison, type errors |
 
 **Format**: Exercises appear with collapsible `<details>` tags containing solutions. Try the exercise, then expand to check your work.
 
@@ -47,6 +48,7 @@ Each example includes practice exercises in its README:
 | [Hello World Console](/docs/examples/hello-world-console) | 4 exercises | Modification, parameters, return values, experimentation |
 | [Lemonade CLI](/docs/examples/lemonade-cli) | 4 exercises | Menu data, discount logic, input validation, order IDs |
 | [Lemonade Static Web](/docs/examples/lemonade-static-web) | 4 exercises | DOM manipulation, localStorage, animations, keyboard navigation |
+| [Lemonade CLI (TypeScript)](/docs/examples/lemonade-cli-typescript) | 4 exercises | Adding menu items, type modifications, AI comparison, type errors |
 
 **Format**: Exercises build on the working code in the example, encouraging experimentation.
 
@@ -178,6 +180,12 @@ The best exercise is one you create for yourself:
 3. Inspect HTTP Traffic — Examine request/response headers
 4. Use Dev Tools — Experiment with Elements and Console
 
+**Module 04: Types as Communication**
+1. Add Types to Existing Code — Convert JavaScript to TypeScript
+2. Design Types for a Feature — Create loyalty program types
+3. Types and AI Assistance — Compare typed vs untyped AI responses
+4. Find the Type Error — Spot bugs without running code
+
 **Example: Hello World Console**
 1. Change the greeting message
 2. Call the function multiple times
@@ -195,6 +203,12 @@ The best exercise is one you create for yourself:
 2. Persist Order in LocalStorage — Survive page refresh
 3. Add Animations — Bounce effect when adding items
 4. Add Keyboard Navigation — Arrow keys and Enter
+
+**Example: Lemonade CLI (TypeScript)**
+1. Add a New Menu Item — Extend the typed menu
+2. Add a Size Option — Modify types and follow compiler errors
+3. Ask AI to Add a Feature — Compare typed vs untyped prompts
+4. Type Error Hunt — Find bugs at compile time
 
 ---
 
