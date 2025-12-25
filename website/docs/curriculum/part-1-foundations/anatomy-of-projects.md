@@ -675,7 +675,7 @@ You'll learn:
 
 This prepares you to build the web version of the lemonade stand.
 
-👉 [Module 03](03-how-the-web-works) *(Coming soon)*
+👉 [Module 03: How the Web Works](how-the-web-works)
 
 ---
 

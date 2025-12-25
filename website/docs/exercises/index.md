@@ -32,6 +32,7 @@ Each curriculum module contains exercises integrated into the content:
 |--------|-----------|-------|
 | [Part I, Module 01: What Software Is](/docs/curriculum/part-1-foundations/what-software-is) | 4 exercises | I/O/P model, predicting output, modification, design |
 | [Part I, Module 02: Anatomy of Projects](/docs/curriculum/part-1-foundations/anatomy-of-projects) | 5 exercises | Language categories, architecture types, project structure, tool chains |
+| [Part I, Module 03: How the Web Works](/docs/curriculum/part-1-foundations/how-the-web-works) | 4 exercises | Network inspection, HTML/CSS/JS, HTTP protocol, dev tools |
 
 **Format**: Exercises appear with collapsible `<details>` tags containing solutions. Try the exercise, then expand to check your work.
 
@@ -44,7 +45,8 @@ Each example includes practice exercises in its README:
 | Example | Exercises | Focus |
 |---------|-----------|-------|
 | [Hello World Console](/docs/examples/hello-world-console) | 4 exercises | Modification, parameters, return values, experimentation |
-| *More examples coming soon* | | |
+| [Lemonade CLI](/docs/examples/lemonade-cli) | 4 exercises | Menu data, discount logic, input validation, order IDs |
+| [Lemonade Static Web](/docs/examples/lemonade-static-web) | 4 exercises | DOM manipulation, localStorage, animations, keyboard navigation |
 
 **Format**: Exercises build on the working code in the example, encouraging experimentation.
 
@@ -170,6 +172,12 @@ The best exercise is one you create for yourself:
 4. Tool Chain Matching — Match problems to tools
 5. Explore a Real Project — Navigate DevFoundry structure
 
+**Module 03: How the Web Works**
+1. Observe a Page Load — Use Network tab to analyze requests
+2. Build a Minimal Page — Create HTML, CSS, JS files
+3. Inspect HTTP Traffic — Examine request/response headers
+4. Use Dev Tools — Experiment with Elements and Console
+
 **Example: Hello World Console**
 1. Change the greeting message
 2. Call the function multiple times
@@ -182,14 +190,11 @@ The best exercise is one you create for yourself:
 3. Add Input Validation — Improve error messages
 4. Add Order Numbering — Generate unique order IDs
 
----
-
-## Coming Soon
-
-As the curriculum expands, more exercises will be added:
-
-- **Part I, Module 03**: Web architecture exercises
-- **Example: Lemonade Web**: DOM manipulation exercises
+**Example: Lemonade Static Web**
+1. Add a Remove All Button — Remove entire item from order
+2. Persist Order in LocalStorage — Survive page refresh
+3. Add Animations — Bounce effect when adding items
+4. Add Keyboard Navigation — Arrow keys and Enter
 
 ---
 
