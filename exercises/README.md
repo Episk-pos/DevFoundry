@@ -25,7 +25,7 @@ Each curriculum module contains exercises integrated into the content:
 | Module | Exercises | Focus |
 |--------|-----------|-------|
 | [Part I, Module 01: What Software Is](../curriculum/part-1-foundations/01-what-software-is.md) | 4 exercises | I/O/P model, predicting output, modification, design |
-| *More modules coming soon* | | |
+| [Part I, Module 02: Anatomy of Projects](../curriculum/part-1-foundations/02-anatomy-of-projects.md) | 5 exercises | Language categories, architecture types, project structure, tool chains |
 
 **Format**: Exercises appear with collapsible `<details>` tags containing solutions. Try the exercise, then expand to check your work.
 
@@ -157,11 +157,24 @@ The best exercise is one you create for yourself:
 3. Modify Hello World — Add personalization
 4. Design a Program — Temperature converter
 
+**Module 02: Anatomy of Projects**
+1. Language Categories — Classify compiled vs interpreted
+2. Identify the Architecture — Match apps to architecture types
+3. Read a Project Structure — Understand lemonade-cli organization
+4. Tool Chain Matching — Match problems to tools
+5. Explore a Real Project — Navigate DevFoundry structure
+
 **Example: Hello World Console**
 1. Change the greeting message
 2. Call the function multiple times
 3. Add a parameter for the name
 4. Add a return value
+
+**Example: Lemonade CLI**
+1. Add a New Menu Item — Add Frozen Lemonade
+2. Change the Discount — Modify threshold and percentage
+3. Add Input Validation — Improve error messages
+4. Add Order Numbering — Generate unique order IDs
 
 ---
 
@@ -169,9 +182,7 @@ The best exercise is one you create for yourself:
 
 As the curriculum expands, more exercises will be added:
 
-- **Part I, Module 02**: Project anatomy exercises
 - **Part I, Module 03**: Web architecture exercises
-- **Example: Lemonade CLI**: Order processing exercises
 - **Example: Lemonade Web**: DOM manipulation exercises
 
 ---
