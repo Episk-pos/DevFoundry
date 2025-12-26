@@ -51,7 +51,7 @@ const sidebars: SidebarsConfig = {
       label: 'Examples',
       collapsed: false,
       items: [
-        'examples/00-hello-world-console/index',
+        'examples/hello-world-console/index',
         'examples/lemonade-cli/index',
         'examples/lemonade-static-web/index',
         'examples/lemonade-cli-typescript/index',
@@ -63,12 +63,12 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         'prompts/index',
-        'prompts/01-getting-started',
-        'prompts/02-architecture-first',
-        'prompts/03-debugging',
-        'prompts/04-reading-code',
-        'prompts/05-designing-features',
-        'prompts/06-iterative-refinement',
+        'prompts/getting-started',
+        'prompts/architecture-first',
+        'prompts/debugging',
+        'prompts/reading-code',
+        'prompts/designing-features',
+        'prompts/iterative-refinement',
       ],
     },
     {
@@ -97,9 +97,9 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         'adr/index',
-        'adr/0001-frontend-stack',
-        'adr/0002-backend-stack',
-        'adr/0003-diagram-conventions',
+        'adr/frontend-stack',
+        'adr/backend-stack',
+        'adr/diagram-conventions',
       ],
     },
     {
