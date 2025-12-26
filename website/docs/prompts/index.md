@@ -22,12 +22,12 @@ This directory contains **prompt templates** for working with AI assistants (Cla
 
 | Template | Purpose | When to Use |
 |----------|---------|-------------|
-| [Getting Started](01-getting-started) | First-time AI assistant usage | Starting your journey |
-| [Architecture First](02-architecture-first) | Building features | Adding functionality |
-| [Debugging](03-debugging) | Fixing issues | Something doesn't work |
-| [Reading Code](04-reading-code) | Understanding unfamiliar code | Exploring codebases |
-| [Designing Features](05-designing-features) | Planning before coding | Starting a new feature |
-| [Iterative Refinement](06-iterative-refinement) | Improving existing code | Refactoring, optimizing |
+| [Getting Started](prompts/getting-started) | First-time AI assistant usage | Starting your journey |
+| [Architecture First](prompts/architecture-first) | Building features | Adding functionality |
+| [Debugging](prompts/debugging) | Fixing issues | Something doesn't work |
+| [Reading Code](prompts/reading-code) | Understanding unfamiliar code | Exploring codebases |
+| [Designing Features](prompts/designing-features) | Planning before coding | Starting a new feature |
+| [Iterative Refinement](prompts/iterative-refinement) | Improving existing code | Refactoring, optimizing |
 
 ---
 
@@ -112,7 +112,7 @@ These templates follow **Flow-Based Development** principles:
 2. Design the architecture (components, connections)
 3. Implement with clarity
 
-See [Architecture First](/mental-models/architecture-first) for the full philosophy.
+See [Architecture First](/docs/mental-models/architecture-first) for the full philosophy.
 
 ---
 
@@ -122,7 +122,7 @@ See [Architecture First](/mental-models/architecture-first) for the full philoso
 
 **Scenario**: Add discount logic to lemonade stand
 
-**Template**: [Architecture First](02-architecture-first)
+**Template**: [Architecture First](prompts/architecture-first)
 
 **Filled-in prompt**:
 ```
@@ -200,7 +200,7 @@ Long conversations lose context. Re-state key points in each prompt.
 
 ## Advanced: ADR-Driven Prompting
 
-If your project has ADRs (see [ADRs](/adr)), reference them:
+If your project has ADRs (see [ADRs](/docs/adr)), reference them:
 
 ```
 "According to ADR-0001, we use React functional components.
@@ -260,10 +260,10 @@ Have a prompt pattern that works well? Submit a PR with:
 ## Quick Start
 
 **New to AI assistants?** Start here:
-👉 [Getting Started](01-getting-started)
+👉 [Getting Started](prompts/getting-started)
 
 **Building something?** Use this:
-👉 [Architecture First](02-architecture-first)
+👉 [Architecture First](prompts/architecture-first)
 
 **Something broken?** Use this:
-👉 [Debugging](03-debugging)
+👉 [Debugging](prompts/debugging)

@@ -26,7 +26,7 @@ This directory is where community collaboration happens.
 
 ## What's Here
 
-### [Problems](problems/)
+### [Problems](community/problems)
 A collection of real problems that people want solved. These come from:
 - Community members sharing their friction
 - Discussions and conversations
@@ -41,7 +41,7 @@ Each problem is documented with:
 
 **Problems are opportunities.** Anyone can pick one up and work on it.
 
-### [Projects](projects/)
+### [Projects](community/projects)
 Active projects being built by community members. This includes:
 - Projects solving problems from the `/problems` directory
 - Tools being built in public
@@ -53,7 +53,7 @@ Each project documents:
 - How to contribute
 - What's been learned
 
-### [Showcases](showcases/)
+### [Showcases](community/showcases)
 Completed projects and success stories:
 - What was built
 - What problem it solved
@@ -62,7 +62,7 @@ Completed projects and success stories:
 
 These serve as inspiration and case studies.
 
-### [Resources](resources/)
+### [Resources](community/resources)
 Community-curated resources:
 - Useful tools and services
 - Learning materials

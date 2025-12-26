@@ -507,9 +507,9 @@ What is a closure?
 
 ## Related Templates
 
-- [Getting Started](01-getting-started) — First steps with AI assistants
-- [Debugging](03-debugging) — When code you're reading has bugs
-- [Designing Features](05-designing-features) — After understanding, planning new features
+- [Getting Started](getting-started) — First steps with AI assistants
+- [Debugging](debugging) — When code you're reading has bugs
+- [Designing Features](designing-features) — After understanding, planning new features
 
 ---
 

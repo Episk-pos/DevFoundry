@@ -494,9 +494,9 @@ For [FEATURE], help me define "done":
 
 ## Related Templates
 
-- [Architecture-First Prompting](02-architecture-first) — Implementing with architectural context
-- [Reading Code](04-reading-code) — Understanding existing code before adding to it
-- [Iterative Refinement](06-iterative-refinement) — Improving after initial implementation
+- [Architecture-First Prompting](architecture-first) — Implementing with architectural context
+- [Reading Code](reading-code) — Understanding existing code before adding to it
+- [Iterative Refinement](iterative-refinement) — Improving after initial implementation
 
 ---
 

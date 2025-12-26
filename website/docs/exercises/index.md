@@ -122,7 +122,7 @@ Don't stop at the solution. What happens if you change something? What if you co
 
 ### When Stuck
 
-If you're stuck after genuine effort, use the [debugging prompt template](/docs/prompts/03-debugging):
+If you're stuck after genuine effort, use the [debugging prompt template](/docs/prompts/debugging):
 
 ```
 I'm working on Exercise 3 in Module 01 (modifying Hello World).

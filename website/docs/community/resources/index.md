@@ -18,8 +18,8 @@ A collection of resources that community members have found valuable for buildin
 
 ### Learning
 
-- [DevFoundry Curriculum](/category/curriculum) — Our own progressive learning path
-- [DevFoundry Mental Models](/category/mental-models) — Protocol thinking, friction to opportunity, etc.
+- [DevFoundry Curriculum](/docs/curriculum/part-1-foundations/what-software-is) — Our own progressive learning path
+- [DevFoundry Mental Models](/docs/mental-models/protocol-thinking) — Protocol thinking, friction to opportunity, etc.
 
 *Add more as discovered*
 

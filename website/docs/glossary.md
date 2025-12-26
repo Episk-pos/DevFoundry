@@ -32,7 +32,7 @@ Hiding complexity behind a simpler interface. Like a car's steering wheel — yo
 *Example*: A `calculateTotal()` function abstracts away the math details.
 
 ### ADR (Architecture Decision Record)
-A document explaining *why* an architectural decision was made. See [ADR documentation](adr/index).
+A document explaining *why* an architectural decision was made. See [ADR documentation](adr).
 
 *Example*: "Why we chose React over Vue"
 

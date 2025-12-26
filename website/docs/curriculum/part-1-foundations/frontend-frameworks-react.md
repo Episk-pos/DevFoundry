@@ -744,7 +744,7 @@ These are important. Learn them when you need them, not before.
 
 ## What's Next
 
-- **[Example: Lemonade Stand (React)](/docs/examples/lemonade-react)** — The familiar app, rebuilt with components
+- **[Example: Lemonade Stand (Static Web)](/docs/examples/lemonade-static-web)** — The familiar app, as a web page
 - **Module 07: State Management** — When component state isn't enough
 
 ---

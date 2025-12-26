@@ -141,6 +141,6 @@ DELETE /api/orders/:id       # Delete order
 
 ## Related Decisions
 
-- [ADR-0001: Frontend Stack](0001-frontend-stack) — Node aligns with JavaScript ecosystem
-- [ADR-0004: Database Choice for Learning](0004-database-choice) — (future) Deep dive on SQLite vs others
-- [ADR-0005: Deployment Platform](0005-deployment-platform) — (future) Where to host Node + SQLite
+- [ADR-0001: Frontend Stack](frontend-stack) — Node aligns with JavaScript ecosystem
+- ADR-0004: Database Choice for Learning — (future) Deep dive on SQLite vs others
+- ADR-0005: Deployment Platform — (future) Where to host Node + SQLite

@@ -334,7 +334,7 @@ You'll have the foundation to:
 
 1. **Notice friction** — Start a friction log, apply [protocol thinking](mental-models/protocol-thinking)
 2. **Build something small** — Pick one problem, solve it, ship it
-3. **Join the community** — Share what you notice, learn from others ([community](community/index))
+3. **Join the community** — Share what you notice, learn from others ([community](community))
 4. **Build in public** — Document your journey, attract collaborators
 5. **Deep dive** — Pick a specialization and go deeper
 6. **Teach others** — The best way to solidify your knowledge
@@ -353,10 +353,10 @@ You'll have the foundation to:
 
 DevFoundry is more than a curriculum — it's a community of people building software together.
 
-- [Community Guide](community/index) — Overview and how to participate
-- [Problems](community/problems/index) — Friction documented by the community
-- [Projects](community/projects/index) — Active work being built in public
-- [Showcases](community/showcases/index) — Completed projects and success stories
+- [Community Guide](community) — Overview and how to participate
+- [Problems](community/problems) — Friction documented by the community
+- [Projects](community/projects) — Active work being built in public
+- [Showcases](community/showcases) — Completed projects and success stories
 
 ---
 

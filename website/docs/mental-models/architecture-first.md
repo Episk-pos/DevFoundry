@@ -465,7 +465,7 @@ Architecture-first doesn't mean one-shot perfection. It means **structured itera
 
 - [Flow-Based Development](flow-based-dev) — Core philosophy
 - [Architectural Views](../architectural-views) — View types
-- [Architecture-First Prompts](../prompts/02-architecture-first) — Prompt templates
+- [Architecture-First Prompts](../prompts/architecture-first) — Prompt templates
 - [ADRs](../adr/index) — Example architectural decisions
 
 ---

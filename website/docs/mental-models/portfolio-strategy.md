@@ -377,4 +377,4 @@ If you already have income from software:
 - [The DevFoundry Thesis](../thesis) — Why software is accessible leverage
 - [Friction to Opportunity](friction-to-opportunity) — Finding what to build
 - [Protocol Thinking](protocol-thinking) — Seeing systems and opportunities
-- [Community Projects](../community/projects/index) — What others are building
+- [Community Projects](../community/projects/) — What others are building

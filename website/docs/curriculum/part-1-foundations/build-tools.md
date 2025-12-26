@@ -716,7 +716,7 @@ These are important but beyond the scope of foundations.
 ## What's Next
 
 - **Module 06: React Foundations** — Component-based UI development
-- **[Example: Lemonade Stand (React)](/docs/examples/lemonade-react)** — Same app, new architecture
+- **[Example: Lemonade Stand (Static Web)](/docs/examples/lemonade-static-web)** — Same app, as a web page
 
 ---
 

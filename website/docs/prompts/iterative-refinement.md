@@ -514,9 +514,9 @@ Help me prioritize.
 
 ## Related Templates
 
-- [Architecture-First Prompting](02-architecture-first) — Building it right the first time
-- [Debugging](03-debugging) — When refinement introduces bugs
-- [Designing Features](05-designing-features) — Designing before implementing
+- [Architecture-First Prompting](architecture-first) — Building it right the first time
+- [Debugging](debugging) — When refinement introduces bugs
+- [Designing Features](designing-features) — Designing before implementing
 
 ---
 

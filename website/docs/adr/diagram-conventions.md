@@ -152,8 +152,8 @@ No colors unless necessary."
 
 ## Related Decisions
 
-- [ADR-0001: Frontend Stack](0001-frontend-stack) — Diagrams show React component trees
-- [ADR-0002: Backend Stack](0002-backend-stack) — Diagrams show client/server interactions
+- [ADR-0001: Frontend Stack](frontend-stack) — Diagrams show React component trees
+- [ADR-0002: Backend Stack](backend-stack) — Diagrams show client/server interactions
 
 ## References
 
