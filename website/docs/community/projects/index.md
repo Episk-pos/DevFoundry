@@ -14,7 +14,7 @@ description: "Active work being built by the community"
 
 This directory contains projects that community members are actively building. Each project:
 
-- Addresses a real problem (often from [Problems](../problems/))
+- Addresses a real problem (often from [Problems](/docs/community/problems))
 - Is being built in public
 - Documents the journey, not just the result
 - Welcomes learning and collaboration
@@ -78,4 +78,4 @@ Example format:
 
 ---
 
-*See also: [Community README](../) | [Problems](../problems/) | [Showcases](../showcases/)*
+*See also: [Community README](/docs/community) | [Problems](/docs/community/problems) | [Showcases](/docs/community/showcases)*

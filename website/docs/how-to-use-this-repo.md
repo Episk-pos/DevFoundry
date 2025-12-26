@@ -19,7 +19,7 @@ This guide helps you navigate **devfoundry** based on your role, experience leve
 **Your journey**:
 1. Read modules sequentially (01 → 02 → 03 → 04)
 2. Don't skip ahead — each module builds on the last
-3. Work through examples in [Examples](examples/00-hello-world-console/index)
+3. Work through examples in [Examples](examples/hello-world-console)
 4. Try exercises marked "Beginner"
 5. Use [Glossary](glossary) when you encounter unfamiliar terms
 
@@ -57,9 +57,9 @@ You can skim modules 01-02, but **don't skip module 03** — web architecture is
 
 **Your journey**:
 1. Read the mental models docs
-2. Study [Architecture-First Prompts](prompts/02-architecture-first)
-3. Explore the lemonade stand progression in [Examples](examples/00-hello-world-console/index)
-4. Focus on the [ADRs](adr/index)
+2. Study [Architecture-First Prompts](prompts/architecture-first)
+3. Explore the lemonade stand progression in [Examples](examples/hello-world-console)
+4. Focus on the [ADRs](adr)
 5. Try building something with architecture-first prompting
 
 **Key takeaways**:
@@ -123,7 +123,7 @@ You can skim modules 01-02, but **don't skip module 03** — web architecture is
 **Most valuable sections**:
 - [Glossary](glossary) — Vocabulary reference
 - [Architectural Views](architectural-views) — How to read diagrams
-- [ADRs](adr/index) — Understanding design decisions
+- [ADRs](adr) — Understanding design decisions
 
 ---
 
@@ -262,14 +262,14 @@ example-name/
 **Option 3: Build It Yourself**
 - Read the README but not the code
 - Try building it yourself
-- Use the prompt templates in [Prompts](prompts/index)
+- Use the prompt templates in [Prompts](prompts)
 - Compare your solution to the example
 
 ---
 
 ## Using LLM Prompt Templates
 
-The [Prompts](prompts/index) section contains templates for working with AI assistants.
+The [Prompts](prompts) section contains templates for working with AI assistants.
 
 ### When to use each template:
 
@@ -298,7 +298,7 @@ Architecture-first prompting works because you give the AI context (what already
 
 ## Using ADRs (Architecture Decision Records)
 
-ADRs document "why" decisions were made. They're in [ADR documentation](adr/index).
+ADRs document "why" decisions were made. They're in [ADR documentation](adr).
 
 ### When to write an ADR:
 

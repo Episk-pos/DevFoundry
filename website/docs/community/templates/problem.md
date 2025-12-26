@@ -32,7 +32,7 @@ How do people cope today? What tools/processes exist? Why are they insufficient?
 
 ## Root Cause Analysis
 
-Why does this friction exist? Apply [Protocol Thinking](/mental-models/protocol-thinking):
+Why does this friction exist? Apply [Protocol Thinking](/docs/mental-models/protocol-thinking):
 
 - Who are the actors?
 - What are their boundaries and incentives?
@@ -61,4 +61,4 @@ Who's interested in this problem? Add yourself:
 
 ---
 
-*See [Friction to Opportunity](/mental-models/friction-to-opportunity) for how to evaluate and act on this problem.*
+*See [Friction to Opportunity](/docs/mental-models/friction-to-opportunity) for how to evaluate and act on this problem.*

@@ -38,7 +38,7 @@ By documenting friction:
 1. Browse the problems here
 2. Find one that resonates with your experience
 3. Reach out to express interest
-4. Start validating and building (see [Friction to Opportunity](/mental-models/friction-to-opportunity))
+4. Start validating and building (see [Friction to Opportunity](/docs/mental-models/friction-to-opportunity))
 
 ### Want to contribute a problem?
 
@@ -65,4 +65,4 @@ Example format:
 
 ---
 
-*See also: [Community README](../) | [Friction to Opportunity](/mental-models/friction-to-opportunity)*
+*See also: [Community README](/docs/community) | [Friction to Opportunity](/docs/mental-models/friction-to-opportunity)*

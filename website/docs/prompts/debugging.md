@@ -494,9 +494,9 @@ This is called **rubber duck debugging** — explaining the problem to something
 
 ## Related Templates
 
-- [Architecture-First Prompting](02-architecture-first) — Building features correctly from the start
-- [Reading Code](04-reading-code) — Understanding code that might be causing bugs
-- [Iterative Refinement](06-iterative-refinement) — Improving code quality to prevent bugs
+- [Architecture-First Prompting](architecture-first) — Building features correctly from the start
+- [Reading Code](reading-code) — Understanding code that might be causing bugs
+- [Iterative Refinement](iterative-refinement) — Improving code quality to prevent bugs
 
 ---
 

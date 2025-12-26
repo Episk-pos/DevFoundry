@@ -685,8 +685,8 @@ This prepares you to build the web version of the lemonade stand.
 
 - [Glossary](/docs/glossary) — Look up unfamiliar terms
 - [Architectural Views](/docs/architectural-views) — Deep dive on views
-- [ADR: Frontend Stack](/docs/adr/0001-frontend-stack) — Why we chose React/TypeScript/Vite
-- [ADR: Backend Stack](/docs/adr/0002-backend-stack) — Why we chose Node/Express
+- [ADR: Frontend Stack](/docs/adr/frontend-stack) — Why we chose React/TypeScript/Vite
+- [ADR: Backend Stack](/docs/adr/backend-stack) — Why we chose Node/Express
 
 ### External Resources
 

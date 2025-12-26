@@ -508,13 +508,13 @@ Rewrite this vague prompt with view-specific language:
 - **Standard**: ISO/IEC/IEEE 42010 (architecture description)
 - **devfoundry docs**:
   - [Diagram Standards](diagram-standards) — How to draw views
-  - [Architecture-First Prompts](prompts/02-architecture-first) — Using views in prompts
-  - [ADRs](adr/index) — Example architectural decisions
+  - [Architecture-First Prompts](prompts/architecture-first) — Using views in prompts
+  - [ADRs](adr) — Example architectural decisions
 
 ---
 
 ## Next Steps
 
 - Review [Diagram Standards](diagram-standards) to learn how to draw these views
-- Explore [Examples](examples/00-hello-world-console/index) to see all three views in practice
+- Explore [Examples](examples/hello-world-console) to see all three views in practice
 - Start [What Software Is](curriculum/part-1-foundations/what-software-is) to begin learning

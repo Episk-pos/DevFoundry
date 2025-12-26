@@ -97,7 +97,7 @@ What did we decide to do?
 What are the positive and negative outcomes of this decision?
 ```
 
-See [template](template) for a copy-paste template.
+See [template](adr/template) for a copy-paste template.
 
 ---
 
@@ -255,9 +255,9 @@ This repository uses ADRs to document its own architectural decisions:
 
 | ADR | Title | Purpose |
 |-----|-------|---------|
-| [0001](0001-frontend-stack) | Frontend Stack | Why React + Vite + TypeScript |
-| [0002](0002-backend-stack) | Backend Stack | Why Node + Express + SQLite |
-| [0003](0003-diagram-conventions) | Diagram Conventions | Why Mermaid and specific notation |
+| [0001](adr/frontend-stack) | Frontend Stack | Why React + Vite + TypeScript |
+| [0002](adr/backend-stack) | Backend Stack | Why Node + Express + SQLite |
+| [0003](adr/diagram-conventions) | Diagram Conventions | Why Mermaid and specific notation |
 
 These ADRs serve dual purposes:
 1. **Practical**: Explain devfoundry's architecture
@@ -447,8 +447,8 @@ Ask:
 
 ### devfoundry Resources
 
-- [template](template) — Copy-paste ADR template
-- [Architecture First](/mental-models/architecture-first) — Using ADRs with LLMs
+- [template](adr/template) — Copy-paste ADR template
+- [Architecture First](/docs/mental-models/architecture-first) — Using ADRs with LLMs
 
 ---
 

@@ -196,7 +196,7 @@ Let's build a **lemonade stand** program. It will:
 
 Before building the lemonade stand, start with the simplest program:
 
-**Go to**: [Hello World Console Example](../../examples/00-hello-world-console/index)
+**Go to**: [Hello World Console Example](../../examples/hello-world-console)
 
 Complete this first. It takes 15 minutes and teaches you:
 - How to run a JavaScript program
@@ -426,7 +426,7 @@ Can you explain with examples from the lemonade stand?
 Use the template to ask about Hello World:
 
 ```
-I'm looking at the Hello World example (examples/00-hello-world-console).
+I'm looking at the Hello World example (examples/hello-world-console).
 
 Code:
 function sayHello() {
@@ -483,7 +483,7 @@ You'll learn:
 
 - [Glossary](../../glossary) — Full vocabulary reference
 - [Flow-Based Development](../../mental-models/flow-based-dev) — Core philosophy
-- [Hello World Example](../../examples/00-hello-world-console/index) — Your first program
+- [Hello World Example](../../examples/hello-world-console) — Your first program
 
 ### External Resources
 

@@ -93,4 +93,4 @@ Example format:
 
 ---
 
-*See also: [Community README](../) | [Projects](../projects/)*
+*See also: [Community README](/docs/community) | [Projects](/docs/community/projects)*

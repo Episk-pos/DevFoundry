@@ -654,7 +654,7 @@ You'll learn:
 
 This prepares you for professional development practices.
 
-👉 [Module 04](04-developer-tools) *(Coming soon)*
+👉 Module 04: Developer Tools *(Coming soon)*
 
 ---
 

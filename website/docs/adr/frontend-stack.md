@@ -121,5 +121,5 @@ src/
 
 ## Related Decisions
 
-- [ADR-0002: Backend Stack](0002-backend-stack) — Matches frontend with Node ecosystem
-- [ADR-0003: Diagram Conventions](0003-diagram-conventions) — How we visualize React component trees
+- [ADR-0002: Backend Stack](backend-stack) — Matches frontend with Node ecosystem
+- [ADR-0003: Diagram Conventions](diagram-conventions) — How we visualize React component trees

@@ -458,5 +458,5 @@ Create a Mermaid diagram following the devfoundry diagram standards:
 ## Related Documentation
 
 - [Architectural Views](architectural-views) — When to use each view type
-- [ADR: Diagram Conventions](adr/0003-diagram-conventions) — Why these conventions
+- [ADR: Diagram Conventions](adr/diagram-conventions) — Why these conventions
 - [Mermaid Documentation](https://mermaid.js.org/) — Official syntax reference
