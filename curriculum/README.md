@@ -44,10 +44,13 @@ A structured learning path for AI-assisted software development.
 
 ---
 
-## Coming Soon
+## Part IV: Historical Context ✓
 
-### Part IV: Historical Context
-- Evolution of the Web
+| Module | Topic |
+|--------|-------|
+| 16 | [The Server-Side Era](https://devfoundry.io/docs/curriculum/part-4-historical-context/server-side-era) |
+| 17 | [The AJAX Revolution](https://devfoundry.io/docs/curriculum/part-4-historical-context/ajax-revolution) |
+| 18 | [The Modern Frontend](https://devfoundry.io/docs/curriculum/part-4-historical-context/modern-frontend) |
 
 ---
 

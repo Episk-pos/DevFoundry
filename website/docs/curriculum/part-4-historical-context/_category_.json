@@ -1,0 +1,8 @@
+{
+  "label": "Part IV: Historical Context",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Understanding why modern web architecture exists — the problems, solutions, and evolution."
+  }
+}

@@ -590,7 +590,7 @@ You've built:
 **From here, you can:**
 - Add features to your deployed app
 - Build your own project using these patterns
-- Explore Part IV: Historical Context
+- **[Explore Part IV: Historical Context](../part-4-historical-context/server-side-era)** — Understand why everything exists
 - Join the DevFoundry community and build in public
 
 ---
