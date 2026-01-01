@@ -60,47 +60,49 @@ By the end of this curriculum, you will:
 
 ## Curriculum Structure
 
-### Part I: Foundations of Software Systems (Weeks 1-4)
+### Part I: Foundations of Software Systems
 
 **Goal**: Build mental models for understanding what software is and how it works.
 
-| Module | Topic | Key Concepts | Milestone |
-|--------|-------|--------------|-----------|
-| 01 | What Software Is (and Isn't) | Programs as recipes, I/O/P model, lemonade stand CLI | Run your first program |
-| 02 | Anatomy of Modern Projects | Languages, architectures, desktop vs web vs mobile | Understand the landscape |
-| 03 | Deep Dive: Web Architecture | Browser triad (HTML/CSS/JS), client/server, SPA | Mental model of the web |
-| 04 | Tooling Overview | Compilers, linters, package managers, what `npm run dev` does | Navigate a real project |
+| Module | Topic | Key Concepts |
+|--------|-------|--------------|
+| [01](../curriculum/part-1-foundations/01-what-software-is.md) | What Software Is | Programs as recipes, I/O/P model |
+| [02](../curriculum/part-1-foundations/02-anatomy-of-projects.md) | Anatomy of Modern Projects | Languages, architectures, project structure |
+| [03](../curriculum/part-1-foundations/03-how-the-web-works.md) | How the Web Works | Browser triad (HTML/CSS/JS), client/server |
+| [04](../curriculum/part-1-foundations/04-types-as-communication.md) | Types as Communication | Type systems, TypeScript, interfaces |
+| [05](../curriculum/part-1-foundations/05-build-tools.md) | Build Tools | Bundlers, transpilers, Vite |
+| [06](../curriculum/part-1-foundations/06-frontend-frameworks-react.md) | Frontend Frameworks | React, components, state, props |
 
 **Hands-on**: Build a CLI lemonade stand, then upgrade it to run in a browser.
 
 ---
 
-### Part II: How Teams Build Software (Weeks 5-8)
+### Part II: How Teams Build Software
 
 **Goal**: Learn professional practices that enable collaboration and quality.
 
-| Module | Topic | Key Concepts | Milestone |
-|--------|-------|--------------|-----------|
-| 05 | UX/UI Fundamentals | User journeys, wireframes, design systems, Tailwind | Design before coding |
-| 06 | Development Methodologies | Agile, TDD (light intro), why process matters | Understand team workflows |
-| 07 | Git and Collaboration | Repos, commits, branches, PRs, CI/CD | Make your first PR |
-| 08 | Architecture Decision Records | Documenting "why", staying aligned with AI | Write your first ADR |
+| Module | Topic | Key Concepts |
+|--------|-------|--------------|
+| [07](../curriculum/part-2-team-practices/07-ux-ui-fundamentals.md) | UX/UI Fundamentals | User journeys, wireframes, design systems, Tailwind |
+| [08](../curriculum/part-2-team-practices/08-development-methodologies.md) | Development Methodologies | Agile, iteration, MVP, testing strategies |
+| [09](../curriculum/part-2-team-practices/09-git-and-collaboration.md) | Git and Collaboration | Repos, commits, branches, PRs, CI/CD |
+| [10](../curriculum/part-2-team-practices/10-architecture-decision-records.md) | Architecture Decision Records | Documenting "why", staying aligned with AI |
 
 **Hands-on**: Collaborate on a feature using git, write ADRs, create UI wireframes.
 
 ---
 
-### Part III: LLM-Assisted Development (Weeks 9-14)
+### Part III: Building Complete Applications
 
 **Goal**: Build a complete application using AI assistants, learning architectural evolution.
 
-| Stage | What You Build | New Concepts | Architecture Focus |
-|-------|----------------|--------------|-------------------|
-| 1 | Static website | HTML/CSS/JS files, DOM manipulation | Module view |
-| 2 | Interactive UI | Event handlers, state, dynamic updates | Component-connector view |
-| 3 | Single-Page App | React, components, routing, bundling | Component hierarchy |
-| 4 | Fullstack App | Express backend, REST API, database | Client/server allocation |
-| 5 | Deployed App | Hosting, environment variables, CI/CD | Deployment view |
+| Stage | Module | What You Build | New Concepts |
+|-------|--------|----------------|--------------|
+| 1 | [11](../curriculum/part-3-building-applications/11-static-website.md) | Static Website | HTML/CSS/JS, DOM manipulation |
+| 2 | [12](../curriculum/part-3-building-applications/12-interactive-ui.md) | Interactive UI | State management, forms, localStorage |
+| 3 | [13](../curriculum/part-3-building-applications/13-react-spa.md) | React SPA | Components, hooks, routing |
+| 4 | [14](../curriculum/part-3-building-applications/14-fullstack-app.md) | Fullstack App | Express, REST API, SQLite |
+| 5 | [15](../curriculum/part-3-building-applications/15-deployed-app.md) | Deployed App | Hosting, CI/CD, production |
 
 **Hands-on**: Build the **Lemonade Stand** progressively across all five stages.
 
@@ -108,19 +110,20 @@ Each stage includes:
 - What's new and why
 - Architectural diagrams (all three views)
 - Step-by-step walkthrough
-- LLM prompt templates
+- AI prompt guidance
 - Exercises
-- Stretch goals
 
 ---
 
-### Part IV: Historical Context (Week 15)
+### Part IV: Historical Context
 
 **Goal**: Understand why modern architectures exist (optional but enriching).
 
-| Module | Topic | Why It Matters |
-|--------|-------|----------------|
-| 11 | Evolution of the Web | CGI/PHP → AJAX → SPAs → WASM | Contextualizes your knowledge |
+| Module | Topic | Era |
+|--------|-------|-----|
+| [16](../curriculum/part-4-historical-context/16-server-side-era.md) | The Server-Side Era | 1990s–2005: CGI, PHP, page refreshes |
+| [17](../curriculum/part-4-historical-context/17-ajax-revolution.md) | The AJAX Revolution | 2005–2013: jQuery, Web 2.0, JSON |
+| [18](../curriculum/part-4-historical-context/18-modern-frontend.md) | The Modern Frontend | 2013–Present: React, build tools, SSR |
 
 **Outcome**: You'll see modern React apps not as "just how things are," but as solutions to specific historical problems.
 
