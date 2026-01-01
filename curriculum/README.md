@@ -21,17 +21,30 @@ A structured learning path for AI-assisted software development.
 
 ---
 
+## Part II: How Teams Build Software ✓
+
+| Module | Topic |
+|--------|-------|
+| 07 | [UX/UI Fundamentals](https://devfoundry.io/docs/curriculum/part-2-team-practices/ux-ui-fundamentals) |
+| 08 | [Development Methodologies](https://devfoundry.io/docs/curriculum/part-2-team-practices/development-methodologies) |
+| 09 | [Git and Collaboration](https://devfoundry.io/docs/curriculum/part-2-team-practices/git-and-collaboration) |
+| 10 | [Architecture Decision Records](https://devfoundry.io/docs/curriculum/part-2-team-practices/architecture-decision-records) |
+
+---
+
+## Part III: Building Complete Applications ✓
+
+| Stage | Module |
+|-------|--------|
+| 1 | [Static Website](https://devfoundry.io/docs/curriculum/part-3-building-applications/static-website) |
+| 2 | [Interactive UI](https://devfoundry.io/docs/curriculum/part-3-building-applications/interactive-ui) |
+| 3 | [React SPA](https://devfoundry.io/docs/curriculum/part-3-building-applications/react-spa) |
+| 4 | [Fullstack App](https://devfoundry.io/docs/curriculum/part-3-building-applications/fullstack-app) |
+| 5 | [Deployed App](https://devfoundry.io/docs/curriculum/part-3-building-applications/deployed-app) |
+
+---
+
 ## Coming Soon
-
-### Part II: How Teams Build Software
-- UX/UI Fundamentals
-- Git and Collaboration
-- Architecture Decision Records
-
-### Part III: Building Complete Applications
-- React SPA
-- Fullstack with Express
-- Deployment
 
 ### Part IV: Historical Context
 - Evolution of the Web

@@ -744,8 +744,13 @@ These are important. Learn them when you need them, not before.
 
 ## What's Next
 
+**Continue with Part II: How Teams Build Software**
+
+- **[Module 07: UX/UI Fundamentals](/docs/curriculum/part-2-team-practices/ux-ui-fundamentals)** — Design before you code
+
+**Or explore the examples:**
+
 - **[Example: Lemonade Stand (Static Web)](/docs/examples/lemonade-static-web)** — The familiar app, as a web page
-- **Module 07: State Management** — When component state isn't enough
 
 ---
 
