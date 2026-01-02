@@ -27,6 +27,15 @@ const config: Config = {
     locales: ['en'],
   },
 
+  // Umami analytics (self-hosted)
+  scripts: [
+    {
+      src: 'https://analytics.episkopos.community/script.js',
+      defer: true,
+      'data-website-id': '80688f0a-9a5a-4457-b95b-b66497f278df',
+    },
+  ],
+
   // Enable Mermaid diagrams
   markdown: {
     mermaid: true,
@@ -60,7 +69,7 @@ const config: Config = {
       title: 'DevFoundry',
       logo: {
         alt: 'DevFoundry Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo--no-text.png',
       },
       items: [
         {

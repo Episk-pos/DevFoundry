@@ -157,12 +157,6 @@ graph LR
     B --> C[Stage 3<br/>SPA]
     C --> D[Stage 4<br/>Fullstack]
     D --> E[Stage 5<br/>Deployed]
-
-    style A fill:#f9f9f9,stroke:#333
-    style B fill:#f9f9f9,stroke:#333
-    style C fill:#f9f9f9,stroke:#333
-    style D fill:#f9f9f9,stroke:#333
-    style E fill:#f9f9f9,stroke:#333
 ```
 
 **Stage 1: CLI**
