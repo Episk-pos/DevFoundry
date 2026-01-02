@@ -11,10 +11,10 @@ description: From First Principles to LLM-Accelerated Software Creation
 ---
 
 :::info[Curriculum Status]
-**Part I: Foundations** — Modules 01-06 complete ✓
-**Parts II-IV** — Coming soon
-
-We're actively developing this curriculum. Part I covers the foundations you need to start building with AI assistance. More content is on the way!
+**Part I: Foundations** — Modules 01-06 ✓
+**Part II: Team Practices** — Modules 07-10 ✓
+**Part III: Building Applications** — Modules 11-15 ✓
+**Part IV: Historical Context** — Modules 16-18 ✓
 :::
 
 ## The Vision
@@ -90,31 +90,34 @@ By the end of this curriculum, you will:
 
 ---
 
-### Part II: How Teams Build Software — *Coming Soon*
+### Part II: How Teams Build Software ✓
 
 **Goal**: Learn professional practices that enable collaboration and quality.
 
 | Module | Topic | Key Concepts |
 |--------|-------|--------------|
-| 07 | UX/UI Fundamentals | User journeys, wireframes, design systems |
-| 08 | Git and Collaboration | Repos, commits, branches, PRs, CI/CD |
-| 09 | Architecture Decision Records | Documenting "why", staying aligned with AI |
+| 07 | [UX/UI Fundamentals](curriculum/part-2-team-practices/ux-ui-fundamentals) | User journeys, wireframes, design systems |
+| 08 | [Development Methodologies](curriculum/part-2-team-practices/development-methodologies) | Agile, sprints, standups, retrospectives |
+| 09 | [Git and Collaboration](curriculum/part-2-team-practices/git-and-collaboration) | Repos, commits, branches, PRs, CI/CD |
+| 10 | [Architecture Decision Records](curriculum/part-2-team-practices/architecture-decision-records) | Documenting "why", staying aligned with AI |
 
 **Hands-on**: Collaborate on a feature using git, write ADRs, create UI wireframes.
 
 ---
 
-### Part III: Building Complete Applications — *Coming Soon*
+### Part III: Building Complete Applications ✓
 
 **Goal**: Build a complete application using AI assistants, learning architectural evolution.
 
-| Stage | What You Build | New Concepts |
-|-------|----------------|--------------|
-| 1 | React SPA | Components, state, routing, bundling |
-| 2 | Fullstack App | Express backend, REST API, database |
-| 3 | Deployed App | Hosting, environment variables, CI/CD |
+| Module | What You Build | New Concepts |
+|--------|----------------|--------------|
+| 11 | [Static Website](curriculum/part-3-building-applications/static-website) | HTML structure, CSS styling, file organization |
+| 12 | [Interactive UI](curriculum/part-3-building-applications/interactive-ui) | DOM manipulation, events, JavaScript logic |
+| 13 | [React SPA](curriculum/part-3-building-applications/react-spa) | Components, state, routing, bundling |
+| 14 | [Fullstack App](curriculum/part-3-building-applications/fullstack-app) | Express backend, REST API, database |
+| 15 | [Deployed App](curriculum/part-3-building-applications/deployed-app) | Hosting, environment variables, CI/CD |
 
-**Hands-on**: Build the **Lemonade Stand** progressively through React, fullstack, and deployment.
+**Hands-on**: Build the **Lemonade Stand** progressively from static HTML through fullstack deployment.
 
 Each stage includes:
 - What's new and why
@@ -126,13 +129,15 @@ Each stage includes:
 
 ---
 
-### Part IV: Historical Context — *Coming Soon*
+### Part IV: Historical Context ✓
 
 **Goal**: Understand why modern architectures exist (optional but enriching).
 
 | Module | Topic | Why It Matters |
 |--------|-------|----------------|
-| — | Evolution of the Web | CGI/PHP → AJAX → SPAs → WASM |
+| 16 | [The Server-Side Era](curriculum/part-4-historical-context/server-side-era) | CGI, PHP, templates — why servers rendered everything |
+| 17 | [The AJAX Revolution](curriculum/part-4-historical-context/ajax-revolution) | XMLHttpRequest, JSON, partial updates |
+| 18 | [The Modern Frontend](curriculum/part-4-historical-context/modern-frontend) | SPAs, React, SSR — why the pendulum swings |
 
 **Outcome**: You'll see modern React apps not as "just how things are," but as solutions to specific historical problems.
 
