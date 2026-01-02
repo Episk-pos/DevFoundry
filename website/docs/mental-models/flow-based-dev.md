@@ -86,7 +86,7 @@ Software is not a monolithic block of code. It's a **system of collaborating com
 > Think of components like people on a team. Each has a specific role.
 > They communicate by passing messages.
 
-**Example: Lemonade Stand SPA**
+**Example: Lemonade Stand SPA (Single-Page Application)**
 
 ```mermaid
 graph TB

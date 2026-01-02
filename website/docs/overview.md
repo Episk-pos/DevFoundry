@@ -61,7 +61,7 @@ By the end of this curriculum, you will:
 - Understand software as **systems of collaborating components**
 - Read and create **architectural diagrams** (module, runtime, deployment views)
 - Make and document **architecture decisions** using ADRs
-- Build progressively complex applications (CLI → web → SPA → fullstack → deployed)
+- Build progressively complex applications (CLI → web → [SPA](/docs/glossary#spa-single-page-application) (single-page application) → fullstack → deployed)
 - Use **AI assistants effectively** through architecture-first prompting
 - Navigate **real-world developer workflows** (git, testing, deployment)
 - Speak the **vocabulary** of professional software teams

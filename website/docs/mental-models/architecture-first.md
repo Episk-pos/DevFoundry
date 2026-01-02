@@ -46,7 +46,7 @@ The key insight: **LLMs are autocomplete for systems, not syntax.**
 
 **Prompt**:
 ```
-I'm building a lemonade stand SPA with this architecture:
+I'm building a lemonade stand SPA (single-page application) with this architecture:
 
 **Tech stack**: React (functional components), useState for state, no external state library
 

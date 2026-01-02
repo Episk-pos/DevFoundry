@@ -51,7 +51,7 @@ Each template includes:
 ### Step 3: Fill in the Placeholders
 
 Templates use `[PLACEHOLDERS]` for you to replace:
-- `[YOUR SYSTEM]` → "lemonade stand SPA"
+- `[YOUR SYSTEM]` → "lemonade stand SPA" (single-page application)
 - `[TECH STACK]` → "React + Vite"
 - `[FILE PATH]` → "src/components/OrderForm.jsx"
 

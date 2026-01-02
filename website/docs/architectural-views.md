@@ -150,7 +150,7 @@ graph TB
 - "What triggers a re-render in React?"
 - "How do the frontend and backend communicate?"
 
-### Example: Lemonade Stand SPA (Component-Connector View)
+### Example: Lemonade Stand SPA (Single-Page Application) — Component-Connector View
 
 ```mermaid
 flowchart LR

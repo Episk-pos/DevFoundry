@@ -14,7 +14,7 @@ Accepted
 
 ## Context
 
-The devfoundry curriculum requires a frontend stack for teaching modern web development, particularly for the SPA and fullstack stages of the lemonade stand progression.
+The devfoundry curriculum requires a frontend stack for teaching modern web development, particularly for the SPA (single-page application) and fullstack stages of the lemonade stand progression.
 
 **Requirements**:
 - Must be widely used in industry (relevant for learners entering the job market)

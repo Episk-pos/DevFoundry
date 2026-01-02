@@ -85,7 +85,7 @@ You can skim modules 01-02, but **don't skip module 03** — web architecture is
 
 **Option 2: Workshop Series (4 × 3-hour sessions)**
 - Session 1: Foundations + Team Practices (compressed)
-- Session 2: Static Web + SPA
+- Session 2: Static Web + SPA (single-page application)
 - Session 3: Fullstack Development
 - Session 4: Deployment + Wrapup
 

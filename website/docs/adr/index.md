@@ -122,7 +122,7 @@ Alternatives considered:
 - Plain JavaScript: No abstraction, but harder to scale examples
 
 **Decision**:
-Use React with functional components and hooks for all SPA examples in devfoundry.
+Use React with functional components and hooks for all SPA (single-page application) examples in devfoundry.
 
 **Consequences**:
 - ✓ Positive: Large community, excellent AI assistant support, industry-relevant
