@@ -1,6 +1,10 @@
-# DevFoundry
+<div align="center">
+  <img src="website/static/img/logo--no-text.png" alt="DevFoundry Logo" width="150" />
 
-**Build Your Way to Financial Independence: Software as Accessible Leverage**
+  # DevFoundry
+
+  **Build Your Way to Financial Independence: Software as Accessible Leverage**
+</div>
 
 ---
 
