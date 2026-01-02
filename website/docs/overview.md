@@ -119,7 +119,7 @@ By the end of this curriculum, you will:
 
 **Hands-on**: Build the **Lemonade Stand** progressively from static HTML through fullstack deployment.
 
-Each stage includes:
+Each module includes:
 - What's new and why
 - Architectural diagrams (all three views)
 - Step-by-step walkthrough
