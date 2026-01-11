@@ -17,7 +17,9 @@ By the end of this module, you will:
 - Understand what a terminal is and why developers use it
 - Know the difference between Terminal, Shell, Bash, Zsh, PowerShell, and CMD
 - Navigate the file system with confidence
-- Understand what PATH is and why it matters
+- Understand what programs and binaries are
+- Know how PATH works and why "command not found" happens
+- Read and write commands with flags and arguments
 - Use keyboard shortcuts like a power user
 - Feel comfortable enough to follow along with the rest of this curriculum
 
@@ -299,6 +301,243 @@ When you install programming tools (Node.js, Python, etc.), the installer usuall
 
 ---
 
+## What are Programs and Binaries?
+
+When you type `node` or `git` or `npm`, what exactly are you running?
+
+### Programs are Just Files
+
+Every command you run is a **file** stored somewhere on your computer. These files contain instructions that your computer can execute.
+
+```bash
+# Find where a program lives
+which git
+# Output: /usr/bin/git
+
+# On Windows PowerShell:
+Get-Command git
+# Output: C:\Program Files\Git\cmd\git.exe
+```
+
+That file at `/usr/bin/git` *is* the Git program. When you type `git`, your shell finds and runs that file.
+
+### Binary vs Script
+
+There are two main types of executable files:
+
+**Binary (compiled)**:
+- Machine code that your CPU runs directly
+- Created by compiling source code (C, C++, Rust, Go)
+- Files often have no extension on macOS/Linux, or `.exe` on Windows
+- Examples: `git`, `node`, `python` (the interpreter itself)
+- You can't read these in a text editor — they look like gibberish
+
+**Script (interpreted)**:
+- Human-readable text files
+- Require an interpreter to run (Node.js, Python, Bash)
+- Examples: `.js`, `.py`, `.sh` files
+- You can open and edit these in any text editor
+
+```bash
+# This is a binary — runs directly
+/usr/bin/git status
+
+# This is a script — needs Node.js to interpret it
+node my-script.js
+```
+
+### Executables
+
+An **executable** is any file that can be run as a program. Both binaries and scripts can be executable.
+
+On macOS/Linux, a file needs "execute permission" to run:
+
+```bash
+# Make a script executable
+chmod +x my-script.sh
+
+# Now you can run it
+./my-script.sh
+```
+
+On Windows, the file extension (`.exe`, `.bat`, `.ps1`) determines if it's executable.
+
+### Why This Matters
+
+Understanding that programs are files helps you:
+- **Debug PATH issues**: "command not found" means the file isn't in your PATH
+- **Understand installation**: Installing a program = putting a file in the right place
+- **Run things directly**: You can always run a program by its full path
+
+```bash
+# These are equivalent (if node is in your PATH):
+node app.js
+/usr/local/bin/node app.js
+```
+
+---
+
+## Anatomy of a Command
+
+Every terminal command follows a predictable structure. Once you understand it, you can read any command.
+
+### The Basic Pattern
+
+```
+command [options] [arguments]
+```
+
+- **Command**: The program to run (`git`, `npm`, `ls`)
+- **Options** (flags): Modify how the command behaves (`-v`, `--help`)
+- **Arguments**: What the command operates on (files, text, URLs)
+
+### Real Examples
+
+```bash
+ls -la Documents
+#  ↑  ↑   ↑
+#  │  │   └── argument: the directory to list
+#  │  └────── options: -l (long format) and -a (show all)
+#  └───────── command: list files
+
+git commit -m "Fix login bug"
+#   ↑      ↑   ↑
+#   │      │   └── argument: the commit message
+#   │      └────── option: -m means "message follows"
+#   └───────────── command: git (with subcommand "commit")
+
+npm install express --save-dev
+#    ↑       ↑        ↑
+#    │       │        └── option: save as dev dependency
+#    │       └─────────── argument: package to install
+#    └─────────────────── command: npm (with subcommand "install")
+```
+
+### Options (Flags)
+
+Options modify command behavior. There are two styles:
+
+**Short options**: Single dash, single letter
+```bash
+ls -l          # long format
+ls -a          # all files (including hidden)
+ls -la         # combine: -l and -a together
+ls -l -a       # same thing, written separately
+```
+
+**Long options**: Double dash, full word
+```bash
+npm install --save-dev
+git log --oneline
+ls --all       # same as -a
+```
+
+**Options with values**:
+```bash
+git commit -m "message"        # short: value follows the flag
+git commit --message "message" # long: same thing
+git commit --message="message" # long: with equals sign (also valid)
+```
+
+### Common Flag Conventions
+
+These patterns appear across many commands:
+
+| Flag | Common Meaning |
+|------|----------------|
+| `-h`, `--help` | Show help/usage information |
+| `-v`, `--version` | Show version number |
+| `-v`, `--verbose` | More detailed output |
+| `-q`, `--quiet` | Less output |
+| `-f`, `--force` | Do it without asking |
+| `-r`, `--recursive` | Include subdirectories |
+| `-n`, `--dry-run` | Show what would happen, don't do it |
+| `-o`, `--output` | Specify output file |
+| `-i`, `--interactive` | Ask before each action |
+
+### The `--` Separator
+
+Double dash by itself (`--`) means "everything after this is an argument, not an option":
+
+```bash
+# Problem: want to delete a file named "-rf"
+rm -rf           # This is an option, not a filename!
+
+# Solution: use -- to clarify
+rm -- -rf        # Deletes the file literally named "-rf"
+
+# Common with git
+git checkout -- file.txt   # Restore file.txt (-- clarifies it's a file, not a branch)
+```
+
+### Getting Help
+
+Almost every command has built-in help:
+
+```bash
+# These usually work:
+command --help
+command -h
+
+# Examples:
+git --help
+npm --help
+ls --help
+
+# More detailed manual (on macOS/Linux):
+man git
+man ls
+```
+
+The help output follows the same pattern you just learned — now you can read it!
+
+```
+Usage: git commit [-a] [-m <message>] [--amend] [<file>...]
+
+  -a, --all       commit all changed files
+  -m, --message   use given message as commit message
+  --amend         amend previous commit
+```
+
+### Arguments
+
+Arguments are the "things" commands operate on:
+
+```bash
+cat file.txt                    # one argument
+cat file1.txt file2.txt         # multiple arguments
+cp source.txt destination.txt   # two arguments with meaning (from, to)
+echo "Hello, World!"            # argument is text
+curl https://example.com        # argument is a URL
+```
+
+### Putting It All Together
+
+Now you can parse any command:
+
+```bash
+docker run -d -p 8080:80 --name myapp nginx:latest
+#      ↑    ↑  ↑          ↑              ↑
+#      │    │  │          │              └── argument: image to run
+#      │    │  │          └───────────────── option: container name
+#      │    │  └──────────────────────────── option: port mapping
+#      │    └─────────────────────────────── option: detached mode
+#      └──────────────────────────────────── command (with subcommand)
+```
+
+```bash
+find . -name "*.js" -type f -exec wc -l {} \;
+#    ↑  ↑            ↑       ↑
+#    │  │            │       └── option with complex argument
+#    │  │            └────────── option: files only
+#    │  └─────────────────────── option: name pattern
+#    └────────────────────────── argument: where to search
+```
+
+Don't worry about understanding what every command does yet. The point is that you can now see the *structure*.
+
+---
+
 ## Essential Navigation Commands
 
 Here's a quick reference of the commands you'll use constantly:
@@ -553,6 +792,42 @@ If `node` isn't found, it means Node.js isn't installed yet — we'll cover that
 
 ---
 
+### Exercise 6: Parse Commands
+
+For each command below, identify the command, options/flags, and arguments:
+
+1. `grep -r "TODO" ./src`
+2. `mkdir -p projects/new-app/src`
+3. `git log --oneline -n 5`
+4. `curl -X POST -H "Content-Type: application/json" https://api.example.com`
+
+<details>
+<summary>Solution</summary>
+
+1. `grep -r "TODO" ./src`
+   - **Command**: `grep` (search for patterns)
+   - **Option**: `-r` (recursive, search subdirectories)
+   - **Arguments**: `"TODO"` (pattern to find), `./src` (where to search)
+
+2. `mkdir -p projects/new-app/src`
+   - **Command**: `mkdir` (make directory)
+   - **Option**: `-p` (create parent directories as needed)
+   - **Argument**: `projects/new-app/src` (path to create)
+
+3. `git log --oneline -n 5`
+   - **Command**: `git log` (git with subcommand log)
+   - **Options**: `--oneline` (compact format), `-n 5` (show only 5 commits)
+   - **Arguments**: none
+
+4. `curl -X POST -H "Content-Type: application/json" https://api.example.com`
+   - **Command**: `curl` (transfer data from URL)
+   - **Options**: `-X POST` (HTTP method), `-H "..."` (header to include)
+   - **Argument**: `https://api.example.com` (URL to call)
+
+</details>
+
+---
+
 ## Windows-Specific Notes
 
 If you're on Windows, you have choices:
@@ -622,15 +897,23 @@ Instead of clicking, you type commands. Faster and more powerful once you're com
 
 Bash, Zsh, PowerShell — the program that reads and executes your commands.
 
-### 3. PATH = Where Programs Live
+### 3. Programs are Files
+
+Every command runs a file (binary or script) stored on your computer.
+
+### 4. PATH = Where Programs Live
 
 A list of directories your shell searches when you type a command name.
 
-### 4. Navigation Commands
+### 5. Commands Have Structure
+
+`command [options] [arguments]` — once you see the pattern, you can read any command.
+
+### 6. Navigation Commands
 
 `pwd`, `ls`, `cd` — you'll use these hundreds of times a day.
 
-### 5. Keyboard Shortcuts Save Time
+### 7. Keyboard Shortcuts Save Time
 
 `Ctrl + A/E`, `Option/Ctrl + arrows`, `Ctrl + R` — learn these and you'll be noticeably faster.
 
@@ -644,7 +927,12 @@ A list of directories your shell searches when you type a command name.
 | **Shell** | The program that interprets commands (Bash, Zsh, PowerShell) |
 | **Console** | Another name for terminal (historical) |
 | **CLI** | Command-Line Interface — any text-based program |
+| **Binary** | A compiled program file containing machine code |
+| **Script** | A text file containing code that an interpreter runs |
+| **Executable** | Any file that can be run as a program |
 | **PATH** | Environment variable listing directories to search for programs |
+| **Flag/Option** | A modifier that changes how a command behaves (`-v`, `--help`) |
+| **Argument** | Data passed to a command (files, text, URLs) |
 | **Working directory** | The folder you're currently "in" |
 | **Absolute path** | Full path from root (`/Users/me/file.txt`) |
 | **Relative path** | Path from current location (`./file.txt`) |
@@ -685,8 +973,10 @@ Before moving on, ensure you can:
 - [ ] Navigate to different directories using `cd`
 - [ ] List files in a directory using `ls`
 - [ ] Create folders and files from the command line
-- [ ] Use at least 3 keyboard shortcuts comfortably
+- [ ] Explain what a binary vs script is
 - [ ] Explain what PATH is in your own words
+- [ ] Identify the command, flags, and arguments in any command
+- [ ] Use at least 3 keyboard shortcuts comfortably
 - [ ] Use `Ctrl + R` to search your command history
 
 If any are unclear, practice the exercises again. Comfort with the terminal is foundational — it's worth getting right.

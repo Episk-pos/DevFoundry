@@ -8,13 +8,15 @@ Getting comfortable with the command line before diving into code.
 
 - Terminal vs Shell vs Console: what they are and how they relate
 - Bash, Zsh, PowerShell, CMD: which shell to use when
+- Programs and binaries: what executables actually are
 - PATH: how your computer finds programs
+- Command anatomy: flags, arguments, and conventions (`-v` vs `--verbose`)
 - Essential navigation: `pwd`, `ls`, `cd`, `mkdir`, `touch`
 - Power user keyboard shortcuts for faster editing
 
 ## Exercises
 
-5 exercises covering navigation, project structure creation, keyboard shortcuts, command history, and PATH exploration.
+6 exercises covering navigation, project structure creation, keyboard shortcuts, command history, PATH exploration, and parsing command syntax.
 
 ---
 
