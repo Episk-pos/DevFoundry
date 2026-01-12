@@ -40,6 +40,7 @@ const sidebars: SidebarsConfig = {
               label: 'Extracurricular',
               collapsed: true,
               items: [
+                'curriculum/part-1-foundations/extracurricular/terminal-going-further',
                 'curriculum/part-1-foundations/extracurricular/types-across-languages',
               ],
             },

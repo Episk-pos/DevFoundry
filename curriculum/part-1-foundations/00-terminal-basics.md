@@ -14,11 +14,12 @@ Getting comfortable with the command line before diving into code.
 - Essential navigation: `pwd`, `ls`, `cd`, `mkdir`, `touch`
 - Power user keyboard shortcuts for faster editing
 
-## Going Further (Optional)
+## Going Further (Extracurricular)
 
-- Shell customization: Fish, Starship, Oh My Zsh, Powerlevel10k
-- Terminal multiplexing: Zellij, tmux, screen
-- Modern terminal emulators: iTerm2, Alacritty, Warp, WezTerm
+See [Terminal: Going Further](extracurricular/terminal-going-further.md) for optional advanced topics:
+- Shell customization (Fish, Starship, Oh My Zsh)
+- Terminal multiplexing (Zellij, tmux)
+- Modern terminal emulators
 
 ## Exercises
 
