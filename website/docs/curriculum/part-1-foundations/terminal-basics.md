@@ -67,7 +67,7 @@ These terms are often used interchangeably, but they're technically different:
 The **window** that displays text. It's the application you open.
 
 - **macOS**: Terminal.app or iTerm2
-- **Windows**: Windows Terminal, Command Prompt, PowerShell window
+- **Windows**: Git Bash, PowerShell, Command Prompt
 - **Linux**: GNOME Terminal, Konsole, xterm
 
 ### Shell
@@ -94,7 +94,7 @@ An older term, often used interchangeably with "terminal." Originally referred t
 ### What Should You Use?
 
 - **macOS**: Use the built-in Terminal app. Your shell is likely Zsh.
-- **Windows**: Use Windows Terminal with PowerShell. For a Bash experience, install Git Bash (lightweight, comes with Git) or WSL (full Linux environment).
+- **Windows**: Use Git Bash (comes with [Git for Windows](https://git-scm.com/downloads)) — commands match macOS/Linux tutorials. PowerShell works but has different syntax.
 - **Linux**: Use your distro's terminal. Your shell is likely Bash.
 
 ---
@@ -111,17 +111,17 @@ Or find it in: `Applications → Utilities → Terminal`
 
 ### Windows
 
-**Windows Terminal (recommended)**:
+**Git Bash (recommended)** — install [Git for Windows](https://git-scm.com/downloads) first:
 1. Press `Win` key
-2. Type "Terminal" or "Windows Terminal"
+2. Type "Git Bash"
 3. Press Enter
 
-**PowerShell**:
+**PowerShell** — pre-installed, but different syntax:
 1. Press `Win` key
 2. Type "PowerShell"
 3. Press Enter
 
-**Command Prompt (CMD)** — only if required:
+**Command Prompt (CMD)** — legacy, only if required:
 1. Press `Win + R`
 2. Type `cmd`
 3. Press Enter
@@ -832,12 +832,23 @@ For each command below, identify the command, options/flags, and arguments:
 
 If you're on Windows, you have choices:
 
-### PowerShell (Recommended for Windows)
+### Git Bash (Recommended)
 
-Modern and powerful. Most commands work, but some syntax differs:
+Comes bundled with [Git for Windows](https://git-scm.com/downloads). This is what we recommend for this curriculum because:
 
-| Bash/Zsh | PowerShell |
-|----------|------------|
+- Commands match macOS/Linux tutorials exactly (`ls`, `cd`, `grep`, `cat`, etc.)
+- No system restart or admin permissions required
+- Lightweight — just install and go
+- You'll need Git anyway, so you get two essential tools in one
+
+**This is what you should use to follow along with this curriculum.**
+
+### PowerShell
+
+Pre-installed on all Windows systems. Powerful, but has different syntax:
+
+| Bash/Git Bash | PowerShell |
+|---------------|------------|
 | `ls` | `ls` (works!) or `Get-ChildItem` |
 | `pwd` | `pwd` (works!) or `Get-Location` |
 | `cat file.txt` | `cat file.txt` (works!) or `Get-Content file.txt` |
@@ -845,27 +856,18 @@ Modern and powerful. Most commands work, but some syntax differs:
 | `which node` | `Get-Command node` |
 | `touch file.txt` | `New-Item file.txt` |
 
+PowerShell is great for Windows-specific automation, but most online tutorials use Bash syntax.
+
 ### WSL (Windows Subsystem for Linux)
 
-Runs a real Linux environment inside Windows. If you plan to do serious development, consider installing WSL:
+Runs a full Linux environment inside Windows. More heavyweight than Git Bash, but useful if you need Linux-specific tools:
 
 1. Open PowerShell as Administrator
 2. Run: `wsl --install`
 3. Restart your computer
 4. You now have Ubuntu (Linux) available!
 
-WSL lets you use all the same commands as macOS/Linux tutorials.
-
-### Git Bash (Recommended Starting Point)
-
-Comes bundled with [Git for Windows](https://git-scm.com/downloads). Lightweight alternative to WSL that provides a Bash-like experience:
-
-- Most Bash commands work (`ls`, `cd`, `grep`, `cat`, etc.)
-- No system restart or admin permissions required
-- Great for following along with macOS/Linux tutorials
-- You'll want Git installed anyway, so you get two tools in one
-
-If you're not sure which to pick: **start with Git Bash**. You can always add WSL later if you need a full Linux environment.
+For this curriculum, Git Bash is sufficient. Consider WSL later if you need full Linux capabilities.
 
 ---
 
