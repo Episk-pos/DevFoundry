@@ -68,18 +68,26 @@ Windows uses User Account Control (UAC) to prompt for elevation. No direct `sudo
 - **How to use**:
   1. Right-click Start > "Windows PowerShell (Admin)" or "Command Prompt (Admin)".
   2. Or search "PowerShell" > right-click > "Run as administrator" (UAC prompts yes/no).
-- **When to use**: Installing via Chocolatey (`choco install git`) or modifying C:\Windows files.
-- **Example** (in elevated PowerShell):
+- **When to use**: Installing system-wide tools (e.g., via Chocolatey or Winget), modifying protected directories (e.g., C:\Program Files), or changing security policies (e.g., execution policies for scripts).
+- **Examples** (in elevated PowerShell):
   ```powershell
-  # Install a package (requires Chocolatey first: choco install chocolatey)
-  choco install git
-  # Or change execution policy:
+  # Change PowerShell execution policy (allows running local scripts)
   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+  # Install Chocolatey package manager (one-time setup)
+  Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+  # Use Chocolatey to install dev tools
+  choco install git nodejs vscode
+
+  # Or use Winget (built-in since Windows 10 1809)
+  winget install Git.Git Microsoft.VisualStudioCode
   ```
 - **Risks/Warnings**:
-  - UAC prevents accidents but can be bypassed—verify commands.
-  - Avoid in user folders (e.g., Documents); use icacls for permissions.
-  - Elevation applies to the whole session; close when done.
+  - UAC prevents accidents but can be bypassed—verify commands and sources.
+  - Avoid elevation in user folders (e.g., Documents); use `icacls` for permission tweaks.
+  - Elevation applies to the whole session; close the terminal when done to minimize exposure.
+  - Common pitfalls: Running `rm`-like commands (e.g., `Remove-Item -Recurse`) on system paths can delete critical files.
 
 ### runas (Command-Line Alternative)
 - **What it does**: Runs a command/program as another user (e.g., admin).
@@ -95,7 +103,19 @@ Windows uses User Account Control (UAC) to prompt for elevation. No direct `sudo
 - **When to use**: One-off elevated commands without full session.
 - **Risks/Warnings**: Prompts for credentials; avoid storing passwords.
 
-**Platform Note**: In Git Bash (recommended for this curriculum), elevation is trickier—use Windows Terminal/PowerShell for admin tasks.
+#### WSL (Windows Subsystem for Linux) Notes
+If using WSL (recommended for Linux-like dev on Windows), elevation works as on native Linux:
+- Install WSL: Run `wsl --install` in elevated PowerShell (one-time).
+- Inside WSL: Use `sudo` for Linux package installs (e.g., `sudo apt install git`).
+- WSL files are accessible from Windows, but avoid mixing elevations—treat WSL as a separate Linux env.
+- For Windows tools in WSL: Use `wsl.exe` from elevated Windows terminal if needed.
+
+#### Other Windows Package Managers (Prefer User-Level When Possible)
+- **Chocolatey (choco)**: System-wide installer, requires initial elevation for setup. Great for dev tools (Git, Node, VS Code). After install: `choco install <package>` (may still need admin for some).
+- **Winget**: Microsoft's built-in (no install needed). Often works without elevation: `winget install Git.Git`. Use `--accept-package-agreements` for automation.
+- **Scoop**: User-level (no elevation!): Installs to ~/scoop. Run install script in regular PowerShell: `iwr -useb get.scoop.sh | iex`. Then `scoop install git nodejs`. Ideal for avoiding admin prompts.
+
+**Platform Note**: In Git Bash (recommended for this curriculum), elevation is trickier—use Windows Terminal/PowerShell for admin tasks. For WSL in Git Bash, launch via `wsl` command.
 
 ---
 
@@ -105,8 +125,9 @@ Windows uses User Account Control (UAC) to prompt for elevation. No direct `sudo
 - **Security**: Elevation logs actions (e.g., /var/log/auth.log on Linux). Never share root/admin passwords.
 - **Further Reading**:
   - macOS/Linux: [sudo man page](https://www.sudo.ws/man/1.9.15/sudo.man/), [su man page](https://man7.org/linux/man-pages/man1/su.1.html)
-  - Windows: [Run as administrator docs](https://learn.microsoft.com/en-us/windows/win32/secauthz/uac-on-sdk), [runas reference](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/runas)
-  - Tools: Install managers like [Homebrew](https://brew.sh/) (macOS), [apt](https://ubuntu.com/tutorials/command-line-for-beginners) (Linux), [Chocolatey](https://chocolatey.org/install) (Windows) for safer installs.
+  - Windows: [Run as administrator docs](https://learn.microsoft.com/en-us/windows/win32/secauthz/uac-on-sdk), [runas reference](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/runas), [UAC overview](https://learn.microsoft.com/en-us/windows/security/identity-protection/user-account-control/user-account-control)
+  - WSL: [Install WSL](https://learn.microsoft.com/en-us/windows/wsl/install), [WSL from command line](https://learn.microsoft.com/en-us/windows/wsl/basic-commands)
+  - Tools: [Homebrew](https://brew.sh/) (macOS), [apt tutorial](https://ubuntu.com/tutorials/command-line-for-beginners) (Linux), [Chocolatey](https://chocolatey.org/install), [Winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/), [Scoop](https://scoop.sh/) (Windows user-level).
 
 ---
 
