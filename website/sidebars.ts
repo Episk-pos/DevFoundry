@@ -28,6 +28,7 @@ const sidebars: SidebarsConfig = {
           label: 'Part I: Foundations',
           collapsed: false,
           items: [
+            'curriculum/part-1-foundations/terminal-basics',
             'curriculum/part-1-foundations/what-software-is',
             'curriculum/part-1-foundations/anatomy-of-projects',
             'curriculum/part-1-foundations/how-the-web-works',
@@ -39,6 +40,7 @@ const sidebars: SidebarsConfig = {
               label: 'Extracurricular',
               collapsed: true,
               items: [
+                'curriculum/part-1-foundations/extracurricular/terminal-going-further',
                 'curriculum/part-1-foundations/extracurricular/types-across-languages',
               ],
             },
