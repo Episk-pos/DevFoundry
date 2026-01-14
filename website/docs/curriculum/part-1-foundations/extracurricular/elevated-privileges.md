@@ -25,7 +25,7 @@ Most daily development doesn't require elevated privileges, but you'll encounter
 
 ## macOS and Linux: sudo and su
 
-These tools grant temporary superuser (root) access, protecting the system from accidental changes.
+These tools allow you to temporarily run commands as the root user, bypassing normal protections to enable system-level changes.
 
 ### sudo (Recommended: Safer and More Common)
 - **What it does**: Prefixes a command to run it as root (e.g., `sudo ls /root`). Prompts for your user password (not root's).
