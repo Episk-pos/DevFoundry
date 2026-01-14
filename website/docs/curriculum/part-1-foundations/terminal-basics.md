@@ -94,7 +94,7 @@ An older term, often used interchangeably with "terminal." Originally referred t
 ### What Should You Use?
 
 - **macOS**: Use the built-in Terminal app. Your shell is likely Zsh.
-- **Windows**: Use Windows Terminal with PowerShell. Or install WSL (Windows Subsystem for Linux) for a Bash experience.
+- **Windows**: Use Windows Terminal with PowerShell. For a Bash experience, install Git Bash (lightweight, comes with Git) or WSL (full Linux environment).
 - **Linux**: Use your distro's terminal. Your shell is likely Bash.
 
 ---
@@ -856,9 +856,16 @@ Runs a real Linux environment inside Windows. If you plan to do serious developm
 
 WSL lets you use all the same commands as macOS/Linux tutorials.
 
-### Git Bash
+### Git Bash (Recommended Starting Point)
 
-Comes with Git for Windows. Provides a Bash-like experience without full Linux.
+Comes bundled with [Git for Windows](https://git-scm.com/downloads). Lightweight alternative to WSL that provides a Bash-like experience:
+
+- Most Bash commands work (`ls`, `cd`, `grep`, `cat`, etc.)
+- No system restart or admin permissions required
+- Great for following along with macOS/Linux tutorials
+- You'll want Git installed anyway, so you get two tools in one
+
+If you're not sure which to pick: **start with Git Bash**. You can always add WSL later if you need a full Linux environment.
 
 ---
 
