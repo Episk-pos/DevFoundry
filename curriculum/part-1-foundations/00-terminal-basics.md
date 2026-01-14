@@ -12,18 +12,18 @@ Getting comfortable with the command line before diving into code.
 - PATH: how your computer finds programs
 - Command anatomy: flags, arguments, and conventions (`-v` vs `--verbose`)
 - Essential navigation: `pwd`, `ls`, `cd`, `mkdir`, `touch`
-- Power user keyboard shortcuts for faster editing
 
 ## Going Further (Extracurricular)
 
 See [Terminal: Going Further](extracurricular/terminal-going-further.md) for optional advanced topics:
+- Power user keyboard shortcuts
 - Shell customization (Fish, Starship, Oh My Zsh)
 - Terminal multiplexing (Zellij, tmux)
 - Modern terminal emulators
 
 ## Exercises
 
-6 exercises covering navigation, project structure creation, keyboard shortcuts, command history, PATH exploration, and parsing command syntax.
+4 exercises covering navigation, project structure creation, PATH exploration, and parsing command syntax.
 
 ---
 

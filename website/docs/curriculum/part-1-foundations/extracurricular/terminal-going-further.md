@@ -1,24 +1,156 @@
 ---
 sidebar_position: 0
 title: "Terminal: Going Further"
-description: "Shell customization, terminal multiplexing, and modern tools"
+description: "Keyboard shortcuts, shell customization, terminal multiplexing, and modern tools"
 ---
 
 # Extracurricular: Terminal Going Further
 
-**Shell customization, terminal multiplexing, and modern tools**
+**Keyboard shortcuts, shell customization, terminal multiplexing, and modern tools**
 
 ---
 
 ## Why This Page Exists
 
-The main [Terminal Basics](/docs/curriculum/part-1-foundations/terminal-basics) module teaches the essential skills you need to use the command line. This page covers **optional advanced topics** for those who want to:
+The main [Terminal Basics](/docs/curriculum/part-1-foundations/terminal-basics) module teaches the essential skills you need to use the command line. This page covers **productivity enhancements and customization** for those who want to:
 
+- Work faster with keyboard shortcuts
 - Customize their shell prompt and experience
 - Use terminal multiplexers for managing multiple sessions
 - Explore modern terminal emulators
 
-**None of this is required** to continue with the curriculum. But if you're curious about how developers customize their terminals, here's a roadmap.
+**None of this is required** to continue with the curriculum. But these skills will make you noticeably faster and more comfortable in the terminal.
+
+---
+
+## Power User Keyboard Shortcuts
+
+These shortcuts will make you significantly faster. Practice them until they're muscle memory.
+
+### Navigation Within a Line
+
+| Action | macOS | Windows/Linux |
+|--------|-------|---------------|
+| Move cursor left one character | `←` | `←` |
+| Move cursor right one character | `→` | `→` |
+| **Move left one word** | `Option + ←` | `Ctrl + ←` |
+| **Move right one word** | `Option + →` | `Ctrl + →` |
+| Jump to beginning of line | `Ctrl + A` | `Ctrl + A` or `Home` |
+| Jump to end of line | `Ctrl + E` | `Ctrl + E` or `End` |
+
+### Editing
+
+| Action | macOS | Windows/Linux |
+|--------|-------|---------------|
+| Delete character before cursor | `Backspace` | `Backspace` |
+| Delete character after cursor | `Ctrl + D` | `Ctrl + D` or `Delete` |
+| **Delete word before cursor** | `Ctrl + W` | `Ctrl + W` |
+| **Delete from cursor to end of line** | `Ctrl + K` | `Ctrl + K` |
+| Delete from cursor to start of line | `Ctrl + U` | `Ctrl + U` |
+| Undo (yank back deleted text) | `Ctrl + Y` | `Ctrl + Y` |
+| Clear the screen | `Ctrl + L` | `Ctrl + L` |
+| Cancel current command | `Ctrl + C` | `Ctrl + C` |
+
+### Selection (with Shift)
+
+Adding `Shift` to movement commands selects text:
+
+| Action | macOS | Windows/Linux |
+|--------|-------|---------------|
+| Select character left | `Shift + ←` | `Shift + ←` |
+| Select character right | `Shift + →` | `Shift + →` |
+| **Select word left** | `Shift + Option + ←` | `Shift + Ctrl + ←` |
+| **Select word right** | `Shift + Option + →` | `Shift + Ctrl + →` |
+| Select to beginning of line | `Shift + Ctrl + A` | `Shift + Home` |
+| Select to end of line | `Shift + Ctrl + E` | `Shift + End` |
+
+### Command History
+
+| Action | macOS/Linux | Windows |
+|--------|-------------|---------|
+| Previous command | `↑` | `↑` |
+| Next command | `↓` | `↓` |
+| **Search command history** | `Ctrl + R` | `Ctrl + R` |
+| Run previous command | `!!` | N/A (Bash only) |
+| Run previous command with sudo | `sudo !!` | N/A (Bash only) |
+
+### Using Ctrl + R (Reverse Search)
+
+This is incredibly powerful. Press `Ctrl + R` and start typing part of a previous command:
+
+```
+(reverse-i-search)`npm': npm run build
+```
+
+- Keep pressing `Ctrl + R` to cycle through matches
+- Press `Enter` to run the command
+- Press `→` to edit the command before running
+- Press `Ctrl + C` to cancel
+
+### Tab Completion
+
+Press `Tab` to autocomplete:
+
+```bash
+cd Doc[Tab]
+# Completes to: cd Documents/
+```
+
+Press `Tab` twice to see all possibilities:
+
+```bash
+cd D[Tab][Tab]
+# Shows: Desktop/  Documents/  Downloads/
+```
+
+**Tab completion works for**:
+- File and folder names
+- Command names
+- Git branches
+- And more (depending on your shell configuration)
+
+### Exercises
+
+#### Exercise: Practice Keyboard Shortcuts
+
+1. Type a long command (don't press Enter): `echo "This is a really long command that I am typing to practice keyboard shortcuts"`
+2. Jump to the beginning of the line
+3. Jump to the end of the line
+4. Move back one word at a time to reach "keyboard"
+5. Delete from cursor to end of line
+6. Cancel and clear (`Ctrl + C`)
+
+<details>
+<summary>What You Should Feel</summary>
+
+- `Ctrl + A` to jump to the start — instant, no arrow key mashing
+- `Ctrl + E` to jump to the end — instant
+- `Option + ←` (Mac) or `Ctrl + ←` (Windows) — jumping word by word feels powerful
+- `Ctrl + K` to delete to end — much faster than holding backspace
+- These shortcuts become second nature with practice
+
+</details>
+
+#### Exercise: Use Command History
+
+1. Run these commands:
+   ```bash
+   echo "first"
+   echo "second"
+   echo "third"
+   ```
+2. Press `↑` to cycle through your history
+3. Use `Ctrl + R` and type "sec" to find the second command
+4. Press `Enter` to run it again
+
+<details>
+<summary>What You Should Notice</summary>
+
+- Arrow keys cycle through recent commands
+- `Ctrl + R` lets you search by typing any part of a previous command
+- This saves huge amounts of time when you need to re-run complex commands
+
+</details>
 
 ---
 

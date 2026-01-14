@@ -20,7 +20,6 @@ By the end of this module, you will:
 - Understand what programs and binaries are
 - Know how PATH works and why "command not found" happens
 - Read and write commands with flags and arguments
-- Use keyboard shortcuts like a power user
 - Feel comfortable enough to follow along with the rest of this curriculum
 
 **Time**: 1-2 hours (reading + practice)
@@ -576,94 +575,6 @@ Here's a quick reference of the commands you'll use constantly:
 
 ---
 
-## Power User Keyboard Shortcuts
-
-These shortcuts will make you significantly faster. Practice them until they're muscle memory.
-
-### Navigation Within a Line
-
-| Action | macOS | Windows/Linux |
-|--------|-------|---------------|
-| Move cursor left one character | `←` | `←` |
-| Move cursor right one character | `→` | `→` |
-| **Move left one word** | `Option + ←` | `Ctrl + ←` |
-| **Move right one word** | `Option + →` | `Ctrl + →` |
-| Jump to beginning of line | `Ctrl + A` | `Ctrl + A` or `Home` |
-| Jump to end of line | `Ctrl + E` | `Ctrl + E` or `End` |
-
-### Editing
-
-| Action | macOS | Windows/Linux |
-|--------|-------|---------------|
-| Delete character before cursor | `Backspace` | `Backspace` |
-| Delete character after cursor | `Ctrl + D` | `Ctrl + D` or `Delete` |
-| **Delete word before cursor** | `Ctrl + W` | `Ctrl + W` |
-| **Delete from cursor to end of line** | `Ctrl + K` | `Ctrl + K` |
-| Delete from cursor to start of line | `Ctrl + U` | `Ctrl + U` |
-| Undo (yank back deleted text) | `Ctrl + Y` | `Ctrl + Y` |
-| Clear the screen | `Ctrl + L` | `Ctrl + L` |
-| Cancel current command | `Ctrl + C` | `Ctrl + C` |
-
-### Selection (with Shift)
-
-Adding `Shift` to movement commands selects text:
-
-| Action | macOS | Windows/Linux |
-|--------|-------|---------------|
-| Select character left | `Shift + ←` | `Shift + ←` |
-| Select character right | `Shift + →` | `Shift + →` |
-| **Select word left** | `Shift + Option + ←` | `Shift + Ctrl + ←` |
-| **Select word right** | `Shift + Option + →` | `Shift + Ctrl + →` |
-| Select to beginning of line | `Shift + Ctrl + A` | `Shift + Home` |
-| Select to end of line | `Shift + Ctrl + E` | `Shift + End` |
-
-### Command History
-
-| Action | macOS/Linux | Windows |
-|--------|-------------|---------|
-| Previous command | `↑` | `↑` |
-| Next command | `↓` | `↓` |
-| **Search command history** | `Ctrl + R` | `Ctrl + R` |
-| Run previous command | `!!` | N/A (Bash only) |
-| Run previous command with sudo | `sudo !!` | N/A (Bash only) |
-
-### Using Ctrl + R (Reverse Search)
-
-This is incredibly powerful. Press `Ctrl + R` and start typing part of a previous command:
-
-```
-(reverse-i-search)`npm': npm run build
-```
-
-- Keep pressing `Ctrl + R` to cycle through matches
-- Press `Enter` to run the command
-- Press `→` to edit the command before running
-- Press `Ctrl + C` to cancel
-
-### Tab Completion
-
-Press `Tab` to autocomplete:
-
-```bash
-cd Doc[Tab]
-# Completes to: cd Documents/
-```
-
-Press `Tab` twice to see all possibilities:
-
-```bash
-cd D[Tab][Tab]
-# Shows: Desktop/  Documents/  Downloads/
-```
-
-**Tab completion works for**:
-- File and folder names
-- Command names
-- Git branches
-- And more (depending on your shell configuration)
-
----
-
 ## Practical Exercises
 
 ### Exercise 1: Navigate Your System
@@ -723,52 +634,7 @@ mkdir -p my-first-project/src my-first-project/tests && touch my-first-project/s
 
 ---
 
-### Exercise 3: Practice Keyboard Shortcuts
-
-1. Type a long command (don't press Enter): `echo "This is a really long command that I am typing to practice keyboard shortcuts"`
-2. Jump to the beginning of the line
-3. Jump to the end of the line
-4. Move back one word at a time to reach "keyboard"
-5. Delete from cursor to end of line
-6. Cancel and clear (`Ctrl + C`)
-
-<details>
-<summary>What You Should Feel</summary>
-
-- `Ctrl + A` to jump to the start — instant, no arrow key mashing
-- `Ctrl + E` to jump to the end — instant
-- `Option + ←` (Mac) or `Ctrl + ←` (Windows) — jumping word by word feels powerful
-- `Ctrl + K` to delete to end — much faster than holding backspace
-- These shortcuts become second nature with practice
-
-</details>
-
----
-
-### Exercise 4: Use Command History
-
-1. Run these commands:
-   ```bash
-   echo "first"
-   echo "second"
-   echo "third"
-   ```
-2. Press `↑` to cycle through your history
-3. Use `Ctrl + R` and type "sec" to find the second command
-4. Press `Enter` to run it again
-
-<details>
-<summary>What You Should Notice</summary>
-
-- Arrow keys cycle through recent commands
-- `Ctrl + R` lets you search by typing any part of a previous command
-- This saves huge amounts of time when you need to re-run complex commands
-
-</details>
-
----
-
-### Exercise 5: Explore Your PATH
+### Exercise 3: Explore Your PATH
 
 1. View your PATH: `echo $PATH` (or `$env:PATH` on Windows)
 2. Find where `node` is installed: `which node` (or `Get-Command node` on Windows)
@@ -792,7 +658,7 @@ If `node` isn't found, it means Node.js isn't installed yet — we'll cover that
 
 ---
 
-### Exercise 6: Parse Commands
+### Exercise 4: Parse Commands
 
 For each command below, identify the command, options/flags, and arguments:
 
@@ -898,13 +764,14 @@ Many code editors (VS Code, WebStorm) have built-in terminals. These are the sam
 
 ## Going Further
 
-Once you're comfortable with the basics, there's a whole world of terminal customization to explore:
+Once you're comfortable with the basics, there's more to explore:
 
+- **Keyboard shortcuts**: Navigate and edit commands faster with power user shortcuts
 - **Shell customization**: Fish shell, Starship prompt, Oh My Zsh, Powerlevel10k
 - **Terminal multiplexing**: Zellij, tmux, screen — split panes, detachable sessions
 - **Modern terminal emulators**: iTerm2, Alacritty, Warp, WezTerm
 
-None of this is required to continue with the curriculum. When you're ready to explore:
+None of this is required to continue with the curriculum. When you're ready to level up:
 
 👉 [Terminal: Going Further](extracurricular/terminal-going-further) (Extracurricular)
 
@@ -935,10 +802,6 @@ A list of directories your shell searches when you type a command name.
 ### 6. Navigation Commands
 
 `pwd`, `ls`, `cd` — you'll use these hundreds of times a day.
-
-### 7. Keyboard Shortcuts Save Time
-
-`Ctrl + A/E`, `Option/Ctrl + arrows`, `Ctrl + R` — learn these and you'll be noticeably faster.
 
 ---
 
@@ -999,8 +862,6 @@ Before moving on, ensure you can:
 - [ ] Explain what a binary vs script is
 - [ ] Explain what PATH is in your own words
 - [ ] Identify the command, flags, and arguments in any command
-- [ ] Use at least 3 keyboard shortcuts comfortably
-- [ ] Use `Ctrl + R` to search your command history
 
 If any are unclear, practice the exercises again. Comfort with the terminal is foundational — it's worth getting right.
 

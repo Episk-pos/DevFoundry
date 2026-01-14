@@ -1,11 +1,12 @@
 # Terminal: Going Further
 
-Shell customization, terminal multiplexing, and modern tools.
+Keyboard shortcuts, shell customization, terminal multiplexing, and modern tools.
 
 **Full content**: [devfoundry.io/docs/curriculum/part-1-foundations/extracurricular/terminal-going-further](https://devfoundry.io/docs/curriculum/part-1-foundations/extracurricular/terminal-going-further)
 
 ## Topics Covered
 
+- **Keyboard shortcuts** — Navigate and edit commands faster
 - **Shell customization** — Fish, Zsh, Starship, Oh My Zsh, Powerlevel10k
 - **Terminal multiplexing** — Zellij, tmux, screen
 - **Modern terminal emulators** — iTerm2, Alacritty, Warp, Kitty, WezTerm
