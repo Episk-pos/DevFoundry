@@ -767,9 +767,9 @@ Many code editors (VS Code, WebStorm) have built-in terminals. These are the sam
 Once you're comfortable with the basics, there's more to explore:
 
 - **Keyboard shortcuts**: Navigate and edit commands faster with power user shortcuts
-- **Shell customization**: Fish shell, Starship prompt, Oh My Zsh, Powerlevel10k
-- **Terminal multiplexing**: Zellij, tmux, screen — split panes, detachable sessions
-- **Modern terminal emulators**: iTerm2, Alacritty, Warp, WezTerm
+- **Shell customization**: [Fish shell](https://fishshell.com/), [Starship prompt](https://starship.rs/), [Oh My Zsh](https://ohmyz.sh/), [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+- **Terminal multiplexing**: [Zellij](https://zellij.dev/), [tmux](https://github.com/tmux/tmux), [screen](https://www.gnu.org/software/screen/) — split panes, detachable sessions
+- **Modern terminal emulators**: [iTerm2](https://iterm2.com/), [Alacritty](https://alacritty.org/), [Warp](https://www.warp.dev/), [WezTerm](https://wezfurlong.org/wezterm/)
 
 None of this is required to continue with the curriculum. When you're ready to level up:
 

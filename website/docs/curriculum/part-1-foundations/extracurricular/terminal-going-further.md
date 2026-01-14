@@ -276,7 +276,7 @@ tmux
 
 ### screen (Legacy)
 
-The original terminal multiplexer. Still works, still installed on many servers, but tmux and Zellij have largely superseded it. You might encounter it on older systems.
+The original terminal multiplexer. Still works, still installed on many servers, but tmux and Zellij have largely superseded it. You might encounter it on older systems. See the [GNU Screen manual](https://www.gnu.org/software/screen/manual/screen.html).
 
 ### What to Choose?
 
@@ -296,12 +296,12 @@ The terminal app itself can be upgraded:
 
 | Terminal | Platform | Notable Features |
 |----------|----------|------------------|
-| **iTerm2** | macOS | Split panes, search, profiles, tmux integration |
-| **Windows Terminal** | Windows | Tabs, GPU rendering, profiles, modern |
-| **Alacritty** | Cross-platform | GPU-accelerated, minimal, fast (Rust) |
-| **Warp** | macOS, Linux | AI features, modern UI, blocks-based output |
-| **Kitty** | Cross-platform | GPU-based, images in terminal, extensible |
-| **WezTerm** | Cross-platform | GPU-accelerated, multiplexer built-in (Rust) |
+| [**iTerm2**](https://iterm2.com/) | macOS | Split panes, search, profiles, tmux integration |
+| [**Windows Terminal**](https://aka.ms/terminal) | Windows | Tabs, GPU rendering, profiles, modern |
+| [**Alacritty**](https://alacritty.org/) | Cross-platform | GPU-accelerated, minimal, fast (Rust) |
+| [**Warp**](https://www.warp.dev/) | macOS, Linux | AI features, modern UI, blocks-based output |
+| [**Kitty**](https://sw.kovidgoyal.net/kitty/) | Cross-platform | GPU-based, images in terminal, extensible |
+| [**WezTerm**](https://wezfurlong.org/wezterm/) | Cross-platform | GPU-accelerated, multiplexer built-in (Rust) |
 
 These are purely optional upgrades. The built-in terminal on your system works fine.
 
