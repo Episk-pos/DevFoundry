@@ -2,7 +2,7 @@
 
 Getting comfortable with the command line before diving into code.
 
-**Full module**: [devfoundry.io/docs/curriculum/part-1-foundations/terminal-basics](https://devfoundry.io/docs/curriculum/part-1-foundations/terminal-basics)
+**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/terminal-basics](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/terminal-basics)
 
 ## Key Concepts
 

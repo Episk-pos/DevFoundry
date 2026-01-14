@@ -2,7 +2,7 @@
 
 Converting the Lemonade Stand to a modern React single-page application.
 
-**Full module**: [devfoundry.io/docs/curriculum/part-3-building-applications/react-spa](https://devfoundry.io/docs/curriculum/part-3-building-applications/react-spa)
+**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-3-building-applications/react-spa](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-3-building-applications/react-spa)
 
 ## Key Concepts
 

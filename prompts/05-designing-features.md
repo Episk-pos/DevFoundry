@@ -2,7 +2,7 @@
 
 Plan architecture with AI before writing implementation.
 
-**Full guide**: [devfoundry.io/docs/prompts/designing-features](https://devfoundry.io/docs/prompts/designing-features)
+**Full guide**: [episk-pos.github.io/DevFoundry/docs/prompts/designing-features](https://episk-pos.github.io/DevFoundry/docs/prompts/designing-features)
 
 ## Key Topics
 

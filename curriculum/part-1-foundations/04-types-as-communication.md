@@ -2,7 +2,7 @@
 
 How explicit type annotations improve AI-assisted development.
 
-**Full module**: [devfoundry.io/docs/curriculum/part-1-foundations/types-as-communication](https://devfoundry.io/docs/curriculum/part-1-foundations/types-as-communication)
+**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/types-as-communication](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/types-as-communication)
 
 ## Key Concepts
 

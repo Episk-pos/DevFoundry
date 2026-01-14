@@ -2,7 +2,7 @@
 
 Enhancing the Lemonade Stand with better state management, forms, and user feedback.
 
-**Full module**: [devfoundry.io/docs/curriculum/part-3-building-applications/interactive-ui](https://devfoundry.io/docs/curriculum/part-3-building-applications/interactive-ui)
+**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-3-building-applications/interactive-ui](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-3-building-applications/interactive-ui)
 
 ## Key Concepts
 

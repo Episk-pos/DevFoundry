@@ -2,7 +2,7 @@
 
 Version control fundamentals — tracking changes, branching, and working with others.
 
-**Full module**: [devfoundry.io/docs/curriculum/part-2-team-practices/git-and-collaboration](https://devfoundry.io/docs/curriculum/part-2-team-practices/git-and-collaboration)
+**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-2-team-practices/git-and-collaboration](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-2-team-practices/git-and-collaboration)
 
 ## Key Concepts
 

@@ -2,7 +2,7 @@
 
 Systematic problem-solving when something doesn't work.
 
-**Full guide**: [devfoundry.io/docs/prompts/debugging](https://devfoundry.io/docs/prompts/debugging)
+**Full guide**: [episk-pos.github.io/DevFoundry/docs/prompts/debugging](https://episk-pos.github.io/DevFoundry/docs/prompts/debugging)
 
 ## Key Topics
 

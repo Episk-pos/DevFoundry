@@ -2,7 +2,7 @@
 
 The same type concepts from Module 04, demonstrated in Python and Go.
 
-**Full content**: [devfoundry.io/docs/curriculum/part-1-foundations/extracurricular/types-across-languages](https://devfoundry.io/docs/curriculum/part-1-foundations/extracurricular/types-across-languages)
+**Full content**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/extracurricular/types-across-languages](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/extracurricular/types-across-languages)
 
 ## Languages Covered
 
