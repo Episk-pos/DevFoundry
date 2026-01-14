@@ -745,7 +745,7 @@ The terminal can be powerful, which means you can accidentally delete files. Som
 
 - **Be careful with `rm`** — there's no trash can. Files are gone.
 - **Use `rm -i`** — asks for confirmation before each delete.
-- **Don't run commands you don't understand** — especially with `sudo`.
+- **Don't run commands you don't understand** — especially those requiring elevated privileges (like `sudo` on macOS/Linux or "Run as administrator" on Windows). These can modify system files and cause serious issues. For details, see [Elevated Privileges](extracurricular/elevated-privileges) (Extracurricular).
 - **You can always `Ctrl + C`** — this cancels the current command.
 
 ### "Why do commands look different in tutorials?"
@@ -774,6 +774,8 @@ Once you're comfortable with the basics, there's more to explore:
 None of this is required to continue with the curriculum. When you're ready to level up:
 
 👉 [Terminal: Going Further](extracurricular/terminal-going-further) (Extracurricular)
+
+For more on system-level commands, see [Elevated Privileges and User Switching](extracurricular/elevated-privileges) (Extracurricular).
 
 ---
 

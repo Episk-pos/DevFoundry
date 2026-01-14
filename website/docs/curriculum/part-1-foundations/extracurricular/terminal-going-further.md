@@ -72,7 +72,7 @@ Adding `Shift` to movement commands selects text:
 | Next command | `↓` | `↓` |
 | **Search command history** | `Ctrl + R` | `Ctrl + R` |
 | Run previous command | `!!` | N/A (Bash only) |
-| Run previous command with sudo | `sudo !!` | N/A (Bash only) |
+| Run previous command with sudo | `sudo !!` | N/A (Bash only) |<br><small>(See [Elevated Privileges](/docs/curriculum/part-1-foundations/extracurricular/elevated-privileges) for details on sudo risks and alternatives.)</small>
 
 ### Using Ctrl + R (Reverse Search)
 
