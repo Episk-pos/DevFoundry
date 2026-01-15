@@ -31,7 +31,7 @@ function HomepageHeader() {
           </Link>
           <Link
             className="button button--outline button--secondary button--lg"
-            to="/docs/curriculum/part-1-foundations/what-software-is"
+            to="/docs/overview"
             style={{marginLeft: '1rem'}}>
             Start Learning
           </Link>
