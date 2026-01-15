@@ -2,7 +2,7 @@
 
 A command-line ordering system — your first multi-file application.
 
-**Full walkthrough**: [devfoundry.io/docs/examples/lemonade-cli](https://devfoundry.io/docs/examples/lemonade-cli)
+**Full walkthrough**: [episk-pos.github.io/DevFoundry/docs/examples/lemonade-cli](https://episk-pos.github.io/DevFoundry/docs/examples/lemonade-cli)
 
 ## Quick Start
 
@@ -31,4 +31,4 @@ src/
 
 ---
 
-*See the [full walkthrough](https://devfoundry.io/docs/examples/lemonade-cli) for detailed explanation and exercises.*
+*See the [full walkthrough](https://episk-pos.github.io/DevFoundry/docs/examples/lemonade-cli) for detailed explanation and exercises.*

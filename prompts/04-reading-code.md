@@ -2,7 +2,7 @@
 
 Navigate unfamiliar codebases with AI assistance.
 
-**Full guide**: [devfoundry.io/docs/prompts/reading-code](https://devfoundry.io/docs/prompts/reading-code)
+**Full guide**: [episk-pos.github.io/DevFoundry/docs/prompts/reading-code](https://episk-pos.github.io/DevFoundry/docs/prompts/reading-code)
 
 ## Key Topics
 

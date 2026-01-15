@@ -2,7 +2,7 @@
 
 Adding an Express backend with database persistence to the Lemonade Stand.
 
-**Full module**: [devfoundry.io/docs/curriculum/part-3-building-applications/fullstack-app](https://devfoundry.io/docs/curriculum/part-3-building-applications/fullstack-app)
+**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-3-building-applications/fullstack-app](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-3-building-applications/fullstack-app)
 
 ## Key Concepts
 

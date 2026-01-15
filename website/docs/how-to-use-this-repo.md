@@ -14,10 +14,10 @@ This guide helps you navigate **devfoundry** based on your role, experience leve
 
 ### Total Beginner (No coding experience)
 
-**Start here**: [What Software Is](curriculum/part-1-foundations/what-software-is)
+**Start here**: [Terminal Basics](curriculum/part-1-foundations/terminal-basics)
 
 **Your journey**:
-1. Read modules sequentially (01 → 02 → 03 → 04)
+1. Read modules sequentially (00 → 01 → 02 → 03 → 04 → 05 → 06)
 2. Don't skip ahead — each module builds on the last
 3. Work through examples in [Examples](examples/hello-world-console)
 4. Try exercises marked "Beginner"
@@ -33,9 +33,9 @@ This guide helps you navigate **devfoundry** based on your role, experience leve
 
 ### Some Coding Experience (Know variables, loops, functions)
 
-**Start here**: Web Architecture module (coming soon)
+**Start here**: [How the Web Works](curriculum/part-1-foundations/how-the-web-works)
 
-You can skim modules 01-02, but **don't skip module 03** — web architecture is crucial.
+You can skim modules 00-02, but **don't skip module 03** — web architecture is crucial.
 
 **Your journey**:
 1. Read Part I quickly (review if needed)
@@ -133,42 +133,43 @@ You can skim modules 01-02, but **don't skip module 03** — web architecture is
 
 ```
 devfoundry/
-├── README.md                    # Start here — vision and navigation
+├── README.md                      # Start here — vision and navigation
 │
-├── docs/                        # Conceptual foundations
-│   ├── overview.md              # Full curriculum roadmap
-│   ├── how-to-use-this-repo.md  # You are here!
-│   ├── glossary.md              # Software vocabulary
-│   ├── diagram-standards.md     # How to read diagrams
-│   ├── architectural-views.md   # Views & Beyond framework
-│   └── mental-models/           # Deep dives on key concepts
+├── docs/                          # GitHub summaries linking to site
+│   ├── overview.md                # Summary curriculum roadmap
+│   ├── how-to-use-this-repo.md    # Summary navigation guide
+│   ├── glossary.md                # Summary vocabulary
+│   ├── diagram-standards.md       # Summary diagram conventions
+│   ├── architectural-views.md     # Summary views framework
+│   └── mental-models/             # Summary mental models
 │
-├── curriculum/                  # Sequential learning modules
-│   ├── part-1-foundations/      # Modules 01-04
-│   ├── part-2-team-practices/   # Modules 05-08
-│   ├── part-3-llm-development/  # Modules 09-10
-│   ├── part-4-historical-context/ # Module 11
-│   └── final-project.md         # Capstone project
+├── website/                       # Docusaurus site (canonical docs)
+│   ├── docs/                      # Full curriculum + docs
+│   └── src/                       # Site pages and styling
 │
-├── examples/                    # Working code with explanations
-│   ├── 00-hello-world-console/  # Simplest possible program
-│   ├── 01-lemonade-cli/         # Stage 1: Terminal app
-│   ├── 02-lemonade-static-web/  # Stage 2: HTML/CSS/JS
-│   ├── 03-lemonade-spa/         # Stage 3: React app
-│   ├── 04-lemonade-fullstack/   # Stage 4: Frontend + backend
-│   └── 05-lemonade-deployed/    # Stage 5: Production-ready
+├── curriculum/                    # Summary module stubs (link out)
+│   ├── part-1-foundations/        # Modules 00-06
+│   ├── part-2-team-practices/     # Modules 07-10
+│   ├── part-3-building-applications/ # Modules 11-15
+│   └── part-4-historical-context/ # Modules 16-18
 │
-├── exercises/                   # Hands-on practice
+├── examples/                      # Working code with explanations
+│   ├── 00-hello-world-console/    # Simplest possible program
+│   ├── 01-lemonade-cli/           # Stage 1: Terminal app
+│   ├── 02-lemonade-static-web/    # Stage 2: HTML/CSS/JS
+│   └── 03-lemonade-cli-typescript/ # Stage 1 with types
+│
+├── exercises/                     # Hands-on practice
 │   ├── dom-basics.md
 │   ├── routing-basics.md
 │   └── ...
 │
-├── prompts/                     # LLM prompt templates
+├── prompts/                       # LLM prompt templates
 │   ├── 01-getting-started.md
 │   ├── 02-architecture-first.md
 │   └── ...
 │
-└── adr/                         # Architecture Decision Records
+└── adr/                           # Architecture Decision Records
     ├── README.md
     ├── template.md
     └── 000X-decision-name.md

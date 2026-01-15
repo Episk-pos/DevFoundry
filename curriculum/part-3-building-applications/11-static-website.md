@@ -2,7 +2,7 @@
 
 Building the Lemonade Stand with HTML, CSS, and vanilla JavaScript.
 
-**Full module**: [devfoundry.io/docs/curriculum/part-3-building-applications/static-website](https://devfoundry.io/docs/curriculum/part-3-building-applications/static-website)
+**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-3-building-applications/static-website](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-3-building-applications/static-website)
 
 ## Key Concepts
 

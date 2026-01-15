@@ -2,10 +2,11 @@
 
 Core concepts for AI-assisted software development.
 
-**Full content**: [devfoundry.io/docs/curriculum/part-1-foundations](https://devfoundry.io/docs/curriculum/part-1-foundations)
+**Full content**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations)
 
 ## Modules
 
+0. **Terminal Basics** — Command line fundamentals and navigation
 1. **What Software Is** — Input, Processing, Output mental model
 2. **Anatomy of Projects** — Languages, architecture, project structure
 3. **How the Web Works** — HTTP, HTML/CSS/JS, browser dev tools

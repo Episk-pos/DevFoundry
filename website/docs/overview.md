@@ -11,7 +11,7 @@ description: From First Principles to LLM-Accelerated Software Creation
 ---
 
 :::info[Curriculum Status]
-**Part I: Foundations** — Modules 01-06 ✓
+**Part I: Foundations** — Modules 00-06 ✓
 **Part II: Team Practices** — Modules 07-10 ✓
 **Part III: Building Applications** — Modules 11-15 ✓
 **Part IV: Historical Context** — Modules 16-18 ✓
@@ -79,6 +79,7 @@ By the end of this curriculum, you will:
 
 | Module | Topic | Key Concepts |
 |--------|-------|--------------|
+| 00 | [Terminal Basics](curriculum/part-1-foundations/terminal-basics) | Command line basics, navigation, PATH |
 | 01 | [What Software Is](curriculum/part-1-foundations/what-software-is) | Programs as recipes, I/O/P model |
 | 02 | [Anatomy of Projects](curriculum/part-1-foundations/anatomy-of-projects) | Languages, architectures, project structure |
 | 03 | [How the Web Works](curriculum/part-1-foundations/how-the-web-works) | HTTP, HTML/CSS/JS, browser dev tools |

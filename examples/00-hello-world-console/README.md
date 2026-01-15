@@ -2,7 +2,7 @@
 
 The simplest possible program: prints "Hello, World!" to the console.
 
-**Full walkthrough**: [devfoundry.io/docs/examples/hello-world-console](https://devfoundry.io/docs/examples/hello-world-console)
+**Full walkthrough**: [episk-pos.github.io/DevFoundry/docs/examples/hello-world-console](https://episk-pos.github.io/DevFoundry/docs/examples/hello-world-console)
 
 ## Quick Start
 
@@ -22,4 +22,4 @@ node hello.js
 
 ---
 
-*See the [full walkthrough](https://devfoundry.io/docs/examples/hello-world-console) for detailed explanation and exercises.*
+*See the [full walkthrough](https://episk-pos.github.io/DevFoundry/docs/examples/hello-world-console) for detailed explanation and exercises.*

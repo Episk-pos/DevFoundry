@@ -2,7 +2,7 @@
 
 React's paradigm shift, build tools, and the current state of web development.
 
-**Full module**: [devfoundry.io/docs/curriculum/part-4-historical-context/modern-frontend](https://devfoundry.io/docs/curriculum/part-4-historical-context/modern-frontend)
+**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-4-historical-context/modern-frontend](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-4-historical-context/modern-frontend)
 
 ## Key Concepts
 

@@ -2,7 +2,7 @@
 
 Your first prompts: what to know, what to try.
 
-**Full guide**: [devfoundry.io/docs/prompts/getting-started](https://devfoundry.io/docs/prompts/getting-started)
+**Full guide**: [episk-pos.github.io/DevFoundry/docs/prompts/getting-started](https://episk-pos.github.io/DevFoundry/docs/prompts/getting-started)
 
 ## Key Topics
 

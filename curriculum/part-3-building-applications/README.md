@@ -2,7 +2,7 @@
 
 Progressive development of the Lemonade Stand — from static HTML to deployed fullstack app.
 
-**Full curriculum**: [devfoundry.io/docs/curriculum/part-3-building-applications](https://devfoundry.io/docs/curriculum/part-3-building-applications)
+**Full curriculum**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-3-building-applications](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-3-building-applications)
 
 ---
 
@@ -45,4 +45,4 @@ Complete [Part I: Foundations](../part-1-foundations/) and [Part II: Team Practi
 
 ---
 
-*See the [full documentation](https://devfoundry.io/docs/curriculum) for complete stage walkthroughs.*
+*See the [full documentation](https://episk-pos.github.io/DevFoundry/docs/curriculum) for complete stage walkthroughs.*

@@ -47,9 +47,9 @@ This isn't just a coding tutorial. It's a **mental model builder** that teaches 
 
 ```
 devfoundry/
-├── docs/               # Core concepts, mental models, glossary
-│   └── mental-models/  # Protocol thinking, friction to opportunity, etc.
-├── curriculum/         # Structured learning modules (Parts I-IV)
+├── docs/               # GitHub summaries linking to docs site
+│   └── mental-models/  # Summary mental models
+├── curriculum/         # Module summaries (Parts I-IV)
 ├── examples/           # Progressive lemonade stand implementations
 ├── exercises/          # Hands-on practice activities
 ├── prompts/            # LLM prompt templates and strategies
@@ -59,7 +59,7 @@ devfoundry/
 │   ├── projects/       # Active work being built
 │   ├── showcases/      # Completed projects and stories
 │   └── resources/      # Curated tools and materials
-└── website/            # Docusaurus documentation site
+└── website/            # Docusaurus site (canonical docs)
 ```
 
 ---
@@ -96,6 +96,13 @@ This curriculum is under active development. We welcome:
 - Bug fixes and typo corrections
 
 Please open an issue or submit a pull request.
+
+### Docs Consistency Checklist
+
+- Update canonical content in `website/docs/`
+- Refresh summaries in `docs/` and `curriculum/`
+- Keep `website/sidebars.ts` and `website/docs/overview.md` aligned
+- Ensure links use `https://episk-pos.github.io/DevFoundry`
 
 ---
 

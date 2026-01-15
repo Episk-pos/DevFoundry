@@ -2,7 +2,7 @@
 
 The same CLI application, now with explicit types.
 
-**Full walkthrough**: [devfoundry.io/docs/examples/lemonade-cli-typescript](https://devfoundry.io/docs/examples/lemonade-cli-typescript)
+**Full walkthrough**: [episk-pos.github.io/DevFoundry/docs/examples/lemonade-cli-typescript](https://episk-pos.github.io/DevFoundry/docs/examples/lemonade-cli-typescript)
 
 ## Quick Start
 
@@ -31,4 +31,4 @@ src/
 
 ---
 
-*See the [full walkthrough](https://devfoundry.io/docs/examples/lemonade-cli-typescript) for detailed explanation and exercises.*
+*See the [full walkthrough](https://episk-pos.github.io/DevFoundry/docs/examples/lemonade-cli-typescript) for detailed explanation and exercises.*

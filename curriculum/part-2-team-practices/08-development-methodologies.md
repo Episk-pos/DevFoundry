@@ -2,7 +2,7 @@
 
 How teams organize work — from waterfall to agile to shipping fast.
 
-**Full module**: [devfoundry.io/docs/curriculum/part-2-team-practices/development-methodologies](https://devfoundry.io/docs/curriculum/part-2-team-practices/development-methodologies)
+**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-2-team-practices/development-methodologies](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-2-team-practices/development-methodologies)
 
 ## Key Concepts
 

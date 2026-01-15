@@ -2,7 +2,7 @@
 
 Deploying the Lemonade Stand to production — hosting, configuration, and CI/CD.
 
-**Full module**: [devfoundry.io/docs/curriculum/part-3-building-applications/deployed-app](https://devfoundry.io/docs/curriculum/part-3-building-applications/deployed-app)
+**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-3-building-applications/deployed-app](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-3-building-applications/deployed-app)
 
 ## Key Concepts
 

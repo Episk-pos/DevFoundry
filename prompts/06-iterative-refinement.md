@@ -2,7 +2,7 @@
 
 Improve existing code through systematic enhancement.
 
-**Full guide**: [devfoundry.io/docs/prompts/iterative-refinement](https://devfoundry.io/docs/prompts/iterative-refinement)
+**Full guide**: [episk-pos.github.io/DevFoundry/docs/prompts/iterative-refinement](https://episk-pos.github.io/DevFoundry/docs/prompts/iterative-refinement)
 
 ## Key Topics
 

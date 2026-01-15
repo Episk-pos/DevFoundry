@@ -2,7 +2,7 @@
 
 Understanding the JavaScript ecosystem toolchain.
 
-**Full module**: [devfoundry.io/docs/curriculum/part-1-foundations/build-tools](https://devfoundry.io/docs/curriculum/part-1-foundations/build-tools)
+**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/build-tools](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/build-tools)
 
 ## Key Concepts
 

@@ -2,7 +2,7 @@
 
 Understanding software through the Input → Processing → Output model.
 
-**Full module**: [devfoundry.io/docs/curriculum/part-1-foundations/what-software-is](https://devfoundry.io/docs/curriculum/part-1-foundations/what-software-is)
+**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/what-software-is](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/what-software-is)
 
 ## Key Concepts
 
