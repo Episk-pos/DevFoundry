@@ -105,7 +105,7 @@ You can skim modules 00-02, but **don't skip module 03** — web architecture is
 
 ### Project Manager/Non-Technical Stakeholder
 
-**Start here**: [What Software Is](curriculum/part-1-foundations/what-software-is)
+**Start here**: [Curriculum Overview](overview)
 
 **Your focus**:
 1. Part I: Understand what developers are building

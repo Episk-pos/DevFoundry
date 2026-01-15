@@ -517,4 +517,4 @@ Rewrite this vague prompt with view-specific language:
 
 - Review [Diagram Standards](diagram-standards) to learn how to draw these views
 - Explore [Examples](examples/hello-world-console) to see all three views in practice
-- Start [What Software Is](curriculum/part-1-foundations/what-software-is) to begin learning
+- Start with the [Curriculum Overview](overview) to begin learning

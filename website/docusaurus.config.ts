@@ -97,7 +97,7 @@ const config: Config = {
             },
             {
               label: 'Curriculum',
-              to: '/docs/curriculum/part-1-foundations/what-software-is',
+              to: '/docs/overview',
             },
             {
               label: 'Mental Models',
