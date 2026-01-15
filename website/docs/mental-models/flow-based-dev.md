@@ -367,4 +367,4 @@ Now you can code (or prompt AI) for each piece independently.
 
 - [Architectural Views](../architectural-views) — Visualizing flows
 - [Architecture-First Prompts](../prompts/architecture-first) — Flow-based prompting
-- [Curriculum Overview](../overview) — Start learning
+- [What Software Is](../curriculum/part-1-foundations/what-software-is) — Start learning
