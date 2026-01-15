@@ -12,8 +12,11 @@ description: From First Principles to LLM-Accelerated Software Creation
 
 :::info[Curriculum Status]
 **Part I: Foundations** — Modules 00-06 ✓
+
 **Part II: Team Practices** — Modules 07-10 ✓
+
 **Part III: Building Applications** — Modules 11-15 ✓
+
 **Part IV: Historical Context** — Modules 16-18 ✓
 :::
 
