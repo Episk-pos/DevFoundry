@@ -2,7 +2,7 @@
 
 Orientation for learners, educators, and collaborators discovering DevFoundry on GitHub.
 
-**Canonical page**: [How to Use This Repository](https://episk-pos.github.io/DevFoundry/docs/how-to-use-this-repo)
+**Canonical page**: [How to Use This Repository](https://dev.episkopos.community/docs/how-to-use-this-repo)
 
 ## At a Glance
 

@@ -2,7 +2,7 @@
 
 Essential software vocabulary referenced throughout DevFoundry.
 
-**Canonical page**: [Glossary](https://episk-pos.github.io/DevFoundry/docs/glossary)
+**Canonical page**: [Glossary](https://dev.episkopos.community/docs/glossary)
 
 ## Summary
 

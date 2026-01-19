@@ -2,7 +2,7 @@
 
 The same ordering system, now in the browser with a visual interface.
 
-**Full walkthrough**: [episk-pos.github.io/DevFoundry/docs/examples/lemonade-static-web](https://episk-pos.github.io/DevFoundry/docs/examples/lemonade-static-web)
+**Full walkthrough**: [dev.episkopos.community/docs/examples/lemonade-static-web](https://dev.episkopos.community/docs/examples/lemonade-static-web)
 
 ## Quick Start
 
@@ -29,4 +29,4 @@ npx serve .
 
 ---
 
-*See the [full walkthrough](https://episk-pos.github.io/DevFoundry/docs/examples/lemonade-static-web) for detailed explanation and exercises.*
+*See the [full walkthrough](https://dev.episkopos.community/docs/examples/lemonade-static-web) for detailed explanation and exercises.*

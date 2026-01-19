@@ -2,7 +2,7 @@
 
 Why frameworks exist, and why we're using React.
 
-**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/frontend-frameworks-react](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/frontend-frameworks-react)
+**Full module**: [dev.episkopos.community/docs/curriculum/part-1-foundations/frontend-frameworks-react](https://dev.episkopos.community/docs/curriculum/part-1-foundations/frontend-frameworks-react)
 
 ## Key Concepts
 

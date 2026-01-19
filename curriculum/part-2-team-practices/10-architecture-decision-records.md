@@ -2,7 +2,7 @@
 
 Documenting the "why" behind technical decisions — for your team, your future self, and AI assistants.
 
-**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-2-team-practices/architecture-decision-records](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-2-team-practices/architecture-decision-records)
+**Full module**: [dev.episkopos.community/docs/curriculum/part-2-team-practices/architecture-decision-records](https://dev.episkopos.community/docs/curriculum/part-2-team-practices/architecture-decision-records)
 
 ## Key Concepts
 

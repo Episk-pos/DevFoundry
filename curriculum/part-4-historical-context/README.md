@@ -2,7 +2,7 @@
 
 Understanding why modern web architecture exists — the problems, solutions, and evolution.
 
-**Full curriculum**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-4-historical-context](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-4-historical-context)
+**Full curriculum**: [dev.episkopos.community/docs/curriculum/part-4-historical-context](https://dev.episkopos.community/docs/curriculum/part-4-historical-context)
 
 ---
 
@@ -55,4 +55,4 @@ This part is **optional but enriching**. Complete Parts I-III first to get the m
 
 ---
 
-*See the [full documentation](https://episk-pos.github.io/DevFoundry/docs/curriculum) for complete module content.*
+*See the [full documentation](https://dev.episkopos.community/docs/curriculum) for complete module content.*

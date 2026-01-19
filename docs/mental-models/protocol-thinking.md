@@ -2,7 +2,7 @@
 
 Seeing systems as actors, boundaries, and interactions.
 
-**Canonical page**: [Protocol Thinking](https://episk-pos.github.io/DevFoundry/docs/mental-models/protocol-thinking)
+**Canonical page**: [Protocol Thinking](https://dev.episkopos.community/docs/mental-models/protocol-thinking)
 
 ## Summary
 

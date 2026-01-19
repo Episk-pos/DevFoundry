@@ -10,7 +10,7 @@
 
 <div align="center">
 
-### 📚 [View Full Documentation](https://episk-pos.github.io/DevFoundry) 📚
+### 📚 [View Full Documentation](https://dev.episkopos.community) 📚
 
 </div>
 
@@ -24,7 +24,7 @@ This isn't just a coding tutorial. It's a **mental model builder** that teaches 
 
 **Our goal**: Help you build a portfolio of small, sustainable software products that collectively provide financial independence.
 
-👉 **[Read the full thesis](https://episk-pos.github.io/DevFoundry/docs/thesis)** to understand the vision.
+👉 **[Read the full thesis](https://dev.episkopos.community/docs/thesis)** to understand the vision.
 
 ---
 
@@ -32,14 +32,14 @@ This isn't just a coding tutorial. It's a **mental model builder** that teaches 
 
 | I want to... | Go here |
 |--------------|---------|
-| Understand the core thesis | [The DevFoundry Thesis](https://episk-pos.github.io/DevFoundry/docs/thesis) |
-| Start learning from scratch | [Curriculum Overview](https://episk-pos.github.io/DevFoundry/docs/overview) |
-| See the full curriculum | [Curriculum Overview](https://episk-pos.github.io/DevFoundry/docs/overview) |
-| Learn the mental models | [Mental Models](https://episk-pos.github.io/DevFoundry/docs/mental-models/protocol-thinking) |
-| Look up software terms | [Glossary](https://episk-pos.github.io/DevFoundry/docs/glossary) |
-| Get LLM prompt templates | [Prompts](https://episk-pos.github.io/DevFoundry/docs/prompts) |
-| See architecture decisions | [ADRs](https://episk-pos.github.io/DevFoundry/docs/adr) |
-| Join the community | [Community](https://episk-pos.github.io/DevFoundry/docs/community) |
+| Understand the core thesis | [The DevFoundry Thesis](https://dev.episkopos.community/docs/thesis) |
+| Start learning from scratch | [Curriculum Overview](https://dev.episkopos.community/docs/overview) |
+| See the full curriculum | [Curriculum Overview](https://dev.episkopos.community/docs/overview) |
+| Learn the mental models | [Mental Models](https://dev.episkopos.community/docs/mental-models/protocol-thinking) |
+| Look up software terms | [Glossary](https://dev.episkopos.community/docs/glossary) |
+| Get LLM prompt templates | [Prompts](https://dev.episkopos.community/docs/prompts) |
+| See architecture decisions | [ADRs](https://dev.episkopos.community/docs/adr) |
+| Join the community | [Community](https://dev.episkopos.community/docs/community) |
 
 ---
 
@@ -102,7 +102,7 @@ Please open an issue or submit a pull request.
 - Update canonical content in `website/docs/`
 - Refresh summaries in `docs/` and `curriculum/`
 - Keep `website/sidebars.ts` and `website/docs/overview.md` aligned
-- Ensure links use `https://episk-pos.github.io/DevFoundry`
+- Ensure links use `https://dev.episkopos.community`
 
 ---
 
@@ -117,7 +117,7 @@ This curriculum uses:
 - **Diagrams**: Mermaid (renders on GitHub)
 - **Documentation**: Docusaurus
 
-All architectural choices are documented in [ADRs](https://episk-pos.github.io/DevFoundry/docs/adr) with rationale.
+All architectural choices are documented in [ADRs](https://dev.episkopos.community/docs/adr) with rationale.
 
 ---
 
@@ -132,7 +132,7 @@ You are free to use, adapt, and share this material with attribution.
 
 <div align="center">
 
-**[Get Started →](https://episk-pos.github.io/DevFoundry/docs/overview)**
+**[Get Started →](https://dev.episkopos.community/docs/overview)**
 
 *Built for people who want to build their way to freedom — together.*
 

@@ -2,7 +2,7 @@
 
 Core concepts for AI-assisted software development.
 
-**Full content**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations)
+**Full content**: [dev.episkopos.community/docs/curriculum/part-1-foundations](https://dev.episkopos.community/docs/curriculum/part-1-foundations)
 
 ## Modules
 

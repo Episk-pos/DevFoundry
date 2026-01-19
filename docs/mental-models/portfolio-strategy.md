@@ -2,7 +2,7 @@
 
 Building financial independence through a portfolio of small products.
 
-**Canonical page**: [Portfolio Strategy](https://episk-pos.github.io/DevFoundry/docs/mental-models/portfolio-strategy)
+**Canonical page**: [Portfolio Strategy](https://dev.episkopos.community/docs/mental-models/portfolio-strategy)
 
 ## Summary
 
