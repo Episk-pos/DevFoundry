@@ -265,40 +265,39 @@ Use the **[Build vs. Borrow Prompt](/docs/prompts/build-vs-borrow)** to structur
 
 **Build temptation**: "Validation is just if-statements. I'll write my own."
 
-**AI Reality Check**: Ask your AI tool: "I'm planning to write custom validation for an email/password form. What are the top 10 edge cases I'm likely to miss, and how do libraries like Zod or Yup handle them?"
+**AI Reality Check**: Ask your AI tool: "I need to implement form validation for a user signup. What are the standard patterns for this in my tech stack, and what are the 'iceberg' complexities (edge cases, accessibility, etc.) I should know about before I decide to build it myself?"
 
-**Better approach**: Use a form library (React Hook Form, Zod) that's solved these problems. Ask your AI to walk you through the library's source code to understand how it handles complex regex or async validation.
+**Better approach**: Use a battle-tested validation library. Ask your AI to recommend the most beginner-friendly option and explain how it handles complex rules like email formats or password strength.
 
 ### Example 2: State Management
 
-**Scenario**: Your React app needs global state.
+**Scenario**: Your app is getting complex and passing data between many components is becoming difficult.
 
-**Build temptation**: "I'll just use Context and useReducer. Redux is overkill."
+**Build temptation**: "I'll just create a global object and import it everywhere."
 
-**AI Reality Check**: Ask your AI tool: "Compare using React Context for global state vs. Zustand for a project with [Your Complexity]. Show me the performance implications and potential for 're-render hell' in both approaches."
+**AI Reality Check**: Ask your AI tool: "My app state is getting hard to manage. What are the built-in ways to handle this, and at what point do professional developers typically switch to an external library? Compare the complexity of staying built-in vs. adding a dependency."
 
-**Better approach**: Start with the simplest solution. When you hit pain points, use AI to prototype a migration to Zustand or Jotai, and ask it to explain the architectural tradeoffs.
+**Better approach**: Start with the simplest built-in tools. Use AI to identify the exact moment when the "cost of managing complexity" exceeds the "cost of learning a library."
 
 ### Example 3: Authentication
 
-**Scenario**: Your SaaS needs user authentication.
+**Scenario**: Your project needs user login and accounts.
 
-**Build temptation**: "Auth is important. I should understand it by building it."
+**Build temptation**: "Auth is critical. I should understand it deeply by implementing it from scratch."
 
-**AI Reality Check**: Ask your AI tool: "Act as a security auditor. What are the common vulnerabilities (OWASP Top 10) I need to protect against if I implement my own JWT-based auth? Compare this burden to using Supabase Auth or Clerk."
+**AI Reality Check**: Ask your AI tool: "Act as a security auditor. If I implement my own login/session system, what are the top 5 security mistakes I'm likely to make? Compare this to the security guarantees of industry-standard 'Auth-as-a-Service' providers."
 
-**Better approach**: Use Auth0, Clerk, or Supabase. Use your AI tool to explain the security whitepapers of these services. You'll learn more about production security by studying their implementation than by building a vulnerable one yourself.
+**Better approach**: Use an established service (like Supabase, Clerk, or Firebase). Ask your AI to explain the underlying security concepts (like JWTs or hashing) while you use their pre-built components. You'll learn more about *safe* software by using professional tools.
 
 ### Example 4: When Building IS Right
 
-**Scenario**: You're building a specialized data visualization product. Existing charting libraries don't support the unique interaction patterns your users need.
+**Scenario**: You're building a specialized product (e.g., a custom music sequencer or a unique data viz). Existing tools don't support your core idea.
 
 **Analysis**:
-- This IS your core differentiator.
-- Existing solutions genuinely don't solve the problem.
-- Your AI tool confirms that custom canvas/SVG logic is the only way to achieve the goal.
+- This IS your product's unique value.
+- Your AI confirms that existing "off-the-shelf" solutions can't be easily customized to fit your vision.
 
-**Decision**: Build it. But still use AI to study existing libraries first — ask: "Explain the internal rendering loop of D3.js or Recharts so I can use similar patterns in my custom implementation."
+**Decision**: Build it. But still use AI to study the "giants" — ask: "I'm building a custom [Feature]. What are the most successful open-source projects that do something similar? Help me analyze their architecture so I don't repeat their early mistakes."
 
 ---
 
@@ -306,33 +305,33 @@ Use the **[Build vs. Borrow Prompt](/docs/prompts/build-vs-borrow)** to structur
 
 ### Mistake 1: Not-Invented-Here Syndrome
 
-**Pattern**: Dismissing external solutions without evaluation.
+**Pattern**: Dismissing external solutions because "they don't do it the way I like."
 
-**Fix**: Use AI to perform a "Devil's Advocate" audit. Ask: "I'm biased toward building this myself. Give me 5 reasons why using [Library X] is actually a better long-term strategic decision."
+**Fix**: Use AI to perform a "Strategic Audit." Ask: "I'm considering building a custom [Feature]. Help me write a 1-page justification. Be honest: am I building this for a business advantage, or just because I want to code it?"
 
 ### Mistake 2: Premature Abstraction
 
-**Pattern**: Building "reusable" solutions before you have multiple use cases.
+**Pattern**: Building a "generic" system before you've even solved the problem once.
 
-**Fix**: Stick to existing solutions until you've felt real pain. Use AI to identify when your custom requirements have diverged enough from the "borrowed" solution to justify a custom build.
+**Fix**: Stick to specific, simple solutions first. Use AI to review your design and ask: "Is this solution too generic for my current needs? Show me a simpler version that solves only today's problem."
 
 ### Mistake 3: Sunk Cost Continuation
 
-**Pattern**: Continuing to maintain custom code because you already built it.
+**Pattern**: Continuing to maintain a buggy custom system because you've already spent weeks on it.
 
-**Fix**: Periodically ask your AI: "I'm currently maintaining [Custom Implementation]. Has the ecosystem produced a better/standard solution for this in the last year? Show me a migration path."
+**Fix**: Ask your AI for a "Migration Analysis." Ask: "I've spent 40 hours on this custom [System], and it still has bugs. How long would it take to replace it with a standard library? Compare the long-term maintenance cost of both paths."
 
 ### Mistake 4: Dependency Paranoia
 
-**Pattern**: Avoiding all dependencies out of fear of abandonment or security.
+**Pattern**: Avoiding all libraries out of fear they might break or disappear.
 
-**Fix**: Use AI to audit the dependency. Ask: "Analyze the GitHub health of [Library]. Look at the 'truck factor', issue resolution time, and recent security CVEs. Is this a safe bet for a 2-year project?"
+**Fix**: Use AI to audit library health. Ask: "I'm worried about depending on [Library]. Help me check its 'bus factor', community activity, and whether it follows industry-standard security practices."
 
 ### Mistake 5: Confusing Building with Understanding
 
-**Pattern**: Believing you must build something to understand it.
+**Pattern**: Believing you must build a tool to understand the concept behind it.
 
-**Fix**: Use AI as a code tutor. Instead of building a worse version of a Promise library, ask: "Open the source for `p-limit` and explain how it manages concurrency. Trace the execution flow for me."
+**Fix**: Use AI as a code navigator. Instead of building a worse version of a tool, ask: "Open the source code for a popular library that does [X] and explain the 3 most important design decisions the authors made. Walk me through the execution flow."
 
 ---
 
