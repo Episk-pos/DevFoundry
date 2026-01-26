@@ -1,12 +1,12 @@
 ---
 sidebar_position: 1
 title: "Stage 1: Static Website"
-description: "Building the Lemonade Stand with HTML, CSS, and vanilla JavaScript"
+description: "Building the Chat App with HTML, CSS, and vanilla JavaScript"
 ---
 
 # Stage 1: Static Website
 
-**Building the Lemonade Stand with HTML, CSS, and vanilla JavaScript**
+**Building the Chat App with HTML, CSS, and vanilla JavaScript**
 
 ---
 
@@ -27,9 +27,9 @@ By the end of this stage, you will:
 
 ## Introduction
 
-This is where the lemonade stand comes to life in a browser.
+This is where the chat app comes to life in a browser.
 
-In Part I, you learned what software is and how the web works conceptually. Now you'll build something real — a web page that displays a menu, lets users add items to an order, and calculates totals.
+In Part I, you learned what software is and how the web works conceptually. Now you'll build something real — a web page that displays messages, lets users compose new messages, and persists chat history.
 
 **No frameworks. No build tools. Just the fundamentals.**
 
@@ -43,29 +43,28 @@ Understanding vanilla HTML/CSS/JS is essential because:
 
 ## What We're Building
 
-A single-page lemonade stand that:
+A single-page chat interface that:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  🍋 Lemonade Stand                                          │
+│  💬 Chat App                                                │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  MENU                                                       │
+│  MESSAGES                                                   │
 │  ┌─────────────────────────────────────────────────────┐   │
-│  │ 🍋 Classic Lemonade              $2.50    [Add]     │   │
-│  │ 🍓 Strawberry Lemonade           $3.50    [Add]     │   │
-│  │ 🌿 Mint Lemonade                 $3.00    [Add]     │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                                                             │
-│  YOUR ORDER                                                 │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │ Classic Lemonade x2              $5.00              │   │
-│  │ Mint Lemonade x1                 $3.00              │   │
+│  │ Alice (10:30 AM)                                    │   │
+│  │ Hey, how's it going?                                │   │
 │  ├─────────────────────────────────────────────────────┤   │
-│  │ Total:                           $8.00              │   │
+│  │ You (10:31 AM)                                      │   │
+│  │ Pretty good! Working on the DevFoundry curriculum.  │   │
+│  ├─────────────────────────────────────────────────────┤   │
+│  │ Alice (10:32 AM)                                    │   │
+│  │ Nice! Let me know if you need any help.            │   │
 │  └─────────────────────────────────────────────────────┘   │
 │                                                             │
-│                    [Clear Order]                            │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │ Type a message...                          [Send]   │   │
+│  └─────────────────────────────────────────────────────┘   │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -79,7 +78,7 @@ Before coding, let's see the architecture.
 ### Module View (What files exist?)
 
 ```
-lemonade-static/
+chat-static/
 ├── index.html      # Structure
 ├── styles.css      # Presentation
 └── app.js          # Behavior

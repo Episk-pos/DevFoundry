@@ -94,8 +94,8 @@ What's causing this and how do I fix it?
 **Example**:
 ```
 **Context**:
-Lemonade stand CLI app (devfoundry examples/01-lemonade-cli).
-Node.js, JavaScript. The issue is in src/pricing.js.
+Chat CLI app (devfoundry examples/01-chat-cli).
+Node.js, JavaScript. The issue is in src/messages.js.
 ```
 
 ---
@@ -195,32 +195,29 @@ TypeError: Cannot read property 'price' of undefined
 
 ## Complete Example
 
-### Scenario: NaN Total Bug
+### Scenario: Invalid Date Bug
 
 ```
 **Context**:
-Lemonade stand CLI app (Node.js).
-The pricing logic is in src/pricing.js.
+Chat CLI app (Node.js).
+The message formatting is in src/messages.js.
 
 **Problem**:
-When calculating the total, the result is NaN instead of a number.
+When formatting timestamps, the result is "Invalid Date" instead of a formatted time.
 
 **Expected Behavior**:
-With orders = [{item: "Lemonade", price: 2.50, quantity: 3}],
-calculateTotal should return 7.50
+With message = {sender: "Alice", content: "Hello", timestamp: "2024-01-15T10:30:00Z"},
+formatTimestamp should return "10:30 AM"
 
 **Actual Behavior**:
-calculateTotal returns NaN
+formatTimestamp returns "Invalid Date"
 
 **Code**:
 ```javascript
-// src/pricing.js
-function calculateTotal(orders) {
-  let total = 0;
-  for (let i = 0; i <= orders.length; i++) {
-    total += orders[i].price * orders[i].quantity;
-  }
-  return total;
+// src/messages.js
+function formatTimestamp(message) {
+  const date = new Date(message.time); // wrong property name
+  return date.toLocaleTimeString();
 }
 ```
 

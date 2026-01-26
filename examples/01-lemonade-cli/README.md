@@ -1,5 +1,7 @@
 # Lemonade Stand CLI
 
+> **Note**: This example is being replaced by the Chat App case study. See [ADR 005](../../adr/005-chat-app-case-study.md) for details. The code remains functional for reference, but new curriculum materials will use chat app examples.
+
 A command-line ordering system — your first multi-file application.
 
 **Full walkthrough**: [dev.episkopos.community/docs/examples/lemonade-cli](https://dev.episkopos.community/docs/examples/lemonade-cli)

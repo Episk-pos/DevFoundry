@@ -50,7 +50,7 @@ devfoundry/
 ├── docs/               # GitHub summaries linking to docs site
 │   └── mental-models/  # Summary mental models
 ├── curriculum/         # Module summaries (Parts I-IV)
-├── examples/           # Progressive lemonade stand implementations
+├── examples/           # Progressive chat app implementations
 ├── exercises/          # Hands-on practice activities
 ├── prompts/            # LLM prompt templates and strategies
 ├── adr/                # Architecture Decision Records

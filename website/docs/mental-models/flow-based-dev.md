@@ -42,38 +42,40 @@ This approach aligns naturally with:
 > "Data flows from user input → validation → calculation → display.
 > Where does the calculation fit in this flow?"
 
-### Example: Lemonade Stand
+### Example: Chat App
 
 **Procedural thinking**:
 ```javascript
-let total = 0;
-for (let i = 0; i < items.length; i++) {
-  total += items[i].price * items[i].quantity;
+let formattedMessages = [];
+for (let i = 0; i < messages.length; i++) {
+  formattedMessages.push(formatMessage(messages[i]));
 }
-console.log(total);
+displayMessages(formattedMessages);
 ```
 
 **Flow-based thinking**:
 ```mermaid
 flowchart LR
-    Input[User Order] --> Validate[Validate Items]
-    Validate --> Calculate[Calculate Total]
-    Calculate --> Display[Show Total]
+    Input[New Message] --> Validate[Validate Content]
+    Validate --> Format[Format Message]
+    Format --> Store[Store in History]
+    Store --> Display[Update UI]
 ```
 
 Then implement:
 ```javascript
-function processOrder(order) {
-  const validated = validateItems(order);
-  const total = calculateTotal(validated);
-  return displayTotal(total);
+function handleNewMessage(content) {
+  const validated = validateMessage(content);
+  const formatted = formatMessage(validated);
+  storeMessage(formatted);
+  return updateDisplay(formatted);
 }
 ```
 
 **Why it's better**:
 - Each step is a clear, testable function
 - The flow is explicit and documentable
-- Easy to modify (add discount step before calculateTotal)
+- Easy to modify (add encryption step before storing)
 - Matches how you'd explain it to someone
 
 ---
@@ -86,19 +88,19 @@ Software is not a monolithic block of code. It's a **system of collaborating com
 > Think of components like people on a team. Each has a specific role.
 > They communicate by passing messages.
 
-**Example: Lemonade Stand SPA (Single-Page Application)**
+**Example: Chat App SPA (Single-Page Application)**
 
 ```mermaid
 graph TB
     App[App Component]
-    OrderForm[OrderForm Component]
-    Summary[OrderSummary Component]
+    MessageInput[MessageInput Component]
+    MessageList[MessageList Component]
     State[(App State)]
 
-    App --> OrderForm
-    App --> Summary
-    OrderForm -->|updates| State
-    State -->|renders| Summary
+    App --> MessageInput
+    App --> MessageList
+    MessageInput -->|sends message| State
+    State -->|renders| MessageList
 ```
 
 :::tip[Key insight]
@@ -222,7 +224,7 @@ function processOrder(items) {
 ### Problem: Vague Prompts Lead to Generic Code
 
 :::danger[Vague prompt]
-"Build a lemonade stand app"
+"Build a chat app"
 :::
 
 Result: AI generates something, but it doesn't match your mental model, architecture, or constraints.
@@ -230,21 +232,21 @@ Result: AI generates something, but it doesn't match your mental model, architec
 ### Solution: Flow-Based Prompting
 
 :::tip[Architecture-first prompt]
-I'm building a lemonade stand app. Here's the flow:
+I'm building a chat app. Here's the flow:
 
-1. User inputs: item (select dropdown), quantity (number input)
-2. Click "Add to Order" → validates input → adds to order list (array in state)
-3. Order list displays below with item, quantity, line total
-4. Calculate and display order total
-5. "Submit Order" button finalizes order
+1. User types message in text input, clicks "Send"
+2. Message is validated → formatted with timestamp and sender → added to messages array
+3. Message list re-renders showing new message at bottom
+4. Message is persisted to localStorage
+5. On page load, messages are restored from localStorage
 
 Module view:
 - App.jsx (main component, holds state)
-- OrderForm.jsx (input form)
-- OrderList.jsx (displays current order)
-- utils/pricing.js (calculation logic)
+- MessageInput.jsx (compose form)
+- MessageList.jsx (displays messages)
+- utils/messages.js (formatting and storage logic)
 
-Please implement OrderForm.jsx...
+Please implement MessageInput.jsx...
 :::
 
 **Result**: AI generates code that fits your architecture, uses your structure, and matches your flow.

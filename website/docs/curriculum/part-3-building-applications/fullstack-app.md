@@ -1,12 +1,12 @@
 ---
 sidebar_position: 4
 title: "Stage 4: Fullstack App"
-description: "Adding an Express backend with database persistence to the Lemonade Stand"
+description: "Adding an Express backend with database persistence to the Chat App"
 ---
 
 # Stage 4: Fullstack App
 
-**Adding an Express backend with database persistence to the Lemonade Stand**
+**Adding an Express backend with database persistence to the Chat App**
 
 ---
 

@@ -1,5 +1,7 @@
 # Lemonade Stand (Static Web)
 
+> **Note**: This example is being replaced by the Chat App case study. See [ADR 005](../../adr/005-chat-app-case-study.md) for details. The code remains functional for reference, but new curriculum materials will use chat app examples.
+
 The same ordering system, now in the browser with a visual interface.
 
 **Full walkthrough**: [dev.episkopos.community/docs/examples/lemonade-static-web](https://dev.episkopos.community/docs/examples/lemonade-static-web)

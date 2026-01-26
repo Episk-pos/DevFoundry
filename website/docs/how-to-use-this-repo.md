@@ -58,7 +58,7 @@ You can skim modules 00-02, but **don't skip module 03** — web architecture is
 **Your journey**:
 1. Read the mental models docs
 2. Study [Architecture-First Prompts](prompts/architecture-first)
-3. Explore the lemonade stand progression in [Examples](examples/hello-world-console)
+3. Explore the chat app progression in [Examples](examples/hello-world-console)
 4. Focus on the [ADRs](adr)
 5. Try building something with architecture-first prompting
 
@@ -155,9 +155,9 @@ devfoundry/
 │
 ├── examples/                      # Working code with explanations
 │   ├── 00-hello-world-console/    # Simplest possible program
-│   ├── 01-lemonade-cli/           # Stage 1: Terminal app
-│   ├── 02-lemonade-static-web/    # Stage 2: HTML/CSS/JS
-│   └── 03-lemonade-cli-typescript/ # Stage 1 with types
+│   ├── 01-chat-cli/               # Stage 1: Terminal app
+│   ├── 02-chat-static-web/        # Stage 2: HTML/CSS/JS
+│   └── 03-chat-cli-typescript/    # Stage 1 with types
 │
 ├── exercises/                     # Hands-on practice
 │   ├── dom-basics.md
@@ -177,15 +177,15 @@ devfoundry/
 
 ---
 
-## Understanding the Lemonade Stand Progression
+## Understanding the Chat App Progression
 
-The **lemonade stand** is the vehicle for learning throughout this curriculum. Here's what each stage teaches:
+The **chat app** is the vehicle for learning throughout this curriculum. Here's what each stage teaches:
 
 ### Stage 0: Hello World
 **Concepts**: What is a program? Input, output, execution
 
 ### Stage 1: CLI
-**Concepts**: User input, calculations, basic logic
+**Concepts**: User input, message formatting, local storage, basic logic
 
 ### Stage 2: Static Web
 **Concepts**: HTML structure, CSS styling, DOM manipulation, event handlers
@@ -197,7 +197,10 @@ The **lemonade stand** is the vehicle for learning throughout this curriculum. H
 **Concepts**: REST APIs, client/server separation, database persistence, authentication
 
 ### Stage 5: Deployed
-**Concepts**: Hosting, environment variables, CI/CD, production concerns
+**Concepts**: Hosting, environment variables, CI/CD, WebSockets, real-time messaging
+
+### Stage 6: Federated (Advanced)
+**Concepts**: Protocol design, interoperability, distributed systems, interface segregation
 
 ---
 

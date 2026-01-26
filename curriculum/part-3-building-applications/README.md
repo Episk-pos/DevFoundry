@@ -1,6 +1,6 @@
 # Part III: Building Complete Applications
 
-Progressive development of the Lemonade Stand — from static HTML to deployed fullstack app.
+Progressive development of the Chat App — from static HTML to deployed fullstack app with federation.
 
 **Full curriculum**: [dev.episkopos.community/docs/curriculum/part-3-building-applications](https://dev.episkopos.community/docs/curriculum/part-3-building-applications)
 

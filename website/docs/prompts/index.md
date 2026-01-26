@@ -51,9 +51,9 @@ Each template includes:
 ### Step 3: Fill in the Placeholders
 
 Templates use `[PLACEHOLDERS]` for you to replace:
-- `[YOUR SYSTEM]` → "lemonade stand SPA" (single-page application)
+- `[YOUR SYSTEM]` → "chat app SPA" (single-page application)
 - `[TECH STACK]` → "React + Vite"
-- `[FILE PATH]` → "src/components/OrderForm.jsx"
+- `[FILE PATH]` → "src/components/MessageInput.jsx"
 
 ### Step 4: Iterate
 
@@ -72,14 +72,14 @@ First prompt rarely perfect. Use the AI's response to refine your next prompt.
 
 ✅ **Good**:
 ```
-"I'm building a lemonade stand SPA with React.
+"I'm building a chat app SPA with React.
 
 Current architecture:
-- App.jsx holds state: {orders: [], total: 0}
-- OrderForm.jsx for user input
-- OrderList.jsx displays orders
+- App.jsx holds state: {messages: [], currentUser: 'You'}
+- MessageInput.jsx for composing messages
+- MessageList.jsx displays messages
 
-I need to add a shopping cart feature that..."
+I need to add a message reactions feature that..."
 ```
 
 ### 2. Specify the View
@@ -120,29 +120,29 @@ See [Architecture First](/docs/mental-models/architecture-first) for the full ph
 
 ### Example 1: Building a Feature
 
-**Scenario**: Add discount logic to lemonade stand
+**Scenario**: Add message reactions to chat app
 
 **Template**: [Architecture First](prompts/architecture-first)
 
 **Filled-in prompt**:
 ```
 **Context**:
-I'm building a lemonade stand app (React SPA, see devfoundry examples/03-lemonade-spa).
+I'm building a chat app (React SPA, see devfoundry examples/03-chat-spa).
 
 **Current architecture** (Component-Connector View):
-OrderForm → App state → calculateTotal → display
+MessageInput → App state → MessageList → display
 
 **Files**:
 - src/App.jsx (holds state)
-- src/utils/pricing.js (contains calculateTotal)
+- src/utils/messages.js (contains formatMessage)
 
 **Task**:
-Add 10% discount when order total > $50
+Add emoji reactions to messages (thumbs up, heart, laugh)
 
 **Requirements**:
-- Pure function in pricing.js: calculateDiscount(subtotal)
-- Called from App.jsx after calculateTotal
-- Display discount and final total separately
+- Pure function in messages.js: addReaction(messageId, reactionType)
+- Called from MessageList when user clicks reaction button
+- Display reaction counts below each message
 
 Please implement.
 ```
@@ -151,27 +151,27 @@ Please implement.
 
 ### Example 2: Debugging
 
-**Scenario**: Total price shows NaN
+**Scenario**: Timestamp shows "Invalid Date"
 
 **Filled-in prompt**:
 ```
 **Context**:
-Lemonade stand app, React SPA. Pricing logic in src/utils/pricing.js.
+Chat app, React SPA. Message formatting in src/utils/messages.js.
 
 **Problem**:
-Total shows "NaN" instead of calculated price.
+Timestamps show "Invalid Date" instead of formatted time.
 
 **Code**:
-[paste calculateTotal function]
+[paste formatTimestamp function]
 
 **Expected behavior**:
-Should sum (price * quantity) for all order items.
+Should display time like "10:30 AM".
 
 **Actual behavior**:
-Returns NaN
+Returns "Invalid Date"
 
 **Sample input**:
-orders = [{item: "Lemonade", price: 2.50, quantity: 3}, ...]
+message = {sender: "Alice", content: "Hello!", timestamp: "2024-01-15T10:30:00Z"}
 
 What's wrong and how do I fix it?
 ```
@@ -241,7 +241,7 @@ Use templates to:
 ### Part III: Building with LLMs
 
 Use templates to:
-- Build the lemonade stand progressively (Architecture First)
+- Build the chat app progressively (Architecture First)
 - Debug issues (Debugging)
 - Refine implementations (Iterative Refinement)
 

@@ -1,12 +1,12 @@
 ---
 sidebar_position: 5
 title: "Stage 5: Deployed App"
-description: "Deploying the Lemonade Stand to production — hosting, configuration, and CI/CD"
+description: "Deploying the Chat App to production — hosting, configuration, CI/CD, and real-time messaging"
 ---
 
 # Stage 5: Deployed App
 
-**Deploying the Lemonade Stand to production — hosting, configuration, and CI/CD**
+**Deploying the Chat App to production — hosting, configuration, CI/CD, and real-time messaging**
 
 ---
 

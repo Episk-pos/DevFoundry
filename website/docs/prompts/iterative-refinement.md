@@ -135,12 +135,12 @@ Make it easier to:
 
 ## Complete Example
 
-### Scenario: Refactor Pricing Logic
+### Scenario: Refactor Message Formatting Logic
 
 ```
 **Context**:
-Lemonade stand CLI app, src/pricing.js
-This calculates order totals and discounts.
+Chat CLI app, src/messages.js
+This formats and validates messages.
 
 **Current Code**:
 ```javascript

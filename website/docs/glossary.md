@@ -15,7 +15,7 @@ description: Essential software vocabulary for effective communication
 - **Alphabetically organized** for easy lookup
 - **Cross-referenced** — related terms link to each other
 - **Beginner-focused** — assumes no prior knowledge
-- **Practical examples** — uses lemonade stand when possible
+- **Practical examples** — uses chat app when possible
 - **Living document** — will expand as curriculum progresses
 
 :::tip
@@ -55,7 +55,7 @@ Data passed to a function. Like ingredients you give to a recipe.
 ### Array
 A list of items in order. Like a shopping list.
 
-*Example*: `['lemonade', 'iced tea', 'water']`
+*Example*: `['hello', 'how are you', 'goodbye']`
 
 ---
 
@@ -105,7 +105,7 @@ Automated processes for testing and deploying code. Every commit triggers tests;
 ### CLI (Command Line Interface)
 A text-based interface for interacting with software. You type commands instead of clicking buttons.
 
-*Example*: Running `node lemonade.js` in a terminal.
+*Example*: Running `node chat.js` in a terminal.
 
 ### Client
 The part of a system that requests services. Often refers to the browser or frontend.
@@ -191,7 +191,7 @@ A structured foundation for building applications. Provides conventions and tool
 ### Frontend
 The part of a system users interact with directly. In web apps, runs in the browser.
 
-*Example*: A React app displaying the lemonade stand UI.
+*Example*: A React app displaying the chat stand UI.
 
 ### Function
 A named block of code that performs a task. Like a recipe that can be reused.
@@ -531,4 +531,4 @@ This glossary will expand as the curriculum grows. If you encounter a term that'
 
 1. Open a GitHub issue
 2. Suggest the term and a beginner-friendly definition
-3. Include an example (ideally using the lemonade stand)
+3. Include an example (ideally using the chat stand)

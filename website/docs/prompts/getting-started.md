@@ -140,12 +140,12 @@ Would you like me to explain any of these files?
 
 ```
 I'm learning programming with the devfoundry curriculum.
-I'm looking at the lemonade-cli example.
+I'm looking at the chat-cli example.
 
-Can you read src/order.ts and explain:
-1. What does calculateTotal do?
-2. Why does it use reduce?
-3. What would happen if items was empty?
+Can you read src/messages.ts and explain:
+1. What does formatMessage do?
+2. Why does it use template literals?
+3. What would happen if the message content was empty?
 
 Please explain in beginner-friendly terms.
 ```
@@ -158,12 +158,12 @@ If you're using a chat-based tool, you'll need to provide context:
 
 ```
 I'm learning programming with the devfoundry curriculum.
-Here's code from the lemonade-cli example (src/order.ts):
+Here's code from the chat-cli example (src/messages.ts):
 
 [paste the code]
 
 Questions:
-1. What does calculateTotal do?
+1. What does formatMessage do?
 ...
 ```
 
@@ -174,17 +174,17 @@ Questions:
 ### With a TUI Tool
 
 ```
-I want to modify the lemonade-cli to add a new menu item:
-- "Frozen Lemonade" for $3.25
+I want to modify the chat-cli to add a new feature:
+- System messages (like "User joined" or "User left")
 
 Please:
-1. Show me where menu items are defined
-2. Add the new item
+1. Show me where message types are defined
+2. Add support for system messages
 3. Run the app to verify it works
 ```
 
 The tool will:
-- Find the menu data
+- Find the message type definitions
 - Show you the change before making it
 - Apply the edit (with your approval)
 - Run `npm start` to verify
@@ -192,10 +192,10 @@ The tool will:
 ### With a Chat Tool (Fallback)
 
 ```
-Here's my menu.ts file:
+Here's my messages.ts file:
 [paste code]
 
-I want to add "Frozen Lemonade" for $3.25.
+I want to add support for system messages.
 Show me the updated code.
 ```
 
@@ -317,8 +317,8 @@ I understand that components are reusable UI pieces.
 
 I don't understand how props work.
 
-Can you show me in the lemonade-react example how data flows
-from App.tsx to the MenuItem component?
+Can you show me in the chat-react example how data flows
+from App.tsx to the MessageItem component?
 ```
 
 ---
@@ -334,7 +334,7 @@ Can you read [FILE] and explain:
 
 **Example**:
 ```
-Can you read src/order.ts from the lemonade-cli-typescript example
+Can you read src/messages.ts from the chat-cli-typescript example
 and explain:
 1. What is this file's responsibility?
 2. What are the main functions?
@@ -400,17 +400,17 @@ Show me a simple example in a new file."
 ### Week 4: Understanding Basics
 
 ```
-"In the lemonade-cli example, can you read src/order.ts?
-I don't understand what reduce does.
-Walk me through it step-by-step with the actual data from menu.ts."
+"In the chat-cli example, can you read src/messages.ts?
+I don't understand what template literals do.
+Walk me through the formatMessage function step-by-step."
 ```
 
 ### Week 8: Building Features
 
 ```
-"I want to add input validation to the lemonade-cli:
-- Quantity must be a positive number
-- Item ID must exist in the menu
+"I want to add input validation to the chat-cli:
+- Message content must not be empty
+- Sender name must be provided
 
 Where should this validation happen?
 Can you implement it and show me how to test it?"
@@ -419,7 +419,7 @@ Can you implement it and show me how to test it?"
 ### Week 12: Architecture-First
 
 ```
-"I'm planning to add user accounts to the lemonade fullstack example.
+"I'm planning to add user accounts to the chat fullstack example.
 
 Before we write code, can you:
 1. Read the current project structure

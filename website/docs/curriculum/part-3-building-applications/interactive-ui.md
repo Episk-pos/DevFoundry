@@ -1,12 +1,12 @@
 ---
 sidebar_position: 2
 title: "Stage 2: Interactive UI"
-description: "Enhancing the Lemonade Stand with state management, forms, and user feedback"
+description: "Enhancing the Chat App with state management, forms, and user feedback"
 ---
 
 # Stage 2: Interactive UI
 
-**Enhancing the Lemonade Stand with state management, forms, and user feedback**
+**Enhancing the Chat App with state management, forms, and user feedback**
 
 ---
 

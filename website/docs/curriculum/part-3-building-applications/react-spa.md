@@ -1,12 +1,12 @@
 ---
 sidebar_position: 3
 title: "Stage 3: React SPA"
-description: "Converting the Lemonade Stand to a modern React single-page application"
+description: "Converting the Chat App to a modern React single-page application"
 ---
 
 # Stage 3: React SPA
 
-**Converting the Lemonade Stand to a modern React single-page application**
+**Converting the Chat App to a modern React single-page application**
 
 ---
 

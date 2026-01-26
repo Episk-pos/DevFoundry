@@ -45,16 +45,16 @@ This template is for:
 
 ✅ **Architecture-first prompt**:
 ```
-**System**: Lemonade stand SPA, React with hooks, no state library
+**System**: Chat app SPA, React with hooks, no state library
 
 **Architecture**:
-- App.jsx holds state: {orders: [], total: 0}
-- Components: OrderForm.jsx, OrderList.jsx
+- App.jsx holds state: {messages: [], currentUser: 'You'}
+- Components: MessageInput.jsx, MessageList.jsx
 
-**Requirement**: Add shopping cart functionality
-- Display all orders
-- Allow removing items
-- Show running total
+**Requirement**: Add message reactions
+- Display reaction buttons on each message
+- Allow adding/removing reactions
+- Show reaction counts
 
 **Constraints**:
 - Use existing state structure
@@ -105,9 +105,9 @@ Please implement [SPECIFIC THING].
 **Example**:
 ```
 **Context**:
-I'm building the lemonade stand fullstack app from devfoundry
-(examples/04-lemonade-fullstack). It's a learning project demonstrating
-client/server architecture.
+I'm building the chat app fullstack from devfoundry
+(examples/04-chat-fullstack). It's a learning project demonstrating
+client/server architecture with real-time messaging.
 ```
 
 ---
@@ -262,11 +262,11 @@ Behavior:
 
 ## Complete Example
 
-### Scenario: Add Discount Feature
+### Scenario: Add Message Search Feature
 
 ```
 **Context**:
-I'm building the lemonade stand SPA (devfoundry examples/03-lemonade-spa).
+I'm building the chat app SPA (devfoundry examples/03-chat-spa).
 This is a learning project teaching React state management.
 
 **Tech Stack**:
@@ -278,56 +278,57 @@ This is a learning project teaching React state management.
 **Architecture** (Module View):
 src/
   components/
-    OrderForm.tsx    (user input)
-    OrderList.tsx    (displays orders)
-    Summary.tsx      (displays totals)
+    MessageInput.tsx   (compose messages)
+    MessageList.tsx    (displays messages)
+    SearchBar.tsx      (new - search input)
   utils/
-    pricing.ts       (has calculateTotal function)
-  App.tsx            (holds state)
+    messages.ts        (has formatMessage function)
+  App.tsx              (holds state)
 
 **Architecture** (Component-Connector View):
-OrderForm → App.updateOrders() → calculateTotal → Summary.display()
+MessageInput → App.sendMessage() → MessageList.display()
+SearchBar → App.filterMessages() → MessageList.display()
 
 **Current State**:
 
 App.tsx:
 ```tsx
-const [orders, setOrders] = useState<Order[]>([]);
-const [subtotal, setSubtotal] = useState<number>(0);
+const [messages, setMessages] = useState<Message[]>([]);
+const [currentUser, setCurrentUser] = useState<string>('You');
 ```
 
-utils/pricing.ts:
+utils/messages.ts:
 ```tsx
-export function calculateTotal(orders: Order[]): number {
-  return orders.reduce((sum, order) => sum + (order.price * order.quantity), 0);
+export function formatMessage(message: Message): string {
+  return `${message.sender}: ${message.content}`;
 }
 ```
 
 **Requirement**:
-Add a discount system:
-- If subtotal > $50, apply 10% discount
-- Display subtotal, discount amount, and final total in Summary.tsx
+Add a message search feature:
+- Search bar at top of message list
+- Filter messages by content as user types
+- Highlight matching text in results
 
 **Constraints**:
-- Create new function: calculateDiscount(subtotal: number): number in pricing.ts
-- Modify App.tsx to store discount and finalTotal in state
-- Update Summary.tsx to display all three values
-- Must use existing calculateTotal function (don't modify it)
+- Create new function: searchMessages(messages: Message[], query: string): Message[] in messages.ts
+- Modify App.tsx to store searchQuery and filteredMessages in state
+- Create SearchBar.tsx component
+- Update MessageList.tsx to highlight matches
+- Must not modify existing formatMessage function
 - Follow TypeScript best practices (explicit types)
 
 **Expected Behavior**:
-1. User adds orders until subtotal > $50
-2. App calculates: discount = subtotal * 0.10
-3. App calculates: finalTotal = subtotal - discount
-4. Summary displays:
-   - Subtotal: $52.00
-   - Discount: $5.20
-   - Final Total: $46.80
+1. User types "hello" in search bar
+2. App filters messages containing "hello" (case-insensitive)
+3. MessageList shows only matching messages
+4. Matching text is highlighted in results
 
 Please implement:
-1. calculateDiscount function in utils/pricing.ts
+1. searchMessages function in utils/messages.ts
 2. Updated state management in App.tsx
-3. Updated Summary component to display all values
+3. SearchBar component
+4. Updated MessageList to highlight matches
 ```
 
 ---
@@ -415,11 +416,11 @@ Please implement the discount feature.
 ### Round 2: Refinement
 
 ```
-Thanks! The discount logic works. Now I want to:
-- Only apply discount to orders of "Lemonade" (not other items)
-- Add a message: "You saved $X!"
+Thanks! The search logic works. Now I want to:
+- Search by sender name in addition to content
+- Show "No results found" when search is empty
 
-Update the calculateDiscount function and Summary component.
+Update the searchMessages function and MessageList component.
 ```
 
 ### Round 3: Edge Cases
@@ -495,7 +496,7 @@ Please handle these edge cases in App.tsx.
 Use this template for:
 - Exercises in devfoundry curriculum
 - Your own projects
-- Features in the lemonade stand examples
+- Features in the chat app examples
 
 ### Related Templates
 

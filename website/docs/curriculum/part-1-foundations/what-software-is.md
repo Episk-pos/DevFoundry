@@ -17,7 +17,7 @@ By the end of this module, you will:
 - Understand software as structured instructions
 - Recognize the Input → Processing → Output pattern
 - See programs as systems, not magic
-- Build your first CLI program (lemonade stand)
+- Build your first CLI program (chat app)
 - Gain vocabulary for describing software
 
 **Time**: 2-3 hours (reading + examples + exercises)
@@ -33,7 +33,7 @@ This module demystifies software by starting with first principles:
 - How does it work?
 - How do we think about it?
 
-By the end, you'll build a simple **lemonade stand** program in the terminal — your first step toward building fullstack applications.
+By the end, you'll build a simple **chat** program in the terminal — your first step toward building fullstack applications.
 
 ---
 
@@ -104,11 +104,11 @@ INPUT → PROCESSING → OUTPUT
 - **Processing**: Add them together
 - **Output**: Result (8)
 
-### Example 2: Lemonade Stand
+### Example 2: Chat App
 
-- **Input**: Customer order ("2 lemonades")
-- **Processing**: Calculate total (2 × $2.50 = $5.00)
-- **Output**: Display total ("Your total is $5.00")
+- **Input**: User message ("Hello, world!")
+- **Processing**: Format with timestamp and sender
+- **Output**: Display formatted message ("[10:30 AM] You: Hello, world!")
 
 ### Diagram
 
@@ -187,14 +187,14 @@ If programs are predictable, why do they crash or produce errors?
 
 ## Hands-On: Your First Program
 
-Let's build a **lemonade stand** program. It will:
-- Ask how many lemonades the customer wants
-- Calculate the total price
+Let's build a **chat** program. It will:
+- Accept a message from the user
+- Format it with a timestamp
 - Display the result
 
 ### Step 1: Hello World
 
-Before building the lemonade stand, start with the simplest program:
+Before building the chat app, start with the simplest program:
 
 **Go to**: [Hello World Console Example](../../examples/hello-world-console)
 
@@ -205,16 +205,16 @@ Complete this first. It takes 15 minutes and teaches you:
 
 ---
 
-### Step 2: Lemonade Stand CLI
+### Step 2: Chat CLI
 
 Once you've completed Hello World, you're ready for the next stage:
 
-**Go to**: Lemonade CLI Example (coming soon)
+**Go to**: Chat CLI Example (coming soon)
 
 This program demonstrates:
 - Taking user input
-- Processing that input (calculation)
-- Producing output (displaying the total)
+- Processing that input (formatting)
+- Producing output (displaying the message)
 
 ---
 
@@ -416,7 +416,7 @@ I don't understand:
 - What exactly is "processing"?
 - Can a program have multiple inputs?
 
-Can you explain with examples from the lemonade stand?
+Can you explain with examples from the chat app?
 ```
 
 ---
