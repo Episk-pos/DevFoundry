@@ -218,7 +218,11 @@ When you encounter a new problem, follow this sequence using your AI development
 Instead of manually searching npm or GitHub immediately, ask your AI assistant (Claude, Gemini, ChatGPT, etc.) to survey the landscape.
 
 **Prompt:**
-> "I need to add drag-and-drop functionality to my React app. act as a Senior Architect: What are the current industry-standard libraries for this? Compare the top 3 options based on bundle size, maintenance, and API ergonomics."
+> "I need to add drag-and-drop functionality to my React app. Act as a Senior Architect: What are the current industry-standard libraries for this? Select the top 3 candidates based on **community adoption**, **recent maintenance**, and **relevance to modern React patterns**. Compare them based on bundle size, maintenance, and API ergonomics."
+
+:::info[Use the template]
+While the prompt above works for a quick search, use the full **[Build vs. Borrow Prompt](/docs/prompts/build-vs-borrow)** for a structured architectural analysis before making a final decision.
+:::
 
 **Why this works**: AI models have read thousands of blog posts, documentation sites, and comparisons. They can synthesize this information instantly.
 
@@ -261,14 +265,9 @@ Use the **[Build vs. Borrow Prompt](/docs/prompts/build-vs-borrow)** to structur
 
 **Build temptation**: "Validation is just if-statements. I'll write my own."
 
-**Reality check**:
-- Email regex that actually works is notoriously complex
-- Async validation (username availability) needs debouncing
-- Error message display, field-level vs form-level
-- Accessibility (ARIA attributes, focus management)
-- Schema definition and reuse
+**AI Reality Check**: Ask your AI tool: "I'm planning to write custom validation for an email/password form. What are the top 10 edge cases I'm likely to miss, and how do libraries like Zod or Yup handle them?"
 
-**Better approach**: Use a form library (React Hook Form, Formik, Zod) that's solved these problems. Read the source code if you want to understand validation deeply.
+**Better approach**: Use a form library (React Hook Form, Zod) that's solved these problems. Ask your AI to walk you through the library's source code to understand how it handles complex regex or async validation.
 
 ### Example 2: State Management
 
@@ -276,13 +275,9 @@ Use the **[Build vs. Borrow Prompt](/docs/prompts/build-vs-borrow)** to structur
 
 **Build temptation**: "I'll just use Context and useReducer. Redux is overkill."
 
-**Reality check**:
-- Context re-renders all consumers on any change
-- You'll reinvent selectors, middleware, devtools
-- Performance optimization becomes your problem
-- "Simple" custom solutions grow complex
+**AI Reality Check**: Ask your AI tool: "Compare using React Context for global state vs. Zustand for a project with [Your Complexity]. Show me the performance implications and potential for 're-render hell' in both approaches."
 
-**Better approach**: Start with the simplest solution (maybe just React state). When you hit real pain points, reach for Zustand, Jotai, or Redux Toolkit — understanding *why* you need it.
+**Better approach**: Start with the simplest solution. When you hit pain points, use AI to prototype a migration to Zustand or Jotai, and ask it to explain the architectural tradeoffs.
 
 ### Example 3: Authentication
 
@@ -290,27 +285,20 @@ Use the **[Build vs. Borrow Prompt](/docs/prompts/build-vs-borrow)** to structur
 
 **Build temptation**: "Auth is important. I should understand it by building it."
 
-**Reality check**:
-- Password hashing algorithms and security
-- Session management and token refresh
-- OAuth integration with multiple providers
-- Email verification, password reset flows
-- Rate limiting, brute force protection
-- Compliance considerations (GDPR, etc.)
+**AI Reality Check**: Ask your AI tool: "Act as a security auditor. What are the common vulnerabilities (OWASP Top 10) I need to protect against if I implement my own JWT-based auth? Compare this burden to using Supabase Auth or Clerk."
 
-**Better approach**: Use Auth0, Clerk, Supabase Auth, or similar. Study their documentation to understand auth concepts. Read their security whitepapers. You'll learn *more* than building an insecure version yourself.
+**Better approach**: Use Auth0, Clerk, or Supabase. Use your AI tool to explain the security whitepapers of these services. You'll learn more about production security by studying their implementation than by building a vulnerable one yourself.
 
 ### Example 4: When Building IS Right
 
 **Scenario**: You're building a specialized data visualization product. Existing charting libraries don't support the unique interaction patterns your users need.
 
 **Analysis**:
-- This IS your core differentiator
-- Existing solutions genuinely don't solve the problem
-- You have domain expertise users are paying for
-- The "edge case" is your entire product
+- This IS your core differentiator.
+- Existing solutions genuinely don't solve the problem.
+- Your AI tool confirms that custom canvas/SVG logic is the only way to achieve the goal.
 
-**Decision**: Build it. But still *study* existing libraries first — learn from their architecture, patterns, and mistakes.
+**Decision**: Build it. But still use AI to study existing libraries first — ask: "Explain the internal rendering loop of D3.js or Recharts so I can use similar patterns in my custom implementation."
 
 ---
 
@@ -320,51 +308,31 @@ Use the **[Build vs. Borrow Prompt](/docs/prompts/build-vs-borrow)** to structur
 
 **Pattern**: Dismissing external solutions without evaluation.
 
-> "That library is bloated/slow/badly designed. I'll write something better."
-
-**Reality**: You probably won't. And if you could, it would take far longer than you think.
-
-**Fix**: Force yourself to articulate *specific* inadequacies before building. "I don't like it" isn't a reason.
+**Fix**: Use AI to perform a "Devil's Advocate" audit. Ask: "I'm biased toward building this myself. Give me 5 reasons why using [Library X] is actually a better long-term strategic decision."
 
 ### Mistake 2: Premature Abstraction
 
 **Pattern**: Building "reusable" solutions before you have multiple use cases.
 
-> "I'll build a flexible form system we can use everywhere."
-
-**Reality**: You'll build the wrong abstraction. You don't yet know what "everywhere" needs.
-
-**Fix**: Use existing solutions. When you've felt real pain across multiple features, *then* consider whether custom tooling is warranted.
+**Fix**: Stick to existing solutions until you've felt real pain. Use AI to identify when your custom requirements have diverged enough from the "borrowed" solution to justify a custom build.
 
 ### Mistake 3: Sunk Cost Continuation
 
 **Pattern**: Continuing to maintain custom code because you already built it.
 
-> "We have our own date library. We should keep using it."
-
-**Reality**: Past investment doesn't justify future cost.
-
-**Fix**: Regularly evaluate whether custom code is still the right choice. Migrating to a maintained library is often worth the one-time cost.
+**Fix**: Periodically ask your AI: "I'm currently maintaining [Custom Implementation]. Has the ecosystem produced a better/standard solution for this in the last year? Show me a migration path."
 
 ### Mistake 4: Dependency Paranoia
 
-**Pattern**: Avoiding all dependencies out of fear.
+**Pattern**: Avoiding all dependencies out of fear of abandonment or security.
 
-> "What if the library is abandoned? What if there's a security vulnerability?"
-
-**Reality**: These risks are real but manageable. Your custom code has the same risks, plus you're the sole maintainer.
-
-**Fix**: Choose well-maintained libraries with active communities. The "truck factor" of popular open source is usually better than your custom code.
+**Fix**: Use AI to audit the dependency. Ask: "Analyze the GitHub health of [Library]. Look at the 'truck factor', issue resolution time, and recent security CVEs. Is this a safe bet for a 2-year project?"
 
 ### Mistake 5: Confusing Building with Understanding
 
 **Pattern**: Believing you must build something to understand it.
 
-> "I built my own Promise implementation, so now I really understand async."
-
-**Reality**: Building a simplified version teaches you a simplified mental model. You could learn more accurately by reading actual implementations and documentation.
-
-**Fix**: Study existing code. Read specs. Understand *why* decisions were made. Building isn't the only path to understanding — and often isn't the best one.
+**Fix**: Use AI as a code tutor. Instead of building a worse version of a Promise library, ask: "Open the source for `p-limit` and explain how it manages concurrency. Trace the execution flow for me."
 
 ---
 
@@ -372,15 +340,9 @@ Use the **[Build vs. Borrow Prompt](/docs/prompts/build-vs-borrow)** to structur
 
 Isaac Newton wrote: "If I have seen further, it is by standing on the shoulders of giants."
 
-Software development is the same. Every library you use represents thousands of hours of collective problem-solving. Every edge case handled, every security vulnerability patched, every API refined through real-world usage.
+In the AI era, this is more true than ever. Your AI assistant has read the "giants'" code. It can help you find, evaluate, and integrate their work in minutes.
 
 **Borrowing isn't weakness. It's wisdom.**
-
-The developers who ship the most value aren't the ones who build everything themselves. They're the ones who:
-- Focus their building energy on unique problems
-- Leverage existing solutions for solved problems
-- Make deliberate decisions about the tradeoff
-- Ship products, not just code
 
 ---
 
@@ -388,12 +350,12 @@ The developers who ship the most value aren't the ones who build everything them
 
 **Build vs. Borrow** means:
 
-1. **Recognize the hidden costs** — Building involves far more than the initial implementation
-2. **Question the "learning" excuse** — The meta-skill of evaluation compounds more than reimplementation
-3. **Follow the evaluation framework** — Systematic decision-making over gut instinct
-4. **Search before you code** — Spend 30 minutes researching before 30 hours building
-5. **Document your decisions** — Make reasoning explicit and reviewable
-6. **Reserve building for differentiation** — Your unique value, not solved problems
+1. **Recognize the hidden costs** — Building involves far more than the initial implementation.
+2. **Question the "learning" excuse** — Use AI to study existing code instead of reinventing it.
+3. **Follow the evaluation framework** — Systematic decision-making over gut instinct.
+4. **Consult AI before you code** — Spend 15 minutes researching the landscape before 15 hours building.
+5. **Document your decisions** — Use AI to help draft ADRs that explain the "why".
+6. **Reserve building for differentiation** — Your unique value, not solved problems.
 
 :::tip[Key insight]
 The skill of knowing *when* to leverage existing solutions is more valuable than the ability to reimplement them. Practice discernment, not just coding.
@@ -403,10 +365,10 @@ The skill of knowing *when* to leverage existing solutions is more valuable than
 
 ## Next Steps
 
-1. **Audit a recent decision** — Think of something you built recently. Was building the right choice? What would evaluation have revealed?
-2. **Practice the search-first workflow** — For your next task, spend 30 minutes researching existing solutions before writing any code
-3. **Write an ADR** — Document a build-vs-borrow decision using the [ADR framework](/docs/curriculum/part-2-team-practices/architecture-decision-records)
-4. **Read library source code** — Pick a library you use daily. Read its implementation. Notice how much complexity exists beneath the simple API
+1. **Audit a recent decision** — Think of something you built recently. Was building the right choice? What would an AI-assisted evaluation have revealed?
+2. **Practice the search-first workflow** — For your next task, use the **[Build vs. Borrow Prompt](/docs/prompts/build-vs-borrow)** before writing any code.
+3. **Write an ADR** — Document a build-vs-borrow decision using the [ADR framework](/docs/curriculum/part-2-team-practices/architecture-decision-records).
+4. **Read library source code** — Pick a library you use daily. Ask your AI to explain its internal architecture. Notice how much complexity exists beneath the simple API.
 
 ---
 
