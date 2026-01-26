@@ -29,7 +29,8 @@ Please act as a Senior Technical Architect and help me conduct a "Build vs. Borr
 
 ### 1. The "Borrow" Landscape
 Identify the industry-standard libraries or services for this problem in the [LANGUAGE/ECOSYSTEM] ecosystem.
-For the top 3 candidates, please analyze:
+Select the top 3 candidates based on **community adoption (downloads/stars)**, **recent maintenance activity**, and **relevance to my project constraints**.
+For these candidates, please analyze:
 - **Maturity**: Community usage, maintenance status.
 - **Cost**: Bundle size, performance overhead, or financial cost (if SaaS).
 - **Fit**: How well it matches my specific needs.
@@ -70,7 +71,8 @@ Please format the output as a decision matrix or pros/cons list.
 >
 > ### 1. The "Borrow" Landscape
 > Identify the industry-standard libraries or services for this problem in the **React** ecosystem.
-> For the top 3 candidates, please analyze:
+> Select the top 3 candidates based on **community adoption (downloads/stars)**, **recent maintenance activity**, and **relevance to my project constraints**.
+> For these candidates, please analyze:
 > - **Maturity**: Community usage, maintenance status.
 > - **Cost**: Bundle size, performance overhead, or financial cost (if SaaS).
 > - **Fit**: How well it matches my specific needs.
