@@ -28,6 +28,7 @@ This directory contains **prompt templates** for working with AI assistants (Cla
 | [Reading Code](prompts/reading-code) | Understanding unfamiliar code | Exploring codebases |
 | [Designing Features](prompts/designing-features) | Planning before coding | Starting a new feature |
 | [Iterative Refinement](prompts/iterative-refinement) | Improving existing code | Refactoring, optimizing |
+| [Build vs. Borrow](prompts/build-vs-borrow) | Evaluating whether to use existing solutions | New project setup, feature planning |
 
 ---
 
