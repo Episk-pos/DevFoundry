@@ -2,7 +2,7 @@
 
 Understanding how software projects are organized.
 
-**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/anatomy-of-projects](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/anatomy-of-projects)
+**Full module**: [dev.episkopos.community/docs/curriculum/part-1-foundations/anatomy-of-projects](https://dev.episkopos.community/docs/curriculum/part-1-foundations/anatomy-of-projects)
 
 ## Key Concepts
 

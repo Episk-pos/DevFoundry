@@ -2,7 +2,7 @@
 
 Core argument for software as accessible leverage and portfolio-building.
 
-**Canonical page**: [DevFoundry Thesis](https://episk-pos.github.io/DevFoundry/docs/thesis)
+**Canonical page**: [DevFoundry Thesis](https://dev.episkopos.community/docs/thesis)
 
 ## Summary
 

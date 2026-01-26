@@ -2,7 +2,7 @@
 
 How the web began — static pages, CGI scripts, and the rise of PHP.
 
-**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-4-historical-context/server-side-era](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-4-historical-context/server-side-era)
+**Full module**: [dev.episkopos.community/docs/curriculum/part-4-historical-context/server-side-era](https://dev.episkopos.community/docs/curriculum/part-4-historical-context/server-side-era)
 
 ## Key Concepts
 

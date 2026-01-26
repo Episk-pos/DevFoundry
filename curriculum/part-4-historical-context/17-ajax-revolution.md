@@ -2,7 +2,7 @@
 
 How XMLHttpRequest and jQuery transformed the web into an application platform.
 
-**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-4-historical-context/ajax-revolution](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-4-historical-context/ajax-revolution)
+**Full module**: [dev.episkopos.community/docs/curriculum/part-4-historical-context/ajax-revolution](https://dev.episkopos.community/docs/curriculum/part-4-historical-context/ajax-revolution)
 
 ## Key Concepts
 

@@ -2,7 +2,7 @@
 
 Understanding HTTP, HTML/CSS/JS, and browser development tools.
 
-**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/how-the-web-works](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/how-the-web-works)
+**Full module**: [dev.episkopos.community/docs/curriculum/part-1-foundations/how-the-web-works](https://dev.episkopos.community/docs/curriculum/part-1-foundations/how-the-web-works)
 
 ## Key Concepts
 

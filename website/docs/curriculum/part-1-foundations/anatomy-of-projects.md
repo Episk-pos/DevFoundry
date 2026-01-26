@@ -538,7 +538,7 @@ Answer:
 1. **Project type**: Educational repository / documentation site
 2. **Learning content**: `curriculum/` and `docs/`
 3. **Working code**: `examples/`
-4. **website/ folder**: Docusaurus documentation site (the deployed version at episk-pos.github.io/DevFoundry)
+4. **website/ folder**: Docusaurus documentation site (the deployed version at dev.episkopos.community)
 
 </details>
 

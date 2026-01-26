@@ -2,7 +2,7 @@
 
 Improve existing code through systematic enhancement.
 
-**Full guide**: [episk-pos.github.io/DevFoundry/docs/prompts/iterative-refinement](https://episk-pos.github.io/DevFoundry/docs/prompts/iterative-refinement)
+**Full guide**: [dev.episkopos.community/docs/prompts/iterative-refinement](https://dev.episkopos.community/docs/prompts/iterative-refinement)
 
 ## Key Topics
 

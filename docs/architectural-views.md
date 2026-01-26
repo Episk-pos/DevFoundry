@@ -2,7 +2,7 @@
 
 Overview of module, component-connector, and allocation views.
 
-**Canonical page**: [Architectural Views](https://episk-pos.github.io/DevFoundry/docs/architectural-views)
+**Canonical page**: [Architectural Views](https://dev.episkopos.community/docs/architectural-views)
 
 ## Summary
 

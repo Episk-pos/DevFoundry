@@ -2,7 +2,7 @@
 
 Guidance for getting better output from AI assistants by sharing system context first.
 
-**Canonical page**: [Architecture-First Thinking](https://episk-pos.github.io/DevFoundry/docs/mental-models/architecture-first)
+**Canonical page**: [Architecture-First Thinking](https://dev.episkopos.community/docs/mental-models/architecture-first)
 
 ## Summary
 

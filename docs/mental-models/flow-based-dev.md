@@ -2,7 +2,7 @@
 
 The core philosophy of DevFoundry: think in flows before code.
 
-**Canonical page**: [Flow-Based Development](https://episk-pos.github.io/DevFoundry/docs/mental-models/flow-based-dev)
+**Canonical page**: [Flow-Based Development](https://dev.episkopos.community/docs/mental-models/flow-based-dev)
 
 ## Summary
 

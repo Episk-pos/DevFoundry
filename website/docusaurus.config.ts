@@ -12,8 +12,8 @@ const config: Config = {
   },
 
   // GitHub Pages deployment config
-  url: 'https://episk-pos.github.io',
-  baseUrl: '/DevFoundry/',
+  url: 'https://dev.episkopos.community',
+  baseUrl: '/',
   organizationName: 'episk-pos',
   projectName: 'devfoundry',
   deploymentBranch: 'gh-pages',

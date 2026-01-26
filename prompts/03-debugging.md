@@ -2,7 +2,7 @@
 
 Systematic problem-solving when something doesn't work.
 
-**Full guide**: [episk-pos.github.io/DevFoundry/docs/prompts/debugging](https://episk-pos.github.io/DevFoundry/docs/prompts/debugging)
+**Full guide**: [dev.episkopos.community/docs/prompts/debugging](https://dev.episkopos.community/docs/prompts/debugging)
 
 ## Key Topics
 

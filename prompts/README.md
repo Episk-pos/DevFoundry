@@ -2,19 +2,19 @@
 
 Effective patterns for working with AI coding assistants.
 
-**Full documentation**: [episk-pos.github.io/DevFoundry/docs/prompts](https://episk-pos.github.io/DevFoundry/docs/prompts)
+**Full documentation**: [dev.episkopos.community/docs/prompts](https://dev.episkopos.community/docs/prompts)
 
 ## Available Templates
 
 | Template | Purpose |
 |----------|---------|
-| [Getting Started](https://episk-pos.github.io/DevFoundry/docs/prompts/getting-started) | First-time AI assistant usage, TUI tools |
-| [Architecture First](https://episk-pos.github.io/DevFoundry/docs/prompts/architecture-first) | Building features with structure |
-| [Debugging](https://episk-pos.github.io/DevFoundry/docs/prompts/debugging) | Systematic problem-solving |
-| [Reading Code](https://episk-pos.github.io/DevFoundry/docs/prompts/reading-code) | Understanding unfamiliar codebases |
-| [05-designing-features.md](05-designing-features.md) | Moving from requirements to technical specs |
-| [06-iterative-refinement.md](06-iterative-refinement.md) | Polishing and improving code |
-| [07-build-vs-borrow.md](07-build-vs-borrow.md) | Evaluating whether to use existing solutions |
+| [Getting Started](https://dev.episkopos.community/docs/prompts/getting-started) | First-time AI assistant usage, TUI tools |
+| [Architecture First](https://dev.episkopos.community/docs/prompts/architecture-first) | Building features with structure |
+| [Debugging](https://dev.episkopos.community/docs/prompts/debugging) | Systematic problem-solving |
+| [Reading Code](https://dev.episkopos.community/docs/prompts/reading-code) | Understanding unfamiliar codebases |
+| [Designing Features](https://dev.episkopos.community/docs/prompts/designing-features) | Moving from requirements to technical specs |
+| [Iterative Refinement](https://dev.episkopos.community/docs/prompts/iterative-refinement) | Polishing and improving code |
+| [Build vs. Borrow](https://dev.episkopos.community/docs/prompts/build-vs-borrow) | Evaluating whether to use existing solutions |
 
 ## Key Insight
 
@@ -22,4 +22,4 @@ DevFoundry recommends **TUI-based AI tools** (Claude Code, Codex CLI, OpenCode) 
 
 ---
 
-*See the [full documentation](https://episk-pos.github.io/DevFoundry/docs/prompts) for complete templates and examples.*
+*See the [full documentation](https://dev.episkopos.community/docs/prompts) for complete templates and examples.*

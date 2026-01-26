@@ -2,7 +2,7 @@
 
 Mermaid conventions and diagram guidelines used across DevFoundry.
 
-**Canonical page**: [Diagram Standards](https://episk-pos.github.io/DevFoundry/docs/diagram-standards)
+**Canonical page**: [Diagram Standards](https://dev.episkopos.community/docs/diagram-standards)
 
 ## Summary
 

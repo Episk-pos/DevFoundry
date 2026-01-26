@@ -2,7 +2,7 @@
 
 Build features by describing structure, not just functionality.
 
-**Full guide**: [episk-pos.github.io/DevFoundry/docs/prompts/architecture-first](https://episk-pos.github.io/DevFoundry/docs/prompts/architecture-first)
+**Full guide**: [dev.episkopos.community/docs/prompts/architecture-first](https://dev.episkopos.community/docs/prompts/architecture-first)
 
 ## Key Concepts
 

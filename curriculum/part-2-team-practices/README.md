@@ -2,7 +2,7 @@
 
 Professional practices that enable collaboration, quality, and sustainable development.
 
-**Full curriculum**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-2-team-practices](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-2-team-practices)
+**Full curriculum**: [dev.episkopos.community/docs/curriculum/part-2-team-practices](https://dev.episkopos.community/docs/curriculum/part-2-team-practices)
 
 ---
 
@@ -34,4 +34,4 @@ Complete [Part I: Foundations](../part-1-foundations/) before starting Part II.
 
 ---
 
-*See the [full documentation](https://episk-pos.github.io/DevFoundry/docs/curriculum) for complete module content.*
+*See the [full documentation](https://dev.episkopos.community/docs/curriculum) for complete module content.*

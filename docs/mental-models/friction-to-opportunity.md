@@ -2,7 +2,7 @@
 
 How to notice everyday friction and turn it into software ideas.
 
-**Canonical page**: [Friction to Opportunity](https://episk-pos.github.io/DevFoundry/docs/mental-models/friction-to-opportunity)
+**Canonical page**: [Friction to Opportunity](https://dev.episkopos.community/docs/mental-models/friction-to-opportunity)
 
 ## Summary
 

@@ -2,7 +2,7 @@
 
 Design before you code — understanding users, wireframes, and design systems.
 
-**Full module**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-2-team-practices/ux-ui-fundamentals](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-2-team-practices/ux-ui-fundamentals)
+**Full module**: [dev.episkopos.community/docs/curriculum/part-2-team-practices/ux-ui-fundamentals](https://dev.episkopos.community/docs/curriculum/part-2-team-practices/ux-ui-fundamentals)
 
 ## Key Concepts
 

@@ -2,7 +2,7 @@
 
 Keyboard shortcuts, shell customization, terminal multiplexing, and modern tools.
 
-**Full content**: [episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/extracurricular/terminal-going-further](https://episk-pos.github.io/DevFoundry/docs/curriculum/part-1-foundations/extracurricular/terminal-going-further)
+**Full content**: [dev.episkopos.community/docs/curriculum/part-1-foundations/extracurricular/terminal-going-further](https://dev.episkopos.community/docs/curriculum/part-1-foundations/extracurricular/terminal-going-further)
 
 ## Topics Covered
 

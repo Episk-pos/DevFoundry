@@ -2,7 +2,7 @@
 
 High-level roadmap of the DevFoundry curriculum, its parts, and learning goals.
 
-**Canonical page**: [Curriculum Overview](https://episk-pos.github.io/DevFoundry/docs/overview)
+**Canonical page**: [Curriculum Overview](https://dev.episkopos.community/docs/overview)
 
 ## Snapshot
 
