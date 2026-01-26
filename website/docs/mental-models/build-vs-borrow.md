@@ -239,27 +239,17 @@ Don't just read — try it. Ask your AI to generate a functional prototype.
 
 **Timebox this**: 30-60 minutes. You are validating *fit*, not building the final feature.
 
-### Step 4: Decide and Document
+### Step 4: Formalize the Decision
 
-Make an explicit decision and record it using the info you gathered.
+Don't let this analysis live only in a chat window. The "Build vs. Borrow" analysis provides all the necessary content for an **Architecture Decision Record (ADR)**.
 
-```markdown
-## Decision: Use dnd-kit
+Use the **[ADR Template](/docs/curriculum/part-2-team-practices/architecture-decision-records)** to permanently record your choice in your repository.
 
-### Context
-- Need accessible drag-and-drop for list reordering
-- Mobile support is critical
+*   **Context**: Summarize the "Borrow" landscape and "Build" complexity.
+*   **Decision**: State your chosen path clearly.
+*   **Consequences**: List the tradeoffs (e.g., "Positive: Saved 2 weeks of dev time. Negative: Bundle size increased by 20kb").
 
-### Options Considered
-1. **react-beautiful-dnd**: Popular but maintenance has slowed; React 18 strict mode issues.
-2. **dnd-kit**: Modern, modular, headless (full styling control), good accessibility.
-3. **Custom**: Too complex (touch events, keyboard support, screen readers).
-
-### Decision
-Use dnd-kit. It offers the best balance of modern React patterns and accessibility.
-```
-
-Use the **[Build vs. Borrow Prompt](/docs/prompts/build-vs-borrow)** to structure this analysis.
+Use the **[Build vs. Borrow Prompt](/docs/prompts/build-vs-borrow)** to structure the initial analysis.
 
 ---
 
@@ -415,7 +405,7 @@ The skill of knowing *when* to leverage existing solutions is more valuable than
 
 1. **Audit a recent decision** — Think of something you built recently. Was building the right choice? What would evaluation have revealed?
 2. **Practice the search-first workflow** — For your next task, spend 30 minutes researching existing solutions before writing any code
-3. **Write a decision record** — Document a build-vs-borrow decision using the framework above
+3. **Write an ADR** — Document a build-vs-borrow decision using the [ADR framework](/docs/curriculum/part-2-team-practices/architecture-decision-records)
 4. **Read library source code** — Pick a library you use daily. Read its implementation. Notice how much complexity exists beneath the simple API
 
 ---
