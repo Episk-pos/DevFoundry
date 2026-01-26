@@ -211,77 +211,55 @@ EXIST               (this is your job)        or reconsider need
 
 ## The Borrow-First Workflow
 
-When you encounter a new problem, follow this sequence:
+When you encounter a new problem, follow this sequence using your AI development tools:
 
-### Step 1: Search Before You Code
+### Step 1: Consult Your AI Architect
 
-Before writing a single line:
+Instead of manually searching npm or GitHub immediately, ask your AI assistant (Claude, Gemini, ChatGPT, etc.) to survey the landscape.
 
-```bash
-# Check npm for existing packages
-npm search <problem>
+**Prompt:**
+> "I need to add drag-and-drop functionality to my React app. act as a Senior Architect: What are the current industry-standard libraries for this? Compare the top 3 options based on bundle size, maintenance, and API ergonomics."
 
-# Check GitHub for implementations
-# Search: "<problem> language:javascript"
+**Why this works**: AI models have read thousands of blog posts, documentation sites, and comparisons. They can synthesize this information instantly.
 
-# Check if your framework has built-in support
-# Read the docs, not just tutorials
-```
+### Step 2: Evaluate Candidates with AI
 
-**Spend 30 minutes researching** before spending 30 hours building.
+Once you have candidates, use AI to deepen your due diligence:
 
-### Step 2: Evaluate Candidates
+1.  **Summarize Tradeoffs**: "Compare `react-beautiful-dnd` vs `dnd-kit`. Which is more modern and better maintained?"
+2.  **Explain Usage**: "Show me a minimal code example of using `dnd-kit` to reorder a list."
+3.  **Check "Iceberg" Depth**: "What are the common edge cases or pitfalls when implementing drag-and-drop from scratch?"
 
-For each potential solution:
+### Step 3: Prototype with Assistance
 
-1. **Read the README** — Does it solve your problem?
-2. **Check the repo health** — Recent activity? Responsive maintainers?
-3. **Review the API** — Is it well-designed? Will it be pleasant to use?
-4. **Scan the issues** — What problems do users report?
-5. **Check the bundle** — Is the size appropriate for your use case?
+Don't just read — try it. Ask your AI to generate a functional prototype.
 
-### Step 3: Prototype with the Top Choice
+**Prompt:**
+> "Create a small, self-contained component using [Library Choice] that demonstrates [Key Feature]. Use TypeScript."
 
-Don't just read — try it:
-
-```javascript
-// Quick spike to validate the solution
-import { library } from 'candidate-library';
-
-// Does it actually do what you need?
-// Is the API ergonomic?
-// Any surprises?
-```
-
-**Timebox this**: 1-2 hours maximum. You're validating fit, not building features.
+**Timebox this**: 30-60 minutes. You are validating *fit*, not building the final feature.
 
 ### Step 4: Decide and Document
 
-Make an explicit decision and record it:
+Make an explicit decision and record it using the info you gathered.
 
 ```markdown
-## Decision: Use date-fns for date formatting
+## Decision: Use dnd-kit
 
 ### Context
-- Need to format dates in multiple locales
-- Need timezone-aware parsing
-- Bundle size matters (client-side app)
+- Need accessible drag-and-drop for list reordering
+- Mobile support is critical
 
 ### Options Considered
-1. **Moment.js** — Large bundle, legacy maintenance mode
-2. **date-fns** — Tree-shakeable, active development, good docs
-3. **Build custom** — Would take weeks, no benefit to users
+1. **react-beautiful-dnd**: Popular but maintenance has slowed; React 18 strict mode issues.
+2. **dnd-kit**: Modern, modular, headless (full styling control), good accessibility.
+3. **Custom**: Too complex (touch events, keyboard support, screen readers).
 
 ### Decision
-Use date-fns. Tree-shaking keeps bundle small, API is intuitive,
-and we can focus engineering time on our actual product.
-
-### Consequences
-- Team needs to learn date-fns API (minimal, good docs)
-- We depend on external maintenance (acceptable, large community)
+Use dnd-kit. It offers the best balance of modern React patterns and accessibility.
 ```
 
-This is an [Architecture Decision Record](/docs/curriculum/part-2-team-practices/architecture-decision-records) — a practice that makes your reasoning visible and reviewable.
+Use the **[Build vs. Borrow Prompt](/docs/prompts/build-vs-borrow)** to structure this analysis.
 
 ---
 

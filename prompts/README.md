@@ -12,8 +12,9 @@ Effective patterns for working with AI coding assistants.
 | [Architecture First](https://episk-pos.github.io/DevFoundry/docs/prompts/architecture-first) | Building features with structure |
 | [Debugging](https://episk-pos.github.io/DevFoundry/docs/prompts/debugging) | Systematic problem-solving |
 | [Reading Code](https://episk-pos.github.io/DevFoundry/docs/prompts/reading-code) | Understanding unfamiliar codebases |
-| [Designing Features](https://episk-pos.github.io/DevFoundry/docs/prompts/designing-features) | Planning before implementation |
-| [Iterative Refinement](https://episk-pos.github.io/DevFoundry/docs/prompts/iterative-refinement) | Improving existing code |
+| [05-designing-features.md](05-designing-features.md) | Moving from requirements to technical specs |
+| [06-iterative-refinement.md](06-iterative-refinement.md) | Polishing and improving code |
+| [07-build-vs-borrow.md](07-build-vs-borrow.md) | Evaluating whether to use existing solutions |
 
 ## Key Insight
 
