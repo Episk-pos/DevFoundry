@@ -12,8 +12,9 @@ Effective patterns for working with AI coding assistants.
 | [Architecture First](https://dev.episkopos.community/docs/prompts/architecture-first) | Building features with structure |
 | [Debugging](https://dev.episkopos.community/docs/prompts/debugging) | Systematic problem-solving |
 | [Reading Code](https://dev.episkopos.community/docs/prompts/reading-code) | Understanding unfamiliar codebases |
-| [Designing Features](https://dev.episkopos.community/docs/prompts/designing-features) | Planning before implementation |
-| [Iterative Refinement](https://dev.episkopos.community/docs/prompts/iterative-refinement) | Improving existing code |
+| [Designing Features](https://dev.episkopos.community/docs/prompts/designing-features) | Moving from requirements to technical specs |
+| [Iterative Refinement](https://dev.episkopos.community/docs/prompts/iterative-refinement) | Polishing and improving code |
+| [Build vs. Borrow](https://dev.episkopos.community/docs/prompts/build-vs-borrow) | Evaluating whether to use existing solutions |
 
 ## Key Insight
 

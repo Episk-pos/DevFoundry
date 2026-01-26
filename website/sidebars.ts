@@ -80,6 +80,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'mental-models/protocol-thinking',
         'mental-models/friction-to-opportunity',
+        'mental-models/build-vs-borrow',
         'mental-models/portfolio-strategy',
         'mental-models/architecture-first',
         'mental-models/flow-based-dev',

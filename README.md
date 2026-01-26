@@ -74,7 +74,7 @@ npm install
 npm start
 ```
 
-This starts a local development server at `http://localhost:3000/DevFoundry/`.
+This starts a local development server at `http://localhost:3000/`.
 
 To build for production:
 
