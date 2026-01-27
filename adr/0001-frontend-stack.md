@@ -69,7 +69,8 @@ src/
   components/
     ComponentName.tsx    # React components
   utils/
-    utilName.ts          # Pure functions, helpers
+    formatting.ts        # Date/time/text display formatting
+    validation.ts        # Input validation rules
   App.tsx                # Main component
   main.tsx               # Entry point
 ```

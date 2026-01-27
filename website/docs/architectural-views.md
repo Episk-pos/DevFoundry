@@ -92,18 +92,18 @@ graph TB
     main[main.js]
     messages[messages.js]
     users[users.js]
-    utils[utils.js]
+    formatting[formatting.js]
 
     main --> messages
     main --> users
-    messages --> utils
-    users --> utils
+    messages --> formatting
+    users --> formatting
 ```
 
 **What this tells us**:
 - `main.js` is the entry point
 - `messages.js` and `users.js` are separate modules
-- Both depend on `utils.js` for shared functionality
+- Both depend on `formatting.js` for display formatting (timestamps, usernames)
 - This is a simple, flat structure
 
 ### When to Use Module View

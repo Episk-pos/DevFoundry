@@ -386,12 +386,12 @@ sequenceDiagram
 ```mermaid
 graph TB
     Main[main.js]
-    Utils[utils.js]
+    Validation[validation.js]
     API[api.js]
 
-    Main --> Utils
+    Main --> Validation
     Main --> API
-    API --> Utils
+    API --> Validation
 ```
 
 ---

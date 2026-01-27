@@ -276,13 +276,40 @@ my-project/
 ├── src/                 # Your source code
 │   ├── index.js         # Entry point
 │   ├── components/      # Reusable pieces
-│   └── utils/           # Helper functions
+│   └── utils/           # Shared modules (name files by purpose)
 ├── tests/               # Test files
 ├── docs/                # Documentation
 ├── .gitignore           # Files Git should ignore
 ├── README.md            # Project introduction
 └── LICENSE              # Legal terms
 ```
+
+### Naming Shared Code by Purpose
+
+Avoid generic file names like `utils.js` or `helpers.js`. These names say nothing about what the code does and tend to become dumping grounds for unrelated functions.
+
+**Problematic:**
+```
+utils/
+  utils.js       # What's in here? Everything!
+  helpers.js     # Helpers for what?
+```
+
+**Better:**
+```
+utils/
+  formatting.js  # Date/time display formatting
+  validation.js  # Input validation rules
+  messages.js    # Message transformation logic
+```
+
+**Why it matters:**
+- Descriptive names help you find code faster
+- Descriptive names help others understand your codebase
+- Descriptive names help AI assistants generate appropriate code
+- Generic files accumulate unrelated functions over time
+
+**Rule of thumb:** If you cannot describe what a file contains in one phrase, it probably does too much.
 
 ### Key Files Explained
 
