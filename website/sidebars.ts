@@ -74,6 +74,19 @@ const sidebars: SidebarsConfig = {
         'prompts/reading-code',
         'prompts/designing-features',
         'prompts/iterative-refinement',
+        {
+          type: 'category',
+          label: 'Product Architecture',
+          collapsed: true,
+          items: [
+            'prompts/product-architecture/index',
+            'prompts/product-architecture/discovering-loops',
+            'prompts/product-architecture/onboarding-from-loop',
+            'prompts/product-architecture/ux-from-loop',
+            'prompts/product-architecture/backend-from-loop',
+            'prompts/product-architecture/infra-from-loop',
+          ],
+        },
       ],
     },
     {
@@ -83,6 +96,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'mental-models/protocol-thinking',
         'mental-models/friction-to-opportunity',
+        'mental-models/minimal-user-loop',
         'mental-models/build-vs-borrow',
         'mental-models/portfolio-strategy',
         'mental-models/architecture-first',
@@ -95,6 +109,7 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         'exercises/index',
+        'exercises/minimal-user-loop',
       ],
     },
     {

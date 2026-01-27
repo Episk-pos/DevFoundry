@@ -22,13 +22,27 @@ This directory contains **prompt templates** for working with AI assistants (Cla
 
 | Template | Purpose | When to Use |
 |----------|---------|-------------|
-| [Getting Started](prompts/getting-started) | First-time AI assistant usage | Starting your journey |
-| [Architecture First](prompts/architecture-first) | Building features | Adding functionality |
-| [Debugging](prompts/debugging) | Fixing issues | Something doesn't work |
-| [Reading Code](prompts/reading-code) | Understanding unfamiliar code | Exploring codebases |
-| [Designing Features](prompts/designing-features) | Planning before coding | Starting a new feature |
-| [Iterative Refinement](prompts/iterative-refinement) | Improving existing code | Refactoring, optimizing |
-| [Build vs. Borrow](prompts/build-vs-borrow) | Evaluating whether to use existing solutions | New project setup, feature planning |
+| [Getting Started](getting-started) | First-time AI assistant usage | Starting your journey |
+| [Architecture First](architecture-first) | Building features | Adding functionality |
+| [Debugging](debugging) | Fixing issues | Something doesn't work |
+| [Reading Code](reading-code) | Understanding unfamiliar code | Exploring codebases |
+| [Designing Features](designing-features) | Planning before coding | Starting a new feature |
+| [Iterative Refinement](iterative-refinement) | Improving existing code | Refactoring, optimizing |
+| [Build vs. Borrow](build-vs-borrow) | Evaluating whether to use existing solutions | New project setup, feature planning |
+
+### Product Architecture Pack
+
+For product-level decisions, use the [Product Architecture](product-architecture/) prompt pack:
+
+| Template | Purpose | When to Use |
+|----------|---------|-------------|
+| [Discovering Loops](product-architecture/discovering-loops) | Find your minimal user loop | Starting a product, reassessing direction |
+| [Onboarding from Loop](product-architecture/onboarding-from-loop) | Design first-time experience | Building signup/onboarding flows |
+| [UX from Loop](product-architecture/ux-from-loop) | Ground interface decisions | Making UI/UX choices |
+| [Backend from Loop](product-architecture/backend-from-loop) | Design APIs and data models | Architecting server-side |
+| [Infrastructure from Loop](product-architecture/infra-from-loop) | Deployment and operations | Setting up infrastructure |
+
+These prompts help you apply the [Minimal User Loop](../mental-models/minimal-user-loop) mental model to product design.
 
 ---
 

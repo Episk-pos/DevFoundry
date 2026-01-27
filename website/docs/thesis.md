@@ -173,6 +173,8 @@ The feedback loop of:
 
 This is the most rewarding work there is. And it's now accessible to anyone willing to learn.
 
+This cycle is what we call the [Minimal User Loop](mental-models/minimal-user-loop) — the atomic unit of product value. Understanding this loop is the key to building products that work.
+
 ---
 
 ## The DevFoundry Mission
@@ -239,4 +241,5 @@ Let's discover this process together.
 - *[The Portfolio Strategy](mental-models/portfolio-strategy) — Building toward financial independence*
 - *[Protocol Thinking](mental-models/protocol-thinking) — Seeing systems and opportunities*
 - *[Friction to Opportunity](mental-models/friction-to-opportunity) — From noticed problems to solutions*
+- *[The Minimal User Loop](mental-models/minimal-user-loop) — Designing products backwards from user value*
 - *[Flow-Based Development](mental-models/flow-based-dev) — Building software with clarity*
