@@ -17,7 +17,7 @@ By the end of this stage, you will:
 - Implement proper state management patterns
 - Handle forms with validation
 - Provide user feedback (loading, errors, success)
-- Add CSS transitions and animations
+- Add CSS transitions and animations (concepts that translate to Tailwind's animation utilities in later stages)
 - Persist data with localStorage
 - Recognize patterns that frameworks solve
 

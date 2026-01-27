@@ -383,6 +383,12 @@ section h2 {
 }
 ```
 
+:::note Looking Ahead: Tailwind CSS
+In Stages 1-2, you're learning CSS fundamentals — selectors, layout with flexbox, and responsive design. These concepts are essential regardless of how you write styles.
+
+From Stage 3 onwards, we transition to **Tailwind CSS**, a utility-first framework where you apply these same concepts through class names directly in your HTML/JSX (e.g., `flex`, `p-4`, `max-w-md`). Understanding vanilla CSS first makes Tailwind's utility classes intuitive — you'll recognize that `flex justify-between` is just flexbox, and `rounded-lg shadow-sm` applies border-radius and box-shadow.
+:::
+
 ---
 
 ## Part 3: JavaScript Behavior

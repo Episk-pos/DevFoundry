@@ -231,7 +231,7 @@ Bad decision:
 > "SQLite was selected."
 
 Good decision:
-> "We will use SQLite as our primary database, accessed via the `better-sqlite3` npm package. Data will be stored in a `data/chat.db` file in the project root."
+> "We will use SQLite as our primary database, accessed via the `sql.js` npm package. Data will be stored in a `data/chat.db` file in the project root."
 
 **Use active voice. Be specific. State what you will do, not what was done.**
 
