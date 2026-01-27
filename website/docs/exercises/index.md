@@ -224,6 +224,14 @@ The best exercise is one you create for yourself:
 3. Ask AI to Add a Feature — Compare typed vs untyped prompts
 4. Type Error Hunt — Find bugs at compile time
 
+### Mental Model Exercises
+
+**[Minimal User Loop](minimal-user-loop)** — Product design exercises
+1. SaaS Application — Invoice management tool (identify loop, design onboarding, diagnose failure)
+2. Developer Tool — Database migration CLI (identify loop, design onboarding, design error handling)
+3. Consumer App — Habit tracking app (identify loop, design zero state, diagnose failure)
+4. Synthesis — Compare loops across product types
+
 ---
 
 ## Contributing Exercises
