@@ -1,32 +1,34 @@
 # Evaluating AI Development Tools
 
-**Understanding the spectrum from conversational AI to local agents**
+**A multi-dimensional framework for understanding the AI coding tool landscape**
 
 ## Summary
 
-Not all AI tools are the same. Understanding what tier a tool operates at helps you choose the right tool for the task and manage risk appropriately.
+AI coding tools vary across four independent dimensions. Understanding where a tool sits on each helps you choose the right tool for each task.
 
-### The Three-Tier Model
+### The Four Dimensions
 
-| Tier | Description | Examples |
-|------|-------------|----------|
-| **Tier 1: Conversational** | Text in/text out, no execution | ChatGPT web, Claude.ai |
-| **Tier 2: Remote Sandbox** | Executes in isolated cloud environment | Code Interpreter, AI Studio |
-| **Tier 3: Local Agent** | Executes on your actual machine | Claude Code CLI, Cursor |
+| Dimension | Spectrum |
+|-----------|----------|
+| **Interface Paradigm** | Browser-Only → IDE-Integrated → Terminal/CLI → Agent Orchestrator |
+| **Execution Environment** | None → Remote Sandbox → Local Machine |
+| **Capability Level** | Completion → Chat → Contextual Edit → Agentic |
+| **Agency Model** | User-Driven → AI-Driven → Multi-Agent |
 
-### Key Principles
+### Tool Mapping
 
-- **Capabilities increase with tier** — And so do trust requirements
-- **Match tier to task** — Understanding needs less access than building
-- **Security scales with access** — More power means more caution required
-- **Evaluate systematically** — Ask what permissions a tool needs and why
+| Tool | Interface | Execution | Capability | Agency |
+|------|-----------|-----------|------------|--------|
+| ChatGPT (web) | Browser | None/Sandbox | Chat | User-driven |
+| Claude.ai | Browser | None/Sandbox | Chat | User-driven |
+| Cursor | IDE | Local | Completion → Agentic | User → AI |
+| Windsurf | IDE | Local | Completion → Agentic | User → AI |
+| Claude Code | Terminal/CLI | Local | Agentic | AI-driven |
+| Antigravity | IDE + Orchestrator | Local | Agentic | Multi-agent |
 
-### Choosing the Right Tier
+### Key Insight
 
-- **"I need to understand something"** → Tier 1 is sufficient
-- **"I need to test/prototype in isolation"** → Tier 2 is ideal
-- **"I need to build/modify my actual project"** → Tier 3 is most efficient
-- **"I'm working with sensitive data"** → Start at Tier 1, escalate carefully
+Tools aren't "better" or "worse" — they occupy different positions across these dimensions. The right tool depends on your task, workflow preferences, and trust requirements.
 
 ---
 

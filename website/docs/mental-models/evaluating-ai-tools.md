@@ -1,468 +1,477 @@
 ---
 sidebar_position: 1
 title: Evaluating AI Development Tools
-description: Understanding the spectrum from conversational AI to local agents
+description: A multi-dimensional framework for understanding the AI coding tool landscape
 ---
 
 # Evaluating AI Development Tools
 
-**Understanding the spectrum from conversational AI to local agents**
+**A multi-dimensional framework for understanding the AI coding tool landscape**
 
 ---
 
 ## Introduction
 
-Not all AI tools are created equal — and the differences matter more than most developers realize.
+The AI coding tool landscape is evolving rapidly, and the differences between tools matter more than marketing copy suggests. Before integrating any AI tool into your workflow, you need to understand **what kind of tool it is** across multiple dimensions.
 
-Before you start working with AI-assisted development, you need to understand **what kind of tool you're using**. The distinction isn't just about features. It's about:
+This isn't a simple "good vs. bad" comparison. Tools occupy different positions across several independent axes:
 
-- **What the tool can access** (your files, your terminal, your secrets)
-- **Where code executes** (your machine, a cloud sandbox, nowhere)
-- **What level of trust is required** (and what could go wrong)
-- **What workflows become possible** (or impossible)
+- **Where you interact** with the tool (browser, terminal, IDE)
+- **Where code executes** (nowhere, cloud sandbox, your machine)
+- **What the tool can do** (suggest, chat, edit, act autonomously)
+- **Who drives the workflow** (you or the AI)
 
-This mental model gives you a framework for evaluating any AI development tool — current or future — so you can make informed choices about what to use and when.
+Understanding these dimensions helps you:
+- Choose the right tool for each task
+- Understand trust and security implications
+- Combine tools effectively
+- Evaluate new tools as they emerge
 
 ---
 
-## The Three-Tier Model
+## The Four Dimensions
 
-AI development tools fall into three broad categories based on their **execution capabilities**:
+AI development tools vary along four independent axes. A tool's position on each axis is mostly independent of its position on the others.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│  TIER 3: LOCAL AGENTS                                                   │
-│  Execute on your machine • Full filesystem access • Real consequences   │
+│  DIMENSION 1: INTERFACE PARADIGM                                        │
+│  Browser-Only → IDE-Integrated → Terminal/CLI → Agent Orchestrator      │
 ├─────────────────────────────────────────────────────────────────────────┤
-│  TIER 2: REMOTE SANDBOX                                                 │
-│  Execute in cloud environment • Isolated workspace • Safe exploration   │
+│  DIMENSION 2: EXECUTION ENVIRONMENT                                     │
+│  None (conversational) → Remote Sandbox → Local Machine                 │
 ├─────────────────────────────────────────────────────────────────────────┤
-│  TIER 1: CONVERSATIONAL                                                 │
-│  No execution • Text in/text out • You implement everything             │
+│  DIMENSION 3: CAPABILITY LEVEL                                          │
+│  Completion → Chat → Contextual Edit → Agentic                          │
+├─────────────────────────────────────────────────────────────────────────┤
+│  DIMENSION 4: AGENCY MODEL                                              │
+│  User-Driven → AI-Driven → Multi-Agent Orchestration                    │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-Each tier has different strengths, risks, and appropriate use cases. Understanding where a tool fits helps you use it effectively.
+---
+
+## Dimension 1: Interface Paradigm
+
+This dimension describes **how you interact** with the tool and what assumptions it makes about your workflow.
+
+### Browser-Only
+
+**What it is**: Web interfaces accessed through your browser with no local installation.
+
+**Examples**: ChatGPT (web), Claude.ai, Gemini (web), Google AI Studio
+
+**Characteristics**:
+- No setup required
+- Cannot see your local files (unless you upload/paste)
+- You copy code between the browser and your editor
+- Session state may not persist
+
+**Best for**: Quick questions, learning concepts, generating snippets to adapt
+
+### IDE-Integrated
+
+**What it is**: Traditional code editors (typically VS Code forks) with AI capabilities built into the familiar IDE experience.
+
+**Examples**: Cursor, Windsurf, GitHub Copilot (in VS Code), Google Antigravity (Editor view)
+
+**Characteristics**:
+- File browser, tabs, syntax highlighting — the full IDE experience
+- AI features layered into existing workflows (inline completion, chat panels, refactoring)
+- You navigate and select; AI assists within that context
+- Familiar mental model for developers coming from traditional IDEs
+
+**Best for**: Developers who want AI to enhance their existing IDE workflow
+
+### Terminal/CLI-First
+
+**What it is**: AI tools designed around terminal interaction. You keep your preferred editor; the AI operates in your terminal.
+
+**Examples**: Claude Code, Gemini CLI, Aider, Codex CLI, OpenCode
+
+**Characteristics**:
+- No built-in file browser or editor UI
+- AI reads/writes files directly; you review in your editor of choice
+- Often emphasize transparency — you see what the AI is doing
+- Composable with other terminal tools
+- Steeper learning curve for those unfamiliar with CLI workflows
+
+**Best for**: Developers comfortable with terminal workflows who want AI as a "power tool" rather than an environment
+
+### Agent Orchestrator
+
+**What it is**: Emerging paradigm focused on managing multiple AI agents working in parallel, often asynchronously.
+
+**Examples**: Google Antigravity (Manager view), multi-agent frameworks
+
+**Characteristics**:
+- Task-oriented rather than file-oriented
+- Spawn agents to work on subtasks while you focus elsewhere
+- Emphasizes verification artifacts (plans, screenshots, recordings)
+- Can coordinate work across multiple workspaces
+- Still experimental; workflows are evolving
+
+**Best for**: Complex projects requiring parallel workstreams; delegating routine tasks
 
 ---
 
-## Tier 1: Conversational AI
+## Dimension 2: Execution Environment
 
-### What It Is
+This dimension describes **where code runs** when the AI tests or executes something.
 
-Conversational AI tools provide text-based interaction without any code execution. You ask questions, describe problems, request code — and the AI responds with text. **You** are responsible for implementing everything.
+### No Execution (Conversational)
 
-### Examples
+**What it is**: Pure text exchange. The AI generates code; you execute it yourself.
 
-- ChatGPT (web interface, without Code Interpreter)
-- Claude.ai (web interface, standard mode)
-- Gemini (conversational mode)
-- Any chat-based AI without tool use enabled
+**Examples**: ChatGPT (without Code Interpreter), Claude.ai (chat mode), any tool in "chat only" mode
 
-### Capabilities
+**Trust implications**: Minimal. The AI never runs anything. Risk is limited to following bad advice.
 
-| Can Do | Cannot Do |
-|--------|-----------|
-| Explain concepts | Run code |
-| Generate code snippets | Access your files |
-| Debug by reading code you paste | See your project structure |
-| Suggest architecture | Execute commands |
-| Answer questions | Make changes |
+**Workflow**: High friction. Every test requires manual copy → paste → run → copy error → paste back.
 
-### Mental Model
+### Remote Sandbox
 
-Think of Tier 1 tools as **extremely knowledgeable colleagues** who can only communicate through text. They can advise, explain, and suggest — but they can't touch your keyboard.
+**What it is**: Code executes in an isolated cloud environment, separate from your local machine.
 
-```
-You: "How do I fix this error?"
-AI:  "Try changing line 42 to use async/await. Here's the code..."
-You: *manually makes the change*
-You: *runs the code*
-You: *sees new error*
-You: "Now I get a different error..."
-```
+**Examples**: ChatGPT Code Interpreter, Claude.ai Analysis tool, Google AI Studio code execution, Replit Ghostwriter, GitHub Copilot Workspace (cloud mode)
 
-### When to Use Tier 1
+**Trust implications**: Moderate. You're uploading code/data to a cloud service. The sandbox is isolated from your machine, but consider what you're sharing.
 
-- **Learning concepts** — Understanding how something works
-- **Quick questions** — "What's the syntax for X?"
-- **Code review** — "What's wrong with this approach?"
-- **Brainstorming** — "What are my options for solving Y?"
-- **Sensitive environments** — When you can't grant any external access
+**Workflow**: Medium friction. AI can test code and show results, but solutions must be transferred to your actual project.
 
-### Limitations
+### Local Machine
 
-- **High friction loop** — Every change requires manual copy/paste/edit/run
-- **Context loss** — The AI can't see the actual state of your project
-- **Error accumulation** — Small misunderstandings compound without verification
-- **Slow iteration** — Back-and-forth takes time
+**What it is**: The AI executes commands and modifies files on your actual workstation.
 
-### Trust Requirements
+**Examples**: Claude Code, Cursor, Windsurf, Aider, Google Antigravity (with local workspace)
 
-**Minimal.** The AI never touches your system. The worst case is bad advice that you choose to follow.
+**Trust implications**: High. The AI has real power over your development environment. Mistakes have real consequences.
+
+**Workflow**: Low friction. Changes happen in your actual project. Rapid iteration. But requires trust and oversight.
 
 ---
 
-## Tier 2: Remote Sandbox AI
+## Dimension 3: Capability Level
 
-### What It Is
+This dimension describes **what the AI can do**, as a progressive spectrum.
 
-Remote sandbox tools can execute code — but in an **isolated cloud environment**, not on your local machine. They can run programs, install packages, create files, and show you results — all in a temporary workspace that's separate from your actual projects.
+### Completion
 
-### Examples
+**What it is**: Inline suggestions as you type. The AI predicts what you'll write next.
 
-- Claude.ai with Analysis tool (runs Python in sandbox)
-- ChatGPT with Code Interpreter
-- Google AI Studio with code execution
-- GitHub Copilot Workspace (cloud environment)
-- Replit Ghostwriter (in Replit's environment)
-- Some configurations of Claude Code (web version with cloud sandbox)
+**Examples**: GitHub Copilot (original), Cursor Tab, Windsurf autocomplete
 
-### Capabilities
+**Interaction model**: You write; AI suggests; you accept/reject. Reactive, not proactive.
 
-| Can Do | Cannot Do |
-|--------|-----------|
-| Run code and show output | Access your local files |
-| Install packages in sandbox | Run commands on your machine |
-| Create and modify sandbox files | See your actual project |
-| Generate visualizations | Deploy to your infrastructure |
-| Test algorithms | Interact with your databases |
-| Prototype solutions | Commit to your repository |
+### Chat
 
-### Mental Model
+**What it is**: Conversational Q&A. You ask questions; AI responds with explanations, code snippets, or advice.
 
-Think of Tier 2 tools as **having their own computer** that they can use to demonstrate and verify things — but they're working from a blank slate, not your actual codebase.
+**Examples**: Any tool's chat interface (Cursor chat, Claude.ai, ChatGPT)
 
-```
-You: "Write a script to process this CSV data"
-AI:  *creates script*
-AI:  *runs script in sandbox*
-AI:  "Here's the output. The processed data looks like this..."
-You: *downloads script to use locally*
-```
+**Interaction model**: Turn-based dialogue. AI responds to your prompts but doesn't take independent action.
 
-### When to Use Tier 2
+### Contextual Edit
 
-- **Prototyping** — Test ideas before committing to implementation
-- **Data exploration** — Analyze files you upload without local setup
-- **Learning by doing** — Watch code execute and see results
-- **Algorithm verification** — Confirm logic works before integrating
-- **Unfamiliar territory** — Explore libraries/tools safely before local install
-- **Sharing context** — Upload files for AI to analyze directly
+**What it is**: AI can read your files and make targeted edits within context. More than chat, less than full autonomy.
 
-### Limitations
+**Examples**: Cursor "Apply" feature, Windsurf inline edits, Copilot edit mode
 
-- **Disconnected from real project** — Sandbox doesn't mirror your environment
-- **Transfer required** — Solutions must be manually brought to your codebase
-- **Environment differences** — Sandbox may not match your production setup
-- **Ephemeral state** — Sandbox resets; work can be lost
+**Interaction model**: You describe what you want; AI proposes changes to specific files; you review and accept.
 
-### Trust Requirements
+### Agentic
 
-**Moderate.** You're uploading data and potentially sensitive files to a cloud service. The sandbox is isolated from your machine, but you're trusting the provider with whatever you share.
+**What it is**: AI can plan multi-step tasks, use tools, explore the codebase, run commands, and work toward goals with some autonomy.
 
-**Consider**:
-- What data are you uploading?
-- Are there secrets in those files?
-- What are the provider's data retention policies?
+**Examples**: Claude Code, Cursor Agent mode, Windsurf Cascade, Antigravity agents
+
+**Interaction model**: You describe a goal; AI breaks it down, executes steps, handles errors, and reports back. You supervise rather than direct each action.
 
 ---
 
-## Tier 3: Local Agent AI
+## Dimension 4: Agency Model
 
-### What It Is
+This dimension describes **who drives the workflow** — you or the AI.
 
-Local agent tools have **direct access to your development environment**. They can read your files, run commands in your terminal, modify your code, interact with your tools, and make real changes — on your actual machine.
+### User-Driven
 
-### Examples
+**What it is**: You navigate, select files, position your cursor. The AI assists your actions.
 
-- Claude Code (CLI version)
-- Cursor (with full workspace access)
-- GitHub Copilot (with workspace features)
-- Windsurf
-- Aider
-- Continue (with shell access)
-- Any AI tool with MCP filesystem/terminal integrations
+**Examples**: Traditional Copilot completion, IDE chat panels, any "assistant" mode
 
-### Capabilities
+**Mental model**: AI as a very fast colleague who can answer questions and suggest code, but you're driving.
 
-| Can Do | Cannot Do |
-|--------|-----------|
-| Read your actual project files | Access things outside granted scope |
-| Run real commands (git, npm, etc.) | Override permission boundaries |
-| Modify your actual code | Do things you don't allow |
-| See real errors in context | Guarantee perfect output |
-| Commit changes | (Varies by tool configuration) |
-| Install dependencies | |
+### AI-Driven
 
-### Mental Model
+**What it is**: You describe goals; the AI explores, plans, and executes. You approve, guide, and course-correct.
 
-Think of Tier 3 tools as **pair programmers sitting at your keyboard**. They can do everything you can do — within the boundaries you set. They're not just advising; they're acting.
+**Examples**: Claude Code, Cursor Agent mode, Aider
 
-```
-You: "Fix the TypeScript errors in src/"
-AI:  *reads the actual files*
-AI:  *identifies the errors*
-AI:  *edits the files directly*
-AI:  *runs the build to verify*
-AI:  "Fixed 3 type errors. Build passes now."
-```
+**Mental model**: AI as a junior developer you're supervising. They do the work; you review and redirect.
 
-### When to Use Tier 3
+### Multi-Agent Orchestration
 
-- **Active development** — Building features, fixing bugs, refactoring
-- **Complex changes** — Multi-file modifications that benefit from automation
-- **Iteration-heavy work** — When you need rapid feedback loops
-- **Learning codebases** — AI can explore and explain your actual code
-- **Routine tasks** — Repetitive changes, migrations, formatting
+**What it is**: Multiple AI agents work in parallel on different aspects of a task. You manage at a higher level.
 
-### Limitations
+**Examples**: Antigravity Manager view, multi-agent frameworks, background task systems
 
-- **Real consequences** — Mistakes affect your actual files
-- **Trust required** — You're granting significant access
-- **Oversight needed** — Review what the AI is doing
-- **Environment coupling** — Tool needs to be configured for your setup
-
-### Trust Requirements
-
-**High.** The AI has real power over your development environment.
-
-**Before using Tier 3 tools**:
-- Understand what permissions you're granting
-- Use version control so you can revert
-- Review changes before committing
-- Be careful with credentials and secrets
-- Understand the tool's sandboxing/safety features
+**Mental model**: AI as a team you're managing. You delegate tasks, check status, and integrate results.
 
 ---
 
-## Choosing the Right Tier
+## Mapping Current Tools
 
-### The Decision Framework
+Here's how popular tools map across these dimensions:
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│ What do you need?                                                   │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                     │
-│  "I need to understand something"                                   │
-│   └─→ Tier 1 (Conversational) is sufficient                        │
-│                                                                     │
-│  "I need to test/prototype something in isolation"                  │
-│   └─→ Tier 2 (Remote Sandbox) is ideal                             │
-│                                                                     │
-│  "I need to build/modify my actual project"                         │
-│   └─→ Tier 3 (Local Agent) is most efficient                       │
-│                                                                     │
-│  "I'm working with sensitive data or systems"                       │
-│   └─→ Start at Tier 1, escalate only with precautions              │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
-```
+| Tool | Interface | Execution | Capability | Agency |
+|------|-----------|-----------|------------|--------|
+| **ChatGPT (web)** | Browser | None or Remote Sandbox | Chat | User-driven |
+| **Claude.ai** | Browser | None or Remote Sandbox | Chat | User-driven |
+| **GitHub Copilot** | IDE-integrated | Local | Completion → Chat | User-driven |
+| **Cursor** | IDE-integrated | Local | Completion → Agentic | User → AI-driven |
+| **Windsurf** | IDE-integrated | Local | Completion → Agentic | User → AI-driven |
+| **Claude Code** | Terminal/CLI | Local | Agentic | AI-driven |
+| **Gemini CLI** | Terminal/CLI | Local | Agentic | AI-driven |
+| **Aider** | Terminal/CLI | Local | Agentic | AI-driven |
+| **Antigravity** | IDE + Orchestrator | Local | Agentic | AI → Multi-agent |
+| **Replit Ghostwriter** | Browser (IDE) | Remote Sandbox | Completion → Edit | User-driven |
 
-### Tier Escalation Pattern
-
-You don't have to choose one tier permanently. A common pattern:
-
-1. **Start conversational** — Understand the problem, explore approaches
-2. **Prototype in sandbox** — Verify the solution works in isolation
-3. **Implement with local agent** — Make real changes efficiently
-
-This progression manages risk while maximizing efficiency.
-
-### Context Switching Costs
-
-Moving between tiers has costs:
-
-| Transition | Cost |
-|------------|------|
-| Tier 1 → Tier 2 | Re-explain context; upload relevant files |
-| Tier 2 → Tier 3 | Transfer working solution; adapt to real environment |
-| Tier 3 → Tier 1 | Lose project context; back to copy/paste |
-
-Sometimes it's worth paying the transition cost. Sometimes it's better to stay in one tier.
+:::note[Tools evolve]
+This table reflects the landscape as of early 2026. Tools add capabilities frequently — a tool that was "chat only" last year may be "agentic" now. Re-evaluate tools as they evolve.
+:::
 
 ---
 
-## Security Considerations by Tier
+## The Critical Distinction: IDE-Integrated vs. Terminal/CLI
 
-### Tier 1: Minimal Attack Surface
+One of the most consequential choices is between **IDE-integrated** tools (Cursor, Windsurf, Antigravity) and **terminal/CLI** tools (Claude Code, Gemini CLI, Aider).
 
-**Risks**:
-- Accidentally pasting secrets into chat
-- Following bad advice that introduces vulnerabilities
+### IDE-Integrated Tools
 
-**Mitigations**:
-- Review what you're pasting
-- Verify security-sensitive suggestions independently
+**You get**:
+- Familiar VS Code-like interface
+- Visual file browser, tabs, integrated terminal
+- Inline diffs, syntax highlighting, refactoring tools
+- Lower learning curve if you know VS Code
+- Seamless switch between AI and manual editing
 
-### Tier 2: Data Exposure
+**You give up**:
+- Editor choice (you're using their fork)
+- Some transparency (AI actions happen "inside" the environment)
+- Flexibility to compose with other tools
 
-**Risks**:
-- Uploading files containing credentials
-- Sharing proprietary code with cloud provider
-- Sandbox environment being compromised (provider risk)
+**Best when**: You want a single integrated environment and prefer visual workflows.
 
-**Mitigations**:
-- Sanitize files before upload
-- Read provider's data handling policies
-- Avoid uploading production data
+### Terminal/CLI Tools
 
-### Tier 3: System Access
+**You get**:
+- Use any editor you want (VS Code, Vim, Emacs, etc.)
+- High transparency — you see exactly what commands run
+- Composable with other CLI tools
+- Often more explicit about what's happening and why
+- Works well over SSH, in containers, etc.
 
-**Risks**:
-- AI modifying files incorrectly
-- Running dangerous commands
-- Exposing credentials to AI context
-- Supply chain risks (malicious package installs)
+**You give up**:
+- Built-in visual file browsing
+- Integrated diff views (you review in your editor)
+- Gentler onboarding
 
-**Mitigations**:
-- Use version control (git) religiously
-- Review changes before committing
-- Configure tool permissions appropriately
-- Keep secrets out of AI-accessible files (use .env, gitignore)
-- Understand what commands the AI is running
+**Best when**: You're comfortable with terminal workflows, want maximum transparency, or have strong editor preferences.
+
+### The Hybrid Reality
+
+Many developers use both:
+- **Daily coding**: IDE-integrated tool for smooth editing experience
+- **Complex reasoning**: Terminal tool for big-picture analysis, complex refactoring
+- **Learning/exploration**: Browser tool for quick questions
+
+This multi-tool strategy lets you match the tool to the task.
+
+---
+
+## Security Considerations by Dimension
+
+### By Execution Environment
+
+| Environment | Primary Risks | Mitigations |
+|-------------|---------------|-------------|
+| **None** | Following bad advice | Verify security-sensitive suggestions |
+| **Remote Sandbox** | Data exposure to cloud provider | Sanitize uploads; read privacy policies |
+| **Local Machine** | File corruption, credential exposure, malicious commands | Version control; review changes; isolate secrets |
+
+### By Capability Level
+
+| Capability | Additional Risks | Mitigations |
+|------------|------------------|-------------|
+| **Completion** | Accepting insecure suggestions | Review before accepting |
+| **Chat** | Acting on incorrect advice | Verify critical information |
+| **Contextual Edit** | Unwanted changes to files | Use diffs; keep version control |
+| **Agentic** | Unintended autonomous actions | Understand approval flows; set boundaries |
+
+### By Agency Model
+
+| Model | Trust Required | Key Questions |
+|-------|----------------|---------------|
+| **User-Driven** | Low | What am I accepting? |
+| **AI-Driven** | Medium-High | What is the AI doing? Can I interrupt? |
+| **Multi-Agent** | High | What agents are running? What can they access? |
 
 ---
 
 ## Evaluating New Tools
 
-When you encounter a new AI development tool, ask these questions:
+When you encounter a new AI development tool, evaluate it across all four dimensions:
 
-### 1. What tier does it operate at?
+### 1. Interface Paradigm
+- Is this browser-based, IDE-integrated, CLI, or something new?
+- What assumptions does it make about my workflow?
+- Does it replace my editor or complement it?
 
+### 2. Execution Environment
 - Does it execute code? Where?
-- Can it access my local files?
-- Can it run commands on my machine?
+- What data am I sending to the cloud?
+- Can it modify my local files? Run terminal commands?
 
-### 2. What permissions does it require?
+### 3. Capability Level
+- Is it completion, chat, contextual edit, or agentic?
+- Can it take multi-step autonomous actions?
+- What tools/integrations does it have?
 
-- Filesystem access (read? write? which paths?)
-- Network access
-- Terminal/shell execution
-- Git operations
-- Package installation
+### 4. Agency Model
+- Who drives the workflow — me or the AI?
+- How do I approve or reject AI actions?
+- Can I interrupt mid-task?
 
-### 3. What are the boundaries?
+### Also Ask
 
-- Can I limit what it can access?
-- Can I review actions before they execute?
-- What happens if something goes wrong?
-
-### 4. What's the trust model?
-
-- What company operates this tool?
-- Where does my code/data go?
-- What are the privacy implications?
-
-### 5. What's the workflow impact?
-
-- How does this fit into my existing process?
-- What's the learning curve?
-- What's the switching cost?
+- **What permissions does it need?** (Filesystem, network, shell, git)
+- **What's the trust model?** (Company, data handling, privacy)
+- **What's the cost model?** (Subscription, usage-based, API keys)
+- **How does it handle errors?** (Gracefully? Transparently?)
 
 ---
 
-## The Evolution of AI Tools
+## Practical Patterns
 
-The landscape is moving toward more capable tools:
+### Pattern: Tiered Tool Selection
 
-**Current trend**: Tools are adding capabilities upward through the tiers
-- Conversational tools add code execution
-- Sandbox tools add local integrations
-- Local tools add more sophisticated agent capabilities
+Match tool characteristics to task requirements:
+
+| Task Type | Suggested Approach |
+|-----------|-------------------|
+| Quick question | Browser (no execution needed) |
+| Learning a concept | Browser or IDE chat |
+| Writing new code | IDE-integrated (familiar workflow) |
+| Complex refactoring | Terminal/CLI (transparency, control) |
+| Debugging | IDE-integrated or Terminal (need local execution) |
+| Code review | Browser or IDE chat (no execution needed) |
+| Prototyping ideas | Remote sandbox (safe experimentation) |
+
+### Pattern: Trust Escalation
+
+Start conservative, escalate as needed:
+
+1. **Start with chat** — Understand the problem, explore approaches
+2. **Prototype in sandbox** — Test solutions in isolation
+3. **Apply with local tool** — Make real changes with appropriate review
+
+### Pattern: Multi-Tool Workflow
+
+Leverage each tool's strengths:
+
+```
+Morning: Use IDE-integrated tool for feature development
+         (smooth editing, inline completion)
+
+Complex task: Switch to terminal tool for large refactoring
+              (transparency, explicit planning)
+
+Quick question: Browser chat for "how does X work?"
+                (no context needed, fast answer)
+```
+
+---
+
+## The Evolving Landscape
+
+The AI coding tool space is moving fast. Key trends:
+
+**Convergence**: Tools are adding capabilities from adjacent categories
+- Browser tools adding execution
+- IDE tools adding agentic features
+- CLI tools adding richer interfaces
+
+**New paradigms**: Agent orchestration (Antigravity Manager view) represents a shift from "AI assists coding" to "AI manages development tasks"
+
+**Model flexibility**: Tools increasingly support multiple models (bring your own API key, model switching)
 
 **What this means for you**:
-- Understand the spectrum now
-- Re-evaluate tools as they evolve
 - Don't assume yesterday's limitations still apply
-- Don't assume yesterday's permissions are still appropriate
+- Re-evaluate tools periodically
+- Understand the dimensions so you can quickly categorize new tools
 
 ---
 
 ## Summary
 
-**Evaluating AI Development Tools** means understanding:
+**Evaluating AI Development Tools** means understanding four independent dimensions:
 
-1. **Three tiers exist** — Conversational, Remote Sandbox, Local Agent
-2. **Capabilities increase with tier** — And so do trust requirements
-3. **Match tier to task** — Understanding needs less access than building
-4. **Tier escalation works** — Start safe, increase capability as needed
-5. **Security scales with access** — More power means more caution required
-6. **Evaluate systematically** — Ask the right questions about any new tool
+1. **Interface Paradigm** — Browser, IDE-integrated, Terminal/CLI, or Orchestrator
+2. **Execution Environment** — None, Remote Sandbox, or Local Machine
+3. **Capability Level** — Completion → Chat → Contextual Edit → Agentic
+4. **Agency Model** — User-driven → AI-driven → Multi-agent
 
 :::tip[Key insight]
-The question isn't "which tier is best?" — it's "which tier is right for this task, given my trust requirements and workflow needs?"
+Tools aren't "better" or "worse" — they occupy different positions across these dimensions. The right tool depends on your task, your workflow preferences, and your trust requirements.
 :::
 
 ---
 
-## Practical Application
+## Exercises
 
-As you work through DevFoundry's curriculum:
+### Exercise 1: Tool Mapping
 
-- **Early learning** (understanding concepts): Tier 1 is fine
-- **Working examples** (running code you paste): Tier 1 or 2
-- **Building projects** (your code, your environment): Tier 2 or 3
-- **Production work** (real consequences): Tier 3 with appropriate caution
+List 3 AI development tools you use or are considering. For each, identify:
+- Interface paradigm
+- Execution environment
+- Capability level
+- Agency model
 
-The exercises and examples in this curriculum will note which tier is assumed or required.
+### Exercise 2: Gap Analysis
+
+Looking at the tool mapping table, identify:
+- What combination of dimensions is missing from your current toolkit?
+- Is there a task type you're handling suboptimally because of tool mismatch?
+
+### Exercise 3: Trust Audit
+
+For your most powerful tool (highest capability, local execution):
+1. What permissions does it have?
+2. What could go wrong?
+3. What safeguards are in place?
+4. Are you comfortable with this risk profile?
+
+### Exercise 4: New Tool Evaluation
+
+Find a tool you haven't used. Apply the four-dimension framework:
+1. Where does it sit on each dimension?
+2. What's it optimized for?
+3. What would you use it for (or why wouldn't you)?
 
 ---
 
 ## Related
 
 - [Architecture-First Thinking](architecture-first) — Making deliberate technical choices
-- [Build vs. Borrow](build-vs-borrow) — Evaluating when to use external tools
-- [Flow-Based Development](flow-based-dev) — Understanding development workflows
-- [Getting Started Prompt](/docs/prompts/getting-started) — Working effectively with AI assistants
+- [Build vs. Borrow](build-vs-borrow) — Evaluating when to use external tools and libraries
+- [Minimal User Loop](minimal-user-loop) — Understanding core interaction patterns
+- [Flow-Based Development](flow-based-dev) — Optimizing development workflows
 
 ---
 
-## Exercises
+## Sources
 
-### Exercise 1: Tool Audit
-
-List the AI development tools you currently use (or are considering). For each:
-
-1. What tier does it operate at?
-2. What permissions does it have/need?
-3. Is the tier appropriate for how you're using it?
-
-### Exercise 2: Tier Matching
-
-For each scenario, identify the appropriate tier:
-
-1. You want to understand how React hooks work
-2. You need to refactor a function across 15 files in your project
-3. You want to test an algorithm before adding it to your codebase
-4. You're reviewing a dependency for security issues
-5. You need to generate boilerplate for a new feature
-
-<details>
-<summary>Suggested Answers</summary>
-
-1. **Tier 1** — Conceptual understanding, no execution needed
-2. **Tier 3** — Modifying your actual project files
-3. **Tier 2** — Testing in isolation before integration
-4. **Tier 1** — Analysis and explanation, no execution
-5. **Tier 2 or 3** — Depends on whether you want to test it first (2) or generate directly into your project (3)
-
-</details>
-
-### Exercise 3: Security Review
-
-You're about to use a Tier 3 local agent on a new project. Before you start:
-
-1. What files should you ensure are in `.gitignore`?
-2. How would you configure git to allow easy rollback?
-3. What would you check about the tool's permissions?
-
-### Exercise 4: Tool Evolution Tracking
-
-Pick an AI development tool you don't currently use. Research:
-
-1. What tier did it start at?
-2. What tier is it at now?
-3. What capabilities were added?
-4. What new trust requirements came with those capabilities?
+- [Google Antigravity announcement](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/)
+- [AI Code Editor Comparison (AIM Research)](https://research.aimultiple.com/ai-code-editor/)
+- [Claude Code vs Cursor comparison](https://www.qodo.ai/blog/claude-code-vs-cursor/)
+- [Battle of the AI Coding Agents](https://www.lotharschulz.info/2025/09/30/battle-of-the-ai-coding-agents-github-copilot-vs-claude-code-vs-cursor-vs-windsurf-vs-kiro-vs-gemini-cli/)
