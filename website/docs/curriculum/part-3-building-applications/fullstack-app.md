@@ -27,12 +27,12 @@ By the end of this stage, you will:
 
 ## Introduction
 
-Through Stages 1-3, all data lived in the browser. Refresh the page in a new browser? Data is gone. Two users can't see the same orders.
+Through Stages 1-3, all data lived in the browser. Refresh the page in a new browser? Data is gone. Two users can't see the same messages.
 
 Stage 4 changes everything:
 
 - **Server** handles business logic and data
-- **Database** persists orders permanently
+- **Database** persists messages permanently
 - **API** connects frontend to backend
 - **Client** becomes a thin presentation layer
 
@@ -81,8 +81,8 @@ This is **real web application architecture**.
 │                    ▼                        │
 │ ┌─────────────────────────────────────────┐ │
 │ │ SQLite Database                         │ │
-│ │ • Orders                                │ │
-│ │ • Menu Items (optional)                 │ │
+│ │ • Messages                              │ │
+│ │ • Conversations                         │ │
 │ └─────────────────────────────────────────┘ │
 └─────────────────────────────────────────────┘
 ```
@@ -92,14 +92,14 @@ This is **real web application architecture**.
 ## Project Structure
 
 ```
-lemonade-fullstack/
+chat-fullstack/
 ├── client/                    # React frontend
 │   ├── src/
 │   │   ├── components/
 │   │   ├── context/
 │   │   ├── pages/
 │   │   ├── api/               # NEW: API client
-│   │   │   └── orders.js
+│   │   │   └── messages.js
 │   │   └── ...
 │   ├── package.json
 │   └── vite.config.js
@@ -107,14 +107,14 @@ lemonade-fullstack/
 ├── server/                    # Express backend
 │   ├── src/
 │   │   ├── routes/
-│   │   │   └── orders.js
+│   │   │   └── messages.js
 │   │   ├── db/
 │   │   │   ├── index.js
 │   │   │   └── schema.sql
 │   │   └── index.js
 │   ├── package.json
 │   └── data/                  # SQLite database file
-│       └── lemonade.db
+│       └── chat.db
 │
 ├── package.json               # Root package.json
 └── README.md
@@ -141,7 +141,8 @@ Create `server/src/index.js`:
 ```javascript
 const express = require('express');
 const cors = require('cors');
-const ordersRouter = require('./routes/orders');
+const messagesRouter = require('./routes/messages');
+const conversationsRouter = require('./routes/conversations');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -151,7 +152,8 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/orders', ordersRouter);
+app.use('/api/messages', messagesRouter);
+app.use('/api/conversations', conversationsRouter);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -191,30 +193,27 @@ Update `server/package.json`:
 Create `server/src/db/schema.sql`:
 
 ```sql
--- Orders table
-CREATE TABLE IF NOT EXISTS orders (
+-- Conversations table
+CREATE TABLE IF NOT EXISTS conversations (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    customer_name TEXT NOT NULL,
-    customer_email TEXT NOT NULL,
-    total REAL NOT NULL,
-    status TEXT DEFAULT 'pending',
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    title TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- Order items table
-CREATE TABLE IF NOT EXISTS order_items (
+-- Messages table
+CREATE TABLE IF NOT EXISTS messages (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    order_id INTEGER NOT NULL,
-    item_id TEXT NOT NULL,
-    item_name TEXT NOT NULL,
-    price REAL NOT NULL,
-    quantity INTEGER NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES orders(id)
+    conversation_id INTEGER NOT NULL,
+    role TEXT NOT NULL CHECK(role IN ('user', 'assistant')),
+    content TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (conversation_id) REFERENCES conversations(id)
 );
 
 -- Index for faster lookups
-CREATE INDEX IF NOT EXISTS idx_orders_created_at ON orders(created_at);
-CREATE INDEX IF NOT EXISTS idx_order_items_order_id ON order_items(order_id);
+CREATE INDEX IF NOT EXISTS idx_conversations_updated_at ON conversations(updated_at);
+CREATE INDEX IF NOT EXISTS idx_messages_conversation_id ON messages(conversation_id);
 ```
 
 ### Database Module
@@ -233,7 +232,7 @@ if (!fs.existsSync(dataDir)) {
 }
 
 // Initialize database
-const db = new Database(path.join(dataDir, 'lemonade.db'));
+const db = new Database(path.join(dataDir, 'chat.db'));
 
 // Enable foreign keys
 db.pragma('foreign_keys = ON');
@@ -242,62 +241,81 @@ db.pragma('foreign_keys = ON');
 const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8');
 db.exec(schema);
 
-// Prepared statements for orders
-const createOrder = db.prepare(`
-  INSERT INTO orders (customer_name, customer_email, total)
-  VALUES (@customerName, @customerEmail, @total)
+// Prepared statements for conversations
+const createConversation = db.prepare(`
+  INSERT INTO conversations (title)
+  VALUES (@title)
 `);
 
-const createOrderItem = db.prepare(`
-  INSERT INTO order_items (order_id, item_id, item_name, price, quantity)
-  VALUES (@orderId, @itemId, @itemName, @price, @quantity)
+const getConversationById = db.prepare(`
+  SELECT * FROM conversations WHERE id = ?
 `);
 
-const getOrderById = db.prepare(`
-  SELECT * FROM orders WHERE id = ?
+const getAllConversations = db.prepare(`
+  SELECT * FROM conversations ORDER BY updated_at DESC LIMIT 50
 `);
 
-const getOrderItems = db.prepare(`
-  SELECT * FROM order_items WHERE order_id = ?
+const updateConversationTimestamp = db.prepare(`
+  UPDATE conversations SET updated_at = CURRENT_TIMESTAMP WHERE id = ?
 `);
 
-const getAllOrders = db.prepare(`
-  SELECT * FROM orders ORDER BY created_at DESC LIMIT 50
+// Prepared statements for messages
+const createMessage = db.prepare(`
+  INSERT INTO messages (conversation_id, role, content)
+  VALUES (@conversationId, @role, @content)
 `);
 
-const updateOrderStatus = db.prepare(`
-  UPDATE orders SET status = ? WHERE id = ?
+const getMessageById = db.prepare(`
+  SELECT * FROM messages WHERE id = ?
 `);
 
-// Transaction for creating order with items
-const insertOrder = db.transaction((orderData) => {
-  const { customerName, customerEmail, total, items } = orderData;
+const getMessagesByConversation = db.prepare(`
+  SELECT * FROM messages WHERE conversation_id = ? ORDER BY created_at ASC
+`);
 
-  // Insert order
-  const result = createOrder.run({ customerName, customerEmail, total });
-  const orderId = result.lastInsertRowid;
+// Transaction for creating message and updating conversation
+const insertMessage = db.transaction((messageData) => {
+  const { conversationId, role, content } = messageData;
 
-  // Insert items
-  for (const item of items) {
-    createOrderItem.run({
-      orderId,
-      itemId: item.itemId,
-      itemName: item.itemName,
-      price: item.price,
-      quantity: item.quantity
+  // Insert message
+  const result = createMessage.run({ conversationId, role, content });
+  const messageId = result.lastInsertRowid;
+
+  // Update conversation timestamp
+  updateConversationTimestamp.run(conversationId);
+
+  return messageId;
+});
+
+// Transaction for creating conversation with initial message
+const insertConversation = db.transaction((conversationData) => {
+  const { title, initialMessage } = conversationData;
+
+  // Insert conversation
+  const result = createConversation.run({ title });
+  const conversationId = result.lastInsertRowid;
+
+  // Insert initial message if provided
+  if (initialMessage) {
+    createMessage.run({
+      conversationId,
+      role: initialMessage.role,
+      content: initialMessage.content
     });
   }
 
-  return orderId;
+  return conversationId;
 });
 
 module.exports = {
   db,
-  insertOrder,
-  getOrderById,
-  getOrderItems,
-  getAllOrders,
-  updateOrderStatus
+  insertConversation,
+  insertMessage,
+  getConversationById,
+  getMessageById,
+  getMessagesByConversation,
+  getAllConversations,
+  updateConversationTimestamp
 };
 ```
 
@@ -309,140 +327,159 @@ module.exports = {
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | /api/orders | List recent orders |
-| GET | /api/orders/:id | Get order details |
-| POST | /api/orders | Create new order |
-| PATCH | /api/orders/:id | Update order status |
+| GET | /api/conversations | List recent conversations |
+| GET | /api/conversations/:id | Get conversation with messages |
+| POST | /api/conversations | Create new conversation |
+| GET | /api/messages/:id | Get single message |
+| POST | /api/messages | Create new message |
 
-### Orders Router
+### Messages Router
 
-Create `server/src/routes/orders.js`:
+Create `server/src/routes/messages.js`:
 
 ```javascript
 const express = require('express');
 const {
-  insertOrder,
-  getOrderById,
-  getOrderItems,
-  getAllOrders,
-  updateOrderStatus
+  insertMessage,
+  getMessageById,
+  getMessagesByConversation,
+  getConversationById
 } = require('../db');
 
 const router = express.Router();
 
-// Menu items (could also be in database)
-const menuItems = [
-  { id: 'classic', name: 'Classic Lemonade', price: 2.50 },
-  { id: 'strawberry', name: 'Strawberry Lemonade', price: 3.50 },
-  { id: 'mint', name: 'Mint Lemonade', price: 3.00 }
-];
-
-// GET /api/orders - List orders
-router.get('/', (req, res) => {
-  try {
-    const orders = getAllOrders.all();
-    res.json(orders);
-  } catch (error) {
-    console.error('Error fetching orders:', error);
-    res.status(500).json({ error: 'Failed to fetch orders' });
-  }
-});
-
-// GET /api/orders/:id - Get single order
+// GET /api/messages/:id - Get single message
 router.get('/:id', (req, res) => {
   try {
-    const order = getOrderById.get(req.params.id);
+    const message = getMessageById.get(req.params.id);
 
-    if (!order) {
-      return res.status(404).json({ error: 'Order not found' });
+    if (!message) {
+      return res.status(404).json({ error: 'Message not found' });
     }
 
-    const items = getOrderItems.all(order.id);
-    res.json({ ...order, items });
+    res.json(message);
   } catch (error) {
-    console.error('Error fetching order:', error);
-    res.status(500).json({ error: 'Failed to fetch order' });
+    console.error('Error fetching message:', error);
+    res.status(500).json({ error: 'Failed to fetch message' });
   }
 });
 
-// POST /api/orders - Create order
+// POST /api/messages - Create message
 router.post('/', (req, res) => {
   try {
-    const { customerName, customerEmail, items } = req.body;
+    const { conversationId, role, content } = req.body;
 
     // Validation
-    if (!customerName || !customerEmail || !items?.length) {
+    if (!conversationId || !role || !content) {
       return res.status(400).json({
-        error: 'Missing required fields: customerName, customerEmail, items'
+        error: 'Missing required fields: conversationId, role, content'
       });
     }
 
-    // Validate and enrich items
-    const enrichedItems = items.map(item => {
-      const menuItem = menuItems.find(m => m.id === item.itemId);
-      if (!menuItem) {
-        throw new Error(`Invalid item: ${item.itemId}`);
-      }
-      return {
-        itemId: item.itemId,
-        itemName: menuItem.name,
-        price: menuItem.price,
-        quantity: item.quantity
-      };
+    // Validate role
+    if (!['user', 'assistant'].includes(role)) {
+      return res.status(400).json({
+        error: 'Invalid role. Must be "user" or "assistant"'
+      });
+    }
+
+    // Check conversation exists
+    const conversation = getConversationById.get(conversationId);
+    if (!conversation) {
+      return res.status(404).json({ error: 'Conversation not found' });
+    }
+
+    // Insert message
+    const messageId = insertMessage({
+      conversationId,
+      role,
+      content
     });
 
-    // Calculate total
-    const total = enrichedItems.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
-    );
-
-    // Insert order
-    const orderId = insertOrder({
-      customerName,
-      customerEmail,
-      total,
-      items: enrichedItems
-    });
-
-    // Return created order
-    const order = getOrderById.get(orderId);
-    const orderItems = getOrderItems.all(orderId);
-
-    res.status(201).json({
-      ...order,
-      items: orderItems
-    });
+    // Return created message
+    const message = getMessageById.get(messageId);
+    res.status(201).json(message);
   } catch (error) {
-    console.error('Error creating order:', error);
+    console.error('Error creating message:', error);
     res.status(400).json({ error: error.message });
   }
 });
 
-// PATCH /api/orders/:id - Update order status
-router.patch('/:id', (req, res) => {
-  try {
-    const { status } = req.body;
-    const validStatuses = ['pending', 'preparing', 'ready', 'completed'];
+module.exports = router;
+```
 
-    if (!validStatuses.includes(status)) {
+### Conversations Router
+
+Create `server/src/routes/conversations.js`:
+
+```javascript
+const express = require('express');
+const {
+  insertConversation,
+  getConversationById,
+  getMessagesByConversation,
+  getAllConversations
+} = require('../db');
+
+const router = express.Router();
+
+// GET /api/conversations - List conversations
+router.get('/', (req, res) => {
+  try {
+    const conversations = getAllConversations.all();
+    res.json(conversations);
+  } catch (error) {
+    console.error('Error fetching conversations:', error);
+    res.status(500).json({ error: 'Failed to fetch conversations' });
+  }
+});
+
+// GET /api/conversations/:id - Get single conversation with messages
+router.get('/:id', (req, res) => {
+  try {
+    const conversation = getConversationById.get(req.params.id);
+
+    if (!conversation) {
+      return res.status(404).json({ error: 'Conversation not found' });
+    }
+
+    const messages = getMessagesByConversation.all(conversation.id);
+    res.json({ ...conversation, messages });
+  } catch (error) {
+    console.error('Error fetching conversation:', error);
+    res.status(500).json({ error: 'Failed to fetch conversation' });
+  }
+});
+
+// POST /api/conversations - Create conversation
+router.post('/', (req, res) => {
+  try {
+    const { title, initialMessage } = req.body;
+
+    // Validation
+    if (!title) {
       return res.status(400).json({
-        error: `Invalid status. Must be one of: ${validStatuses.join(', ')}`
+        error: 'Missing required field: title'
       });
     }
 
-    const order = getOrderById.get(req.params.id);
-    if (!order) {
-      return res.status(404).json({ error: 'Order not found' });
-    }
+    // Insert conversation
+    const conversationId = insertConversation({
+      title,
+      initialMessage
+    });
 
-    updateOrderStatus.run(status, req.params.id);
+    // Return created conversation
+    const conversation = getConversationById.get(conversationId);
+    const messages = getMessagesByConversation.all(conversationId);
 
-    const updated = getOrderById.get(req.params.id);
-    res.json(updated);
+    res.status(201).json({
+      ...conversation,
+      messages
+    });
   } catch (error) {
-    console.error('Error updating order:', error);
-    res.status(500).json({ error: 'Failed to update order' });
+    console.error('Error creating conversation:', error);
+    res.status(400).json({ error: error.message });
   }
 });
 
@@ -455,43 +492,60 @@ module.exports = router;
 
 ### API Module
 
-Create `client/src/api/orders.js`:
+Create `client/src/api/messages.js`:
 
 ```javascript
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
-export async function createOrder(orderData) {
-  const response = await fetch(`${API_BASE}/orders`, {
+export async function createConversation(conversationData) {
+  const response = await fetch(`${API_BASE}/conversations`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(orderData)
+    body: JSON.stringify(conversationData)
   });
 
   if (!response.ok) {
     const error = await response.json();
-    throw new Error(error.error || 'Failed to create order');
+    throw new Error(error.error || 'Failed to create conversation');
   }
 
   return response.json();
 }
 
-export async function getOrder(orderId) {
-  const response = await fetch(`${API_BASE}/orders/${orderId}`);
+export async function getConversation(conversationId) {
+  const response = await fetch(`${API_BASE}/conversations/${conversationId}`);
 
   if (!response.ok) {
-    throw new Error('Failed to fetch order');
+    throw new Error('Failed to fetch conversation');
   }
 
   return response.json();
 }
 
-export async function getOrders() {
-  const response = await fetch(`${API_BASE}/orders`);
+export async function getConversations() {
+  const response = await fetch(`${API_BASE}/conversations`);
 
   if (!response.ok) {
-    throw new Error('Failed to fetch orders');
+    throw new Error('Failed to fetch conversations');
+  }
+
+  return response.json();
+}
+
+export async function sendMessage(messageData) {
+  const response = await fetch(`${API_BASE}/messages`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(messageData)
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.error || 'Failed to send message');
   }
 
   return response.json();
@@ -500,25 +554,26 @@ export async function getOrders() {
 
 ### Updated Context
 
-Update the OrderContext to use the API:
+Update the ChatContext to use the API:
 
 ```jsx
-// In OrderContext.jsx - update completeOrder
+// In ChatContext.jsx - update sendMessage
 
-const completeOrder = async () => {
-  const { customerName, customerEmail, items } = order;
+const sendMessage = async (content) => {
+  const { conversationId } = chatState;
 
   try {
-    const result = await createOrder({
-      customerName,
-      customerEmail,
-      items: items.map(item => ({
-        itemId: item.itemId,
-        quantity: item.quantity
-      }))
+    // Send user message
+    const userMessage = await sendMessageApi({
+      conversationId,
+      role: 'user',
+      content
     });
 
-    return result;
+    // Update local state
+    dispatch({ type: 'ADD_MESSAGE', payload: userMessage });
+
+    return userMessage;
   } catch (error) {
     showNotification('error', error.message);
     throw error;
@@ -526,81 +581,79 @@ const completeOrder = async () => {
 };
 ```
 
-### Updated CheckoutForm
+### Updated Chat Component
 
 ```jsx
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  if (!validate()) return;
+  if (!messageText.trim()) return;
 
   setIsSubmitting(true);
-  setCustomerInfo(formData.name, formData.email);
 
   try {
     // Now actually calls the API
-    const result = await completeOrder();
-    navigate(`/confirmation/${result.id}`);
+    await sendMessage(messageText);
+    setMessageText('');
   } catch (error) {
     // Error already shown via notification
+  } finally {
     setIsSubmitting(false);
   }
 };
 ```
 
-### Updated Confirmation Page
+### Updated Conversation Page
 
 ```jsx
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getOrder } from '../api/orders';
+import { getConversation } from '../api/messages';
 
-export default function ConfirmationPage() {
-  const { orderId } = useParams();
-  const [order, setOrder] = useState(null);
+export default function ConversationPage() {
+  const { conversationId } = useParams();
+  const [conversation, setConversation] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchOrder() {
+    async function fetchConversation() {
       try {
-        const data = await getOrder(orderId);
-        setOrder(data);
+        const data = await getConversation(conversationId);
+        setConversation(data);
       } catch (err) {
-        setError('Could not load order details');
+        setError('Could not load conversation');
       } finally {
         setLoading(false);
       }
     }
 
-    fetchOrder();
-  }, [orderId]);
+    fetchConversation();
+  }, [conversationId]);
 
   if (loading) return <div className="loading">Loading...</div>;
   if (error) return <div className="error">{error}</div>;
-  if (!order) return <div className="error">Order not found</div>;
+  if (!conversation) return <div className="error">Conversation not found</div>;
 
   return (
-    <main className="confirmation-page">
-      <div className="confirmation-content">
-        <div className="success-icon">✓</div>
-        <h1>Order Confirmed!</h1>
-        <p>Thank you, {order.customer_name}!</p>
-        <p className="order-number">Order #{order.id}</p>
-
-        <div className="order-summary-final">
-          {order.items.map(item => (
-            <div key={item.id} className="summary-item">
-              {item.item_name} × {item.quantity}
-            </div>
-          ))}
-          <div className="summary-total">
-            Total: ${order.total.toFixed(2)}
-          </div>
-        </div>
-
-        <Link to="/" className="primary">Start New Order</Link>
+    <main className="conversation-page">
+      <div className="conversation-header">
+        <h1>{conversation.title}</h1>
+        <p className="conversation-id">Conversation #{conversation.id}</p>
       </div>
+
+      <div className="messages-container">
+        {conversation.messages.map(message => (
+          <div key={message.id} className={`message ${message.role}`}>
+            <div className="message-content">{message.content}</div>
+            <div className="message-timestamp">
+              {new Date(message.created_at).toLocaleString()}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <Link to="/" className="primary">Back to Conversations</Link>
     </main>
   );
 }
@@ -657,10 +710,10 @@ Then remove the base URL from API calls.
 ### Server-Side Errors
 
 ```javascript
-// In routes/orders.js
+// In routes/messages.js
 router.post('/', async (req, res, next) => {
   try {
-    // ... order creation logic
+    // ... message creation logic
   } catch (error) {
     next(error); // Pass to error handler
   }
@@ -684,12 +737,12 @@ app.use((err, req, res, next) => {
 
 ```jsx
 // In API client
-export async function createOrder(orderData) {
+export async function sendMessage(messageData) {
   try {
-    const response = await fetch(`${API_BASE}/orders`, {
+    const response = await fetch(`${API_BASE}/messages`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(orderData)
+      body: JSON.stringify(messageData)
     });
 
     if (!response.ok) {
@@ -710,47 +763,57 @@ export async function createOrder(orderData) {
 
 ---
 
-## Exercise 1: Add Menu Endpoint
+## Exercise 1: Add Message Search Endpoint
 
-Create an API endpoint to fetch menu items:
+Create an API endpoint to search messages:
 
-1. Add `GET /api/menu` route
-2. Move menu data to server
-3. Update frontend to fetch menu on load
+1. Add `GET /api/messages/search` route
+2. Accept query parameter for search term
+3. Return matching messages across all conversations
 
 <details>
 <summary>Solution</summary>
 
 ```javascript
-// server/src/routes/menu.js
-const express = require('express');
-const router = express.Router();
+// server/src/routes/messages.js - add search route
+const searchMessages = db.prepare(`
+  SELECT m.*, c.title as conversation_title
+  FROM messages m
+  JOIN conversations c ON m.conversation_id = c.id
+  WHERE m.content LIKE ?
+  ORDER BY m.created_at DESC
+  LIMIT 50
+`);
 
-const menuItems = [
-  { id: 'classic', name: 'Classic Lemonade', description: 'Fresh squeezed', price: 2.50, emoji: '🍋' },
-  { id: 'strawberry', name: 'Strawberry Lemonade', description: 'With fresh strawberries', price: 3.50, emoji: '🍓' },
-  { id: 'mint', name: 'Mint Lemonade', description: 'Cool and refreshing', price: 3.00, emoji: '🌿' }
-];
+router.get('/search', (req, res) => {
+  try {
+    const { q } = req.query;
+    if (!q || q.length < 2) {
+      return res.status(400).json({ error: 'Search query must be at least 2 characters' });
+    }
 
-router.get('/', (req, res) => {
-  res.json(menuItems);
+    const messages = searchMessages.all(`%${q}%`);
+    res.json(messages);
+  } catch (error) {
+    console.error('Error searching messages:', error);
+    res.status(500).json({ error: 'Failed to search messages' });
+  }
 });
-
-module.exports = router;
 ```
 
 </details>
 
 ---
 
-## Exercise 2: Add Order History Page
+## Exercise 2: Add Conversation History Page
 
-Create a page showing recent orders:
+Create a page showing recent conversations:
 
-1. Add `OrderHistoryPage` component
-2. Add route `/orders`
-3. Fetch and display recent orders
-4. Link to order details
+1. Add `ConversationHistoryPage` component
+2. Add route `/conversations`
+3. Fetch and display recent conversations
+4. Show message count and last updated time
+5. Link to conversation details
 
 ---
 
@@ -758,9 +821,9 @@ Create a page showing recent orders:
 
 Add proper server-side validation:
 
-1. Validate email format
-2. Validate name length
-3. Validate item quantities (positive integers)
+1. Validate message content length (not empty, max 10000 chars)
+2. Validate conversation title length
+3. Sanitize input to prevent XSS
 4. Return helpful error messages
 
 ---
@@ -769,8 +832,8 @@ Add proper server-side validation:
 
 Add loading states to the frontend:
 
-1. Show spinner while fetching menu
-2. Show spinner while submitting order
+1. Show spinner while fetching conversations
+2. Show spinner while sending messages
 3. Handle slow network gracefully
 4. Add retry button on failure
 

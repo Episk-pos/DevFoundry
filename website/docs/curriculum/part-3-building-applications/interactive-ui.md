@@ -27,12 +27,12 @@ By the end of this stage, you will:
 
 ## Introduction
 
-Stage 1 built a working lemonade stand. But it has limitations:
+Stage 1 built a working chat app. But it has limitations:
 
-- Refreshing the page loses the order
-- No way to adjust quantities (only add)
+- Refreshing the page loses the messages
+- No way to edit or delete messages
 - No feedback when actions happen
-- No customer information for the order
+- No user information for the messages
 
 Stage 2 addresses these with **enhanced interactivity** — the kind of polish that makes applications feel professional.
 
@@ -49,15 +49,15 @@ More importantly, you'll see **patterns emerge** that motivate frameworks like R
 │  • State update functions                                   │
 │  • Automatic re-rendering on state change                   │
 ├─────────────────────────────────────────────────────────────┤
-│  NEW: Enhanced Order                                        │
-│  • Quantity controls (+/−)                                  │
-│  • Remove items entirely                                    │
+│  NEW: Enhanced Messages                                     │
+│  • Edit existing messages                                   │
+│  • Delete messages                                          │
 │  • Persistence in localStorage                              │
 ├─────────────────────────────────────────────────────────────┤
-│  NEW: Checkout Flow                                         │
-│  • Customer information form                                │
+│  NEW: User Settings                                         │
+│  • Username configuration                                   │
 │  • Form validation                                          │
-│  • Order confirmation                                       │
+│  • Settings confirmation                                    │
 ├─────────────────────────────────────────────────────────────┤
 │  NEW: Visual Feedback                                       │
 │  • Button animations                                        │
@@ -75,17 +75,17 @@ More importantly, you'll see **patterns emerge** that motivate frameworks like R
 In Stage 1, state was simple:
 
 ```javascript
-let orderItems = [];
+let messages = [];
 ```
 
 But as features grow, you end up with:
 
 ```javascript
-let orderItems = [];
-let customerName = '';
-let customerEmail = '';
-let isCheckingOut = false;
-let checkoutError = null;
+let messages = [];
+let username = '';
+let userEmail = '';
+let isEditingMessage = false;
+let editError = null;
 let lastNotification = null;
 // ... and more
 ```
@@ -99,15 +99,16 @@ Collect all state in one place:
 ```javascript
 // Application state
 const state = {
-    order: {
-        items: [],           // Array of { itemId, quantity }
-        customerName: '',
-        customerEmail: ''
+    chat: {
+        messages: [],        // Array of { id, text, username, timestamp }
+        username: '',
+        userEmail: ''
     },
     ui: {
-        isCheckingOut: false,
+        isEditing: false,
+        editingMessageId: null,
         notification: null,  // { type: 'success'|'error', message: string }
-        activePanel: 'menu'  // 'menu' | 'checkout' | 'confirmation'
+        activePanel: 'chat'  // 'chat' | 'settings' | 'confirmation'
     }
 };
 ```
@@ -118,7 +119,7 @@ Never modify state directly. Use functions:
 
 ```javascript
 // ❌ Direct mutation (hard to track, no re-render)
-state.order.items.push(item);
+state.chat.messages.push(message);
 
 // ✅ Update function (predictable, triggers re-render)
 function updateState(path, value) {
@@ -142,9 +143,9 @@ Central render function that updates everything:
 
 ```javascript
 function render() {
-    renderMenu();
-    renderOrder();
-    renderCheckout();
+    renderMessageInput();
+    renderMessages();
+    renderSettings();
     renderNotification();
 }
 ```
@@ -153,109 +154,108 @@ function render() {
 
 ---
 
-## Part 2: Enhanced Order Management
+## Part 2: Enhanced Message Management
 
-### Order Item Structure
+### Message Structure
 
-Instead of duplicating items, track quantity:
+Each message has a unique ID for editing and deletion:
 
 ```javascript
-// Stage 1: Multiple entries for same item
-orderItems = [
-    { id: 'classic', name: 'Classic', price: 2.50 },
-    { id: 'classic', name: 'Classic', price: 2.50 },  // Duplicate!
+// Stage 1: Simple messages
+messages = [
+    { text: 'Hello!', username: 'Alice' },
+    { text: 'Hi there!', username: 'Bob' },
 ];
 
-// Stage 2: Track quantity
-state.order.items = [
-    { itemId: 'classic', quantity: 2 }
+// Stage 2: Messages with IDs and timestamps
+state.chat.messages = [
+    { id: 'msg-1', text: 'Hello!', username: 'Alice', timestamp: 1699000000000 },
+    { id: 'msg-2', text: 'Hi there!', username: 'Bob', timestamp: 1699000001000 }
 ];
 ```
 
-### Add to Order (Improved)
+### Send Message (Improved)
 
 ```javascript
-function addToOrder(itemId) {
-    const items = [...state.order.items];
-    const existing = items.find(item => item.itemId === itemId);
+function sendMessage(text) {
+    const messages = [...state.chat.messages];
+    const newMessage = {
+        id: `msg-${Date.now()}`,
+        text: text.trim(),
+        username: state.chat.username || 'Anonymous',
+        timestamp: Date.now()
+    };
 
-    if (existing) {
-        existing.quantity++;
-    } else {
-        items.push({ itemId, quantity: 1 });
-    }
+    messages.push(newMessage);
 
-    updateState('order.items', items);
-    showNotification('success', 'Added to order!');
+    updateState('chat.messages', messages);
+    showNotification('success', 'Message sent!');
 }
 ```
 
-### Quantity Controls
+### Edit and Delete Controls
 
 ```javascript
-function updateQuantity(itemId, delta) {
-    const items = [...state.order.items];
-    const existing = items.find(item => item.itemId === itemId);
+function editMessage(messageId, newText) {
+    const messages = [...state.chat.messages];
+    const message = messages.find(m => m.id === messageId);
 
-    if (!existing) return;
+    if (!message) return;
 
-    existing.quantity += delta;
+    message.text = newText.trim();
+    message.edited = true;
 
-    if (existing.quantity <= 0) {
-        // Remove item entirely
-        const index = items.indexOf(existing);
-        items.splice(index, 1);
-    }
-
-    updateState('order.items', items);
+    updateState('chat.messages', messages);
+    updateState('ui.editingMessageId', null);
+    showNotification('success', 'Message updated!');
 }
 
-function removeFromOrder(itemId) {
-    const items = state.order.items.filter(item => item.itemId !== itemId);
-    updateState('order.items', items);
+function deleteMessage(messageId) {
+    const messages = state.chat.messages.filter(m => m.id !== messageId);
+    updateState('chat.messages', messages);
+    showNotification('success', 'Message deleted!');
 }
 ```
 
-### Rendering with Quantity Controls
+### Rendering Messages with Controls
 
 ```javascript
-function renderOrder() {
-    const container = document.getElementById('order-items');
-    const { items } = state.order;
+function renderMessages() {
+    const container = document.getElementById('message-list');
+    const { messages } = state.chat;
 
-    if (items.length === 0) {
-        container.innerHTML = '<p class="empty-message">No items yet</p>';
-        updateTotal(0);
+    if (messages.length === 0) {
+        container.innerHTML = '<p class="empty-message">No messages yet</p>';
         return;
     }
 
-    container.innerHTML = items.map(orderItem => {
-        const menuItem = menuItems.find(m => m.id === orderItem.itemId);
-        const subtotal = menuItem.price * orderItem.quantity;
+    container.innerHTML = messages.map(message => {
+        const isEditing = state.ui.editingMessageId === message.id;
+        const time = new Date(message.timestamp).toLocaleTimeString();
 
         return `
-            <div class="order-item" data-id="${orderItem.itemId}">
-                <div class="order-item-info">
-                    <span class="order-item-name">${menuItem.name}</span>
-                    <span class="order-item-subtotal">$${subtotal.toFixed(2)}</span>
+            <div class="message-item" data-id="${message.id}">
+                <div class="message-header">
+                    <span class="message-username">${message.username}</span>
+                    <span class="message-time">${time}</span>
+                    ${message.edited ? '<span class="edited-label">(edited)</span>' : ''}
                 </div>
-                <div class="quantity-controls">
-                    <button class="qty-btn minus" aria-label="Decrease">−</button>
-                    <span class="quantity">${orderItem.quantity}</span>
-                    <button class="qty-btn plus" aria-label="Increase">+</button>
-                </div>
-                <button class="remove-btn" aria-label="Remove">×</button>
+                ${isEditing ? `
+                    <input type="text" class="edit-input" value="${message.text}">
+                    <div class="edit-actions">
+                        <button class="save-edit-btn">Save</button>
+                        <button class="cancel-edit-btn">Cancel</button>
+                    </div>
+                ` : `
+                    <div class="message-text">${message.text}</div>
+                    <div class="message-actions">
+                        <button class="edit-btn" aria-label="Edit">Edit</button>
+                        <button class="delete-btn" aria-label="Delete">Delete</button>
+                    </div>
+                `}
             </div>
         `;
     }).join('');
-
-    // Calculate total
-    const total = items.reduce((sum, orderItem) => {
-        const menuItem = menuItems.find(m => m.id === orderItem.itemId);
-        return sum + (menuItem.price * orderItem.quantity);
-    }, 0);
-
-    updateTotal(total);
 }
 ```
 
@@ -268,7 +268,7 @@ function renderOrder() {
 ```javascript
 function saveState() {
     try {
-        localStorage.setItem('lemonadeOrder', JSON.stringify(state.order));
+        localStorage.setItem('chatMessages', JSON.stringify(state.chat));
     } catch (e) {
         console.warn('Could not save to localStorage:', e);
     }
@@ -280,9 +280,9 @@ function saveState() {
 ```javascript
 function loadState() {
     try {
-        const saved = localStorage.getItem('lemonadeOrder');
+        const saved = localStorage.getItem('chatMessages');
         if (saved) {
-            state.order = JSON.parse(saved);
+            state.chat = JSON.parse(saved);
         }
     } catch (e) {
         console.warn('Could not load from localStorage:', e);
@@ -300,38 +300,38 @@ function init() {
 }
 ```
 
-Now orders persist across page refreshes!
+Now messages persist across page refreshes!
 
 ---
 
 ## Part 4: Form Handling
 
-### The Checkout Form
+### The Settings Form
 
 ```html
-<section id="checkout" class="hidden">
-    <h2>Checkout</h2>
+<section id="settings" class="hidden">
+    <h2>User Settings</h2>
 
-    <form id="checkout-form">
+    <form id="settings-form">
         <div class="form-group">
-            <label for="customer-name">Name</label>
+            <label for="username">Username</label>
             <input
                 type="text"
-                id="customer-name"
-                name="customerName"
+                id="username"
+                name="username"
                 required
                 minlength="2"
-                placeholder="Your name"
+                placeholder="Your username"
             >
             <span class="error-message"></span>
         </div>
 
         <div class="form-group">
-            <label for="customer-email">Email</label>
+            <label for="user-email">Email</label>
             <input
                 type="email"
-                id="customer-email"
-                name="customerEmail"
+                id="user-email"
+                name="userEmail"
                 required
                 placeholder="your@email.com"
             >
@@ -339,11 +339,11 @@ Now orders persist across page refreshes!
         </div>
 
         <div class="form-actions">
-            <button type="button" class="secondary" id="back-to-menu">
-                Back to Menu
+            <button type="button" class="secondary" id="back-to-chat">
+                Back to Chat
             </button>
             <button type="submit" class="primary">
-                Complete Order
+                Save Settings
             </button>
         </div>
     </form>
@@ -356,19 +356,19 @@ Now orders persist across page refreshes!
 function validateForm(formData) {
     const errors = {};
 
-    // Name validation
-    if (!formData.customerName.trim()) {
-        errors.customerName = 'Name is required';
-    } else if (formData.customerName.length < 2) {
-        errors.customerName = 'Name must be at least 2 characters';
+    // Username validation
+    if (!formData.username.trim()) {
+        errors.username = 'Username is required';
+    } else if (formData.username.length < 2) {
+        errors.username = 'Username must be at least 2 characters';
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.customerEmail.trim()) {
-        errors.customerEmail = 'Email is required';
-    } else if (!emailRegex.test(formData.customerEmail)) {
-        errors.customerEmail = 'Please enter a valid email';
+    if (!formData.userEmail.trim()) {
+        errors.userEmail = 'Email is required';
+    } else if (!emailRegex.test(formData.userEmail)) {
+        errors.userEmail = 'Please enter a valid email';
     }
 
     return {
@@ -381,16 +381,16 @@ function validateForm(formData) {
 ### Form Submission
 
 ```javascript
-function setupCheckoutForm() {
-    const form = document.getElementById('checkout-form');
+function setupSettingsForm() {
+    const form = document.getElementById('settings-form');
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
         // Gather form data
         const formData = {
-            customerName: form.customerName.value,
-            customerEmail: form.customerEmail.value
+            username: form.username.value,
+            userEmail: form.userEmail.value
         };
 
         // Validate
@@ -415,8 +415,8 @@ function setupCheckoutForm() {
             return;
         }
 
-        // Process order
-        completeOrder(formData);
+        // Save settings
+        saveSettings(formData);
     });
 }
 ```
@@ -425,7 +425,7 @@ function setupCheckoutForm() {
 
 ```javascript
 function setupRealTimeValidation() {
-    const form = document.getElementById('checkout-form');
+    const form = document.getElementById('settings-form');
 
     form.querySelectorAll('input').forEach(input => {
         input.addEventListener('blur', () => {
@@ -449,8 +449,8 @@ function validateField(input) {
 
     // Partial validation for single field
     const { errors } = validateForm({
-        customerName: '',
-        customerEmail: '',
+        username: '',
+        userEmail: '',
         ...formData
     });
 
@@ -470,19 +470,19 @@ function validateField(input) {
 
 ```css
 /* Smooth transitions for interactive elements */
-.add-button,
-.qty-btn,
-.remove-btn {
+.send-button,
+.edit-btn,
+.delete-btn {
     transition: transform 0.1s, background-color 0.2s;
 }
 
-.add-button:active,
-.qty-btn:active {
+.send-button:active,
+.edit-btn:active {
     transform: scale(0.95);
 }
 
-/* Order item animations */
-.order-item {
+/* Message item animations */
+.message-item {
     animation: slideIn 0.2s ease-out;
 }
 
@@ -580,14 +580,14 @@ function renderNotification() {
 
 ```javascript
 function setLoading(isLoading) {
-    const submitBtn = document.querySelector('#checkout-form button[type="submit"]');
+    const submitBtn = document.querySelector('#settings-form button[type="submit"]');
 
     if (isLoading) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span class="spinner"></span> Processing...';
+        submitBtn.innerHTML = '<span class="spinner"></span> Saving...';
     } else {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Complete Order';
+        submitBtn.textContent = 'Save Settings';
     }
 }
 ```
@@ -631,16 +631,12 @@ function showPanel(panelName) {
 }
 
 // Navigation functions
-function goToCheckout() {
-    if (state.order.items.length === 0) {
-        showNotification('error', 'Add some items first!');
-        return;
-    }
-    showPanel('checkout');
+function goToSettings() {
+    showPanel('settings');
 }
 
-function goToMenu() {
-    showPanel('menu');
+function goToChat() {
+    showPanel('chat');
 }
 
 function goToConfirmation() {
@@ -648,72 +644,58 @@ function goToConfirmation() {
 }
 ```
 
-### Complete Order Flow
+### Save Settings Flow
 
 ```javascript
-async function completeOrder(customerData) {
+async function saveSettings(userData) {
     setLoading(true);
 
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
 
-    // Update state with customer info
-    updateState('order.customerName', customerData.customerName);
-    updateState('order.customerEmail', customerData.customerEmail);
-
-    // Generate order number
-    const orderNumber = Math.floor(Math.random() * 10000);
+    // Update state with user info
+    updateState('chat.username', userData.username);
+    updateState('chat.userEmail', userData.userEmail);
 
     // Show confirmation
-    renderConfirmation(orderNumber);
+    renderConfirmation();
     showPanel('confirmation');
-
-    // Clear order from storage
-    localStorage.removeItem('lemonadeOrder');
 
     setLoading(false);
 }
 
-function renderConfirmation(orderNumber) {
+function renderConfirmation() {
     const container = document.getElementById('confirmation');
-    const { items, customerName } = state.order;
-
-    const total = items.reduce((sum, orderItem) => {
-        const menuItem = menuItems.find(m => m.id === orderItem.itemId);
-        return sum + (menuItem.price * orderItem.quantity);
-    }, 0);
+    const { username, messages } = state.chat;
 
     container.innerHTML = `
         <div class="confirmation-content">
             <div class="success-icon">✓</div>
-            <h2>Order Confirmed!</h2>
-            <p>Thank you, ${customerName}!</p>
-            <p class="order-number">Order #${orderNumber}</p>
+            <h2>Settings Saved!</h2>
+            <p>Welcome, ${username}!</p>
 
-            <div class="order-summary">
-                ${items.map(orderItem => {
-                    const menuItem = menuItems.find(m => m.id === orderItem.itemId);
-                    return `<div>${menuItem.name} × ${orderItem.quantity}</div>`;
-                }).join('')}
-                <div class="total">Total: $${total.toFixed(2)}</div>
+            <div class="chat-summary">
+                <p>You have ${messages.length} message${messages.length !== 1 ? 's' : ''} in your chat history.</p>
             </div>
 
-            <button onclick="startNewOrder()" class="primary">
-                Start New Order
+            <button onclick="goToChat()" class="primary">
+                Back to Chat
             </button>
         </div>
     `;
 }
 
-function startNewOrder() {
+function clearChat() {
     // Reset state
-    state.order = {
-        items: [],
-        customerName: '',
-        customerEmail: ''
+    state.chat = {
+        messages: [],
+        username: state.chat.username,
+        userEmail: state.chat.userEmail
     };
+    localStorage.removeItem('chatMessages');
     render();
-    showPanel('menu');
+    showPanel('chat');
+    showNotification('success', 'Chat cleared!');
 }
 ```
 
@@ -735,7 +717,7 @@ React calls this: **Component state** and **useState hook**
 ```javascript
 function render() {
     // Generate UI from current state
-    container.innerHTML = state.items.map(item => `...`).join('');
+    container.innerHTML = state.chat.messages.map(msg => `...`).join('');
 }
 ```
 
@@ -751,7 +733,7 @@ React enforces this pattern with **props down, events up**
 
 ### Pattern 4: Component-Based Thinking
 
-Each section (menu, order, checkout) is conceptually a "component" with:
+Each section (message input, message list, settings) is conceptually a "component" with:
 - Its own render function
 - Its own event handlers
 - Data passed from state
@@ -760,47 +742,56 @@ React makes this explicit with **function components**
 
 ---
 
-## Exercise 1: Implement Quantity Controls
+## Exercise 1: Implement Edit and Delete Controls
 
-Add +/− buttons to order items:
+Add edit/delete buttons to messages:
 
-1. Update the order item HTML template
-2. Add event listeners for quantity buttons
-3. Implement `updateQuantity(itemId, delta)`
-4. Handle edge case: quantity reaches 0
+1. Update the message item HTML template
+2. Add event listeners for edit and delete buttons
+3. Implement `editMessage(messageId, newText)` and `deleteMessage(messageId)`
+4. Handle the editing state UI
 
 <details>
 <summary>Solution</summary>
 
 ```javascript
-function updateQuantity(itemId, delta) {
-    const items = [...state.order.items];
-    const index = items.findIndex(item => item.itemId === itemId);
+function startEditing(messageId) {
+    updateState('ui.editingMessageId', messageId);
+}
+
+function cancelEditing() {
+    updateState('ui.editingMessageId', null);
+}
+
+function editMessage(messageId, newText) {
+    const messages = [...state.chat.messages];
+    const index = messages.findIndex(m => m.id === messageId);
 
     if (index === -1) return;
 
-    items[index].quantity += delta;
+    messages[index].text = newText.trim();
+    messages[index].edited = true;
 
-    if (items[index].quantity <= 0) {
-        items.splice(index, 1);
-    }
-
-    updateState('order.items', items);
+    updateState('chat.messages', messages);
+    updateState('ui.editingMessageId', null);
 }
 
 // In setupEventListeners:
-document.getElementById('order-items').addEventListener('click', (e) => {
-    const orderItem = e.target.closest('.order-item');
-    if (!orderItem) return;
+document.getElementById('message-list').addEventListener('click', (e) => {
+    const messageItem = e.target.closest('.message-item');
+    if (!messageItem) return;
 
-    const itemId = orderItem.dataset.id;
+    const messageId = messageItem.dataset.id;
 
-    if (e.target.classList.contains('plus')) {
-        updateQuantity(itemId, 1);
-    } else if (e.target.classList.contains('minus')) {
-        updateQuantity(itemId, -1);
-    } else if (e.target.classList.contains('remove-btn')) {
-        removeFromOrder(itemId);
+    if (e.target.classList.contains('edit-btn')) {
+        startEditing(messageId);
+    } else if (e.target.classList.contains('delete-btn')) {
+        deleteMessage(messageId);
+    } else if (e.target.classList.contains('save-edit-btn')) {
+        const input = messageItem.querySelector('.edit-input');
+        editMessage(messageId, input.value);
+    } else if (e.target.classList.contains('cancel-edit-btn')) {
+        cancelEditing();
     }
 });
 ```
@@ -811,20 +802,20 @@ document.getElementById('order-items').addEventListener('click', (e) => {
 
 ## Exercise 2: Add localStorage Persistence
 
-Make orders survive page refresh:
+Make messages survive page refresh:
 
-1. Implement `saveState()` to save order to localStorage
+1. Implement `saveState()` to save chat data to localStorage
 2. Implement `loadState()` to restore on page load
 3. Call `saveState()` after each state update
 4. Call `loadState()` in `init()`
 
 ---
 
-## Exercise 3: Build the Checkout Form
+## Exercise 3: Build the Settings Form
 
-Create a working checkout form:
+Create a working settings form:
 
-1. Add the form HTML (name, email fields)
+1. Add the form HTML (username, email fields)
 2. Implement `validateForm()`
 3. Handle form submission
 4. Show validation errors inline
@@ -847,7 +838,7 @@ Implement toast notifications:
 After Stage 2:
 
 ```
-lemonade-interactive/
+chat-interactive/
 ├── index.html      (~120 lines)
 ├── styles.css      (~250 lines)
 └── app.js          (~200 lines)

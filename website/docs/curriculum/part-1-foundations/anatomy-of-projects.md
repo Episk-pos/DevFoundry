@@ -12,7 +12,7 @@ description: "Understanding how real projects are organized and why"
 
 ## Overview
 
-In Module 01, you learned what a program is: instructions that execute following the Input → Processing → Output pattern. In the lemonade-cli example, you saw how code can be organized into multiple files.
+In Module 01, you learned what a program is: instructions that execute following the Input → Processing → Output pattern. In the chat-cli example, you saw how code can be organized into multiple files.
 
 Now we zoom out. What does a *complete* software project look like? How do professional teams organize code? What tools and patterns exist, and why?
 
@@ -35,7 +35,7 @@ By the end of this module, you will be able to:
 ## Prerequisites
 
 - Completed [Module 01: What Software Is](what-software-is)
-- Completed [Lemonade CLI example](/docs/examples/lemonade-cli)
+- Completed [Chat CLI example](/docs/examples/chat-cli)
 - Familiarity with terminal/command line
 
 ---
@@ -130,7 +130,7 @@ Different problems call for different architectures. Let's explore the major cat
 
 **What it is**: Programs that run in the terminal
 
-**Examples**: `git`, `npm`, `node`, your lemonade-cli
+**Examples**: `git`, `npm`, `node`, your chat-cli
 
 **Characteristics**:
 - Text-based input and output
@@ -138,7 +138,7 @@ Different problems call for different architectures. Let's explore the major cat
 - Often used for developer tools and automation
 - Can be scripted and combined with other tools
 
-**Our lemonade-cli is a CLI application**:
+**Our chat-cli is a CLI application**:
 ```
 User types → Terminal → Node.js → Your code → Terminal → User reads
 ```
@@ -223,7 +223,7 @@ Your app → HTTP request → Cloud server → Process → HTTP response → You
 
 ---
 
-### The Lemonade Stand Across Architectures
+### The Chat App Across Architectures
 
 The same business logic can exist in different architectures:
 
@@ -235,7 +235,7 @@ The same business logic can exist in different architectures:
 | Mobile | Touch interface | React Native | Screen updates |
 | Cloud API | HTTP request | Express server | JSON response |
 
-**Key insight**: The *business logic* (calculating orders, applying discounts) stays the same. Only the I/O changes.
+**Key insight**: The *business logic* (managing messages, formatting conversations) stays the same. Only the I/O changes.
 
 ---
 
@@ -290,9 +290,9 @@ my-project/
 
 ```json
 {
-  "name": "lemonade-cli",
+  "name": "chat-cli",
   "version": "1.0.0",
-  "description": "A lemonade stand order system",
+  "description": "A command-line chat application",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
@@ -342,15 +342,15 @@ Some files shouldn't be tracked:
 
 ### Exercise 3: Read a Project Structure
 
-Look at the lemonade-cli structure:
+Look at the chat-cli structure:
 
 ```
-01-lemonade-cli/
+11-chat-cli/
 ├── README.md
 └── src/
     ├── index.js
-    ├── menu.js
-    ├── order.js
+    ├── messages.js
+    ├── conversation.js
     └── display.js
 ```
 
@@ -358,8 +358,8 @@ Answer these questions:
 
 1. Why is there no `package.json`?
 2. Why is all code in `src/`?
-3. Which file would you modify to change prices?
-4. Which file would you modify to change how receipts look?
+3. Which file would you modify to change how messages are stored?
+4. Which file would you modify to change how conversations look?
 
 <details>
 <summary>Solution</summary>
@@ -368,9 +368,9 @@ Answer these questions:
 
 2. **Code in src/**: Convention separates source code from configuration, documentation, and tests. Makes it clear what's code vs. what's supporting files.
 
-3. **Change prices**: `menu.js` — it contains the data
+3. **Change message storage**: `messages.js` — it contains the data
 
-4. **Change receipts**: `display.js` — it handles all output formatting
+4. **Change conversation display**: `display.js` — it handles all output formatting
 
 </details>
 
@@ -384,7 +384,7 @@ A **tool chain** is the set of tools used to develop, build, and deploy software
 
 ### The Basic Node.js Tool Chain
 
-For simple projects like lemonade-cli:
+For simple projects like chat-cli:
 
 ```
 You write code → Node runs it
@@ -425,7 +425,7 @@ TypeScript → Compiler → JavaScript
 
 ```
 Hello World:        1 file,  1 tool  (node)
-Lemonade CLI:       4 files, 1 tool  (node)
+Chat CLI:           4 files, 1 tool  (node)
 Simple web app:     10 files, 3 tools (html, css, js + browser)
 Modern web app:     100+ files, 10+ tools (TypeScript, React, Vite, ESLint, ...)
 Production app:     1000+ files, 20+ tools
@@ -552,18 +552,18 @@ Let's apply the three architectural views from the [Architectural Views](/docs/a
 
 ```mermaid
 graph TB
-    subgraph "Lemonade CLI"
+    subgraph "Chat CLI"
         index[index.js<br/>Entry Point]
-        menu[menu.js<br/>Data]
-        order[order.js<br/>Logic]
+        messages[messages.js<br/>Data]
+        conversation[conversation.js<br/>Logic]
         display[display.js<br/>Output]
     end
 
-    index --> menu
-    index --> order
+    index --> messages
+    index --> conversation
     index --> display
-    order --> menu
-    display --> menu
+    conversation --> messages
+    display --> messages
 ```
 
 **Module view answers**: What code exists? How is it organized? What depends on what?
@@ -590,7 +590,7 @@ flowchart LR
 │  ┌───────────────────────────┐  │
 │  │       Node.js             │  │
 │  │  ┌─────────────────────┐  │  │
-│  │  │   Lemonade CLI      │  │  │
+│  │  │      Chat CLI       │  │  │
 │  │  └─────────────────────┘  │  │
 │  └───────────────────────────┘  │
 └─────────────────────────────────┘
@@ -673,7 +673,7 @@ You'll learn:
 - The client-server model
 - HTTP requests and responses
 
-This prepares you to build the web version of the lemonade stand.
+This prepares you to build the web version of the chat application.
 
 👉 [Module 03: How the Web Works](how-the-web-works)
 

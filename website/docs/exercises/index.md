@@ -48,9 +48,9 @@ Each example includes practice exercises in its README:
 | Example | Exercises | Focus |
 |---------|-----------|-------|
 | [Hello World Console](/docs/examples/hello-world-console) | 4 exercises | Modification, parameters, return values, experimentation |
-| [Lemonade CLI](/docs/examples/lemonade-cli) | 4 exercises | Menu data, discount logic, input validation, order IDs |
-| [Lemonade Static Web](/docs/examples/lemonade-static-web) | 4 exercises | DOM manipulation, localStorage, animations, keyboard navigation |
-| [Lemonade CLI (TypeScript)](/docs/examples/lemonade-cli-typescript) | 4 exercises | Adding menu items, type modifications, AI comparison, type errors |
+| [Chat CLI](/docs/examples/chat-cli) | 4 exercises | Commands, timestamps, input validation, message history |
+| [Chat Static Web](/docs/examples/chat-static-web) | 4 exercises | DOM manipulation, localStorage, animations, keyboard navigation |
+| [Chat CLI (TypeScript)](/docs/examples/chat-cli-typescript) | 4 exercises | Adding commands, type modifications, AI comparison, type errors |
 
 **Format**: Exercises build on the working code in the example, encouraging experimentation.
 
@@ -172,7 +172,7 @@ The best exercise is one you create for yourself:
 **Module 02: Anatomy of Projects**
 1. Language Categories — Classify compiled vs interpreted
 2. Identify the Architecture — Match apps to architecture types
-3. Read a Project Structure — Understand lemonade-cli organization
+3. Read a Project Structure — Understand chat-cli organization
 4. Tool Chain Matching — Match problems to tools
 5. Explore a Real Project — Navigate DevFoundry structure
 
@@ -206,21 +206,21 @@ The best exercise is one you create for yourself:
 3. Add a parameter for the name
 4. Add a return value
 
-**Example: Lemonade CLI**
-1. Add a New Menu Item — Add Frozen Lemonade
-2. Change the Discount — Modify threshold and percentage
+**Example: Chat CLI**
+1. Add a New Command — Add /help command
+2. Add Timestamps — Display message timestamps
 3. Add Input Validation — Improve error messages
-4. Add Order Numbering — Generate unique order IDs
+4. Add Message History — Persist conversations
 
-**Example: Lemonade Static Web**
-1. Add a Remove All Button — Remove entire item from order
-2. Persist Order in LocalStorage — Survive page refresh
-3. Add Animations — Bounce effect when adding items
+**Example: Chat Static Web**
+1. Add a Clear Chat Button — Remove all messages
+2. Persist Messages in LocalStorage — Survive page refresh
+3. Add Animations — Fade effect when messages appear
 4. Add Keyboard Navigation — Arrow keys and Enter
 
-**Example: Lemonade CLI (TypeScript)**
-1. Add a New Menu Item — Extend the typed menu
-2. Add a Size Option — Modify types and follow compiler errors
+**Example: Chat CLI (TypeScript)**
+1. Add a New Command — Extend the typed commands
+2. Add a User Option — Modify types and follow compiler errors
 3. Ask AI to Add a Feature — Compare typed vs untyped prompts
 4. Type Error Hunt — Find bugs at compile time
 

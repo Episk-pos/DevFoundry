@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed
+Accepted
 
 ## Context
 
@@ -345,24 +345,20 @@ The case study creates natural collaboration points:
 
 ## Migration Path
 
-### Parallel Development
-Keep lemonade stand examples during transition. Chat app examples live alongside:
+### Full Replacement
+The lemonade stand examples have been fully replaced with chat app equivalents:
 
 ```
 examples/
-├── 00-hello-world-console/     # Unchanged
-├── 01-lemonade-cli/            # Keep for reference
-├── 02-lemonade-static-web/     # Keep for reference
-├── 03-lemonade-cli-typescript/ # Keep for reference
-├── 10-chat-console/            # New: Stage 0
-├── 11-chat-cli/                # New: Stage 1
-├── 12-chat-static-web/         # New: Stage 2
-├── 13-chat-cli-typescript/     # New: Stage 1 (TypeScript)
-├── 14-chat-react/              # New: Stage 3
-├── 15-chat-fullstack/          # New: Stage 4
-├── 16-chat-realtime/           # New: Stage 5
-├── 17-chat-federated/          # New: Stage 6-7
-└── 18-chat-p2p/                # New: Stage 9
+├── 00-hello-world-console/     # Unchanged (I/O/P demonstration)
+├── 11-chat-cli/                # Stage 1: Multi-file CLI
+├── 12-chat-static-web/         # Stage 2: Browser with localStorage
+├── 13-chat-cli-typescript/     # Stage 1 (TypeScript): Typed CLI
+├── 14-chat-react/              # Stage 3: React SPA
+├── 15-chat-fullstack/          # Stage 4: Express + SQLite + React
+├── 16-chat-realtime/           # Stage 5: WebSocket integration
+├── 17-chat-federated/          # Future: Stage 6-7
+└── 18-chat-p2p/                # Future: Stage 9
 ```
 
 ### Module Updates Required
@@ -462,4 +458,4 @@ Authorization: Bearer <server-to-server-token>
 
 ## Decision Outcome
 
-[To be determined after cohort feedback]
+Accepted and implemented. The chat application case study fully replaces the lemonade stand throughout the curriculum. Example implementations are provided for stages 1-5 (CLI through real-time WebSocket), with federation and P2P stages planned for future development.

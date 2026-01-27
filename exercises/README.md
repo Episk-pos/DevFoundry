@@ -160,7 +160,7 @@ The best exercise is one you create for yourself:
 **Module 02: Anatomy of Projects**
 1. Language Categories — Classify compiled vs interpreted
 2. Identify the Architecture — Match apps to architecture types
-3. Read a Project Structure — Understand lemonade-cli organization
+3. Read a Project Structure — Understand chat-cli organization
 4. Tool Chain Matching — Match problems to tools
 5. Explore a Real Project — Navigate DevFoundry structure
 
@@ -170,11 +170,11 @@ The best exercise is one you create for yourself:
 3. Add a parameter for the name
 4. Add a return value
 
-**Example: Lemonade CLI**
-1. Add a New Menu Item — Add Frozen Lemonade
-2. Change the Discount — Modify threshold and percentage
+**Example: Chat CLI**
+1. Add a New Command — Add /help command
+2. Add Timestamps — Display message timestamps
 3. Add Input Validation — Improve error messages
-4. Add Order Numbering — Generate unique order IDs
+4. Add Message History — Persist conversations
 
 ---
 
@@ -183,7 +183,7 @@ The best exercise is one you create for yourself:
 As the curriculum expands, more exercises will be added:
 
 - **Part I, Module 03**: Web architecture exercises
-- **Example: Lemonade Web**: DOM manipulation exercises
+- **Example: Chat Static Web**: DOM manipulation exercises
 
 ---
 

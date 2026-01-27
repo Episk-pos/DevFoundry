@@ -54,9 +54,12 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         'examples/hello-world-console/index',
-        'examples/lemonade-cli/index',
-        'examples/lemonade-static-web/index',
-        'examples/lemonade-cli-typescript/index',
+        'examples/chat-cli/index',
+        'examples/chat-static-web/index',
+        'examples/chat-cli-typescript/index',
+        'examples/chat-react/index',
+        'examples/chat-fullstack/index',
+        'examples/chat-realtime/index',
       ],
     },
     {

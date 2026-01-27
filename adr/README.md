@@ -104,7 +104,7 @@ See [template.md](template.md) for a copy-paste template.
 **Status**: Accepted
 
 **Context**:
-We need a frontend framework for the devfoundry lemonade stand examples. The curriculum targets beginners learning to work with LLMs. Key requirements:
+We need a frontend framework for the devfoundry chat app examples. The curriculum targets beginners learning to work with LLMs. Key requirements:
 - Widely used (good documentation, AI training data)
 - Component-based (teaches modularity)
 - Beginner-accessible (gradual learning curve)
@@ -166,7 +166,7 @@ data integrity.
 ```
 ## Context
 
-The lemonade stand fullstack example needs a database for order persistence.
+The chat app fullstack example needs a database for message persistence.
 Requirements:
 - Must be simple for learners to set up (no separate server)
 - Must work locally without internet
@@ -192,8 +192,8 @@ Alternatives:
 ```
 ## Decision
 
-Use SQLite for the fullstack lemonade stand example.
-- Store database in `server/db/lemonade.db`
+Use SQLite for the fullstack chat app example.
+- Store database in `server/db/chat.db`
 - Use `better-sqlite3` npm package (synchronous, simpler API)
 - Include setup script to initialize schema
 - Document in example README how to inspect database
@@ -283,7 +283,7 @@ cookies for session persistence.
 Context:
 - SPA with JWT authentication
 - Need to persist login state
-- Security is important but users are low-risk (lemonade stand example)
+- Security is important but users are low-risk (chat app example)
 
 Please draft ADR-0005 following the template in adr/template.md."
 ```

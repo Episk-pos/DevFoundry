@@ -140,32 +140,29 @@ HTML provides **structure** — what elements exist and how they relate.
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lemonade Stand</title>
+    <title>Chat App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>🍋 Lemonade Stand</h1>
+        <h1>Chat App</h1>
     </header>
 
     <main>
-        <section id="menu">
-            <h2>Menu</h2>
-            <div id="menu-items">
-                <!-- Items will be here -->
+        <section id="messages">
+            <h2>Messages</h2>
+            <div id="message-list">
+                <!-- Messages will be here -->
             </div>
         </section>
 
-        <section id="order">
-            <h2>Your Order</h2>
-            <div id="order-items">
-                <p class="empty-message">No items yet</p>
-            </div>
-            <div id="order-total">
-                <span>Total:</span>
-                <span id="total-amount">$0.00</span>
-            </div>
-            <button id="clear-order" disabled>Clear Order</button>
+        <section id="compose">
+            <h2>New Message</h2>
+            <form id="message-form">
+                <input type="text" id="message-input"
+                       placeholder="Type a message..." required>
+                <button type="submit" id="send-button">Send</button>
+            </form>
         </section>
     </main>
 
@@ -181,25 +178,24 @@ Note the use of semantic HTML:
 - `<main>` — Primary content
 - `<section>` — Distinct content areas
 - `<h1>`, `<h2>` — Heading hierarchy
+- `<form>` — Groups form controls
 
 **Why semantics matter:**
 - Accessibility (screen readers understand structure)
 - SEO (search engines understand content)
 - Maintainability (developers understand intent)
 
-### The Menu Item Template
+### The Message Template
 
-Each menu item follows this structure:
+Each message follows this structure:
 
 ```html
-<div class="menu-item" data-id="classic" data-price="2.50">
-    <span class="item-emoji">🍋</span>
-    <div class="item-info">
-        <span class="item-name">Classic Lemonade</span>
-        <span class="item-description">Fresh squeezed, ice cold</span>
+<div class="message-bubble" data-id="1" data-sender="alice">
+    <div class="message-header">
+        <span class="sender-name">Alice</span>
+        <span class="timestamp">10:30 AM</span>
     </div>
-    <span class="item-price">$2.50</span>
-    <button class="add-button">Add</button>
+    <p class="message-content">Hey, how's it going?</p>
 </div>
 ```
 
@@ -221,14 +217,15 @@ Note the `data-*` attributes — these store data for JavaScript to use.
 
 body {
     font-family: system-ui, -apple-system, sans-serif;
-    background-color: #fef9c3;  /* Light yellow */
+    background-color: #f1f5f9;  /* Light gray */
     color: #1e293b;
     line-height: 1.6;
 }
 
 /* Header */
 header {
-    background-color: #facc15;  /* Yellow */
+    background-color: #3b82f6;  /* Blue */
+    color: white;
     padding: 1rem 2rem;
     text-align: center;
 }
@@ -239,12 +236,13 @@ header h1 {
 
 /* Main content */
 main {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: calc(100vh - 80px);
 }
 
 /* Sections */
@@ -258,115 +256,108 @@ section {
 section h2 {
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid #facc15;
+    border-bottom: 2px solid #3b82f6;
 }
 ```
 
-### Menu Item Styles
+### Message Styles
 
 ```css
-/* Menu items */
-.menu-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
+/* Message list container */
+#message-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 0.5rem;
+}
+
+/* Message bubbles */
+.message-bubble {
+    padding: 0.75rem 1rem;
     margin-bottom: 0.75rem;
-    transition: background-color 0.2s;
+    border-radius: 12px;
+    background-color: #e2e8f0;
+    max-width: 80%;
 }
 
-.menu-item:hover {
-    background-color: #fef9c3;
+.message-bubble.own-message {
+    background-color: #3b82f6;
+    color: white;
+    margin-left: auto;
 }
 
-.item-emoji {
-    font-size: 2rem;
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
 }
 
-.item-info {
-    flex: 1;
-}
-
-.item-name {
-    display: block;
+.sender-name {
     font-weight: 600;
+    font-size: 0.875rem;
 }
 
-.item-description {
-    display: block;
-    font-size: 0.875rem;
+.timestamp {
+    font-size: 0.75rem;
     color: #64748b;
 }
 
-.item-price {
-    font-weight: 700;
-    font-size: 1.125rem;
+.message-bubble.own-message .timestamp {
+    color: #bfdbfe;
 }
 
-.add-button {
-    background-color: #facc15;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.2s;
-}
-
-.add-button:hover {
-    background-color: #eab308;
-}
-```
-
-### Order Section Styles
-
-```css
-/* Order items */
-.order-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #e2e8f0;
+.message-content {
+    margin: 0;
 }
 
 .empty-message {
     color: #64748b;
     font-style: italic;
     text-align: center;
-    padding: 1rem;
+    padding: 2rem;
 }
+```
 
-/* Order total */
-#order-total {
+### Compose Section Styles
+
+```css
+/* Compose form */
+#message-form {
     display: flex;
-    justify-content: space-between;
-    padding: 1rem 0;
-    margin-top: 1rem;
-    border-top: 2px solid #1e293b;
-    font-weight: 700;
-    font-size: 1.25rem;
+    gap: 0.5rem;
 }
 
-/* Clear button */
-#clear-order {
-    width: 100%;
-    padding: 0.75rem;
-    margin-top: 1rem;
-    background-color: #ef4444;
+#message-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    font-size: 1rem;
+    outline: none;
+}
+
+#message-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Send button */
+#send-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #3b82f6;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 24px;
     cursor: pointer;
     font-weight: 600;
+    transition: background-color 0.2s;
 }
 
-#clear-order:hover:not(:disabled) {
-    background-color: #dc2626;
+#send-button:hover {
+    background-color: #2563eb;
 }
 
-#clear-order:disabled {
+#send-button:disabled {
     background-color: #94a3b8;
     cursor: not-allowed;
 }
@@ -378,12 +369,16 @@ section h2 {
 /* Mobile layout */
 @media (max-width: 640px) {
     main {
-        grid-template-columns: 1fr;
         padding: 1rem;
+        height: calc(100vh - 60px);
     }
 
     header h1 {
         font-size: 1.5rem;
+    }
+
+    .message-bubble {
+        max-width: 90%;
     }
 }
 ```
@@ -394,138 +389,129 @@ section h2 {
 
 ### Data Structure
 
-First, define the menu data:
+First, define the initial messages and current user:
 
 ```javascript
-// Menu data
-const menuItems = [
+// Current user (you)
+const currentUser = 'You';
+
+// Message state - start with some sample messages
+let messages = [
     {
-        id: 'classic',
-        name: 'Classic Lemonade',
-        description: 'Fresh squeezed, ice cold',
-        price: 2.50,
-        emoji: '🍋'
+        id: 1,
+        sender: 'Alice',
+        content: "Hey, how's it going?",
+        timestamp: new Date('2024-01-15T10:30:00')
     },
     {
-        id: 'strawberry',
-        name: 'Strawberry Lemonade',
-        description: 'With fresh strawberries',
-        price: 3.50,
-        emoji: '🍓'
+        id: 2,
+        sender: 'You',
+        content: 'Pretty good! Working on the DevFoundry curriculum.',
+        timestamp: new Date('2024-01-15T10:31:00')
     },
     {
-        id: 'mint',
-        name: 'Mint Lemonade',
-        description: 'Cool and refreshing',
-        price: 3.00,
-        emoji: '🌿'
+        id: 3,
+        sender: 'Alice',
+        content: 'Nice! Let me know if you need any help.',
+        timestamp: new Date('2024-01-15T10:32:00')
     }
 ];
 
-// Order state
-let orderItems = [];
+// Counter for generating unique message IDs
+let nextMessageId = 4;
 ```
 
-### Rendering the Menu
+### Formatting Timestamps
 
 ```javascript
-// Render menu items to the DOM
-function renderMenu() {
-    const container = document.getElementById('menu-items');
-
-    container.innerHTML = menuItems.map(item => `
-        <div class="menu-item" data-id="${item.id}">
-            <span class="item-emoji">${item.emoji}</span>
-            <div class="item-info">
-                <span class="item-name">${item.name}</span>
-                <span class="item-description">${item.description}</span>
-            </div>
-            <span class="item-price">$${item.price.toFixed(2)}</span>
-            <button class="add-button">Add</button>
-        </div>
-    `).join('');
+// Format a Date object to a readable time string
+function formatTimestamp(date) {
+    return date.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+    });
 }
 ```
 
-### Rendering the Order
+### Rendering Messages
 
 ```javascript
-// Render current order to the DOM
-function renderOrder() {
-    const container = document.getElementById('order-items');
-    const totalElement = document.getElementById('total-amount');
-    const clearButton = document.getElementById('clear-order');
+// Render all messages to the DOM
+function renderMessages() {
+    const container = document.getElementById('message-list');
 
-    if (orderItems.length === 0) {
-        container.innerHTML = '<p class="empty-message">No items yet</p>';
-        totalElement.textContent = '$0.00';
-        clearButton.disabled = true;
+    if (messages.length === 0) {
+        container.innerHTML = '<p class="empty-message">No messages yet. Start the conversation!</p>';
         return;
     }
 
-    // Group items by id and count quantities
-    const grouped = orderItems.reduce((acc, item) => {
-        if (!acc[item.id]) {
-            acc[item.id] = { ...item, quantity: 0 };
-        }
-        acc[item.id].quantity++;
-        return acc;
-    }, {});
+    container.innerHTML = messages.map(message => {
+        const isOwnMessage = message.sender === currentUser;
+        return `
+            <div class="message-bubble ${isOwnMessage ? 'own-message' : ''}"
+                 data-id="${message.id}">
+                <div class="message-header">
+                    <span class="sender-name">${message.sender}</span>
+                    <span class="timestamp">${formatTimestamp(message.timestamp)}</span>
+                </div>
+                <p class="message-content">${message.content}</p>
+            </div>
+        `;
+    }).join('');
 
-    // Render grouped items
-    container.innerHTML = Object.values(grouped).map(item => `
-        <div class="order-item">
-            <span>${item.name} x${item.quantity}</span>
-            <span>$${(item.price * item.quantity).toFixed(2)}</span>
-        </div>
-    `).join('');
-
-    // Calculate and display total
-    const total = orderItems.reduce((sum, item) => sum + item.price, 0);
-    totalElement.textContent = `$${total.toFixed(2)}`;
-    clearButton.disabled = false;
+    // Scroll to the bottom to show latest message
+    container.scrollTop = container.scrollHeight;
 }
 ```
 
 ### Event Handling
 
 ```javascript
-// Add item to order
-function addToOrder(itemId) {
-    const item = menuItems.find(i => i.id === itemId);
-    if (item) {
-        orderItems.push({ ...item });
-        renderOrder();
-    }
+// Send a new message
+function sendMessage(content) {
+    // Create the new message object
+    const newMessage = {
+        id: nextMessageId++,
+        sender: currentUser,
+        content: content,
+        timestamp: new Date()
+    };
+
+    // Add to messages array
+    messages.push(newMessage);
+
+    // Re-render the messages
+    renderMessages();
 }
 
-// Clear the order
-function clearOrder() {
-    orderItems = [];
-    renderOrder();
+// Handle form submission
+function handleSubmit(event) {
+    // Prevent the default form submission (page reload)
+    event.preventDefault();
+
+    // Get the input element and its value
+    const input = document.getElementById('message-input');
+    const content = input.value.trim();
+
+    // Only send if there's actual content
+    if (content) {
+        sendMessage(content);
+        input.value = '';  // Clear the input
+        input.focus();     // Keep focus on input
+    }
 }
 
 // Set up event listeners
 function setupEventListeners() {
-    // Event delegation for menu items
-    const menuContainer = document.getElementById('menu-items');
-    menuContainer.addEventListener('click', (event) => {
-        if (event.target.classList.contains('add-button')) {
-            const menuItem = event.target.closest('.menu-item');
-            const itemId = menuItem.dataset.id;
-            addToOrder(itemId);
-        }
-    });
-
-    // Clear button
-    const clearButton = document.getElementById('clear-order');
-    clearButton.addEventListener('click', clearOrder);
+    // Form submission
+    const form = document.getElementById('message-form');
+    form.addEventListener('submit', handleSubmit);
 }
 
 // Initialize the app
 function init() {
-    renderMenu();
-    renderOrder();
+    renderMessages();
     setupEventListeners();
 }
 
@@ -542,42 +528,37 @@ document.addEventListener('DOMContentLoaded', init);
 ```mermaid
 flowchart TD
     subgraph Data
-        MI[menuItems array]
-        OI[orderItems array]
+        MS[messages array]
     end
 
     subgraph Render
-        RM[renderMenu]
-        RO[renderOrder]
+        RM[renderMessages]
     end
 
     subgraph DOM
-        MC[Menu Container]
-        OC[Order Container]
+        ML[Message List]
+        MF[Message Form]
     end
 
     subgraph Events
-        AB[Add Button Click]
-        CB[Clear Button Click]
+        FS[Form Submit]
     end
 
-    MI --> RM --> MC
-    OI --> RO --> OC
+    MS --> RM --> ML
 
-    AB --> |addToOrder| OI
-    CB --> |clearOrder| OI
-    OI --> |triggers| RO
+    FS --> |sendMessage| MS
+    MS --> |triggers| RM
 ```
 
 ### Event Flow
 
-When user clicks "Add":
+When user submits a message:
 
-1. Click event fires on button
-2. Event delegation catches it on menu container
-3. `addToOrder()` finds the item and adds to `orderItems`
-4. `renderOrder()` updates the DOM
-5. User sees the new item in their order
+1. Submit event fires on form
+2. `handleSubmit()` prevents default page reload
+3. `sendMessage()` creates message object and adds to `messages`
+4. `renderMessages()` updates the DOM
+5. User sees their new message in the list
 
 This is the **unidirectional data flow** pattern:
 ```
@@ -618,10 +599,15 @@ Press F12 to open DevTools:
 **Add console.log statements while learning:**
 
 ```javascript
-function addToOrder(itemId) {
-    console.log('Adding item:', itemId);
-    const item = menuItems.find(i => i.id === itemId);
-    console.log('Found item:', item);
+function sendMessage(content) {
+    console.log('Sending message:', content);
+    const newMessage = {
+        id: nextMessageId++,
+        sender: currentUser,
+        content: content,
+        timestamp: new Date()
+    };
+    console.log('Created message:', newMessage);
     // ...
 }
 ```
@@ -635,24 +621,24 @@ function addToOrder(itemId) {
 ```javascript
 // Clean way to generate HTML strings
 const html = `
-    <div class="item">
-        <span>${item.name}</span>
-        <span>$${item.price.toFixed(2)}</span>
+    <div class="message-bubble">
+        <span class="sender-name">${message.sender}</span>
+        <p class="message-content">${message.content}</p>
     </div>
 `;
 ```
 
 ### Event Delegation
 
-Instead of adding listeners to each button:
+Instead of adding listeners to each element:
 
 ```javascript
-// ❌ Adding listener to each button
-buttons.forEach(btn => btn.addEventListener('click', handler));
+// ❌ Adding listener to each message
+messages.forEach(msg => msg.addEventListener('click', handler));
 
 // ✅ Single listener on container
 container.addEventListener('click', (e) => {
-    if (e.target.matches('.add-button')) {
+    if (e.target.matches('.message-bubble')) {
         // handle click
     }
 });
@@ -665,12 +651,12 @@ Event delegation is more efficient and handles dynamically added elements.
 Store data in HTML for JavaScript to read:
 
 ```html
-<div data-id="classic" data-price="2.50">...</div>
+<div data-id="1" data-sender="alice">...</div>
 ```
 
 ```javascript
-const id = element.dataset.id;      // "classic"
-const price = element.dataset.price; // "2.50" (string!)
+const id = element.dataset.id;        // "1" (string!)
+const sender = element.dataset.sender; // "alice"
 ```
 
 ---
@@ -682,8 +668,8 @@ Create the HTML structure from scratch:
 1. Create `index.html`
 2. Add the basic document structure
 3. Add header with title
-4. Add menu section (empty for now)
-5. Add order section with empty message and total
+4. Add messages section (empty for now)
+5. Add compose section with input and send button
 
 Verify: Open in browser, see the structure (unstyled).
 
@@ -696,30 +682,27 @@ Verify: Open in browser, see the structure (unstyled).
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lemonade Stand</title>
+    <title>Chat App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>🍋 Lemonade Stand</h1>
+        <h1>Chat App</h1>
     </header>
 
     <main>
-        <section id="menu">
-            <h2>Menu</h2>
-            <div id="menu-items"></div>
+        <section id="messages">
+            <h2>Messages</h2>
+            <div id="message-list"></div>
         </section>
 
-        <section id="order">
-            <h2>Your Order</h2>
-            <div id="order-items">
-                <p class="empty-message">No items yet</p>
-            </div>
-            <div id="order-total">
-                <span>Total:</span>
-                <span id="total-amount">$0.00</span>
-            </div>
-            <button id="clear-order" disabled>Clear Order</button>
+        <section id="compose">
+            <h2>New Message</h2>
+            <form id="message-form">
+                <input type="text" id="message-input"
+                       placeholder="Type a message..." required>
+                <button type="submit" id="send-button">Send</button>
+            </form>
         </section>
     </main>
 
@@ -739,10 +722,10 @@ Create the CSS for layout:
 1. Create `styles.css`
 2. Add base styles (reset, body, fonts)
 3. Style the header
-4. Create two-column layout for menu and order
-5. Style the sections
+4. Create single-column layout for messages and compose
+5. Style the message bubbles and form
 
-Verify: Page has yellow header, two-column layout, styled sections.
+Verify: Page has blue header, stacked layout, styled message bubbles.
 
 ---
 
@@ -751,13 +734,13 @@ Verify: Page has yellow header, two-column layout, styled sections.
 Complete the JavaScript:
 
 1. Create `app.js`
-2. Add the menu data
-3. Implement `renderMenu()`
-4. Implement `renderOrder()`
-5. Implement `addToOrder()` and `clearOrder()`
+2. Add the initial messages data
+3. Implement `formatTimestamp()`
+4. Implement `renderMessages()`
+5. Implement `sendMessage()` and `handleSubmit()`
 6. Set up event listeners
 
-Verify: Can add items to order, see total update, clear order.
+Verify: Can send messages, see them appear with timestamps.
 
 ---
 
@@ -766,37 +749,44 @@ Verify: Can add items to order, see total update, clear order.
 Debug and add a feature:
 
 1. Open DevTools, find any console errors
-2. Add a console.log to track when items are added
-3. **Extension**: Add a "remove one" button for each order item
+2. Add a console.log to track when messages are sent
+3. **Extension**: Add a "delete" button for each message
 
 <details>
-<summary>Hint for Remove Button</summary>
+<summary>Hint for Delete Button</summary>
 
 ```javascript
-// In renderOrder, add a remove button:
-container.innerHTML = Object.values(grouped).map(item => `
-    <div class="order-item" data-id="${item.id}">
-        <span>${item.name} x${item.quantity}</span>
-        <span>$${(item.price * item.quantity).toFixed(2)}</span>
-        <button class="remove-button">−</button>
-    </div>
-`).join('');
+// In renderMessages, add a delete button:
+container.innerHTML = messages.map(message => {
+    const isOwnMessage = message.sender === currentUser;
+    return `
+        <div class="message-bubble ${isOwnMessage ? 'own-message' : ''}"
+             data-id="${message.id}">
+            <div class="message-header">
+                <span class="sender-name">${message.sender}</span>
+                <span class="timestamp">${formatTimestamp(message.timestamp)}</span>
+                ${isOwnMessage ? '<button class="delete-button">x</button>' : ''}
+            </div>
+            <p class="message-content">${message.content}</p>
+        </div>
+    `;
+}).join('');
 
-// Add event delegation for remove buttons:
-const orderContainer = document.getElementById('order-items');
-orderContainer.addEventListener('click', (e) => {
-    if (e.target.classList.contains('remove-button')) {
-        const itemId = e.target.closest('.order-item').dataset.id;
-        removeFromOrder(itemId);
+// Add event delegation for delete buttons:
+const messageContainer = document.getElementById('message-list');
+messageContainer.addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete-button')) {
+        const messageId = parseInt(e.target.closest('.message-bubble').dataset.id);
+        deleteMessage(messageId);
     }
 });
 
-// Implement removeFromOrder:
-function removeFromOrder(itemId) {
-    const index = orderItems.findIndex(item => item.id === itemId);
+// Implement deleteMessage:
+function deleteMessage(messageId) {
+    const index = messages.findIndex(msg => msg.id === messageId);
     if (index !== -1) {
-        orderItems.splice(index, 1);
-        renderOrder();
+        messages.splice(index, 1);
+        renderMessages();
     }
 }
 ```
@@ -810,13 +800,13 @@ function removeFromOrder(itemId) {
 ### For HTML Structure
 
 ```
-I'm building a lemonade stand menu page.
+I'm building a chat messaging interface.
 
-I need a menu section that displays items with:
-- emoji icon
-- name and description
-- price
-- add button
+I need a messages section that displays:
+- sender name
+- timestamp
+- message content
+- different styling for own messages
 
 Can you write the HTML structure using semantic elements?
 ```
@@ -824,29 +814,31 @@ Can you write the HTML structure using semantic elements?
 ### For CSS Layout
 
 ```
-I have a menu section and order section side by side.
+I have a messages section and compose form.
 
 I want:
-- Two columns on desktop
-- Single column on mobile
-- Cards with subtle shadows
+- Single column layout
+- Messages scrollable with max height
+- Chat bubbles with different colors for own vs other messages
+- Input with rounded send button
 
-Can you write CSS using Grid and media queries?
+Can you write CSS with flexbox?
 ```
 
 ### For JavaScript Logic
 
 ```
-I'm implementing addToOrder for a lemonade stand.
+I'm implementing sendMessage for a chat app.
 
 Current state:
-- menuItems array with id, name, price
-- orderItems array that holds added items
+- messages array with id, sender, content, timestamp
+- currentUser string identifying the user
 
-When user clicks Add:
-1. Find the item by id
-2. Add a copy to orderItems
-3. Re-render the order display
+When user submits form:
+1. Create a new message object with current timestamp
+2. Add to messages array
+3. Re-render the message list
+4. Clear the input
 
 Can you implement this function?
 ```
@@ -886,13 +878,13 @@ You'll learn:
 By the end of this stage, you have:
 
 ```
-lemonade-static/
-├── index.html    (~60 lines)
-├── styles.css    (~120 lines)
+chat-static/
+├── index.html    (~40 lines)
+├── styles.css    (~130 lines)
 └── app.js        (~80 lines)
 ```
 
-A complete, working lemonade stand in about 260 lines of code.
+A complete, working chat interface in about 250 lines of code.
 
 ---
 

@@ -206,23 +206,23 @@ flowchart LR
 **Measure**: Collect data on how it performs
 **Learn**: Decide what to do next based on evidence
 
-### Example: Lemonade Stand Iterations
+### Example: Chat App Iterations
 
-**Iteration 1**: Can we take orders?
-- Text input for quantity
-- Fixed price
-- Display total
-- *Learning*: Do customers understand the interface?
+**Iteration 1**: Can we send messages?
+- Text input for message
+- Send button
+- Display message in list
+- *Learning*: Do users understand the interface?
 
-**Iteration 2**: Can we handle a menu?
-- Multiple drink options
-- Different prices
-- *Learning*: What do customers order most?
+**Iteration 2**: Can we handle conversations?
+- Multiple chat rooms or contacts
+- Message timestamps
+- *Learning*: How do users organize their chats?
 
 **Iteration 3**: Can we persist data?
-- Save orders to database
-- Show order history
-- *Learning*: Do we need analytics?
+- Save messages to database
+- Show message history
+- *Learning*: Do we need search or filtering?
 
 Each iteration is **shippable** and **teaches something**.
 
@@ -267,20 +267,20 @@ Ask yourself:
 - "Click to sign up" went to "we're not ready yet" page
 - Validated pricing before building
 
-### MVP for the Lemonade Stand
+### MVP for the Chat App
 
-If building a lemonade ordering app, what's the MVP?
+If building a chat messaging app, what's the MVP?
 
 **Not MVP** (too big):
-- Full menu with customization
-- User accounts and order history
-- Payment processing
-- Delivery tracking
+- Multiple chat rooms with admin controls
+- User accounts and authentication
+- File sharing and media
+- Read receipts and typing indicators
 
 **MVP** (small enough to learn from):
-- Three drink options
-- Add to cart, see total
-- "Submit Order" button (even if it just confirms)
+- Single chat room
+- Text input and send button
+- Messages display in a list
 
 Ship this, watch real users, then decide what's next.
 
@@ -435,7 +435,7 @@ AI assistants fit well into iterative development:
 
 ## Exercise 1: Plan an Iteration
 
-Take a feature you want to build (or use "add a favorites system to the lemonade stand").
+Take a feature you want to build (or use "add message reactions to the chat app").
 
 Break it into 3 iterations, where each:
 - Delivers something usable
@@ -443,25 +443,25 @@ Break it into 3 iterations, where each:
 - Teaches you something
 
 <details>
-<summary>Example: Favorites System</summary>
+<summary>Example: Message Reactions</summary>
 
-**Iteration 1: Basic Favorites**
-- Heart button on each menu item
-- Click to add/remove from favorites
-- Favorites stored in memory (lost on refresh)
-- *Learning*: Do users actually use favorites?
+**Iteration 1: Basic Reactions**
+- Emoji button on each message
+- Click to add/remove a reaction
+- Reactions stored in memory (lost on refresh)
+- *Learning*: Do users actually use reactions?
 
-**Iteration 2: Persistent Favorites**
-- Save favorites to localStorage
+**Iteration 2: Persistent Reactions**
+- Save reactions to database
 - Survive page refresh
-- Show favorites count somewhere
-- *Learning*: How many favorites do users have?
+- Show reaction counts on messages
+- *Learning*: Which reactions are most popular?
 
-**Iteration 3: Favorites Section**
-- "Your Favorites" section at top of menu
-- Quick access to frequent orders
-- Maybe "Order Again" for past orders
-- *Learning*: Does this speed up ordering?
+**Iteration 3: Reaction Picker**
+- Multiple emoji options to choose from
+- Quick access to frequently used reactions
+- Maybe show who reacted
+- *Learning*: Does this improve engagement?
 
 </details>
 
@@ -509,7 +509,7 @@ Those might all be valuable — but we don't know yet. Ship the MVP first.
 
 ## Exercise 3: Identify Tests
 
-For the lemonade stand, identify:
+For the chat app, identify:
 1. Three unit tests (test individual functions)
 2. Two integration tests (test workflows)
 3. One E2E test (test critical user path)
@@ -518,16 +518,16 @@ For the lemonade stand, identify:
 <summary>Example Solution</summary>
 
 **Unit tests:**
-1. `calculateTotal` returns correct sum for multiple items
-2. `calculateTotal` handles empty cart (returns 0)
-3. `applyDiscount` calculates percentage correctly
+1. `formatTimestamp` returns correct display format for messages
+2. `formatTimestamp` handles edge cases (today, yesterday, older)
+3. `truncateMessage` shortens long messages correctly for previews
 
 **Integration tests:**
-1. Adding item to cart updates cart state and UI
-2. Removing item from cart updates total correctly
+1. Sending a message updates message list and clears input
+2. Receiving a message adds it to the correct conversation
 
 **E2E test:**
-1. User can browse menu, add items, view cart, and complete checkout
+1. User can open a conversation, type a message, send it, and see it appear in the chat
 
 The E2E test covers the critical path. If that works, users can accomplish their goal.
 

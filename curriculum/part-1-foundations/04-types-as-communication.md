@@ -17,7 +17,7 @@ How explicit type annotations improve AI-assisted development.
 
 ## Related
 
-- [Lemonade CLI (TypeScript)](../../examples/03-lemonade-cli-typescript/) — Practical example
+- [Chat CLI (TypeScript)](../../examples/13-chat-cli-typescript/) — Practical example
 - [Types Across Languages](./extracurricular/types-across-languages.md) — Python and Go
 
 ---

@@ -47,17 +47,17 @@ This matters because:
 Consider this JavaScript function:
 
 ```javascript
-function createOrder(items, customer) {
-  // What is "items"? An array? Of what?
-  // What is "customer"? A string? An object?
+function sendMessage(content, conversation, sender) {
+  // What is "content"? A string? An object?
+  // What is "conversation"? An ID? An object?
   // What does this return?
 }
 ```
 
-When you ask an AI to "add discount logic," the AI must guess:
-- Is `items` an array of objects? Strings? Numbers?
-- Does `customer` have an `id` property? A `loyaltyPoints` property?
-- Should the function return a number? An object? Mutate something?
+When you ask an AI to "add message validation," the AI must guess:
+- Is `content` a string? An object with text and attachments?
+- Does `conversation` have an `id` property? A `participants` array?
+- Should the function return the message? The conversation? Nothing?
 
 These guesses lead to:
 - Code that doesn't match your data structures
@@ -69,36 +69,35 @@ These guesses lead to:
 Now consider the same function with types:
 
 ```typescript
-interface OrderItem {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-}
-
-interface Customer {
+interface User {
   id: string;
-  name: string;
-  loyaltyPoints: number;
+  username: string;
+  displayName: string;
 }
 
-interface Order {
-  items: OrderItem[];
-  customer: Customer;
-  subtotal: number;
-  discount: number;
-  total: number;
+interface Conversation {
+  id: string;
+  participants: User[];
+  createdAt: number;
 }
 
-function createOrder(items: OrderItem[], customer: Customer): Order {
+interface Message {
+  id: number;
+  content: string;
+  conversation: Conversation;
+  sender: User;
+  timestamp: number;
+}
+
+function sendMessage(content: string, conversation: Conversation, sender: User): Message {
   // Now the AI knows EXACTLY what to work with
 }
 ```
 
 When you ask the same question with typed code, the AI:
-- Knows `items` is an array of objects with `price` and `quantity`
-- Knows `customer` has `loyaltyPoints` to potentially use
-- Knows it must return an `Order` with specific fields
+- Knows `content` is a string
+- Knows `conversation` has `participants` to validate against
+- Knows it must return a `Message` with specific fields
 - Generates code that matches your actual data structures
 
 **Types are documentation that the AI (and compiler) can actually use.**
@@ -139,17 +138,17 @@ Common primitives across most languages:
 
 ```typescript
 // Numbers (TypeScript doesn't distinguish int vs float)
-let price: number = 2.50;
-let quantity: number = 3;
+let timestamp: number = 1706300400000;
+let messageCount: number = 3;
 
 // Strings
-let name: string = "Lemonade";
+let content: string = "Hello";
 
 // Booleans
-let isAvailable: boolean = true;
+let isRead: boolean = true;
 
 // Null and undefined (both exist in TS)
-let discount: number | null = null;
+let replyToId: number | null = null;
 let nickname: string | undefined = undefined;
 ```
 
@@ -171,37 +170,37 @@ Common patterns:
 
 ```typescript
 // Array of numbers
-let prices: number[] = [2.50, 3.00, 3.50];
+let timestamps: number[] = [1706300400000, 1706300500000, 1706300600000];
 
 // Array of strings
-let names: string[] = ["Lemonade", "Pink Lemonade"];
+let messages: string[] = ["Hello", "Welcome"];
 
 // Alternative syntax (same meaning)
-let items: Array<string> = ["Lemonade", "Cookie"];
+let usernames: Array<string> = ["alice", "bob"];
 ```
 
 ### 🔷 TypeScript Objects and Interfaces
 
 ```typescript
 // Inline object type
-let item: { name: string; price: number } = {
-  name: "Lemonade",
-  price: 2.50
+let message: { content: string; timestamp: number } = {
+  content: "Hello",
+  timestamp: 1706300400000
 };
 
 // Named interface (preferred for reuse)
-interface MenuItem {
+interface Message {
   id: number;
-  name: string;
-  price: number;
-  description: string;
+  content: string;
+  timestamp: number;
+  sender: string;
 }
 
-let lemonade: MenuItem = {
+let greeting: Message = {
   id: 1,
-  name: "Lemonade",
-  price: 2.50,
-  description: "Classic fresh-squeezed"
+  content: "Hello",
+  timestamp: 1706300400000,
+  sender: "alice"
 };
 ```
 
@@ -226,18 +225,18 @@ This is the *contract* of the function — what it promises to do.
 
 ```typescript
 // Parameters and return type
-function calculateTotal(price: number, quantity: number): number {
-  return price * quantity;
+function formatTimestamp(timestamp: number, locale: string): string {
+  return new Date(timestamp).toLocaleString(locale);
 }
 
 // With complex types
-function findMenuItem(id: number): MenuItem | null {
-  // Returns a MenuItem if found, null if not
+function findMessage(id: number): Message | null {
+  // Returns a Message if found, null if not
 }
 
 // Functions that don't return a value
-function logOrder(order: Order): void {
-  console.log(order);
+function logMessage(message: Message): void {
+  console.log(message);
 }
 ```
 
@@ -255,34 +254,34 @@ This is powerful for modeling real-world data where values have alternatives.
 
 ```typescript
 // Can be a string or null
-let customerName: string | null = null;
+let username: string | null = null;
 
 // Can be one of specific string values
-type Size = "small" | "medium" | "large";
-let drinkSize: Size = "medium";
+type MessageType = "text" | "image" | "system";
+let msgType: MessageType = "text";
 
 // Can be different object shapes
-type PaymentMethod =
-  | { type: "cash"; amount: number }
-  | { type: "card"; cardNumber: string; expiry: string }
-  | { type: "loyalty"; pointsUsed: number };
+type MessageContent =
+  | { type: "text"; text: string }
+  | { type: "image"; url: string; caption: string }
+  | { type: "system"; event: string };
 ```
 
 When AI sees union types, it knows to handle each case:
 
 ```typescript
-function processPayment(payment: PaymentMethod): void {
+function renderMessage(content: MessageContent): string {
   // AI will generate a switch or if/else for each type
-  switch (payment.type) {
-    case "cash":
-      // AI knows payment.amount exists here
-      break;
-    case "card":
-      // AI knows payment.cardNumber exists here
-      break;
-    case "loyalty":
-      // AI knows payment.pointsUsed exists here
-      break;
+  switch (content.type) {
+    case "text":
+      // AI knows content.text exists here
+      return content.text;
+    case "image":
+      // AI knows content.url exists here
+      return `[Image: ${content.caption}]`;
+    case "system":
+      // AI knows content.event exists here
+      return `** ${content.event} **`;
   }
 }
 ```
@@ -317,8 +316,8 @@ interface ApiResponse<T> {
 }
 
 // Used with specific types
-let menuResponse: ApiResponse<MenuItem[]>;
-let orderResponse: ApiResponse<Order>;
+let messagesResponse: ApiResponse<Message[]>;
+let conversationResponse: ApiResponse<Conversation>;
 ```
 
 **For now**: You don't need to write generics yourself — just recognize them when you see them (like `Array<T>` or `Promise<T>`). AI-generated code will use them appropriately.
@@ -388,26 +387,28 @@ Before writing logic, define your data shapes:
 
 ```typescript
 // 1. Define the types
-interface MenuItem {
-  id: number;
-  name: string;
-  price: number;
-  category: "drink" | "food";
-}
-
-interface OrderItem {
-  menuItem: MenuItem;
-  quantity: number;
-}
-
-interface Order {
+interface User {
   id: string;
-  items: OrderItem[];
-  createdAt: Date;
+  username: string;
+  displayName: string;
+  status: "online" | "offline" | "away";
+}
+
+interface Message {
+  id: number;
+  content: string;
+  timestamp: number;
+  sender: User;
+}
+
+interface Conversation {
+  id: string;
+  messages: Message[];
+  participants: User[];
 }
 
 // 2. Now ask AI to implement functions
-// "Implement a function that calculates the total for an Order"
+// "Implement a function that finds the most recent message in a Conversation"
 ```
 
 **Why this works**: The AI has complete context about your data before generating logic.
@@ -417,13 +418,13 @@ interface Order {
 Always be explicit about when values can be missing:
 
 ```typescript
-// BAD: Unclear if customer might not exist
-function getCustomerName(customerId: string): string {
+// BAD: Unclear if user might not exist
+function getUsername(userId: string): string {
   // ...
 }
 
-// GOOD: Explicit that customer might not be found
-function getCustomerName(customerId: string): string | null {
+// GOOD: Explicit that user might not be found
+function getUsername(userId: string): string | null {
   // AI will generate null-handling logic
 }
 ```
@@ -446,25 +447,25 @@ When your code talks to external systems (APIs, databases, files), define interf
 
 ```typescript
 // What the API returns
-interface ApiMenuItem {
-  item_id: number;       // Note: API uses snake_case
-  item_name: string;
-  unit_price: number;
+interface ApiMessage {
+  message_id: number;       // Note: API uses snake_case
+  message_content: string;
+  created_at: number;
 }
 
 // What your app uses internally
-interface MenuItem {
+interface Message {
   id: number;
-  name: string;
-  price: number;
+  content: string;
+  timestamp: number;
 }
 
 // Transform function
-function toMenuItem(api: ApiMenuItem): MenuItem {
+function toMessage(api: ApiMessage): Message {
   return {
-    id: api.item_id,
-    name: api.item_name,
-    price: api.unit_price
+    id: api.message_id,
+    content: api.message_content,
+    timestamp: api.created_at
   };
 }
 ```
@@ -476,11 +477,11 @@ function toMenuItem(api: ApiMenuItem): MenuItem {
 ### Optional Properties
 
 ```typescript
-interface Customer {
+interface User {
   id: string;
-  name: string;
-  email?: string;      // Optional (might not exist)
-  loyaltyPoints?: number;
+  username: string;
+  displayName?: string;      // Optional (might not exist)
+  avatarUrl?: string;
 }
 ```
 
@@ -496,14 +497,14 @@ interface Config {
 ### Extending Interfaces
 
 ```typescript
-interface BaseItem {
+interface BaseEntity {
   id: number;
-  name: string;
+  createdAt: number;
 }
 
-interface MenuItem extends BaseItem {
-  price: number;
-  category: string;
+interface Message extends BaseEntity {
+  content: string;
+  sender: string;
 }
 ```
 
@@ -511,13 +512,13 @@ interface MenuItem extends BaseItem {
 
 ```typescript
 // Object with dynamic keys
-interface PriceList {
-  [itemName: string]: number;
+interface UnreadCounts {
+  [conversationId: string]: number;
 }
 
-let prices: PriceList = {
-  "Lemonade": 2.50,
-  "Cookie": 1.50
+let unreadCounts: UnreadCounts = {
+  "conv-123": 5,
+  "conv-456": 2
 };
 ```
 
@@ -528,17 +529,15 @@ let prices: PriceList = {
 Take this JavaScript function and add TypeScript types:
 
 ```javascript
-function calculateDiscount(items, threshold, percent) {
-  let total = 0;
-  for (let item of items) {
-    total += item.price * item.quantity;
+function countUnreadMessages(messages, userId) {
+  let count = 0;
+  for (let message of messages) {
+    if (!message.readBy.includes(userId)) {
+      count += 1;
+    }
   }
 
-  if (total >= threshold) {
-    return total * (percent / 100);
-  }
-
-  return 0;
+  return count;
 }
 ```
 
@@ -546,30 +545,28 @@ function calculateDiscount(items, threshold, percent) {
 <summary>Solution</summary>
 
 ```typescript
-interface OrderItem {
-  price: number;
-  quantity: number;
+interface Message {
+  id: number;
+  content: string;
+  readBy: string[];
 }
 
-function calculateDiscount(
-  items: OrderItem[],
-  threshold: number,
-  percent: number
+function countUnreadMessages(
+  messages: Message[],
+  userId: string
 ): number {
-  let total = 0;
-  for (let item of items) {
-    total += item.price * item.quantity;
+  let count = 0;
+  for (let message of messages) {
+    if (!message.readBy.includes(userId)) {
+      count += 1;
+    }
   }
 
-  if (total >= threshold) {
-    return total * (percent / 100);
-  }
-
-  return 0;
+  return count;
 }
 ```
 
-Note: We created an `OrderItem` interface even though we only need two fields. This makes the code more readable and reusable.
+Note: We created a `Message` interface even though we only need the `readBy` field. This makes the code more readable and reusable.
 
 </details>
 
@@ -577,10 +574,10 @@ Note: We created an `OrderItem` interface even though we only need two fields. T
 
 ## Exercise 2: Design Types for a Feature
 
-You're adding a loyalty program. Design types for:
-- Customers have loyalty tiers (bronze, silver, gold)
-- Each tier has a discount percentage
-- Customers accumulate points from purchases
+You're adding user presence tracking. Design types for:
+- Users have presence status (online, offline, away)
+- Each status has an optional status message
+- Users can set when they were last active
 
 Don't implement the logic — just define the types.
 
@@ -588,28 +585,28 @@ Don't implement the logic — just define the types.
 <summary>Solution</summary>
 
 ```typescript
-type LoyaltyTier = "bronze" | "silver" | "gold";
+type PresenceStatus = "online" | "offline" | "away";
 
-interface TierConfig {
-  name: LoyaltyTier;
-  discountPercent: number;
-  pointsRequired: number;  // Points needed to reach this tier
+interface UserPresence {
+  userId: string;
+  status: PresenceStatus;
+  statusMessage?: string;  // Optional custom message
+  lastActiveAt: number;    // Timestamp of last activity
 }
 
-interface Customer {
+interface User {
   id: string;
-  name: string;
-  email: string;
-  loyaltyPoints: number;
-  tier: LoyaltyTier;
+  username: string;
+  displayName: string;
+  presence: UserPresence;
 }
 
-// Could also define tier configurations
-const tierConfigs: TierConfig[] = [
-  { name: "bronze", discountPercent: 5, pointsRequired: 0 },
-  { name: "silver", discountPercent: 10, pointsRequired: 100 },
-  { name: "gold", discountPercent: 15, pointsRequired: 500 }
-];
+// Could also define default status messages
+const defaultStatusMessages: Record<PresenceStatus, string> = {
+  online: "Available",
+  offline: "Offline",
+  away: "Away from keyboard"
+};
 ```
 
 </details>
@@ -618,8 +615,8 @@ const tierConfigs: TierConfig[] = [
 
 ## Exercise 3: Types and AI Assistance
 
-1. Take the untyped `createOrder` function from earlier in this module
-2. Paste it into an AI and ask: "Add logic to apply a 10% discount for orders over $10"
+1. Take the untyped `sendMessage` function from earlier in this module
+2. Paste it into an AI and ask: "Add validation to ensure the sender is a participant in the conversation"
 3. Note what the AI assumes about the data structure
 4. Now paste the typed version with interfaces
 5. Ask the same question
@@ -634,26 +631,26 @@ Reflect: How did explicit types change the AI's response?
 This TypeScript code has a type error. Find it without running the code:
 
 ```typescript
-interface MenuItem {
+interface Message {
   id: number;
-  name: string;
-  price: number;
+  content: string;
+  timestamp: number;
 }
 
-function formatPrice(item: MenuItem): string {
-  return "$" + item.cost.toFixed(2);
+function formatTimestamp(message: Message): string {
+  return new Date(message.createdAt).toISOString();
 }
 ```
 
 <details>
 <summary>Solution</summary>
 
-The error is on line 8: `item.cost` should be `item.price`.
+The error is on line 8: `message.createdAt` should be `message.timestamp`.
 
-The `MenuItem` interface has a `price` property, not `cost`. TypeScript would catch this at compile time with an error like:
+The `Message` interface has a `timestamp` property, not `createdAt`. TypeScript would catch this at compile time with an error like:
 
 ```
-Property 'cost' does not exist on type 'MenuItem'. Did you mean 'price'?
+Property 'createdAt' does not exist on type 'Message'. Did you mean 'timestamp'?
 ```
 
 This is the power of types — catching errors before runtime.
@@ -700,7 +697,7 @@ For now, focus on:
 
 ## What's Next
 
-- **[Example: Lemonade Stand (TypeScript)](/docs/examples/lemonade-cli-typescript)** — The familiar CLI app, now with types
+- **[Example: Chat CLI (TypeScript)](/docs/examples/chat-cli-typescript)** — The familiar CLI app, now with types
 - **[Extracurricular: Types Across Languages](/docs/curriculum/part-1-foundations/extracurricular/types-across-languages)** — See these same concepts in Python and Go
 - **Module 05: Build Tools and Modern Development** — Package managers, bundlers, and the JavaScript ecosystem
 

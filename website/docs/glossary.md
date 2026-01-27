@@ -115,7 +115,7 @@ The part of a system that requests services. Often refers to the browser or fron
 ### Component
 A reusable piece of a system. In React, a component is a self-contained UI element.
 
-*Example*: An `OrderForm` component handles order input.
+*Example*: A `MessageInput` component handles message composition.
 
 ### Component-Connector View
 An architectural view showing runtime behavior and data flow. See [Architectural Views](architectural-views).
@@ -191,7 +191,7 @@ A structured foundation for building applications. Provides conventions and tool
 ### Frontend
 The part of a system users interact with directly. In web apps, runs in the browser.
 
-*Example*: A React app displaying the chat stand UI.
+*Example*: A React app displaying the chat application UI.
 
 ### Function
 A named block of code that performs a task. Like a recipe that can be reused.
@@ -215,7 +215,7 @@ A platform for hosting Git repositories and collaborating on code.
 ### HTML (HyperText Markup Language)
 The structure of web pages. Defines headings, paragraphs, buttons, etc.
 
-*Example*: `<button>Order Lemonade</button>`
+*Example*: `<button>Send Message</button>`
 
 ### HTTP (HyperText Transfer Protocol)
 The protocol browsers and servers use to communicate. Defines request/response format.
@@ -252,12 +252,12 @@ A programming language that runs in browsers (and servers via Node.js). Adds int
 ### JSON (JavaScript Object Notation)
 A text format for representing structured data. Easy for humans to read and machines to parse.
 
-*Example*: `{"name": "Lemonade", "price": 2.50}`
+*Example*: `{"sender": "Alice", "text": "Hello!"}`
 
 ### JSX
 A syntax extension for JavaScript used in React. Looks like HTML but is JavaScript.
 
-*Example*: `<OrderForm onSubmit={handleOrder} />`
+*Example*: `<MessageInput onSend={handleSend} />`
 
 ---
 
@@ -314,7 +314,7 @@ A tool for installing and managing JavaScript libraries (packages).
 ### Object
 A collection of related data and functions. Like a container with labeled compartments.
 
-*Example*: `{ name: "Lemonade", price: 2.50, quantity: 5 }`
+*Example*: `{ id: 1, sender: "Alice", text: "Hello!", timestamp: "2025-01-15" }`
 
 ---
 
@@ -337,7 +337,7 @@ A JavaScript object representing the eventual result of an asynchronous operatio
 ### Props (Properties)
 Data passed from a parent React component to a child component.
 
-*Example*: `<OrderForm price={2.50} />`
+*Example*: `<Message sender="Alice" text="Hello!" />`
 
 ---
 
@@ -346,7 +346,7 @@ Data passed from a parent React component to a child component.
 ### Query
 A request for data, often from a database or API.
 
-*Example*: SQL query: `SELECT * FROM orders WHERE user_id = 5`
+*Example*: SQL query: `SELECT * FROM messages WHERE conversation_id = 5`
 
 ---
 
@@ -372,7 +372,7 @@ An architectural style for APIs using HTTP methods (GET, POST, PUT, DELETE).
 ### Routing
 Determining which code handles a request based on the URL.
 
-*Example*: `/orders` shows the orders page, `/about` shows the about page.
+*Example*: `/chat` shows the chat page, `/settings` shows the settings page.
 
 ### Runtime
 When a program is executing (as opposed to compile time or authoring time).
@@ -394,7 +394,7 @@ A web app that loads one HTML page and updates content dynamically (no full page
 ### SQL (Structured Query Language)
 A language for interacting with relational databases.
 
-*Example*: `INSERT INTO orders (item, quantity) VALUES ('Lemonade', 5)`
+*Example*: `INSERT INTO messages (sender, text) VALUES ('Alice', 'Hello!')`
 
 ### SQLite
 A lightweight relational database that stores data in a single file.
@@ -402,7 +402,7 @@ A lightweight relational database that stores data in a single file.
 ### State
 Data that changes over time. In React, state determines what's rendered.
 
-*Example*: Order form's current quantity is state.
+*Example*: Chat input's current message text is state.
 
 ### Static
 Not changing. Static files (HTML, images) are served as-is. Static websites don't have backend logic.
@@ -531,4 +531,4 @@ This glossary will expand as the curriculum grows. If you encounter a term that'
 
 1. Open a GitHub issue
 2. Suggest the term and a beginner-friendly definition
-3. Include an example (ideally using the chat stand)
+3. Include an example (ideally using the chat app)

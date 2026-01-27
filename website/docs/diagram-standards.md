@@ -433,7 +433,7 @@ When asking an AI to create a diagram:
 ```
 Create a Mermaid diagram following the devfoundry diagram standards:
 - Use the Component-Connector view
-- Show how user input flows through the lemonade stand app
+- Show how user input flows through the chat app
 - Use standard node shapes (rectangles for processes, cylinders for data)
 - Keep it simple (5-10 nodes)
 - No colors unless necessary
