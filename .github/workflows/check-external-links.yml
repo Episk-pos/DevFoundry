@@ -83,7 +83,7 @@ jobs:
           retention-days: 7
 
       - name: Fail if broken links found
-        if: steps.linkcheck.outputs.broken_count > 0
+        if: steps.linkcheck.outputs.broken_count != '0' && steps.linkcheck.outputs.broken_count != ''
         run: |
           echo "Found ${{ steps.linkcheck.outputs.broken_count }} broken links"
           exit 1
