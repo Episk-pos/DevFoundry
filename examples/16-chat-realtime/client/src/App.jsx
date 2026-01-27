@@ -4,7 +4,6 @@ import MessageInput from './components/MessageInput';
 import { api } from './services/api';
 import { connectWebSocket } from './services/websocket';
 import { createMessage } from './utils/messages';
-import './App.css';
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -39,10 +38,10 @@ function App() {
 
   const handleSendMessage = async (text) => {
     const newMessage = createMessage(text, currentUser);
-    
+
     // Optimistic update
     setMessages((prev) => [...prev, newMessage]);
-    
+
     try {
       await api.sendMessage(newMessage);
     } catch (err) {
@@ -51,19 +50,25 @@ function App() {
   };
 
   return (
-    <div className="chat-app">
-      <header>
-        <h1>⚡ Real-time Chat</h1>
-        <div className="user-badge">{currentUser}</div>
+    <div className="w-full max-w-md h-[600px] bg-white flex flex-col shadow-xl rounded-xl overflow-hidden">
+      <header className="p-4 bg-blue-500 text-white flex justify-between items-center">
+        <h1 className="text-lg font-semibold">Real-time Chat</h1>
+        <div className="text-sm bg-white/20 px-2 py-1 rounded">
+          User: {currentUser}
+        </div>
       </header>
 
-      {error && <div className="error-banner">{error}</div>}
+      {error && (
+        <div className="p-3 bg-red-100 text-red-700 text-sm border-b border-red-200">
+          {error}
+        </div>
+      )}
 
-      <main>
+      <main className="flex-1 overflow-y-auto p-4 bg-gray-100">
         <MessageList messages={messages} currentUser={currentUser} />
       </main>
 
-      <footer>
+      <footer className="p-4 border-t border-gray-200">
         <MessageInput onSendMessage={handleSendMessage} />
       </footer>
     </div>

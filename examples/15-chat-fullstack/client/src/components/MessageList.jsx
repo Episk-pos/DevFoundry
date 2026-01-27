@@ -10,15 +10,15 @@ function MessageList({ messages, currentUser }) {
   }, [messages]);
 
   return (
-    <div className="message-list">
+    <div className="flex flex-col gap-3">
       {messages.length === 0 ? (
-        <div className="empty-state">No messages yet.</div>
+        <div className="text-center text-gray-500 mt-8">No messages yet.</div>
       ) : (
         messages.map((msg) => (
-          <MessageItem 
-            key={msg.id} 
-            message={msg} 
-            isOwn={msg.sender === currentUser} 
+          <MessageItem
+            key={msg.id}
+            message={msg}
+            isOwn={msg.sender === currentUser}
           />
         ))
       )}

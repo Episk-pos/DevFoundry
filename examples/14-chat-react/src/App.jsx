@@ -3,7 +3,6 @@ import MessageList from './components/MessageList';
 import MessageInput from './components/MessageInput';
 import { storage } from './services/storage';
 import { createMessage } from './utils/messages';
-import './App.css';
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -35,19 +34,24 @@ function App() {
   };
 
   return (
-    <div className="chat-app">
-      <header>
-        <h1>💬 React Chat</h1>
-        <div className="user-badge">User: {currentUser}</div>
+    <div className="w-full max-w-md h-[600px] bg-white flex flex-col shadow-xl rounded-xl overflow-hidden">
+      <header className="p-4 bg-blue-500 text-white flex justify-between items-center">
+        <h1 className="text-lg font-semibold">💬 React Chat</h1>
+        <div className="text-sm bg-white/20 px-2 py-1 rounded">
+          User: {currentUser}
+        </div>
       </header>
 
-      <main>
+      <main className="flex-1 overflow-y-auto p-4 bg-gray-100">
         <MessageList messages={messages} currentUser={currentUser} />
       </main>
 
-      <footer>
+      <footer className="p-4 border-t border-gray-200">
         <MessageInput onSendMessage={handleSendMessage} />
-        <button className="btn-clear" onClick={handleClearHistory}>
+        <button
+          className="w-full mt-3 text-gray-500 text-sm underline hover:text-gray-700"
+          onClick={handleClearHistory}
+        >
           Clear History
         </button>
       </footer>
