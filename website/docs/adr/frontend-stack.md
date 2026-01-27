@@ -14,7 +14,7 @@ Accepted
 
 ## Context
 
-The devfoundry curriculum requires a frontend stack for teaching modern web development, particularly for the SPA (single-page application) and fullstack stages of the lemonade stand progression.
+The devfoundry curriculum requires a frontend stack for teaching modern web development, particularly for the SPA (single-page application) and fullstack stages of the chat app progression.
 
 **Requirements**:
 - Must be widely used in industry (relevant for learners entering the job market)
@@ -75,7 +75,8 @@ src/
   components/
     ComponentName.tsx    # React components
   utils/
-    utilName.ts          # Pure functions, helpers
+    formatting.ts        # Date/time/text display formatting
+    validation.ts        # Input validation rules
   App.tsx                # Main component
   main.tsx               # Entry point
 ```
@@ -117,7 +118,7 @@ src/
 **Future considerations**:
 - If Vue or Svelte become dominant, create parallel examples (low cost due to component model similarity)
 - If React releases breaking changes, update ADR with migration strategy
-- Advanced curriculum modules could include "Framework Comparison" using same lemonade stand in Vue/Svelte
+- Advanced curriculum modules could include "Framework Comparison" using same chat app in Vue/Svelte
 
 ## Related Decisions
 

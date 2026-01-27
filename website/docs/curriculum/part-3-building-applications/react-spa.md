@@ -1,12 +1,12 @@
 ---
 sidebar_position: 3
 title: "Stage 3: React SPA"
-description: "Converting the Lemonade Stand to a modern React single-page application"
+description: "Converting the Chat App to a modern React single-page application"
 ---
 
 # Stage 3: React SPA
 
-**Converting the Lemonade Stand to a modern React single-page application**
+**Converting the Chat App to a modern React single-page application**
 
 ---
 
@@ -40,7 +40,7 @@ Instead of managing DOM updates manually, React:
 - Provides hooks for state and side effects
 - Enables component composition
 
-This stage rebuilds the lemonade stand in React, showing how framework concepts map to what you already know.
+This stage rebuilds the chat app in React, showing how framework concepts map to what you already know.
 
 ---
 
@@ -49,8 +49,8 @@ This stage rebuilds the lemonade stand in React, showing how framework concepts 
 ### Create with Vite
 
 ```bash
-npm create vite@latest lemonade-react -- --template react
-cd lemonade-react
+npm create vite@latest chat-react -- --template react
+cd chat-react
 npm install
 npm run dev
 ```
@@ -63,7 +63,7 @@ You now have:
 ### Project Structure
 
 ```
-lemonade-react/
+chat-react/
 ├── public/
 │   └── vite.svg
 ├── src/
@@ -71,13 +71,16 @@ lemonade-react/
 │   ├── context/         # We'll add this
 │   ├── pages/           # We'll add this
 │   ├── App.jsx
-│   ├── App.css
 │   ├── main.jsx
-│   └── index.css
+│   └── index.css        # Tailwind imports
 ├── index.html
 ├── package.json
 └── vite.config.js
 ```
+
+:::note CSS to Tailwind Transition
+In Stages 1-2, you learned CSS fundamentals — the building blocks that all styling ultimately relies on. From Stage 3 onwards, we use **Tailwind CSS**, a utility-first framework that applies those same CSS concepts through class names like `flex`, `p-4`, and `text-blue-500`. This is the approach used in the example projects and reflects modern React development practices.
+:::
 
 ### Install Dependencies
 
@@ -95,20 +98,19 @@ npm install react-router-dom
 src/
 ├── components/
 │   ├── Header.jsx
-│   ├── MenuItem.jsx
-│   ├── MenuList.jsx
-│   ├── OrderItem.jsx
-│   ├── OrderSummary.jsx
-│   ├── CheckoutForm.jsx
+│   ├── Message.jsx
+│   ├── MessageList.jsx
+│   ├── MessageInput.jsx
+│   ├── UserInfo.jsx
 │   └── Notification.jsx
 ├── context/
-│   └── OrderContext.jsx
+│   └── ChatContext.jsx
 ├── pages/
-│   ├── MenuPage.jsx
-│   ├── CheckoutPage.jsx
-│   └── ConfirmationPage.jsx
-├── data/
-│   └── menuItems.js
+│   ├── ChatPage.jsx
+│   ├── SettingsPage.jsx
+│   └── HistoryPage.jsx
+├── utils/
+│   └── formatTime.js
 ├── App.jsx
 └── main.jsx
 ```
@@ -119,87 +121,89 @@ src/
 flowchart TD
     subgraph App
         Router[React Router]
-        Context[OrderContext Provider]
+        Context[ChatContext Provider]
 
-        Router --> MenuPage
-        Router --> CheckoutPage
-        Router --> ConfirmationPage
+        Router --> ChatPage
+        Router --> SettingsPage
+        Router --> HistoryPage
 
-        Context --> MenuPage
-        Context --> CheckoutPage
-        Context --> ConfirmationPage
+        Context --> ChatPage
+        Context --> SettingsPage
+        Context --> HistoryPage
     end
 
-    MenuPage --> MenuList
-    MenuList --> MenuItem
-    MenuPage --> OrderSummary
-    OrderSummary --> OrderItem
+    ChatPage --> MessageList
+    MessageList --> Message
+    ChatPage --> MessageInput
+    ChatPage --> UserInfo
 
-    CheckoutPage --> CheckoutForm
-    CheckoutPage --> OrderSummary
+    SettingsPage --> UserInfo
 ```
 
 ---
 
 ## Part 1: Data and Context
 
-### Menu Data
+### Time Formatting Utility
 
-Create `src/data/menuItems.js`:
+Create `src/utils/formatTime.js`:
 
 ```javascript
-export const menuItems = [
-  {
-    id: 'classic',
-    name: 'Classic Lemonade',
-    description: 'Fresh squeezed, ice cold',
-    price: 2.50,
-    emoji: '🍋'
-  },
-  {
-    id: 'strawberry',
-    name: 'Strawberry Lemonade',
-    description: 'With fresh strawberries',
-    price: 3.50,
-    emoji: '🍓'
-  },
-  {
-    id: 'mint',
-    name: 'Mint Lemonade',
-    description: 'Cool and refreshing',
-    price: 3.00,
-    emoji: '🌿'
+export function formatTime(timestamp) {
+  const date = new Date(timestamp);
+  return date.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  });
+}
+
+export function formatDate(timestamp) {
+  const date = new Date(timestamp);
+  const today = new Date();
+  const yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
+
+  if (date.toDateString() === today.toDateString()) {
+    return 'Today';
+  } else if (date.toDateString() === yesterday.toDateString()) {
+    return 'Yesterday';
+  } else {
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric'
+    });
   }
-];
+}
 ```
 
-### Order Context
+### Chat Context
 
-Create `src/context/OrderContext.jsx`:
+Create `src/context/ChatContext.jsx`:
 
 ```jsx
 import { createContext, useContext, useState, useEffect } from 'react';
-import { menuItems } from '../data/menuItems';
+import { formatTime } from '../utils/formatTime';
 
-const OrderContext = createContext();
+const ChatContext = createContext();
 
-export function OrderProvider({ children }) {
-  const [order, setOrder] = useState(() => {
+export function ChatProvider({ children }) {
+  const [chat, setChat] = useState(() => {
     // Load from localStorage on init
-    const saved = localStorage.getItem('lemonadeOrder');
+    const saved = localStorage.getItem('chatMessages');
     return saved ? JSON.parse(saved) : {
-      items: [],
-      customerName: '',
-      customerEmail: ''
+      messages: [],
+      username: '',
+      userId: crypto.randomUUID()
     };
   });
 
   const [notification, setNotification] = useState(null);
 
-  // Save to localStorage when order changes
+  // Save to localStorage when chat changes
   useEffect(() => {
-    localStorage.setItem('lemonadeOrder', JSON.stringify(order));
-  }, [order]);
+    localStorage.setItem('chatMessages', JSON.stringify(chat));
+  }, [chat]);
 
   // Auto-dismiss notification
   useEffect(() => {
@@ -209,56 +213,54 @@ export function OrderProvider({ children }) {
     }
   }, [notification]);
 
-  const addToOrder = (itemId) => {
-    setOrder(prev => {
-      const items = [...prev.items];
-      const existing = items.find(item => item.itemId === itemId);
+  const sendMessage = (text) => {
+    if (!text.trim()) return;
 
-      if (existing) {
-        existing.quantity++;
-      } else {
-        items.push({ itemId, quantity: 1 });
-      }
+    const newMessage = {
+      id: crypto.randomUUID(),
+      text: text.trim(),
+      sender: chat.username || 'Anonymous',
+      senderId: chat.userId,
+      timestamp: Date.now()
+    };
 
-      return { ...prev, items };
-    });
-    showNotification('success', 'Added to order!');
-  };
-
-  const updateQuantity = (itemId, delta) => {
-    setOrder(prev => {
-      const items = prev.items
-        .map(item => item.itemId === itemId
-          ? { ...item, quantity: item.quantity + delta }
-          : item
-        )
-        .filter(item => item.quantity > 0);
-
-      return { ...prev, items };
-    });
-  };
-
-  const removeFromOrder = (itemId) => {
-    setOrder(prev => ({
+    setChat(prev => ({
       ...prev,
-      items: prev.items.filter(item => item.itemId !== itemId)
+      messages: [...prev.messages, newMessage]
+    }));
+    showNotification('success', 'Message sent!');
+  };
+
+  const deleteMessage = (messageId) => {
+    setChat(prev => ({
+      ...prev,
+      messages: prev.messages.filter(msg => msg.id !== messageId)
     }));
   };
 
-  const clearOrder = () => {
-    setOrder({
-      items: [],
-      customerName: '',
-      customerEmail: ''
-    });
-    localStorage.removeItem('lemonadeOrder');
+  const editMessage = (messageId, newText) => {
+    setChat(prev => ({
+      ...prev,
+      messages: prev.messages.map(msg =>
+        msg.id === messageId
+          ? { ...msg, text: newText, edited: true }
+          : msg
+      )
+    }));
   };
 
-  const setCustomerInfo = (name, email) => {
-    setOrder(prev => ({
+  const clearMessages = () => {
+    setChat(prev => ({
       ...prev,
-      customerName: name,
-      customerEmail: email
+      messages: []
+    }));
+    localStorage.removeItem('chatMessages');
+  };
+
+  const setUsername = (name) => {
+    setChat(prev => ({
+      ...prev,
+      username: name
     }));
   };
 
@@ -266,36 +268,31 @@ export function OrderProvider({ children }) {
     setNotification({ type, message });
   };
 
-  const getTotal = () => {
-    return order.items.reduce((sum, orderItem) => {
-      const menuItem = menuItems.find(m => m.id === orderItem.itemId);
-      return sum + (menuItem?.price || 0) * orderItem.quantity;
-    }, 0);
-  };
+  const getMessageCount = () => chat.messages.length;
 
   const value = {
-    order,
+    chat,
     notification,
-    addToOrder,
-    updateQuantity,
-    removeFromOrder,
-    clearOrder,
-    setCustomerInfo,
+    sendMessage,
+    deleteMessage,
+    editMessage,
+    clearMessages,
+    setUsername,
     showNotification,
-    getTotal
+    getMessageCount
   };
 
   return (
-    <OrderContext.Provider value={value}>
+    <ChatContext.Provider value={value}>
       {children}
-    </OrderContext.Provider>
+    </ChatContext.Provider>
   );
 }
 
-export function useOrder() {
-  const context = useContext(OrderContext);
+export function useChat() {
+  const context = useContext(ChatContext);
   if (!context) {
-    throw new Error('useOrder must be used within OrderProvider');
+    throw new Error('useChat must be used within ChatProvider');
   }
   return context;
 }
@@ -305,7 +302,7 @@ export function useOrder() {
 
 In Stage 2, we passed state through function calls. In React:
 
-- **Props** pass data parent → child
+- **Props** pass data parent to child
 - **Context** shares data across many components
 - Avoids "prop drilling" (passing props through many layers)
 
@@ -319,164 +316,170 @@ Create `src/components/Header.jsx`:
 
 ```jsx
 import { Link } from 'react-router-dom';
-import { useOrder } from '../context/OrderContext';
+import { useChat } from '../context/ChatContext';
 
 export default function Header() {
-  const { order } = useOrder();
-  const itemCount = order.items.reduce((sum, item) => sum + item.quantity, 0);
+  const { chat, getMessageCount } = useChat();
+  const messageCount = getMessageCount();
 
   return (
-    <header className="header">
-      <Link to="/" className="logo">
-        <h1>🍋 Lemonade Stand</h1>
+    <header className="flex items-center justify-between p-4 bg-blue-500 text-white">
+      <Link to="/" className="text-xl font-bold hover:opacity-80">
+        <h1>Chat App</h1>
       </Link>
-      <Link to="/checkout" className="cart-link">
-        🛒 {itemCount > 0 && <span className="cart-count">{itemCount}</span>}
-      </Link>
+      <nav className="flex gap-4">
+        <Link to="/" className="hover:underline">
+          Chat {messageCount > 0 && <span className="ml-1 px-2 py-0.5 bg-white/20 rounded-full text-sm">{messageCount}</span>}
+        </Link>
+        <Link to="/settings" className="hover:underline">Settings</Link>
+        <Link to="/history" className="hover:underline">History</Link>
+      </nav>
     </header>
   );
 }
 ```
 
-### MenuItem Component
+### Message Component
 
-Create `src/components/MenuItem.jsx`:
+Create `src/components/Message.jsx`:
 
 ```jsx
-import { useOrder } from '../context/OrderContext';
+import { useChat } from '../context/ChatContext';
+import { formatTime } from '../utils/formatTime';
 
-export default function MenuItem({ item }) {
-  const { addToOrder } = useOrder();
+export default function Message({ message, isOwn }) {
+  const { deleteMessage } = useChat();
 
   return (
-    <div className="menu-item">
-      <span className="item-emoji">{item.emoji}</span>
-      <div className="item-info">
-        <span className="item-name">{item.name}</span>
-        <span className="item-description">{item.description}</span>
+    <div className={`max-w-[80%] p-3 rounded-lg mb-2 ${isOwn ? 'bg-blue-500 text-white ml-auto' : 'bg-gray-200'}`}>
+      <div className="flex justify-between items-center mb-1">
+        <span className="font-semibold text-sm">{message.sender}</span>
+        <span className={`text-xs ${isOwn ? 'text-blue-100' : 'text-gray-500'}`}>{formatTime(message.timestamp)}</span>
       </div>
-      <span className="item-price">${item.price.toFixed(2)}</span>
-      <button
-        className="add-button"
-        onClick={() => addToOrder(item.id)}
-      >
-        Add
-      </button>
-    </div>
-  );
-}
-```
-
-### MenuList Component
-
-Create `src/components/MenuList.jsx`:
-
-```jsx
-import MenuItem from './MenuItem';
-import { menuItems } from '../data/menuItems';
-
-export default function MenuList() {
-  return (
-    <div className="menu-list">
-      <h2>Menu</h2>
-      {menuItems.map(item => (
-        <MenuItem key={item.id} item={item} />
-      ))}
-    </div>
-  );
-}
-```
-
-### OrderItem Component
-
-Create `src/components/OrderItem.jsx`:
-
-```jsx
-import { useOrder } from '../context/OrderContext';
-import { menuItems } from '../data/menuItems';
-
-export default function OrderItem({ orderItem }) {
-  const { updateQuantity, removeFromOrder } = useOrder();
-  const menuItem = menuItems.find(m => m.id === orderItem.itemId);
-
-  if (!menuItem) return null;
-
-  const subtotal = menuItem.price * orderItem.quantity;
-
-  return (
-    <div className="order-item">
-      <div className="order-item-info">
-        <span className="order-item-name">{menuItem.name}</span>
-        <span className="order-item-subtotal">${subtotal.toFixed(2)}</span>
+      <div>
+        <p>{message.text}</p>
+        {message.edited && <span className="text-xs italic opacity-70">(edited)</span>}
       </div>
-      <div className="quantity-controls">
+      {isOwn && (
         <button
-          className="qty-btn"
-          onClick={() => updateQuantity(orderItem.itemId, -1)}
-          aria-label="Decrease"
+          className="mt-1 text-xs opacity-70 hover:opacity-100"
+          onClick={() => deleteMessage(message.id)}
+          aria-label="Delete message"
         >
-          −
+          ✕ Delete
         </button>
-        <span className="quantity">{orderItem.quantity}</span>
-        <button
-          className="qty-btn"
-          onClick={() => updateQuantity(orderItem.itemId, 1)}
-          aria-label="Increase"
-        >
-          +
-        </button>
-      </div>
-      <button
-        className="remove-btn"
-        onClick={() => removeFromOrder(orderItem.itemId)}
-        aria-label="Remove"
-      >
-        ×
-      </button>
+      )}
     </div>
   );
 }
 ```
 
-### OrderSummary Component
+### MessageList Component
 
-Create `src/components/OrderSummary.jsx`:
+Create `src/components/MessageList.jsx`:
 
 ```jsx
-import { useOrder } from '../context/OrderContext';
-import OrderItem from './OrderItem';
+import { useRef, useEffect } from 'react';
+import Message from './Message';
+import { useChat } from '../context/ChatContext';
 
-export default function OrderSummary({ showCheckoutButton = true }) {
-  const { order, getTotal, clearOrder } = useOrder();
+export default function MessageList() {
+  const { chat } = useChat();
+  const messagesEndRef = useRef(null);
 
-  if (order.items.length === 0) {
+  // Auto-scroll to bottom when new messages arrive
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [chat.messages]);
+
+  if (chat.messages.length === 0) {
     return (
-      <div className="order-summary">
-        <h2>Your Order</h2>
-        <p className="empty-message">No items yet</p>
+      <div className="flex-1 overflow-y-auto p-4">
+        <p className="text-center text-gray-500 italic py-8">No messages yet. Start the conversation!</p>
       </div>
     );
   }
 
   return (
-    <div className="order-summary">
-      <h2>Your Order</h2>
-      <div className="order-items">
-        {order.items.map(item => (
-          <OrderItem key={item.itemId} orderItem={item} />
-        ))}
-      </div>
-      <div className="order-total">
-        <span>Total:</span>
-        <span>${getTotal().toFixed(2)}</span>
-      </div>
-      {showCheckoutButton && (
-        <div className="order-actions">
-          <button className="secondary" onClick={clearOrder}>
-            Clear Order
-          </button>
-        </div>
-      )}
+    <div className="flex-1 overflow-y-auto p-4">
+      {chat.messages.map(message => (
+        <Message
+          key={message.id}
+          message={message}
+          isOwn={message.senderId === chat.userId}
+        />
+      ))}
+      <div ref={messagesEndRef} />
+    </div>
+  );
+}
+```
+
+### MessageInput Component
+
+Create `src/components/MessageInput.jsx`:
+
+```jsx
+import { useState } from 'react';
+import { useChat } from '../context/ChatContext';
+
+export default function MessageInput() {
+  const { sendMessage } = useChat();
+  const [text, setText] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (text.trim()) {
+      sendMessage(text);
+      setText('');
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
+  return (
+    <form className="flex gap-2 p-4 border-t border-gray-200" onSubmit={handleSubmit}>
+      <textarea
+        className="flex-1 p-3 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        onKeyDown={handleKeyDown}
+        placeholder="Type a message..."
+        rows={2}
+      />
+      <button
+        type="submit"
+        className="px-6 py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+        disabled={!text.trim()}
+      >
+        Send
+      </button>
+    </form>
+  );
+}
+```
+
+### UserInfo Component
+
+Create `src/components/UserInfo.jsx`:
+
+```jsx
+import { useChat } from '../context/ChatContext';
+
+export default function UserInfo() {
+  const { chat } = useChat();
+
+  return (
+    <div className="flex items-center gap-2">
+      <span className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
+        {(chat.username || 'A')[0].toUpperCase()}
+      </span>
+      <span className="text-sm">{chat.username || 'Anonymous'}</span>
     </div>
   );
 }
@@ -487,74 +490,67 @@ export default function OrderSummary({ showCheckoutButton = true }) {
 Create `src/components/Notification.jsx`:
 
 ```jsx
-import { useOrder } from '../context/OrderContext';
+import { useChat } from '../context/ChatContext';
 
 export default function Notification() {
-  const { notification } = useOrder();
+  const { notification } = useChat();
 
   if (!notification) return null;
 
+  const typeStyles = {
+    success: 'bg-green-500',
+    error: 'bg-red-500',
+  };
+
   return (
-    <div className={`notification ${notification.type}`}>
+    <div className={`fixed bottom-4 right-4 px-4 py-3 rounded-lg text-white font-medium shadow-lg ${typeStyles[notification.type]}`}>
       {notification.message}
     </div>
   );
 }
 ```
 
-### CheckoutForm Component
+### SettingsForm Component
 
-Create `src/components/CheckoutForm.jsx`:
+Create `src/components/SettingsForm.jsx`:
 
 ```jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useOrder } from '../context/OrderContext';
+import { useChat } from '../context/ChatContext';
 
-export default function CheckoutForm() {
+export default function SettingsForm() {
   const navigate = useNavigate();
-  const { order, setCustomerInfo, clearOrder, showNotification } = useOrder();
+  const { chat, setUsername, clearMessages, showNotification } = useChat();
 
   const [formData, setFormData] = useState({
-    name: order.customerName,
-    email: order.customerEmail
+    username: chat.username
   });
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     const newErrors = {};
 
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    } else if (formData.name.length < 2) {
-      newErrors.name = 'Name must be at least 2 characters';
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
+    if (!formData.username.trim()) {
+      newErrors.username = 'Username is required';
+    } else if (formData.username.length < 2) {
+      newErrors.username = 'Username must be at least 2 characters';
+    } else if (formData.username.length > 20) {
+      newErrors.username = 'Username must be 20 characters or less';
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!validate()) return;
 
-    setIsSubmitting(true);
-    setCustomerInfo(formData.name, formData.email);
-
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    setIsSubmitting(false);
-    navigate('/confirmation');
+    setUsername(formData.username);
+    showNotification('success', 'Settings saved!');
+    navigate('/');
   };
 
   const handleChange = (e) => {
@@ -567,50 +563,42 @@ export default function CheckoutForm() {
     }
   };
 
+  const handleClearHistory = () => {
+    if (window.confirm('Are you sure you want to clear all messages?')) {
+      clearMessages();
+      showNotification('success', 'Chat history cleared');
+    }
+  };
+
   return (
-    <form className="checkout-form" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="name">Name</label>
+    <form className="space-y-6" onSubmit={handleSubmit}>
+      <div className="space-y-2">
+        <label htmlFor="username" className="block font-medium text-gray-700">Username</label>
         <input
           type="text"
-          id="name"
-          name="name"
-          value={formData.name}
+          id="username"
+          name="username"
+          value={formData.username}
           onChange={handleChange}
-          className={errors.name ? 'invalid' : ''}
-          placeholder="Your name"
+          className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.username ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+          placeholder="Enter your username"
         />
-        {errors.name && <span className="error-message">{errors.name}</span>}
+        {errors.username && <span className="text-sm text-red-500">{errors.username}</span>}
       </div>
 
-      <div className="form-group">
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          className={errors.email ? 'invalid' : ''}
-          placeholder="your@email.com"
-        />
-        {errors.email && <span className="error-message">{errors.email}</span>}
-      </div>
-
-      <div className="form-actions">
+      <div className="flex justify-between pt-4">
         <button
           type="button"
-          className="secondary"
-          onClick={() => navigate('/')}
+          className="px-4 py-2 text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-colors"
+          onClick={handleClearHistory}
         >
-          Back to Menu
+          Clear Chat History
         </button>
         <button
           type="submit"
-          className="primary"
-          disabled={isSubmitting}
+          className="px-6 py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors"
         >
-          {isSubmitting ? 'Processing...' : 'Complete Order'}
+          Save Settings
         </button>
       </div>
     </form>
@@ -622,114 +610,99 @@ export default function CheckoutForm() {
 
 ## Part 3: Pages and Routing
 
-### MenuPage
+### ChatPage
 
-Create `src/pages/MenuPage.jsx`:
+Create `src/pages/ChatPage.jsx`:
 
 ```jsx
-import MenuList from '../components/MenuList';
-import OrderSummary from '../components/OrderSummary';
-import { Link } from 'react-router-dom';
-import { useOrder } from '../context/OrderContext';
+import MessageList from '../components/MessageList';
+import MessageInput from '../components/MessageInput';
+import UserInfo from '../components/UserInfo';
+import { useChat } from '../context/ChatContext';
 
-export default function MenuPage() {
-  const { order } = useOrder();
+export default function ChatPage() {
+  const { chat } = useChat();
 
   return (
-    <main className="menu-page">
-      <MenuList />
-      <div className="order-panel">
-        <OrderSummary showCheckoutButton={false} />
-        {order.items.length > 0 && (
-          <Link to="/checkout" className="checkout-button primary">
-            Proceed to Checkout
-          </Link>
-        )}
+    <main className="flex-1 flex flex-col bg-gray-50">
+      <div className="flex-1 flex flex-col max-w-3xl w-full mx-auto bg-white shadow-sm">
+        <div className="flex items-center justify-between p-4 border-b border-gray-200">
+          <h2 className="text-lg font-semibold">Chat Room</h2>
+          <UserInfo />
+        </div>
+        <MessageList />
+        <MessageInput />
       </div>
     </main>
   );
 }
 ```
 
-### CheckoutPage
+### SettingsPage
 
-Create `src/pages/CheckoutPage.jsx`:
+Create `src/pages/SettingsPage.jsx`:
 
 ```jsx
-import { Navigate } from 'react-router-dom';
-import CheckoutForm from '../components/CheckoutForm';
-import OrderSummary from '../components/OrderSummary';
-import { useOrder } from '../context/OrderContext';
+import SettingsForm from '../components/SettingsForm';
+import UserInfo from '../components/UserInfo';
 
-export default function CheckoutPage() {
-  const { order } = useOrder();
-
-  // Redirect if cart is empty
-  if (order.items.length === 0) {
-    return <Navigate to="/" replace />;
-  }
-
+export default function SettingsPage() {
   return (
-    <main className="checkout-page">
-      <section className="checkout-section">
-        <h2>Checkout</h2>
-        <CheckoutForm />
+    <main className="flex-1 bg-gray-50 p-6">
+      <section className="max-w-md mx-auto bg-white rounded-lg shadow-sm p-6">
+        <h2 className="text-xl font-semibold mb-6">Settings</h2>
+        <SettingsForm />
       </section>
-      <OrderSummary showCheckoutButton={false} />
     </main>
   );
 }
 ```
 
-### ConfirmationPage
+### HistoryPage
 
-Create `src/pages/ConfirmationPage.jsx`:
+Create `src/pages/HistoryPage.jsx`:
 
 ```jsx
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useOrder } from '../context/OrderContext';
-import { menuItems } from '../data/menuItems';
+import { useChat } from '../context/ChatContext';
+import { formatTime, formatDate } from '../utils/formatTime';
 
-export default function ConfirmationPage() {
-  const { order, getTotal, clearOrder } = useOrder();
-  const [orderNumber] = useState(() => Math.floor(Math.random() * 10000));
+export default function HistoryPage() {
+  const { chat, getMessageCount } = useChat();
 
-  // Store order details before clearing
-  const [orderDetails] = useState(() => ({
-    items: [...order.items],
-    customerName: order.customerName,
-    total: getTotal()
-  }));
-
-  useEffect(() => {
-    // Clear the order after storing details
-    clearOrder();
-  }, []);
+  // Group messages by date
+  const groupedMessages = chat.messages.reduce((groups, message) => {
+    const dateKey = formatDate(message.timestamp);
+    if (!groups[dateKey]) {
+      groups[dateKey] = [];
+    }
+    groups[dateKey].push(message);
+    return groups;
+  }, {});
 
   return (
-    <main className="confirmation-page">
-      <div className="confirmation-content">
-        <div className="success-icon">✓</div>
-        <h1>Order Confirmed!</h1>
-        <p>Thank you, {orderDetails.customerName}!</p>
-        <p className="order-number">Order #{orderNumber}</p>
+    <main className="flex-1 bg-gray-50 p-6">
+      <div className="max-w-2xl mx-auto">
+        <h2 className="text-xl font-semibold mb-2">Chat History</h2>
+        <p className="text-gray-500 mb-6">{getMessageCount()} messages total</p>
 
-        <div className="order-summary-final">
-          {orderDetails.items.map(orderItem => {
-            const menuItem = menuItems.find(m => m.id === orderItem.itemId);
-            return (
-              <div key={orderItem.itemId} className="summary-item">
-                {menuItem?.name} × {orderItem.quantity}
+        {Object.keys(groupedMessages).length === 0 ? (
+          <p className="text-center text-gray-500 italic py-8">No message history yet.</p>
+        ) : (
+          Object.entries(groupedMessages).map(([date, messages]) => (
+            <div key={date} className="mb-6">
+              <h3 className="text-sm font-semibold text-gray-600 mb-2 border-b pb-1">{date}</h3>
+              <div className="space-y-2">
+                {messages.map(message => (
+                  <div key={message.id} className="flex gap-3 text-sm">
+                    <span className="text-gray-400 w-16 shrink-0">{formatTime(message.timestamp)}</span>
+                    <span className="font-medium text-gray-700">{message.sender}:</span>
+                    <span className="text-gray-600">{message.text}</span>
+                  </div>
+                ))}
               </div>
-            );
-          })}
-          <div className="summary-total">
-            Total: ${orderDetails.total.toFixed(2)}
-          </div>
-        </div>
-
-        <Link to="/" className="primary">Start New Order</Link>
+            </div>
+          ))
+        )}
       </div>
     </main>
   );
@@ -742,28 +715,27 @@ Update `src/App.jsx`:
 
 ```jsx
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { OrderProvider } from './context/OrderContext';
+import { ChatProvider } from './context/ChatContext';
 import Header from './components/Header';
 import Notification from './components/Notification';
-import MenuPage from './pages/MenuPage';
-import CheckoutPage from './pages/CheckoutPage';
-import ConfirmationPage from './pages/ConfirmationPage';
-import './App.css';
+import ChatPage from './pages/ChatPage';
+import SettingsPage from './pages/SettingsPage';
+import HistoryPage from './pages/HistoryPage';
 
 export default function App() {
   return (
     <BrowserRouter>
-      <OrderProvider>
-        <div className="app">
+      <ChatProvider>
+        <div className="min-h-screen flex flex-col bg-gray-100">
           <Header />
           <Routes>
-            <Route path="/" element={<MenuPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/confirmation" element={<ConfirmationPage />} />
+            <Route path="/" element={<ChatPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/history" element={<HistoryPage />} />
           </Routes>
           <Notification />
         </div>
-      </OrderProvider>
+      </ChatProvider>
     </BrowserRouter>
   );
 }
@@ -771,9 +743,15 @@ export default function App() {
 
 ---
 
-## Part 4: Styling
+## Part 4: Styling with Tailwind
 
-Update `src/App.css` with your styles from Stage 2, adapted for React's class-based approach. The CSS remains largely the same.
+Update `src/index.css` to import Tailwind:
+
+```css
+@import "tailwindcss";
+```
+
+With Tailwind, styles are applied directly in JSX via utility classes (as shown in the components above). This eliminates the need for separate CSS files per component.
 
 ---
 
@@ -885,6 +863,17 @@ function useLocalStorage(key, initialValue) {
 
 ---
 
+## Exercise 5: Add Message Editing
+
+Implement the ability to edit messages:
+
+1. Add an "Edit" button to the Message component (only for own messages)
+2. Create an EditMessageForm component
+3. Use the existing `editMessage` function from the ChatContext
+4. Show the "(edited)" label after a message is edited
+
+---
+
 ## Key Takeaways
 
 1. **React formalizes patterns** — useState, components, props are patterns you already know
@@ -913,4 +902,4 @@ You'll learn:
 
 ---
 
-**You've completed Stage 3!** You now have a modern React SPA. But the data still lives in the browser. Stage 4 adds a real backend.
+**You've completed Stage 3!** You now have a modern React chat SPA. But the data still lives in the browser. Stage 4 adds a real backend with persistent storage and multi-user support.

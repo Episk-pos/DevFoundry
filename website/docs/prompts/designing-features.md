@@ -60,7 +60,7 @@ Don't write code yet — help me design the solution first.
 **Example**:
 ```
 **Context**:
-Lemonade stand fullstack app (devfoundry examples/04).
+Chat app fullstack (devfoundry examples/04).
 - React frontend (Vite, TypeScript)
 - Express backend (Node.js)
 - SQLite database
@@ -98,8 +98,8 @@ Lemonade stand fullstack app (devfoundry examples/04).
 **Example**:
 ```
 **Users**:
-- Customers ordering lemonade (daily use)
-- They want to quickly reorder their "usual"
+- Chat participants (daily use)
+- They want to quickly find old messages
 - Non-technical, expect simple UI
 - Mobile and desktop users
 ```
@@ -129,22 +129,22 @@ Lemonade stand fullstack app (devfoundry examples/04).
 
 ## Complete Example
 
-### Scenario: Design User Favorites Feature
+### Scenario: Design Message Search Feature
 
 ```
 **Context**:
-Lemonade stand fullstack app (devfoundry examples/04).
+Chat app fullstack (devfoundry examples/04).
 - React frontend with useState for state management
 - Express backend with REST API
-- SQLite database with orders table
+- SQLite database with messages table
 - No user authentication currently
 
 **Feature Goal**:
-Users can save their favorite orders and quickly reorder them.
+Users can search through message history to find specific conversations.
 
 **Users**:
-- Regular customers who order the same thing often
-- Want one-click reordering
+- Chat participants who need to find old messages
+- Want instant search results as they type
 - Use both mobile and desktop
 - Non-technical — need simple, obvious UI
 

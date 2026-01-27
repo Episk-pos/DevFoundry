@@ -12,7 +12,7 @@ description: "Why frameworks exist, and why we're using React"
 
 ## Introduction
 
-In the previous examples, you built a lemonade stand with vanilla JavaScript and DOM manipulation. It worked. So why do frontend frameworks like React, Vue, Angular, and Svelte exist? Why have they persisted and evolved over 15+ years?
+In the previous examples, you built a vanilla chat app with vanilla JavaScript and DOM manipulation. It worked. So why do frontend frameworks like React, Vue, Angular, and Svelte exist? Why have they persisted and evolved over 15+ years?
 
 The answer isn't "because developers like shiny things."
 
@@ -49,12 +49,12 @@ The fundamental challenge:
 └─────────────────────────────────────────────────────────────┘
 ```
 
-In our vanilla lemonade stand:
+In our vanilla chat app:
 
 ```javascript
-// When order changes, we re-render everything
-function renderOrder() {
-  container.innerHTML = items.map(item => `...`).join('');
+// When messages change, we re-render everything
+function renderMessages() {
+  container.innerHTML = messages.map(msg => `...`).join('');
 }
 ```
 
@@ -360,11 +360,11 @@ function Greeting({ isLoggedIn }) {
 ### Lists
 
 ```jsx
-function MenuList({ items }) {
+function MessageList({ messages }) {
   return (
     <ul>
-      {items.map(item => (
-        <li key={item.id}>{item.name}</li>
+      {messages.map(msg => (
+        <li key={msg.id}>{msg.content}</li>
       ))}
     </ul>
   );
@@ -516,33 +516,33 @@ With TUI tools (Claude Code, Codex CLI, etc.), you don't need to copy-paste code
 
 **Point to files:**
 ```
-Look at src/components/MenuItem.tsx.
-I want to add an "Add to Cart" button that calls the onAdd prop.
+Look at src/components/Message.tsx.
+I want to add a "Reply" button that calls the onReply prop.
 Can you implement this?
 ```
 
 **Use screenshots for UI issues:**
 ```
-The menu items aren't aligning correctly.
+The messages aren't aligning correctly.
 [attach screenshot]
-Can you check the CSS in MenuItem.tsx and fix the layout?
+Can you check the Tailwind classes in Message.tsx and fix the layout?
 ```
 
 **Describe the error:**
 ```
 I'm getting "Cannot update a component while rendering a different component"
-when I click the checkout button.
-Can you look at src/components/OrderSummary.tsx and figure out what's wrong?
+when I click the send button.
+Can you look at src/components/MessageList.tsx and figure out what's wrong?
 ```
 
 ### With Chat Tools (Fallback)
 
 If using a chat-based tool, include the relevant code and types:
 ```
-Here's my MenuItem interface and component:
+Here's my Message interface and component:
 [paste types and code]
 
-I want to add an "Add to Cart" button.
+I want to add a "Reply" button.
 ```
 
 ### AI Strengths with React
@@ -563,7 +563,7 @@ I want to add an "Add to Cart" button.
 
 ## Exercise 1: Identify the Hard Problems
 
-Look at our vanilla JavaScript lemonade stand ([Lemonade Static Web](/docs/examples/lemonade-static-web)).
+Look at our vanilla JavaScript chat app ([Chat Static Web](/docs/examples/chat-static-web)).
 
 Find examples of:
 1. Manual DOM updates that could cause sync issues
@@ -577,7 +577,7 @@ How would these become problems if the app grew 10x more complex?
 
 1. **Manual DOM updates**: `container.innerHTML = ...` replaces everything, losing focus, scroll position, and animations
 
-2. **Imperative state**: The `orderItems` array is mutated directly, and we manually call `renderOrder()` — easy to forget
+2. **Imperative state**: The `messages` array is mutated directly, and we manually call `renderMessages()` — easy to forget
 
 3. **Event handlers**: We use event delegation on containers, which works but requires checking `event.target` classes — brittle if markup changes
 
@@ -596,27 +596,25 @@ At 10x complexity:
 Without running it, read this component and answer:
 
 ```jsx
-function OrderSummary({ items, onCheckout }) {
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const hasItems = items.length > 0;
+function ConversationView({ messages, onSend }) {
+  const hasMessages = messages.length > 0;
 
   return (
-    <div className="order-summary">
-      <h2>Your Order</h2>
-      {hasItems ? (
+    <div className="conversation-view">
+      <h2>Conversation</h2>
+      {hasMessages ? (
         <>
           <ul>
-            {items.map(item => (
-              <li key={item.id}>
-                {item.name} x{item.quantity}: ${(item.price * item.quantity).toFixed(2)}
+            {messages.map(msg => (
+              <li key={msg.id}>
+                <strong>{msg.sender}:</strong> {msg.content}
               </li>
             ))}
           </ul>
-          <p className="total">Total: ${total.toFixed(2)}</p>
-          <button onClick={onCheckout}>Checkout</button>
+          <button onClick={onSend}>Send Message</button>
         </>
       ) : (
-        <p>No items in your order</p>
+        <p>No messages yet</p>
       )}
     </div>
   );
@@ -624,20 +622,20 @@ function OrderSummary({ items, onCheckout }) {
 ```
 
 1. What props does this component receive?
-2. What does it render when `items` is empty?
-3. What does it render when `items` has content?
-4. When is `onCheckout` called?
+2. What does it render when `messages` is empty?
+3. What does it render when `messages` has content?
+4. When is `onSend` called?
 
 <details>
 <summary>Solution</summary>
 
-1. **Props**: `items` (array of order items) and `onCheckout` (function to call when checkout button clicked)
+1. **Props**: `messages` (array of message objects) and `onSend` (function to call when send button clicked)
 
-2. **When empty**: A div with "Your Order" heading and "No items in your order" paragraph
+2. **When empty**: A div with "Conversation" heading and "No messages yet" paragraph
 
-3. **When has content**: The heading, a list of items with names/quantities/subtotals, a total line, and a checkout button
+3. **When has content**: The heading, a list of messages with sender names and content, and a send button
 
-4. **onCheckout called**: When the "Checkout" button is clicked
+4. **onSend called**: When the "Send Message" button is clicked
 
 This is a "presentational" component — it receives data and callbacks, renders UI, but doesn't manage its own state.
 
@@ -695,10 +693,10 @@ Now each call receives the previous value, not the stale closure value.
 
 ## Exercise 4: Ask AI for a Component
 
-Write a prompt asking an AI to create a menu item component for our lemonade stand.
+Write a prompt asking an AI to create a message component for our chat app.
 
 Include:
-- The TypeScript interface for MenuItem
+- The TypeScript interface for Message
 - What the component should display
 - What event it should emit when clicked
 
@@ -750,7 +748,7 @@ These are important. Learn them when you need them, not before.
 
 **Or explore the examples:**
 
-- **[Example: Lemonade Stand (Static Web)](/docs/examples/lemonade-static-web)** — The familiar app, as a web page
+- **[Example: Chat App (Static Web)](/docs/examples/chat-static-web)** — The familiar app, as a web page
 
 ---
 

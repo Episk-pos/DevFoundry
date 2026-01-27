@@ -1,6 +1,6 @@
 # Stage 1: Static Website
 
-Building the Lemonade Stand with HTML, CSS, and vanilla JavaScript.
+Building the Chat App with HTML, CSS, and vanilla JavaScript.
 
 **Full module**: [dev.episkopos.community/docs/curriculum/part-3-building-applications/static-website](https://dev.episkopos.community/docs/curriculum/part-3-building-applications/static-website)
 
@@ -14,11 +14,11 @@ Building the Lemonade Stand with HTML, CSS, and vanilla JavaScript.
 
 ## What You'll Build
 
-A functional lemonade stand that:
-- Displays a menu of drinks
-- Lets users add items to an order
-- Shows order total
-- Works entirely in the browser
+A functional chat interface that:
+- Displays a list of messages
+- Lets users compose and send new messages
+- Shows message timestamps and sender info
+- Works entirely in the browser (localStorage for persistence)
 
 ## Exercises
 

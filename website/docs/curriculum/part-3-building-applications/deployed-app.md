@@ -1,12 +1,12 @@
 ---
 sidebar_position: 5
 title: "Stage 5: Deployed App"
-description: "Deploying the Lemonade Stand to production — hosting, configuration, and CI/CD"
+description: "Deploying the Chat App to production — hosting, configuration, CI/CD, and real-time messaging"
 ---
 
 # Stage 5: Deployed App
 
-**Deploying the Lemonade Stand to production — hosting, configuration, and CI/CD**
+**Deploying the Chat App to production — hosting, configuration, CI/CD, and real-time messaging**
 
 ---
 
@@ -27,7 +27,7 @@ By the end of this stage, you will:
 
 ## Introduction
 
-Your lemonade stand works on `localhost`. But that's just your computer. To share it with the world, you need to **deploy** it.
+Your chat app works on `localhost`. But that's just your computer. To share it with the world, you need to **deploy** it.
 
 Deployment means:
 - Your code runs on someone else's servers
@@ -47,7 +47,7 @@ This stage covers the practical steps to go from localhost to live.
 Your Computer
 ├── Frontend (localhost:5173)
 ├── Backend (localhost:3001)
-└── SQLite (./data/lemonade.db)
+└── SQLite (./data/chat.db)
 ```
 
 ### Production Architecture
@@ -108,7 +108,7 @@ Create `server/.env`:
 PORT=3001
 NODE_ENV=development
 CORS_ORIGIN=http://localhost:5173
-DATABASE_URL=./data/lemonade.db
+DATABASE_URL=./data/chat.db
 ```
 
 Load with dotenv:
@@ -169,7 +169,8 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // API routes
-app.use('/api/orders', require('./routes/orders'));
+app.use('/api/messages', require('./routes/messages'));
+app.use('/api/conversations', require('./routes/conversations'));
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -459,7 +460,7 @@ app.use(Sentry.Handlers.errorHandler());
 
 - [ ] Test all functionality on production URL
 - [ ] Check logs for errors
-- [ ] Verify orders persist correctly
+- [ ] Verify messages persist correctly
 - [ ] Test on mobile devices
 - [ ] Share URL and celebrate 🎉
 
@@ -578,12 +579,12 @@ On some platforms, the filesystem resets on deploy.
 
 ## What's Next
 
-**Congratulations!** You've completed Part III and the entire Lemonade Stand journey!
+**Congratulations!** You've completed Part III and the entire Chat App journey!
 
 You've built:
 - Static HTML/CSS/JS (Stage 1)
-- Interactive vanilla JS (Stage 2)
-- React SPA (Stage 3)
+- Interactive vanilla JS with real-time updates (Stage 2)
+- React SPA with components (Stage 3)
 - Fullstack with API and database (Stage 4)
 - Production deployment (Stage 5)
 

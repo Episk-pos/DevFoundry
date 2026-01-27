@@ -281,7 +281,7 @@ You've created your first program! Now you understand:
 - Functions and how to call them
 - The I/O/P model (input, processing, output)
 
-**Next**: Lemonade CLI — Build a slightly more complex CLI app that takes user input.
+**Next**: [Chat CLI](/docs/examples/chat-cli) — Build a multi-file CLI app with persistence.
 
 ---
 

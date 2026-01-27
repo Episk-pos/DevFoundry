@@ -62,8 +62,8 @@ Please explain in beginner-friendly terms.
 **Example**:
 ```
 **Context**:
-This is from the devfoundry lemonade stand SPA example.
-File: src/components/OrderForm.tsx
+This is from the devfoundry chat app SPA example.
+File: src/components/MessageInput.tsx
 Tech: React with TypeScript
 ```
 
@@ -138,7 +138,7 @@ I want to understand how form validation works so I can add my own validation ru
 
 ```
 **Context**:
-devfoundry lemonade SPA, file: src/hooks/useOrders.ts
+devfoundry chat SPA, file: src/hooks/useMessages.ts
 This is a custom React hook.
 
 **My Goal**:

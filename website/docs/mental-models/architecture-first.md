@@ -46,30 +46,30 @@ The key insight: **LLMs are autocomplete for systems, not syntax.**
 
 **Prompt**:
 ```
-I'm building a lemonade stand SPA (single-page application) with this architecture:
+I'm building a chat app SPA (single-page application) with this architecture:
 
 **Tech stack**: React (functional components), useState for state, no external state library
 
 **Module structure**:
 - App.jsx (holds global state)
-- components/OrderForm.jsx
-- components/OrderList.jsx
-- utils/pricing.js (pure functions for calculations)
+- components/MessageInput.jsx
+- components/MessageList.jsx
+- utils/messages.js (pure functions for formatting)
 
 **Current state shape**:
 {
-  orders: [],        // array of {id, item, quantity, price}
-  totalAmount: 0
+  messages: [],      // array of {id, sender, content, timestamp}
+  currentUser: 'You'
 }
 
 **Flow**:
-User enters order → OrderForm validates → App adds to orders array → OrderList displays
+User types message → MessageInput validates → App adds to messages array → MessageList displays
 
-I need to implement the "Add to Order" function in App.jsx. It should:
-1. Accept item, quantity, price from OrderForm
-2. Create order object with unique ID
-3. Update orders array immutably
-4. Recalculate totalAmount
+I need to implement the "sendMessage" function in App.jsx. It should:
+1. Accept content from MessageInput
+2. Create message object with unique ID and timestamp
+3. Update messages array immutably
+4. Scroll to new message
 
 Please implement this function following React best practices.
 ```
@@ -130,36 +130,36 @@ Use this structure for feature requests:
 **Expected behavior**: [How it should work]
 ```
 
-### Example: Add Discount Feature
+### Example: Add Message Reactions Feature
 
 ```
 **Context**:
-I'm building a lemonade stand app. It's a React SPA with:
-- App.jsx (holds state: {orders, subtotal, discount, finalTotal})
-- components/OrderForm.jsx (user input)
-- components/OrderSummary.jsx (displays totals)
-- utils/pricing.js (contains calculateSubtotal)
+I'm building a chat app. It's a React SPA with:
+- App.jsx (holds state: {messages, currentUser})
+- components/MessageInput.jsx (compose message)
+- components/MessageList.jsx (displays messages)
+- utils/messages.js (contains formatMessage)
 
 **Architecture** (Component-Connector View):
-OrderForm → App state → OrderSummary
-calculateSubtotal is called when orders change
+MessageInput → App state → MessageList
+formatMessage is called when displaying messages
 
 **Requirement**:
-Add a discount system: 10% off when subtotal > $50
+Add reactions to messages (thumbs up, heart, laugh)
 
 **Constraints**:
-- Must be a pure function in utils/pricing.js
-- Called from App.jsx after calculateSubtotal
-- Must not modify existing calculateSubtotal function
+- Must store reactions in each message object
+- Called from MessageList when user clicks reaction button
+- Must not modify existing formatMessage function
 
 **Expected behavior**:
-1. If subtotal ≤ $50: discount = 0
-2. If subtotal > $50: discount = subtotal * 0.10
-3. finalTotal = subtotal - discount
+1. Each message can have multiple reactions
+2. Clicking a reaction toggles it (add/remove)
+3. Show count of each reaction type
 
 Please implement:
-1. calculateDiscount(subtotal) in utils/pricing.js
-2. Update App.jsx to use it
+1. addReaction(messageId, reactionType, userId) in utils/messages.js
+2. Update App.jsx to handle reactions
 ```
 
 **Result**: AI generates code that integrates seamlessly.
@@ -171,20 +171,20 @@ Please implement:
 ### Pitfall 1: "Just make it work"
 
 :::danger[Bad prompt]
-"My lemonade stand app isn't calculating totals correctly. Fix it."
+"My chat app isn't displaying messages correctly. Fix it."
 :::
 
 **Problem**: AI doesn't know your architecture, so it guesses. Often introduces new bugs.
 
 :::tip[Better prompt]
-"In my lemonade stand app, totals are calculated in utils/pricing.js by the calculateTotal function:
+"In my chat app, messages are formatted in utils/messages.js by the formatMessage function:
 
 [paste function]
 
-Expected behavior: price * quantity for each item, then sum.
-Actual behavior: getting NaN.
+Expected behavior: display sender name, timestamp, and content.
+Actual behavior: timestamp shows as 'Invalid Date'.
 
-Sample input: `[{item: 'Lemonade', price: 2.50, quantity: 3}, ...]`
+Sample input: `{sender: 'Alice', content: 'Hello!', timestamp: '2024-01-15T10:30:00Z'}`
 
 What's wrong and how should I fix it?"
 :::
@@ -196,22 +196,25 @@ What's wrong and how should I fix it?"
 ### Pitfall 2: No Mention of Existing Code
 
 :::danger[Bad prompt]
-"Add a delete button to remove items from the order"
+"Add a delete button to remove messages"
 :::
 
-**Problem**: AI doesn't know where the order list is rendered or how state is managed.
+**Problem**: AI doesn't know where the message list is rendered or how state is managed.
 
 :::tip[Better prompt]
-"In OrderList.jsx, I'm rendering orders from props (array of order objects).
+"In MessageList.jsx, I'm rendering messages from props (array of message objects).
 
 Current code:
 ```jsx
-{orders.map(order => (
-  <li key={order.id}>{order.item} - {order.quantity}</li>
+{messages.map(msg => (
+  <div key={msg.id} className="message">
+    <span className="sender">{msg.sender}</span>
+    <p>{msg.content}</p>
+  </div>
 ))}
 ```
 
-I need to add a delete button to each item that calls props.onDeleteOrder(order.id).
+I need to add a delete button to each message that calls props.onDeleteMessage(msg.id).
 
 Please update the JSX to include a delete button. Style it with a 'btn-delete' className."
 :::
@@ -240,23 +243,23 @@ I need to add a loading state..."
 ### Pattern 1: "Implement Component X"
 
 ```
-**System**: Lemonade stand SPA, React + Vite
+**System**: Chat app SPA, React + Vite
 
 **Architecture**:
-App.jsx contains state: { orders: [], subtotal: 0 }
+App.jsx contains state: { messages: [], currentUser: 'You' }
 
 **Task**:
-Create components/OrderForm.jsx
+Create components/MessageInput.jsx
 
 **Requirements**:
-- Props: onAddOrder (callback)
-- Two inputs: item (dropdown: "Lemonade", "Iced Tea", "Water"), quantity (number)
-- Button: "Add to Order"
-- On submit: validate quantity > 0, call onAddOrder({item, quantity}), clear form
+- Props: onSendMessage (callback)
+- One input: content (textarea)
+- Button: "Send"
+- On submit: validate content not empty, call onSendMessage({content}), clear form
 
 **Style**: Use semantic HTML, functional component, controlled inputs
 
-Please implement OrderForm.jsx.
+Please implement MessageInput.jsx.
 ```
 
 ---
@@ -264,18 +267,18 @@ Please implement OrderForm.jsx.
 ### Pattern 2: "Debug This Code"
 
 ```
-**Context**: lemonade stand app, utils/pricing.js contains pricing logic
+**Context**: chat app, utils/messages.js contains message formatting logic
 
-**Problem**: calculateTotal returns NaN
+**Problem**: formatTimestamp returns 'Invalid Date'
 
 **Code**:
 [paste the function]
 
-**Expected**: sum of (price * quantity) for all items
-**Actual**: NaN
+**Expected**: formatted time like "10:30 AM"
+**Actual**: 'Invalid Date'
 
 **Sample input**:
-`[{item: "Lemonade", price: 2.50, quantity: 3}, ...]`
+`{sender: "Alice", content: "Hello!", timestamp: "2024-01-15T10:30:00Z"}`
 
 What's the bug and how do I fix it?
 ```
@@ -285,20 +288,20 @@ What's the bug and how do I fix it?
 ### Pattern 3: "Refactor This"
 
 ```
-**Context**: OrderList component has grown to 150 lines and handles both display and editing
+**Context**: MessageList component has grown to 150 lines and handles both display and editing
 
 **Current structure**:
-- Displays list of orders
-- Each item has inline edit functionality
-- Handles delete
-- Calculates line totals
+- Displays list of messages
+- Each message has inline edit/delete functionality
+- Handles reactions
+- Formats timestamps
 
 **Goal**: Split into two components:
-1. OrderList (display only, receives orders and callbacks)
-2. OrderItem (individual order row, handles edit/delete)
+1. MessageList (display only, receives messages and callbacks)
+2. MessageItem (individual message, handles edit/delete/reactions)
 
 **Constraints**:
-- Keep existing prop interface for OrderList
+- Keep existing prop interface for MessageList
 - Maintain current behavior
 
 Please show the refactored components.
@@ -309,20 +312,20 @@ Please show the refactored components.
 ### Pattern 4: "Explain This Code"
 
 ```
-**Context**: I'm learning React and found this in the lemonade stand app
+**Context**: I'm learning React and found this in the chat app
 
 **Code**:
 ```jsx
 useEffect(() => {
-  const newTotal = orders.reduce((sum, order) => sum + (order.price * order.quantity), 0);
-  setSubtotal(newTotal);
-}, [orders]);
+  const scrollContainer = messagesEndRef.current;
+  scrollContainer?.scrollIntoView({ behavior: 'smooth' });
+}, [messages]);
 ```
 
 **Questions**:
 1. What does useEffect do here?
-2. Why is `orders` in the dependency array?
-3. What's `reduce` doing?
+2. Why is `messages` in the dependency array?
+3. What's `scrollIntoView` doing?
 4. What happens if I remove the dependency array?
 
 Please explain in beginner-friendly terms with examples.

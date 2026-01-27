@@ -1,6 +1,6 @@
 # Stage 2: Interactive UI
 
-Enhancing the Lemonade Stand with better state management, forms, and user feedback.
+Enhancing the Chat App with better state management, forms, and user feedback.
 
 **Full module**: [dev.episkopos.community/docs/curriculum/part-3-building-applications/interactive-ui](https://dev.episkopos.community/docs/curriculum/part-3-building-applications/interactive-ui)
 
@@ -15,11 +15,11 @@ Enhancing the Lemonade Stand with better state management, forms, and user feedb
 
 ## What You'll Build
 
-Enhancements to the lemonade stand:
-- Quantity selectors and item customization
-- Order persistence across page refreshes
-- Visual feedback for user actions
-- Form for customer information
+Enhancements to the chat app:
+- Multiple conversation support
+- Message persistence across page refreshes
+- Visual feedback for sending/receiving messages
+- User profile and settings
 
 ## Exercises
 

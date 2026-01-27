@@ -1,0 +1,19 @@
+{
+  "name": "chat-cli",
+  "version": "1.0.0",
+  "description": "A simple command-line chat application - Stage 1 of the DevFoundry curriculum",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "chat": "node src/index.js"
+  },
+  "keywords": [
+    "chat",
+    "cli",
+    "devfoundry",
+    "tutorial"
+  ],
+  "author": "DevFoundry",
+  "license": "MIT"
+}

@@ -27,7 +27,7 @@ By the end of this module, you will:
 
 ## Introduction
 
-In Part I, you learned what software is and how web applications work. You built lemonade stands in the terminal and browser. But we skipped a critical question:
+In Part I, you learned what software is and how web applications work. You built chat applications in the terminal and browser. But we skipped a critical question:
 
 **How do you know what to build?**
 
@@ -75,18 +75,18 @@ Design-first approach:
 
 A **user journey** maps the steps someone takes to accomplish a goal using your software. It's not about features — it's about **outcomes**.
 
-### The Lemonade Stand Journey
+### The Chat App User Journey
 
-Let's map the customer journey for our lemonade stand:
+Let's map the user journey for our chat application:
 
 ```mermaid
 flowchart LR
-    A[Arrive at stand] --> B[View menu]
-    B --> C[Decide what to order]
-    C --> D[Place order]
-    D --> E[Pay]
-    E --> F[Receive lemonade]
-    F --> G[Enjoy]
+    A[Open app] --> B[View conversations]
+    B --> C[Select conversation]
+    C --> D[Read messages]
+    D --> E[Compose reply]
+    E --> F[Send message]
+    F --> G[Continue chatting]
 ```
 
 Each step has:
@@ -101,17 +101,17 @@ Instead of asking "What features do users want?", ask:
 
 > "What job is the user hiring this product to do?"
 
-**Example**: A customer at a lemonade stand isn't "hiring" lemonade. They're hiring:
-- Refreshment on a hot day
-- A quick pick-me-up
-- Something to drink while walking
-- A treat for their kids
+**Example**: A user of a chat app isn't "hiring" messages. They're hiring:
+- A way to stay connected with friends and family
+- Quick coordination for plans or tasks
+- Asynchronous communication when a call isn't practical
+- A record of conversations they can reference later
 
 Understanding the **job** shapes the design:
-- If it's about refreshment → emphasize cold, icy drinks
-- If it's a quick pick-me-up → make ordering fast
-- If it's while walking → design for one-handed interaction
-- If it's for kids → show kid-friendly options prominently
+- If it's about staying connected → show presence indicators and recent activity
+- If it's quick coordination → make composing and sending fast
+- If it's asynchronous → show clear timestamps and read receipts
+- If it's for reference → provide search and conversation history
 
 ### Mapping a Journey: Template
 
@@ -119,11 +119,11 @@ For any feature you're building, map:
 
 | Step | User Goal | User Action | Potential Pain Points | Design Opportunity |
 |------|-----------|-------------|----------------------|-------------------|
-| 1 | Find what I want | Browse menu | Too many options, unclear pricing | Clear categories, visible prices |
-| 2 | Make a choice | Select item | Decision paralysis | Highlight popular items |
-| 3 | Customize | Add modifiers | Complexity, hidden costs | Simple toggles, running total |
-| 4 | Complete order | Submit & pay | Friction, trust concerns | One-tap checkout, secure indicators |
-| 5 | Get confirmation | See order status | Uncertainty | Clear confirmation, estimated time |
+| 1 | Find the right conversation | Browse conversations | Too many chats, unclear organization | Clear labels, recent activity sorting |
+| 2 | Read context | View message history | Long threads, hard to scan | Message grouping, search functionality |
+| 3 | Compose reply | Type message | Small keyboard, typos | Auto-correct, quick replies |
+| 4 | Send message | Tap send | Uncertainty if sent | Clear send confirmation, delivery status |
+| 5 | Know it was received | See delivery status | No feedback | Read receipts, typing indicators |
 
 ---
 
@@ -189,57 +189,57 @@ Common symbols:
 - `───────────` — Divider
 - `XXXXXXXXX` — Placeholder text
 
-### Lemonade Stand Wireframes
+### Chat App Wireframes
 
-**Screen 1: Menu**
+**Screen 1: Conversations List**
 ```
 ┌─────────────────────────────────────────┐
-│  🍋 Lemonade Stand                      │
+│  Messages                      [ New ]  │
 ├─────────────────────────────────────────┤
 │                                         │
-│  DRINKS                                 │
+│  RECENT                                 │
 │  ─────────────────────────────────────  │
-│  ┌─────────┐                            │
-│  │  🍋    │  Classic Lemonade           │
-│  │        │  Fresh squeezed, ice cold   │
-│  └─────────┘  $2.50         [Add to Order] │
+│  ┌──────┐                               │
+│  │  AS  │  Alice Smith              2m  │
+│  │      │  Sounds good! See you then    │
+│  └──────┘  ──────────────────────────── │
 │                                         │
-│  ┌─────────┐                            │
-│  │  🍓    │  Strawberry Lemonade        │
-│  │        │  With fresh strawberries    │
-│  └─────────┘  $3.50         [Add to Order] │
+│  ┌──────┐                               │
+│  │  BJ  │  Bob Jones               15m  │
+│  │      │  Can you send me the file?    │
+│  └──────┘  ──────────────────────────── │
 │                                         │
-│  ┌─────────┐                            │
-│  │  🌿    │  Mint Lemonade              │
-│  │        │  Cool and refreshing        │
-│  └─────────┘  $3.00         [Add to Order] │
+│  ┌──────┐                               │
+│  │  TC  │  Team Chat                1h  │
+│  │      │  Carol: Meeting moved to 3pm  │
+│  └──────┘  ──────────────────────────── │
 │                                         │
 ├─────────────────────────────────────────┤
-│  Your Order: 0 items          [View Cart] │
+│  [ Search conversations... ]            │
 └─────────────────────────────────────────┘
 ```
 
-**Screen 2: Cart**
+**Screen 2: Conversation View**
 ```
 ┌─────────────────────────────────────────┐
-│  ← Back            Your Order           │
+│  ← Back           Alice Smith      [i]  │
 ├─────────────────────────────────────────┤
 │                                         │
-│  Classic Lemonade              $2.50    │
-│  [ - ]  2  [ + ]                        │
+│         Hey! Are we still on for        │
+│         coffee tomorrow?         10:30  │
+│         ─────────────────────────────── │
+│  Yes! How about 2pm at                  │
+│  the usual place?               10:32   │
 │  ─────────────────────────────────────  │
-│  Strawberry Lemonade           $3.50    │
-│  [ - ]  1  [ + ]                        │
-│  ─────────────────────────────────────  │
+│         Sounds good! See you then       │
+│                                  10:33  │
+│                              ✓✓ Read    │
 │                                         │
 │                                         │
-│                     Subtotal:   $8.50   │
-│                     Tax:        $0.68   │
-│                     ─────────────────   │
-│                     Total:      $9.18   │
 │                                         │
-│           [ Checkout ]                  │
 │                                         │
+├─────────────────────────────────────────┤
+│  [ Type a message...      ]    [Send]   │
 └─────────────────────────────────────────┘
 ```
 
@@ -432,23 +432,19 @@ Breakpoints: `sm:` (640px), `md:` (768px), `lg:` (1024px), `xl:` (1280px)
 ### Tailwind + React Example
 
 ```jsx
-function MenuItem({ item, onAdd }) {
+function MessageBubble({ message, isOwn }) {
   return (
-    <div className="flex items-center gap-4 p-4 border rounded-lg hover:bg-gray-50">
-      <div className="text-4xl">{item.emoji}</div>
-      <div className="flex-1">
-        <h3 className="font-medium text-lg">{item.name}</h3>
-        <p className="text-gray-600 text-sm">{item.description}</p>
-      </div>
-      <div className="text-right">
-        <div className="font-bold text-lg">${item.price.toFixed(2)}</div>
-        <button
-          onClick={() => onAdd(item)}
-          className="mt-2 bg-blue-600 text-white px-4 py-2 rounded-md
-                     hover:bg-blue-700 transition-colors"
-        >
-          Add
-        </button>
+    <div className={`flex ${isOwn ? 'justify-end' : 'justify-start'} mb-3`}>
+      <div className={`max-w-xs px-4 py-2 rounded-lg ${
+        isOwn
+          ? 'bg-blue-600 text-white rounded-br-sm'
+          : 'bg-gray-100 text-gray-900 rounded-bl-sm'
+      }`}>
+        <p className="text-sm">{message.text}</p>
+        <div className={`text-xs mt-1 ${isOwn ? 'text-blue-200' : 'text-gray-500'}`}>
+          {message.timestamp}
+          {isOwn && message.read && ' · Read'}
+        </div>
       </div>
     </div>
   );
@@ -507,13 +503,13 @@ flowchart LR
 With TUI tools, you can now say:
 
 ```
-I have a wireframe for a menu card (attached screenshot).
+I have a wireframe for a message bubble (attached screenshot).
 
-The card should:
-- Show an emoji, name, description, and price
-- Have an "Add" button on the right
+The bubble should:
+- Show the message text and timestamp
+- Differentiate between sent and received messages
 - Use Tailwind CSS
-- Match our design system (blue-600 for primary, rounded-lg corners)
+- Match our design system (blue-600 for sent messages, rounded-lg corners)
 
 Can you implement this as a React component?
 ```
@@ -564,13 +560,13 @@ Map the journey for one core task:
 
 ## Exercise 2: Create a Wireframe
 
-Wireframe a "checkout confirmation" screen for the lemonade stand.
+Wireframe a "new conversation" screen for the chat app.
 
 Include:
-- Order summary (items, quantities, prices)
-- Total
-- Confirmation message
-- What to do next
+- Contact search/selection
+- Recent contacts or suggestions
+- Compose message area
+- Send action
 
 Use paper or a simple digital tool. Spend no more than 10 minutes.
 
@@ -579,32 +575,34 @@ Use paper or a simple digital tool. Spend no more than 10 minutes.
 
 ```
 ┌─────────────────────────────────────────┐
-│           ✓ Order Confirmed!            │
+│  ← Cancel        New Message            │
 ├─────────────────────────────────────────┤
 │                                         │
-│  Order #1234                            │
+│  To: [ Search contacts...          ]    │
 │  ─────────────────────────────────────  │
-│  2x Classic Lemonade           $5.00    │
-│  1x Strawberry Lemonade        $3.50    │
-│  ─────────────────────────────────────  │
-│  Total                         $8.50    │
 │                                         │
-│  ┌─────────────────────────────────┐   │
-│  │  Your order will be ready in   │   │
-│  │       ~2 minutes               │   │
-│  └─────────────────────────────────┘   │
+│  RECENT                                 │
+│  ┌──────┐                               │
+│  │  AS  │  Alice Smith                  │
+│  └──────┘  ──────────────────────────── │
+│  ┌──────┐                               │
+│  │  BJ  │  Bob Jones                    │
+│  └──────┘  ──────────────────────────── │
+│  ┌──────┐                               │
+│  │  TC  │  Team Chat                    │
+│  └──────┘  ──────────────────────────── │
 │                                         │
-│          [ Back to Menu ]               │
-│                                         │
+├─────────────────────────────────────────┤
+│  [ Type a message...      ]    [Send]   │
 └─────────────────────────────────────────┘
 ```
 
 Key decisions made:
-- Prominent confirmation (checkmark, "Confirmed!")
-- Order number for reference
-- Clear itemization
-- Estimated time (reduces anxiety)
-- Clear next action
+- Clear cancel action to return to conversation list
+- Prominent search for finding contacts
+- Recent contacts for quick access
+- Compose area ready immediately
+- Send button clearly visible
 
 </details>
 
@@ -643,7 +641,7 @@ Poorly designed apps often have:
 
 ## Exercise 4: Implement with Tailwind
 
-Take the checkout confirmation wireframe from Exercise 2 and implement it as a React component with Tailwind CSS.
+Take the new conversation wireframe from Exercise 2 and implement it as a React component with Tailwind CSS.
 
 Requirements:
 - Match the wireframe structure
@@ -654,45 +652,71 @@ Requirements:
 <summary>Solution</summary>
 
 ```jsx
-function OrderConfirmation({ orderNumber, items, total, estimatedMinutes }) {
+function NewConversation({ contacts, onSelectContact, onCancel }) {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <div className="max-w-md mx-auto p-6">
+    <div className="max-w-md mx-auto flex flex-col h-screen">
       {/* Header */}
-      <div className="text-center mb-6">
-        <div className="text-green-500 text-5xl mb-2">✓</div>
-        <h1 className="text-2xl font-bold">Order Confirmed!</h1>
+      <div className="flex items-center justify-between p-4 border-b">
+        <button
+          onClick={onCancel}
+          className="text-blue-600 hover:text-blue-700"
+        >
+          Cancel
+        </button>
+        <h1 className="text-lg font-semibold">New Message</h1>
+        <div className="w-12"></div> {/* Spacer for centering */}
       </div>
 
-      {/* Order Details */}
-      <div className="bg-white border rounded-lg p-4 mb-6">
-        <div className="text-sm text-gray-600 mb-3">Order #{orderNumber}</div>
+      {/* Search */}
+      <div className="p-4 border-b">
+        <input
+          type="text"
+          placeholder="Search contacts..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full px-4 py-2 border rounded-lg focus:outline-none
+                     focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
 
-        <div className="border-t pt-3 space-y-2">
-          {items.map(item => (
-            <div key={item.id} className="flex justify-between">
-              <span>{item.quantity}x {item.name}</span>
-              <span>${(item.price * item.quantity).toFixed(2)}</span>
+      {/* Contact List */}
+      <div className="flex-1 overflow-y-auto">
+        <div className="px-4 py-2 text-sm text-gray-500 font-medium">RECENT</div>
+        {filteredContacts.map(contact => (
+          <button
+            key={contact.id}
+            onClick={() => onSelectContact(contact)}
+            className="w-full flex items-center gap-3 p-4 hover:bg-gray-50
+                       border-b transition-colors"
+          >
+            <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-full
+                            flex items-center justify-center font-medium">
+              {contact.initials}
             </div>
-          ))}
-        </div>
-
-        <div className="border-t mt-3 pt-3 flex justify-between font-bold">
-          <span>Total</span>
-          <span>${total.toFixed(2)}</span>
-        </div>
+            <span className="text-gray-900">{contact.name}</span>
+          </button>
+        ))}
       </div>
 
-      {/* Estimated Time */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center mb-6">
-        <p className="text-gray-700">Your order will be ready in</p>
-        <p className="text-xl font-bold text-blue-600">~{estimatedMinutes} minutes</p>
+      {/* Compose Area */}
+      <div className="p-4 border-t flex gap-2">
+        <input
+          type="text"
+          placeholder="Type a message..."
+          className="flex-1 px-4 py-2 border rounded-lg focus:outline-none
+                     focus:ring-2 focus:ring-blue-500"
+        />
+        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg
+                           hover:bg-blue-700 transition-colors">
+          Send
+        </button>
       </div>
-
-      {/* Action */}
-      <button className="w-full bg-blue-600 text-white py-3 rounded-lg
-                         font-medium hover:bg-blue-700 transition-colors">
-        Back to Menu
-      </button>
     </div>
   );
 }
@@ -707,9 +731,9 @@ function OrderConfirmation({ orderNumber, items, total, estimatedMinutes }) {
 ### For User Journey Mapping
 
 ```
-I'm building a lemonade stand ordering app.
+I'm building a chat messaging app.
 
-The main job-to-be-done: Order a drink quickly while walking.
+The main job-to-be-done: Send a quick message to a friend while on the go.
 
 Can you help me think through potential pain points in this journey?
 Focus on mobile use cases.
@@ -733,10 +757,10 @@ I need to convert this wireframe to a React component with Tailwind.
 
 Key requirements:
 - Primary button: blue-600, rounded-lg
-- Cards: white background, subtle border, rounded-lg
-- Text: gray-900 for headings, gray-600 for body
+- Message bubbles: blue-600 for sent, gray-100 for received
+- Text: gray-900 for messages, gray-500 for timestamps
 
-Can you implement the MenuItem component?
+Can you implement the MessageBubble component?
 ```
 
 ---

@@ -520,7 +520,7 @@ Adds React on top of the Vite foundation.
 
 ## Exercise 1: Explore package.json
 
-Open the [Lemonade CLI TypeScript](/docs/examples/lemonade-cli-typescript) example's `package.json`.
+Open the [Chat CLI TypeScript](/docs/examples/chat-cli-typescript) example's `package.json`.
 
 1. What scripts are defined?
 2. What are the devDependencies?
@@ -539,10 +539,10 @@ Open the [Lemonade CLI TypeScript](/docs/examples/lemonade-cli-typescript) examp
 
 ## Exercise 2: Understand the Build
 
-Run these commands in the lemonade-cli-typescript example:
+Run these commands in the chat-cli-typescript example:
 
 ```bash
-cd examples/03-lemonade-cli-typescript
+cd examples/13-chat-cli-typescript
 npm install
 npm run build
 ls dist/
@@ -716,7 +716,7 @@ These are important but beyond the scope of foundations.
 ## What's Next
 
 - **Module 06: React Foundations** — Component-based UI development
-- **[Example: Lemonade Stand (Static Web)](/docs/examples/lemonade-static-web)** — Same app, as a web page
+- **[Example: Chat App (Static Web)](/docs/examples/chat-static-web)** — Same app, as a web page
 
 ---
 

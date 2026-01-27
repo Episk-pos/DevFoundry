@@ -346,7 +346,7 @@ These patterns are still used today. Your React app's authentication probably us
 ```
 /products/123        → Show product 123
 /users/john/posts    → Show john's posts
-/search?q=lemonade   → Search results
+/search?q=messages   → Search results
 ```
 
 **Form handling**:

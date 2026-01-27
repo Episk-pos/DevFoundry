@@ -1,6 +1,6 @@
 # Stage 3: React SPA
 
-Converting the Lemonade Stand to a modern React single-page application.
+Converting the Chat App to a modern React single-page application.
 
 **Full module**: [dev.episkopos.community/docs/curriculum/part-3-building-applications/react-spa](https://dev.episkopos.community/docs/curriculum/part-3-building-applications/react-spa)
 
@@ -15,9 +15,9 @@ Converting the Lemonade Stand to a modern React single-page application.
 
 ## What You'll Build
 
-A React version of the lemonade stand with:
-- Reusable components (MenuItem, OrderItem, etc.)
-- Client-side routing (Menu, Checkout, Confirmation pages)
+A React version of the chat app with:
+- Reusable components (MessageList, MessageInput, ConversationList)
+- Client-side routing (Conversations, Chat, Settings pages)
 - Shared state with Context
 - Modern tooling and hot reload
 

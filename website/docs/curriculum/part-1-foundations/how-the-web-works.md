@@ -147,12 +147,12 @@ They work together but have distinct responsibilities.
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Lemonade Stand</title>
+    <title>Chat App</title>
   </head>
   <body>
-    <h1>Welcome to the Lemonade Stand</h1>
-    <p>Fresh lemonade, made daily!</p>
-    <button>Order Now</button>
+    <h1>Welcome to the Chat App</h1>
+    <p>Connect and chat with friends!</p>
+    <button>Start Chatting</button>
   </body>
 </html>
 ```
@@ -235,7 +235,7 @@ const button = document.querySelector('button');
 
 // Add behavior when clicked
 button.addEventListener('click', function() {
-  alert('Order placed!');
+  alert('Message sent!');
 });
 ```
 
@@ -253,12 +253,12 @@ button.addEventListener('click', function() {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Lemonade Stand</title>
+    <title>Chat App</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>Welcome to the Lemonade Stand</h1>
-    <button id="orderBtn">Order Now</button>
+    <h1>Welcome to the Chat App</h1>
+    <button id="sendBtn">Send Message</button>
 
     <script src="script.js"></script>
   </body>
@@ -345,8 +345,8 @@ Every HTTP interaction has:
 ### Anatomy of an HTTP Request
 
 ```
-GET /menu HTTP/1.1
-Host: lemonade-stand.com
+GET /messages HTTP/1.1
+Host: chat-app.example.com
 User-Agent: Mozilla/5.0 (...)
 Accept: text/html
 ```
@@ -475,7 +475,7 @@ Browser: (JavaScript runs, fetches data, updates DOM)
 
 ---
 
-### Where Our Lemonade Stand Fits
+### Where Our Chat App Fits
 
 | Version | Type | Description |
 |---------|------|-------------|
@@ -554,7 +554,7 @@ Dev tools are for experimenting and debugging — to save changes, edit your act
 
 ## Part 6: From CLI to Web
 
-Let's map our lemonade-cli concepts to the web:
+Let's map our chat-cli concepts to the web:
 
 | CLI Concept | Web Equivalent |
 |-------------|----------------|
@@ -563,7 +563,7 @@ Let's map our lemonade-cli concepts to the web:
 | `require()` / modules | `<script>` tags, ES modules |
 | Running with `node` | Opening in browser |
 
-The **business logic** (menu items, price calculation, discounts) can stay almost identical. Only the I/O changes.
+The **business logic** (message formatting, user management, chat rooms) can stay almost identical. Only the I/O changes.
 
 ---
 
@@ -572,10 +572,10 @@ The **business logic** (menu items, price calculation, discounts) can stay almos
 ```
 ┌─────────────────────────────────────────────┐
 │              STAYS THE SAME                 │
-│  - Menu data structure                      │
-│  - calculateTotal() function                │
-│  - applyDiscount() function                 │
-│  - Order creation logic                     │
+│  - Message data structure                   │
+│  - formatMessage() function                 │
+│  - validateInput() function                 │
+│  - Chat room logic                          │
 └─────────────────────────────────────────────┘
                     │
                     ▼
@@ -664,7 +664,7 @@ This prepares you for professional development practices.
 
 - [Glossary](/docs/glossary) — Web-specific terms
 - [Diagram Standards](/docs/diagram-standards) — Creating Mermaid diagrams
-- [Lemonade CLI Example](/docs/examples/lemonade-cli) — The CLI version we're adapting
+- [Chat CLI Example](/docs/examples/chat-cli) — The CLI version we're adapting
 
 ### External Resources
 
@@ -688,6 +688,6 @@ Before moving on, ensure you can:
 
 ---
 
-**You've completed Module 03!** You now understand how the web works — from HTTP requests to the browser triad. You're ready to build the web version of the lemonade stand.
+**You've completed Module 03!** You now understand how the web works — from HTTP requests to the browser triad. You're ready to build the web version of the chat app.
 
 Next: Put this knowledge into practice by building a real web page. 🌐

@@ -14,7 +14,7 @@ Accepted
 
 ## Context
 
-The devfoundry curriculum requires a backend stack for teaching fullstack development (Stage 4 of the lemonade stand progression).
+The devfoundry curriculum requires a backend stack for teaching fullstack development (Stage 4 of the chat app progression).
 
 **Requirements**:
 - Must be accessible to JavaScript-proficient learners (minimize language switching)
@@ -72,10 +72,10 @@ Use **Node.js** runtime with **Express** framework and **SQLite** database for a
 ```
 server/
   db/
-    lemonade.db          # SQLite database file
+    chat.db              # SQLite database file
     schema.sql           # Database schema definition
   routes/
-    orders.js            # Order-related endpoints
+    messages.js          # Message-related endpoints
   middleware/
     errorHandler.js      # Error handling
   server.js              # Main server file
@@ -88,11 +88,11 @@ server/
 
 **API design pattern**:
 ```
-GET    /api/orders           # List all orders
-POST   /api/orders           # Create new order
-GET    /api/orders/:id       # Get specific order
-PUT    /api/orders/:id       # Update order
-DELETE /api/orders/:id       # Delete order
+GET    /api/messages           # List all messages
+POST   /api/messages           # Create new message
+GET    /api/messages/:id       # Get specific message
+PUT    /api/messages/:id       # Update message
+DELETE /api/messages/:id       # Delete message
 ```
 
 ## Consequences

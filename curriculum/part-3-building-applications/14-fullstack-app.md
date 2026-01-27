@@ -1,6 +1,6 @@
 # Stage 4: Fullstack App
 
-Adding an Express backend with database persistence to the Lemonade Stand.
+Adding an Express backend with database persistence to the Chat App.
 
 **Full module**: [dev.episkopos.community/docs/curriculum/part-3-building-applications/fullstack-app](https://dev.episkopos.community/docs/curriculum/part-3-building-applications/fullstack-app)
 
@@ -15,11 +15,11 @@ Adding an Express backend with database persistence to the Lemonade Stand.
 
 ## What You'll Build
 
-A fullstack lemonade stand with:
+A fullstack chat app with:
 - Express API server with REST endpoints
-- SQLite database for orders
+- SQLite database for messages, conversations, and users
 - React frontend calling the API
-- Proper separation of client and server
+- Multiple users can connect and exchange messages
 
 ## Exercises
 

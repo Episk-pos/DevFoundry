@@ -217,7 +217,7 @@ Bad context:
 > "We need a database."
 
 Good context:
-> "Our lemonade stand application needs to persist orders between sessions. We expect low traffic (< 100 orders/day) during the learning phase, with potential growth if the app succeeds. The development team is one person with limited DevOps experience. We want to minimize infrastructure complexity while maintaining the option to scale later."
+> "Our chat application needs to persist messages between sessions. We expect low traffic (< 100 messages/day) during the learning phase, with potential growth if the app succeeds. The development team is one person with limited DevOps experience. We want to minimize infrastructure complexity while maintaining the option to scale later."
 
 **Include:**
 - What problem prompted this decision?
@@ -231,7 +231,7 @@ Bad decision:
 > "SQLite was selected."
 
 Good decision:
-> "We will use SQLite as our primary database, accessed via the `better-sqlite3` npm package. Data will be stored in a `data/lemonade.db` file in the project root."
+> "We will use SQLite as our primary database, accessed via the `sql.js` npm package. Data will be stored in a `data/chat.db` file in the project root."
 
 **Use active voice. Be specific. State what you will do, not what was done.**
 
@@ -331,7 +331,7 @@ Create a "project context" document that references ADRs:
 # Project Context for AI Assistants
 
 ## Overview
-Lemonade Stand — learning project for web development
+Chat App — learning project for web development
 
 ## Key Decisions
 - Frontend: React + Vite + TypeScript (ADR-001)
@@ -393,7 +393,7 @@ ADR-002 established SQLite as our database for simplicity
 during the learning phase.
 
 We've now reached production scale with:
-- 10,000+ daily orders
+- 10,000+ daily messages
 - Multiple server instances needed
 - Concurrent write conflicts occurring
 
@@ -448,7 +448,7 @@ You don't need formal process. Just capture:
 
 ## Context
 
-Styling the lemonade stand UI. Options: plain CSS, CSS modules,
+Styling the chat UI. Options: plain CSS, CSS modules,
 Tailwind, styled-components.
 
 I want fast iteration and AI can generate Tailwind effectively.
@@ -470,7 +470,7 @@ Takes 5 minutes. Saves hours later.
 
 ## Exercise 1: Write Your First ADR
 
-Write an ADR for a decision in a project you're working on (or hypothetically for the lemonade stand).
+Write an ADR for a decision in a project you're working on (or hypothetically for the chat app).
 
 Pick something like:
 - Why you chose your CSS approach
@@ -490,7 +490,7 @@ Use the template from Part 2.
 
 ## Context
 
-The lemonade stand React app needs component styling.
+The chat app React frontend needs component styling.
 Options considered:
 - Global CSS: Simple but naming conflicts at scale
 - CSS Modules: Scoped styles, standard tooling
@@ -550,7 +550,7 @@ Now write the ADR that should have existed.
 
 ## Exercise 3: Supersede an ADR
 
-Imagine the lemonade stand has grown. SQLite is hitting limits.
+Imagine the chat app has grown. SQLite is hitting limits.
 
 Write ADR-007 that supersedes the SQLite decision (ADR-002) with a migration to PostgreSQL.
 
@@ -574,7 +574,7 @@ ADR-002 established SQLite for database simplicity.
 This was appropriate for learning and early development.
 
 Current situation:
-- 15,000 orders per day
+- 15,000 messages per day
 - 3 server instances behind load balancer
 - SQLite write locks causing 500 errors during peak hours
 - Need for better backup/replication
@@ -638,7 +638,7 @@ How should I add user authentication to my Node.js app?
 
 **With context:**
 ```
-I need to add user authentication to my lemonade stand app.
+I need to add user authentication to my chat app.
 
 Relevant ADRs:
 - ADR-002: We use SQLite for simplicity, running single instance

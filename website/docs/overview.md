@@ -90,7 +90,7 @@ By the end of this curriculum, you will:
 | 05 | [Build Tools](curriculum/part-1-foundations/build-tools) | npm, bundlers, the JavaScript ecosystem |
 | 06 | [Frontend Frameworks](curriculum/part-1-foundations/frontend-frameworks-react) | Why frameworks exist, React basics |
 
-**Hands-on examples**: Hello World → Lemonade CLI → Static Web → TypeScript CLI
+**Hands-on examples**: Hello World → Chat CLI → Static Web → TypeScript CLI
 
 ---
 
@@ -121,7 +121,7 @@ By the end of this curriculum, you will:
 | 14 | [Fullstack App](curriculum/part-3-building-applications/fullstack-app) | Express backend, REST API, database |
 | 15 | [Deployed App](curriculum/part-3-building-applications/deployed-app) | Hosting, environment variables, CI/CD |
 
-**Hands-on**: Build the **Lemonade Stand** progressively from static HTML through fullstack deployment.
+**Hands-on**: Build a **Chat Application** progressively from static HTML through fullstack deployment, culminating in a federated network where participants can message each other.
 
 Each module includes:
 - What's new and why
@@ -147,16 +147,17 @@ Each module includes:
 
 ---
 
-## The Lemonade Stand: Your Learning Vehicle
+## The Chat App: Your Learning Vehicle
 
-Throughout this curriculum, you'll build and evolve a single application: **a virtual lemonade stand**.
+Throughout this curriculum, you'll build and evolve a single application: **a chat application**.
 
-### Why a lemonade stand?
+### Why a chat app?
 
-- **Simple domain**: Everyone understands buying lemonade
-- **Real business logic**: Orders, inventory, pricing, customers
-- **Scalable complexity**: Starts trivial, grows sophisticated
-- **Universal metaphor**: Works across cultures and backgrounds
+- **Immediate relatability**: Everyone uses chat apps daily
+- **Natural complexity progression**: Start simple, layer in real concepts
+- **Real interoperability**: Participants can actually message each other
+- **Tangible ownership**: Each person deploys their own infrastructure
+- **Rich concept space**: Networking, protocols, auth, real-time communication
 
 ### The Journey
 
@@ -166,35 +167,41 @@ graph LR
     B --> C[Stage 3<br/>SPA]
     C --> D[Stage 4<br/>Fullstack]
     D --> E[Stage 5<br/>Deployed]
+    E --> F[Stage 6<br/>Federated]
 ```
 
 **Stage 1: CLI**
-- User types commands in terminal
-- Program calculates total, tracks inventory
+- Send and read messages in terminal
+- Local file storage for message history
 - **Learn**: Basic program structure, I/O/P model
 
 **Stage 2: Static Web**
-- HTML buttons and forms
-- JavaScript updates the page
+- HTML chat interface
+- JavaScript handles message display and input
 - **Learn**: Browser, DOM, events
 
 **Stage 3: SPA**
-- React components
-- Client-side routing
-- State management
+- React components (MessageList, MessageInput, ConversationList)
+- Client-side routing between conversations
+- State management for messages
 - **Learn**: Modern frontend architecture
 
 **Stage 4: Fullstack**
 - Express backend API
-- Database persistence
-- Authentication (optional)
+- Database persistence (SQLite)
+- Multiple users can connect
 - **Learn**: Client/server separation, REST APIs
 
 **Stage 5: Deployed**
 - Live on the internet
-- Environment configuration
-- Continuous deployment
-- **Learn**: Production concerns
+- WebSocket for real-time messaging
+- Authentication (OAuth)
+- **Learn**: Production concerns, real-time protocols
+
+**Stage 6: Federated** (Advanced)
+- Interoperability between participants' servers
+- Protocol specification and interface design
+- **Learn**: Distributed systems, protocol thinking in action
 
 ---
 
@@ -226,11 +233,11 @@ Every example includes diagrams for:
 When you prompt an AI assistant, specifying the view helps dramatically:
 
 :::warning[Vague prompt]
-"How does the lemonade stand work?"
+"How does the chat app work?"
 :::
 
 :::tip[Clear prompt]
-"Show me the component-connector view of what happens when a user submits an order."
+"Show me the component-connector view of what happens when a user sends a message."
 :::
 
 ---

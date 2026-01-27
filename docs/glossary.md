@@ -8,7 +8,7 @@ Essential software vocabulary referenced throughout DevFoundry.
 
 - Beginner-friendly definitions for core terms.
 - Cross-references between related concepts.
-- Examples tied to the lemonade stand curriculum.
+- Examples tied to the chat app curriculum.
 
 ---
 

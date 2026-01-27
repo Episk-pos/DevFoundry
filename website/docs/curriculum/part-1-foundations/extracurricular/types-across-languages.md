@@ -38,28 +38,28 @@ The main [Types as Communication](/docs/curriculum/part-1-foundations/types-as-c
 
 ### TypeScript
 ```typescript
-let price: number = 2.50;
-let name: string = "Lemonade";
-let available: boolean = true;
+let timestamp: number = 1706284800;
+let content: string = "Hello";
+let delivered: boolean = true;
 ```
 
 ### Python
 ```python
-price: float = 2.50
-name: str = "Lemonade"
-available: bool = True
+timestamp: float = 1706284800
+content: str = "Hello"
+delivered: bool = True
 ```
 
 ### Go
 ```go
-var price float64 = 2.50
-var name string = "Lemonade"
-var available bool = true
+var timestamp float64 = 1706284800
+var content string = "Hello"
+var delivered bool = true
 
 // Or with short declaration (type inferred)
-price := 2.50
-name := "Lemonade"
-available := true
+timestamp := 1706284800
+content := "Hello"
+delivered := true
 ```
 
 **Key difference**: Go distinguishes between integer types (`int`, `int32`, `int64`) and floating-point types (`float32`, `float64`). TypeScript and Python use a single numeric type.
@@ -70,29 +70,29 @@ available := true
 
 ### TypeScript
 ```typescript
-let prices: number[] = [2.50, 3.00, 3.50];
-let names: string[] = ["Lemonade", "Cookie"];
+let timestamps: number[] = [1706284800, 1706284860, 1706284920];
+let messages: string[] = ["Hello", "Welcome"];
 ```
 
 ### Python
 ```python
 from typing import List
 
-prices: List[float] = [2.50, 3.00, 3.50]
-names: List[str] = ["Lemonade", "Cookie"]
+timestamps: List[float] = [1706284800, 1706284860, 1706284920]
+messages: List[str] = ["Hello", "Welcome"]
 
 # Python 3.9+ allows:
-prices: list[float] = [2.50, 3.00, 3.50]
+timestamps: list[float] = [1706284800, 1706284860, 1706284920]
 ```
 
 ### Go
 ```go
 // Arrays have fixed size
-var prices [3]float64 = [3]float64{2.50, 3.00, 3.50}
+var timestamps [3]float64 = [3]float64{1706284800, 1706284860, 1706284920}
 
 // Slices are dynamic (more common)
-prices := []float64{2.50, 3.00, 3.50}
-names := []string{"Lemonade", "Cookie"}
+timestamps := []float64{1706284800, 1706284860, 1706284920}
+messages := []string{"Hello", "Welcome"}
 ```
 
 **Key difference**: Go has both fixed-size arrays and dynamic slices. TypeScript and Python arrays are always dynamic.
@@ -103,18 +103,18 @@ names := []string{"Lemonade", "Cookie"}
 
 ### TypeScript
 ```typescript
-interface MenuItem {
+interface Message {
   id: number;
-  name: string;
-  price: number;
-  description: string;
+  sender: string;
+  content: string;
+  timestamp: number;
 }
 
-let item: MenuItem = {
+let message: Message = {
   id: 1,
-  name: "Lemonade",
-  price: 2.50,
-  description: "Classic fresh-squeezed"
+  sender: "alice",
+  content: "Hello, world!",
+  timestamp: 1706284800
 };
 ```
 
@@ -123,17 +123,17 @@ let item: MenuItem = {
 from dataclasses import dataclass
 
 @dataclass
-class MenuItem:
+class Message:
     id: int
-    name: str
-    price: float
-    description: str
+    sender: str
+    content: str
+    timestamp: float
 
-item = MenuItem(
+message = Message(
     id=1,
-    name="Lemonade",
-    price=2.50,
-    description="Classic fresh-squeezed"
+    sender="alice",
+    content="Hello, world!",
+    timestamp=1706284800
 )
 ```
 
@@ -141,34 +141,34 @@ Alternative with TypedDict (closer to TS interface):
 ```python
 from typing import TypedDict
 
-class MenuItem(TypedDict):
+class Message(TypedDict):
     id: int
-    name: str
-    price: float
-    description: str
+    sender: str
+    content: str
+    timestamp: float
 
-item: MenuItem = {
+message: Message = {
     "id": 1,
-    "name": "Lemonade",
-    "price": 2.50,
-    "description": "Classic fresh-squeezed"
+    "sender": "alice",
+    "content": "Hello, world!",
+    "timestamp": 1706284800
 }
 ```
 
 ### Go
 ```go
-type MenuItem struct {
-    ID          int
-    Name        string
-    Price       float64
-    Description string
+type Message struct {
+    ID        int
+    Sender    string
+    Content   string
+    Timestamp float64
 }
 
-item := MenuItem{
-    ID:          1,
-    Name:        "Lemonade",
-    Price:       2.50,
-    Description: "Classic fresh-squeezed",
+message := Message{
+    ID:        1,
+    Sender:    "alice",
+    Content:   "Hello, world!",
+    Timestamp: 1706284800,
 }
 ```
 
@@ -183,11 +183,11 @@ item := MenuItem{
 
 ### TypeScript
 ```typescript
-function calculateTotal(price: number, quantity: number): number {
-  return price * quantity;
+function formatTimestamp(timestamp: number): string {
+  return new Date(timestamp).toISOString();
 }
 
-function findItem(id: number): MenuItem | null {
+function findMessage(id: number): Message | null {
   // ...
 }
 ```
@@ -196,20 +196,21 @@ function findItem(id: number): MenuItem | null {
 ```python
 from typing import Optional
 
-def calculate_total(price: float, quantity: int) -> float:
-    return price * quantity
+def format_timestamp(timestamp: float) -> str:
+    from datetime import datetime
+    return datetime.fromtimestamp(timestamp).isoformat()
 
-def find_item(id: int) -> Optional[MenuItem]:
+def find_message(id: int) -> Optional[Message]:
     # ...
 ```
 
 ### Go
 ```go
-func calculateTotal(price float64, quantity int) float64 {
-    return price * float64(quantity)
+func formatTimestamp(timestamp float64) string {
+    return time.Unix(int64(timestamp), 0).Format(time.RFC3339)
 }
 
-func findItem(id int) (*MenuItem, error) {
+func findMessage(id int) (*Message, error) {
     // Go uses pointer + error instead of null/optional
 }
 ```
@@ -217,7 +218,7 @@ func findItem(id int) (*MenuItem, error) {
 **Key differences**:
 - Go returns `(value, error)` pairs instead of nullable types
 - Python uses `Optional[T]` which is equivalent to `T | None`
-- Go requires explicit type conversion (`float64(quantity)`)
+- Go requires explicit type conversion (`int64(timestamp)`)
 
 ---
 
@@ -442,61 +443,75 @@ This works in any typed language. The syntax changes; the benefit remains.
 
 ---
 
-## Complete Example: Lemonade Stand
+## Complete Example: Chat App
 
 ### TypeScript
 
 ```typescript
-interface MenuItem {
+interface Message {
   id: number;
+  sender: string;
+  content: string;
+  timestamp: number;
+}
+
+interface ChatRoom {
+  id: string;
   name: string;
-  price: number;
+  messages: Message[];
 }
 
-interface OrderItem {
-  item: MenuItem;
-  quantity: number;
+interface SendResult {
+  success: boolean;
+  messageId: number;
 }
 
-interface Order {
-  items: OrderItem[];
-  total: number;
-}
-
-function createOrder(items: OrderItem[]): Order {
-  const total = items.reduce(
-    (sum, item) => sum + item.item.price * item.quantity,
-    0
-  );
-  return { items, total };
+function sendMessage(room: ChatRoom, sender: string, content: string): SendResult {
+  const message: Message = {
+    id: room.messages.length + 1,
+    sender,
+    content,
+    timestamp: Date.now()
+  };
+  room.messages.push(message);
+  return { success: true, messageId: message.id };
 }
 ```
 
 ### Python
 
 ```python
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List
+import time
 
 @dataclass
-class MenuItem:
+class Message:
     id: int
+    sender: str
+    content: str
+    timestamp: float
+
+@dataclass
+class ChatRoom:
+    id: str
     name: str
-    price: float
+    messages: List[Message] = field(default_factory=list)
 
 @dataclass
-class OrderItem:
-    item: MenuItem
-    quantity: int
+class SendResult:
+    success: bool
+    message_id: int
 
-@dataclass
-class Order:
-    items: List[OrderItem]
-    total: float
-
-def create_order(items: List[OrderItem]) -> Order:
-    total = sum(item.item.price * item.quantity for item in items)
-    return Order(items=items, total=total)
+def send_message(room: ChatRoom, sender: str, content: str) -> SendResult:
+    message = Message(
+        id=len(room.messages) + 1,
+        sender=sender,
+        content=content,
+        timestamp=time.time()
+    )
+    room.messages.append(message)
+    return SendResult(success=True, message_id=message.id)
 ```
 
 ### Go
@@ -504,28 +519,35 @@ def create_order(items: List[OrderItem]) -> Order:
 ```go
 package main
 
-type MenuItem struct {
-    ID    int
-    Name  string
-    Price float64
+import "time"
+
+type Message struct {
+    ID        int
+    Sender    string
+    Content   string
+    Timestamp int64
 }
 
-type OrderItem struct {
-    Item     MenuItem
-    Quantity int
+type ChatRoom struct {
+    ID       string
+    Name     string
+    Messages []Message
 }
 
-type Order struct {
-    Items []OrderItem
-    Total float64
+type SendResult struct {
+    Success   bool
+    MessageID int
 }
 
-func createOrder(items []OrderItem) Order {
-    var total float64
-    for _, item := range items {
-        total += item.Item.Price * float64(item.Quantity)
+func sendMessage(room *ChatRoom, sender, content string) SendResult {
+    message := Message{
+        ID:        len(room.Messages) + 1,
+        Sender:    sender,
+        Content:   content,
+        Timestamp: time.Now().Unix(),
     }
-    return Order{Items: items, Total: total}
+    room.Messages = append(room.Messages, message)
+    return SendResult{Success: true, MessageID: message.ID}
 }
 ```
 
