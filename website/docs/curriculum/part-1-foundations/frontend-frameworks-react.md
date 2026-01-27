@@ -525,7 +525,7 @@ Can you implement this?
 ```
 The messages aren't aligning correctly.
 [attach screenshot]
-Can you check the CSS in Message.tsx and fix the layout?
+Can you check the Tailwind classes in Message.tsx and fix the layout?
 ```
 
 **Describe the error:**

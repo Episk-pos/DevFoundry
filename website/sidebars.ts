@@ -74,6 +74,7 @@ const sidebars: SidebarsConfig = {
         'prompts/reading-code',
         'prompts/designing-features',
         'prompts/iterative-refinement',
+        'prompts/build-vs-borrow',
         {
           type: 'category',
           label: 'Product Architecture',
@@ -94,6 +95,7 @@ const sidebars: SidebarsConfig = {
       label: 'Mental Models',
       collapsed: true,
       items: [
+        'mental-models/evaluating-ai-tools',
         'mental-models/protocol-thinking',
         'mental-models/friction-to-opportunity',
         'mental-models/minimal-user-loop',
