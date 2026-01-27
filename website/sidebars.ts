@@ -74,6 +74,7 @@ const sidebars: SidebarsConfig = {
         'prompts/reading-code',
         'prompts/designing-features',
         'prompts/iterative-refinement',
+        'prompts/build-vs-borrow',
       ],
     },
     {
