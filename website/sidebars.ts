@@ -94,6 +94,7 @@ const sidebars: SidebarsConfig = {
       label: 'Mental Models',
       collapsed: true,
       items: [
+        'mental-models/evaluating-ai-tools',
         'mental-models/protocol-thinking',
         'mental-models/friction-to-opportunity',
         'mental-models/minimal-user-loop',
