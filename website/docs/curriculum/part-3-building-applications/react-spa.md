@@ -71,13 +71,16 @@ chat-react/
 │   ├── context/         # We'll add this
 │   ├── pages/           # We'll add this
 │   ├── App.jsx
-│   ├── App.css
 │   ├── main.jsx
-│   └── index.css
+│   └── index.css        # Tailwind imports
 ├── index.html
 ├── package.json
 └── vite.config.js
 ```
+
+:::note CSS to Tailwind Transition
+In Stages 1-2, you learned CSS fundamentals — the building blocks that all styling ultimately relies on. From Stage 3 onwards, we use **Tailwind CSS**, a utility-first framework that applies those same CSS concepts through class names like `flex`, `p-4`, and `text-blue-500`. This is the approach used in the example projects and reflects modern React development practices.
+:::
 
 ### Install Dependencies
 
@@ -320,16 +323,16 @@ export default function Header() {
   const messageCount = getMessageCount();
 
   return (
-    <header className="header">
-      <Link to="/" className="logo">
+    <header className="flex items-center justify-between p-4 bg-blue-500 text-white">
+      <Link to="/" className="text-xl font-bold hover:opacity-80">
         <h1>Chat App</h1>
       </Link>
-      <nav className="nav-links">
-        <Link to="/" className="nav-link">
-          Chat {messageCount > 0 && <span className="message-count">{messageCount}</span>}
+      <nav className="flex gap-4">
+        <Link to="/" className="hover:underline">
+          Chat {messageCount > 0 && <span className="ml-1 px-2 py-0.5 bg-white/20 rounded-full text-sm">{messageCount}</span>}
         </Link>
-        <Link to="/settings" className="nav-link">Settings</Link>
-        <Link to="/history" className="nav-link">History</Link>
+        <Link to="/settings" className="hover:underline">Settings</Link>
+        <Link to="/history" className="hover:underline">History</Link>
       </nav>
     </header>
   );
@@ -348,22 +351,22 @@ export default function Message({ message, isOwn }) {
   const { deleteMessage } = useChat();
 
   return (
-    <div className={`message ${isOwn ? 'own' : ''}`}>
-      <div className="message-header">
-        <span className="message-sender">{message.sender}</span>
-        <span className="message-time">{formatTime(message.timestamp)}</span>
+    <div className={`max-w-[80%] p-3 rounded-lg mb-2 ${isOwn ? 'bg-blue-500 text-white ml-auto' : 'bg-gray-200'}`}>
+      <div className="flex justify-between items-center mb-1">
+        <span className="font-semibold text-sm">{message.sender}</span>
+        <span className={`text-xs ${isOwn ? 'text-blue-100' : 'text-gray-500'}`}>{formatTime(message.timestamp)}</span>
       </div>
-      <div className="message-content">
-        <p className="message-text">{message.text}</p>
-        {message.edited && <span className="edited-label">(edited)</span>}
+      <div>
+        <p>{message.text}</p>
+        {message.edited && <span className="text-xs italic opacity-70">(edited)</span>}
       </div>
       {isOwn && (
         <button
-          className="delete-btn"
+          className="mt-1 text-xs opacity-70 hover:opacity-100"
           onClick={() => deleteMessage(message.id)}
           aria-label="Delete message"
         >
-          x
+          ✕ Delete
         </button>
       )}
     </div>
@@ -391,14 +394,14 @@ export default function MessageList() {
 
   if (chat.messages.length === 0) {
     return (
-      <div className="message-list">
-        <p className="empty-message">No messages yet. Start the conversation!</p>
+      <div className="flex-1 overflow-y-auto p-4">
+        <p className="text-center text-gray-500 italic py-8">No messages yet. Start the conversation!</p>
       </div>
     );
   }
 
   return (
-    <div className="message-list">
+    <div className="flex-1 overflow-y-auto p-4">
       {chat.messages.map(message => (
         <Message
           key={message.id}
@@ -440,9 +443,9 @@ export default function MessageInput() {
   };
 
   return (
-    <form className="message-input-form" onSubmit={handleSubmit}>
+    <form className="flex gap-2 p-4 border-t border-gray-200" onSubmit={handleSubmit}>
       <textarea
-        className="message-input"
+        className="flex-1 p-3 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyDown={handleKeyDown}
@@ -451,7 +454,7 @@ export default function MessageInput() {
       />
       <button
         type="submit"
-        className="send-button primary"
+        className="px-6 py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
         disabled={!text.trim()}
       >
         Send
@@ -472,11 +475,11 @@ export default function UserInfo() {
   const { chat } = useChat();
 
   return (
-    <div className="user-info">
-      <span className="user-avatar">
+    <div className="flex items-center gap-2">
+      <span className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
         {(chat.username || 'A')[0].toUpperCase()}
       </span>
-      <span className="user-name">{chat.username || 'Anonymous'}</span>
+      <span className="text-sm">{chat.username || 'Anonymous'}</span>
     </div>
   );
 }
@@ -494,8 +497,13 @@ export default function Notification() {
 
   if (!notification) return null;
 
+  const typeStyles = {
+    success: 'bg-green-500',
+    error: 'bg-red-500',
+  };
+
   return (
-    <div className={`notification ${notification.type}`}>
+    <div className={`fixed bottom-4 right-4 px-4 py-3 rounded-lg text-white font-medium shadow-lg ${typeStyles[notification.type]}`}>
       {notification.message}
     </div>
   );
@@ -563,32 +571,32 @@ export default function SettingsForm() {
   };
 
   return (
-    <form className="settings-form" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="username">Username</label>
+    <form className="space-y-6" onSubmit={handleSubmit}>
+      <div className="space-y-2">
+        <label htmlFor="username" className="block font-medium text-gray-700">Username</label>
         <input
           type="text"
           id="username"
           name="username"
           value={formData.username}
           onChange={handleChange}
-          className={errors.username ? 'invalid' : ''}
+          className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.username ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
           placeholder="Enter your username"
         />
-        {errors.username && <span className="error-message">{errors.username}</span>}
+        {errors.username && <span className="text-sm text-red-500">{errors.username}</span>}
       </div>
 
-      <div className="form-actions">
+      <div className="flex justify-between pt-4">
         <button
           type="button"
-          className="secondary danger"
+          className="px-4 py-2 text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-colors"
           onClick={handleClearHistory}
         >
           Clear Chat History
         </button>
         <button
           type="submit"
-          className="primary"
+          className="px-6 py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors"
         >
           Save Settings
         </button>
@@ -616,10 +624,10 @@ export default function ChatPage() {
   const { chat } = useChat();
 
   return (
-    <main className="chat-page">
-      <div className="chat-container">
-        <div className="chat-header">
-          <h2>Chat Room</h2>
+    <main className="flex-1 flex flex-col bg-gray-50">
+      <div className="flex-1 flex flex-col max-w-3xl w-full mx-auto bg-white shadow-sm">
+        <div className="flex items-center justify-between p-4 border-b border-gray-200">
+          <h2 className="text-lg font-semibold">Chat Room</h2>
           <UserInfo />
         </div>
         <MessageList />
@@ -640,9 +648,9 @@ import UserInfo from '../components/UserInfo';
 
 export default function SettingsPage() {
   return (
-    <main className="settings-page">
-      <section className="settings-section">
-        <h2>Settings</h2>
+    <main className="flex-1 bg-gray-50 p-6">
+      <section className="max-w-md mx-auto bg-white rounded-lg shadow-sm p-6">
+        <h2 className="text-xl font-semibold mb-6">Settings</h2>
         <SettingsForm />
       </section>
     </main>
@@ -672,23 +680,23 @@ export default function HistoryPage() {
   }, {});
 
   return (
-    <main className="history-page">
-      <div className="history-container">
-        <h2>Chat History</h2>
-        <p className="message-count">{getMessageCount()} messages total</p>
+    <main className="flex-1 bg-gray-50 p-6">
+      <div className="max-w-2xl mx-auto">
+        <h2 className="text-xl font-semibold mb-2">Chat History</h2>
+        <p className="text-gray-500 mb-6">{getMessageCount()} messages total</p>
 
         {Object.keys(groupedMessages).length === 0 ? (
-          <p className="empty-message">No message history yet.</p>
+          <p className="text-center text-gray-500 italic py-8">No message history yet.</p>
         ) : (
           Object.entries(groupedMessages).map(([date, messages]) => (
-            <div key={date} className="history-group">
-              <h3 className="history-date">{date}</h3>
-              <div className="history-messages">
+            <div key={date} className="mb-6">
+              <h3 className="text-sm font-semibold text-gray-600 mb-2 border-b pb-1">{date}</h3>
+              <div className="space-y-2">
                 {messages.map(message => (
-                  <div key={message.id} className="history-item">
-                    <span className="history-time">{formatTime(message.timestamp)}</span>
-                    <span className="history-sender">{message.sender}:</span>
-                    <span className="history-text">{message.text}</span>
+                  <div key={message.id} className="flex gap-3 text-sm">
+                    <span className="text-gray-400 w-16 shrink-0">{formatTime(message.timestamp)}</span>
+                    <span className="font-medium text-gray-700">{message.sender}:</span>
+                    <span className="text-gray-600">{message.text}</span>
                   </div>
                 ))}
               </div>
@@ -713,13 +721,12 @@ import Notification from './components/Notification';
 import ChatPage from './pages/ChatPage';
 import SettingsPage from './pages/SettingsPage';
 import HistoryPage from './pages/HistoryPage';
-import './App.css';
 
 export default function App() {
   return (
     <BrowserRouter>
       <ChatProvider>
-        <div className="app">
+        <div className="min-h-screen flex flex-col bg-gray-100">
           <Header />
           <Routes>
             <Route path="/" element={<ChatPage />} />
@@ -736,9 +743,15 @@ export default function App() {
 
 ---
 
-## Part 4: Styling
+## Part 4: Styling with Tailwind
 
-Update `src/App.css` with your styles from Stage 2, adapted for React's class-based approach. The CSS remains largely the same.
+Update `src/index.css` to import Tailwind:
+
+```css
+@import "tailwindcss";
+```
+
+With Tailwind, styles are applied directly in JSX via utility classes (as shown in the components above). This eliminates the need for separate CSS files per component.
 
 ---
 
