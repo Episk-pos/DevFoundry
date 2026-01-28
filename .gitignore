@@ -10,3 +10,6 @@ data/
 
 # Playwright
 .playwright-mcp/
+
+# Vite
+.vite/

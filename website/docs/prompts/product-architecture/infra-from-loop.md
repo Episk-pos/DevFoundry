@@ -155,12 +155,11 @@ For my loop to work, these things must be true:
 Design monitoring:
 
 **Health checks** (is it up?):
-```
-Endpoint: [URL]
-Frequency: [X] seconds
-Timeout: [X] seconds
-Alert if: [CONDITION]
-```
+
+    Endpoint: [URL]
+    Frequency: [X] seconds
+    Timeout: [X] seconds
+    Alert if: [CONDITION]
 
 **Performance metrics** (is it fast?):
 - Response time (p50, p95, p99)
@@ -222,7 +221,7 @@ Design alerting tiers:
 
 ## Logging Strategy
 
-```
+````
 For debugging loop issues, I need to capture:
 
 **Structured logs**:
@@ -263,7 +262,7 @@ ERROR (something broke):
 **Log aggregation**:
 - Tool: [CloudWatch, Datadog, etc.]
 - Search needs: [WHAT QUERIES DO YOU RUN?]
-```
+````
 
 ---
 

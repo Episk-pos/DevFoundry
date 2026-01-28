@@ -60,7 +60,7 @@ Design the backend to serve this loop:
 
 Use to design your database schema:
 
-```
+````
 My loop requires:
 - **Input data**: [WHAT USERS PROVIDE]
 - **Stored data**: [WHAT WE NEED TO SAVE]
@@ -93,7 +93,7 @@ Table: [NAME]
 - [FIELD] -- [WHY, what query it supports]
 
 Keep it minimal. We can add later.
-```
+````
 
 ---
 
@@ -101,7 +101,7 @@ Keep it minimal. We can add later.
 
 Use to design your endpoints:
 
-```
+````
 For my loop, I need these API operations:
 
 **Primary endpoint** (the core loop):
@@ -149,7 +149,7 @@ Response (error):
    - Notifications?
    - Logging?
    - External calls?
-```
+````
 
 ---
 
@@ -157,7 +157,7 @@ Response (error):
 
 Use to identify what must be reliable:
 
-```
+````
 Trace the critical path for my loop:
 
 User Action: [ACTION]
@@ -181,7 +181,7 @@ For steps marked "N" (not critical):
 - Can these happen async?
 - What if they fail silently?
 - Should they be in the critical path at all?
-```
+````
 
 ---
 
@@ -189,7 +189,7 @@ For steps marked "N" (not critical):
 
 Use when building multiple services:
 
-```
+````
 My loop involves these operations:
 1. [OPERATION A]
 2. [OPERATION B]
@@ -220,7 +220,7 @@ For my loop's requirements:
 
 Which architecture is appropriate?
 Where might that change in the future?
-```
+````
 
 ---
 
@@ -259,7 +259,7 @@ Don't overbuild for future loops.
 
 ## Real-Time vs Request-Response
 
-```
+````
 My loop involves: [DESCRIBE INTERACTION]
 
 The user expects:
@@ -295,13 +295,13 @@ Analyze the options:
 
 For my specific loop, what's appropriate?
 Consider: actual latency needs, implementation complexity, scale requirements.
-```
+````
 
 ---
 
 ## Queue & Async Processing
 
-```
+````
 My loop has these operations:
 1. [SYNC OP] -- User waits for this
 2. [OPERATION] -- Does user need to wait?
@@ -327,13 +327,13 @@ Queue design:
 - What queue/job system?
 - Retry policy?
 - Failure handling?
-```
+````
 
 ---
 
 ## Error Handling Strategy
 
-```
+````
 For my loop, these errors can occur:
 
 **Input Errors** (user's fault):
@@ -361,13 +361,13 @@ For each category:
 - How do we log it?
 - What's the user experience?
 - Is there a retry/recovery strategy?
-```
+````
 
 ---
 
 ## Caching Strategy
 
-```
+````
 My loop hits these data:
 1. [DATA A] -- Changes: [FREQUENCY] -- Reads: [FREQUENCY]
 2. [DATA B] -- Changes: [FREQUENCY] -- Reads: [FREQUENCY]
@@ -392,13 +392,13 @@ For the critical loop path:
 - What's cacheable?
 - What's the cache hit target?
 - What happens on cache miss?
-```
+````
 
 ---
 
 ## Scaling Considerations
 
-```
+````
 My loop's current load:
 - Requests per second: [X]
 - Data size: [X]
@@ -430,13 +430,13 @@ Vertical (bigger instance):
 - What's the actual trigger to revisit scaling?
 
 Design for current needs. Plan for future. Don't build for future yet.
-```
+````
 
 ---
 
 ## Backend Code Structure
 
-```
+````
 For my loop, organize the backend code:
 
 **Layer structure**:
@@ -463,7 +463,7 @@ For my specific loop:
 - What goes in each layer?
 - What's the function signature for the main service function?
 - What's the data flow through the layers?
-```
+````
 
 ---
 
