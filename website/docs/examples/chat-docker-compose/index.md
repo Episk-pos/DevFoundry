@@ -133,4 +133,4 @@ Ready for Kubernetes? Continue to [Chat Kubernetes](/docs/examples/chat-kubernet
 
 ## Source Code
 
-View the complete source: [`examples/19-chat-docker-compose/`](https://github.com/devfoundry/devfoundry/tree/main/examples/19-chat-docker-compose)
+View the complete source: [`examples/19-chat-docker-compose/`](https://github.com/Episk-pos/DevFoundry/tree/main/examples/19-chat-docker-compose)

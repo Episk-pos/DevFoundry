@@ -142,4 +142,4 @@ This example aligns with:
 
 ## Source Code
 
-View the complete source: [`examples/20-chat-kubernetes/`](https://github.com/devfoundry/devfoundry/tree/main/examples/20-chat-kubernetes)
+View the complete source: [`examples/20-chat-kubernetes/`](https://github.com/Episk-pos/DevFoundry/tree/main/examples/20-chat-kubernetes)

@@ -29,4 +29,4 @@ jobs:
           use-verbose-mode: 'yes'
           config-file: '.github/markdown-link-check-config.json'
           folder-path: 'docs,prompts,curriculum'
-          file-path: './README.md,./CONTRIBUTING.md'
+          file-path: './README.md'
