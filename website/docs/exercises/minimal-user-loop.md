@@ -10,7 +10,7 @@ description: "Practice applying the minimal user loop to different product types
 
 ---
 
-These exercises help you internalize the [Minimal User Loop](../mental-models/minimal-user-loop) mental model by applying it to realistic product scenarios.
+These exercises help you internalize the [Minimal User Loop](/docs/mental-models/minimal-user-loop) mental model by applying it to realistic product scenarios.
 
 Each exercise builds on the previous. Start with "Identify" exercises, then move to "Design" and "Diagnose."
 
@@ -663,6 +663,6 @@ After completing these exercises:
 
 1. **Apply to your own product**: Use the prompts in [Product Architecture](../prompts/product-architecture/) to analyze your specific loop
 
-2. **Read the mental model**: [The Minimal User Loop](../mental-models/minimal-user-loop) provides the full framework
+2. **Read the mental model**: [The Minimal User Loop](/docs/mental-models/minimal-user-loop) provides the full framework
 
 3. **Practice pattern recognition**: Start noticing loops in every product you use — where do they succeed or fail?

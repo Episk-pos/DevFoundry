@@ -12,7 +12,7 @@ description: "Prompts for designing products from the minimal user loop"
 
 ## Overview
 
-These prompts help you apply the [Minimal User Loop](../../mental-models/minimal-user-loop) mental model to product design. Instead of starting with features and hoping users find value, you design backwards from the value users need.
+These prompts help you apply the [Minimal User Loop](/docs/mental-models/minimal-user-loop) mental model to product design. Instead of starting with features and hoping users find value, you design backwards from the value users need.
 
 The minimal user loop:
 
@@ -33,11 +33,11 @@ Use these prompts to:
 
 | Prompt | Use When |
 |--------|----------|
-| [Discovering Your Loop](discovering-loops) | Starting a new product or reassessing an existing one |
-| [Onboarding from Loop](onboarding-from-loop) | Designing first-time user experience |
-| [UX from Loop](ux-from-loop) | Making interface decisions |
-| [Backend from Loop](backend-from-loop) | Designing APIs, data models, and services |
-| [Infrastructure from Loop](infra-from-loop) | Making deployment and scaling decisions |
+| [Discovering Your Loop](/docs/prompts/product-architecture/discovering-loops) | Starting a new product or reassessing an existing one |
+| [Onboarding from Loop](/docs/prompts/product-architecture/onboarding-from-loop) | Designing first-time user experience |
+| [UX from Loop](/docs/prompts/product-architecture/ux-from-loop) | Making interface decisions |
+| [Backend from Loop](/docs/prompts/product-architecture/backend-from-loop) | Designing APIs, data models, and services |
+| [Infrastructure from Loop](/docs/prompts/product-architecture/infra-from-loop) | Making deployment and scaling decisions |
 
 ---
 
@@ -63,6 +63,6 @@ Don't think about features yet — just the core loop.
 
 ## Related
 
-- [Minimal User Loop](../../mental-models/minimal-user-loop) — The mental model behind these prompts
-- [Designing Features](../designing-features) — Feature design after the loop is established
-- [Architecture-First Prompting](../architecture-first) — Implementation with context
+- [Minimal User Loop](/docs/mental-models/minimal-user-loop) — The mental model behind these prompts
+- [Designing Features](/docs/prompts/designing-features) — Feature design after the loop is established
+- [Architecture-First Prompting](/docs/prompts/architecture-first) — Implementation with context

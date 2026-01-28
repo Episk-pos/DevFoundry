@@ -226,7 +226,7 @@ The best exercise is one you create for yourself:
 
 ### Mental Model Exercises
 
-**[Minimal User Loop](minimal-user-loop)** — Product design exercises
+**[Minimal User Loop](/docs/exercises/minimal-user-loop)** — Product design exercises
 1. SaaS Application — Invoice management tool (identify loop, design onboarding, diagnose failure)
 2. Developer Tool — Database migration CLI (identify loop, design onboarding, design error handling)
 3. Consumer App — Habit tracking app (identify loop, design zero state, diagnose failure)
