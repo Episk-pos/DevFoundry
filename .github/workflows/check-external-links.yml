@@ -1,0 +1,89 @@
+name: Check External Links
+
+on:
+  schedule:
+    # Run weekly on Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
+  pull_request:
+    paths:
+      - 'website/docs/**'
+  workflow_dispatch:
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build website
+        run: npm run build
+
+      - name: Check external links
+        id: linkcheck
+        run: |
+          npx linkinator ./build \
+            --recurse \
+            --timeout 30000 \
+            --retry \
+            --concurrency 5 \
+            --skip 'analytics.episkopos.community' \
+            --format json > linkinator-report.json || true
+
+          # Parse results for summary
+          if [ -f linkinator-report.json ]; then
+            BROKEN=$(jq '[.links[] | select(.status >= 400 or .status == 0)] | length' linkinator-report.json)
+            TOTAL=$(jq '.links | length' linkinator-report.json)
+            echo "broken_count=$BROKEN" >> $GITHUB_OUTPUT
+            echo "total_count=$TOTAL" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate summary
+        if: always()
+        run: |
+          echo "## Link Check Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ -f linkinator-report.json ]; then
+            BROKEN=$(jq '[.links[] | select(.status >= 400 or .status == 0)]' linkinator-report.json)
+            BROKEN_COUNT=$(echo "$BROKEN" | jq 'length')
+
+            if [ "$BROKEN_COUNT" -gt 0 ]; then
+              echo "### :x: Found $BROKEN_COUNT broken link(s)" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "| URL | Status | Parent |" >> $GITHUB_STEP_SUMMARY
+              echo "|-----|--------|--------|" >> $GITHUB_STEP_SUMMARY
+              echo "$BROKEN" | jq -r '.[] | "| \(.url) | \(.status) | \(.parent) |"' >> $GITHUB_STEP_SUMMARY
+            else
+              echo "### :white_check_mark: All links are valid" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "### :warning: Could not generate report" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: linkinator-report
+          path: website/linkinator-report.json
+          retention-days: 7
+
+      - name: Fail if broken links found
+        if: steps.linkcheck.outputs.broken_count != '0' && steps.linkcheck.outputs.broken_count != ''
+        run: |
+          echo "Found ${{ steps.linkcheck.outputs.broken_count }} broken links"
+          exit 1

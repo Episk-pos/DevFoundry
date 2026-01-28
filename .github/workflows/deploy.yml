@@ -43,6 +43,9 @@ jobs:
       - name: Build website
         run: npm run build
 
+      - name: Check internal links
+        run: npx linkinator ./build --recurse --skip 'https://' --skip 'http://' --skip 'analytics.episkopos.community'
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
