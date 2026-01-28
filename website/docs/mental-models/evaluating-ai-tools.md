@@ -227,6 +227,7 @@ Here's how popular tools map across these dimensions:
 |------|-----------|-----------|------------|--------|
 | **ChatGPT (web)** | Browser | None or Remote Sandbox | Chat | User-driven |
 | **Claude.ai** | Browser | None or Remote Sandbox | Chat | User-driven |
+| **Claude Code (web)** | Browser | Remote Sandbox | Agentic | AI-driven |
 | **GitHub Copilot** | IDE-integrated | Local | Completion → Chat | User-driven |
 | **Cursor** | IDE-integrated | Local | Completion → Agentic | User → AI-driven |
 | **Windsurf** | IDE-integrated | Local | Completion → Agentic | User → AI-driven |
@@ -234,6 +235,7 @@ Here's how popular tools map across these dimensions:
 | **Gemini CLI** | Terminal/CLI | Local | Agentic | AI-driven |
 | **Aider** | Terminal/CLI | Local | Agentic | AI-driven |
 | **Antigravity** | IDE + Orchestrator | Local | Agentic | AI → Multi-agent |
+| **Fray** | Agent Orchestrator | Remote (K8s) | Agentic | Multi-agent |
 | **Replit Ghostwriter** | Browser (IDE) | Remote Sandbox | Completion → Edit | User-driven |
 
 :::note[Tools evolve]
