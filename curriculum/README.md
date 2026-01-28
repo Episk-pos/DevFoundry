@@ -55,4 +55,14 @@ A structured learning path for AI-assisted software development.
 
 ---
 
+## Part V: Infrastructure & Operations
+
+| Module | Topic | Status |
+|--------|-------|--------|
+| 19 | [Containerization & Orchestration](https://dev.episkopos.community/docs/curriculum/part-5-infrastructure/containerization-and-orchestration) | ✓ |
+| 20 | Observability & Reliability | Planned |
+| 21 | Infrastructure as Code | Planned |
+
+---
+
 *See the [full documentation](https://dev.episkopos.community/docs/curriculum) for complete module content, exercises, and examples.*

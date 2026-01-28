@@ -46,6 +46,14 @@ const sidebars: SidebarsConfig = {
             },
           ],
         },
+        {
+          type: 'category',
+          label: 'Part V: Infrastructure & Operations',
+          collapsed: false,
+          items: [
+            'curriculum/part-5-infrastructure/containerization-and-orchestration',
+          ],
+        },
       ],
     },
     {
