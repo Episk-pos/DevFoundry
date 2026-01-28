@@ -21,10 +21,15 @@ AI coding tools vary across four independent dimensions. Understanding where a t
 |------|-----------|-----------|------------|--------|
 | ChatGPT (web) | Browser | None/Sandbox | Chat | User-driven |
 | Claude.ai | Browser | None/Sandbox | Chat | User-driven |
+| Gemini (web) | Browser | None/Sandbox | Chat | User-driven |
+| Claude Code (web) | Browser | Remote Sandbox | Agentic | AI-driven |
 | Cursor | IDE | Local | Completion → Agentic | User → AI |
 | Windsurf | IDE | Local | Completion → Agentic | User → AI |
 | Claude Code | Terminal/CLI | Local | Agentic | AI-driven |
+| Gemini CLI | Terminal/CLI | Local | Agentic | AI-driven |
+| OpenCode | Terminal/CLI | Local | Agentic | AI-driven |
 | Antigravity | IDE + Orchestrator | Local | Agentic | Multi-agent |
+| Fray | Agent Orchestrator | Remote (K8s) | Agentic | Multi-agent |
 
 ### Key Insight
 
