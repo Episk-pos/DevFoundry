@@ -68,6 +68,8 @@ const sidebars: SidebarsConfig = {
         'examples/chat-react/index',
         'examples/chat-fullstack/index',
         'examples/chat-realtime/index',
+        'examples/chat-docker-compose/index',
+        'examples/chat-kubernetes/index',
       ],
     },
     {

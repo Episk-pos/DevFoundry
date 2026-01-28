@@ -8,6 +8,7 @@ The chat application deployed to a local Kubernetes cluster using kind and Tilt 
 - **kind**: Running a local Kubernetes cluster inside Docker
 - **Tilt**: Automated build-deploy-reload workflow for Kubernetes development
 - **Kustomize**: Managing environment-specific configuration with overlays
+- **Traefik Ingress**: Path-based routing with the Traefik ingress controller
 - **K8s Debugging**: Using `kubectl` to inspect pods, logs, and services
 
 ## Structure
@@ -15,11 +16,12 @@ The chat application deployed to a local Kubernetes cluster using kind and Tilt 
 ```
 20-chat-kubernetes/
 ├── client/
-│   ├── Dockerfile
+│   ├── Dockerfile              # Multi-stage build: Node (build) → Caddy (serve)
+│   ├── Caddyfile               # Caddy config for SPA routing
 │   └── src/
 ├── server/
-│   ├── Dockerfile
-│   └── src/
+│   ├── Dockerfile              # Node.js production image
+│   └── src/                    # Express API source (PostgreSQL)
 ├── k8s/
 │   ├── base/
 │   │   ├── kustomization.yaml
@@ -28,14 +30,15 @@ The chat application deployed to a local Kubernetes cluster using kind and Tilt 
 │   │   ├── postgres-statefulset.yaml
 │   │   ├── services.yaml
 │   │   ├── configmap.yaml
-│   │   └── ingress.yaml
+│   │   └── ingress.yaml        # Traefik ingress (ingressClassName: traefik)
 │   └── overlays/
 │       ├── development/
 │       │   └── kustomization.yaml
 │       └── production/
 │           └── kustomization.yaml
 ├── Tiltfile
-└── kind-config.yaml
+├── kind-config.yaml
+└── traefik-values.yaml         # Helm values for Traefik on kind
 ```
 
 ## Prerequisites
@@ -44,6 +47,7 @@ The chat application deployed to a local Kubernetes cluster using kind and Tilt 
 - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) installed
 - [kubectl](https://kubernetes.io/docs/tasks/tools/) installed
 - [Tilt](https://docs.tilt.dev/install.html) installed
+- [Helm](https://helm.sh/docs/intro/install/) installed (for Traefik ingress controller)
 
 ## How to Run
 
@@ -53,7 +57,15 @@ The chat application deployed to a local Kubernetes cluster using kind and Tilt 
 kind create cluster --name chat-dev --config kind-config.yaml
 ```
 
-### 2. Start Tilt
+### 2. Install Traefik ingress controller
+
+```bash
+helm repo add traefik https://traefik.github.io/charts
+helm repo update
+helm install traefik traefik/traefik -f traefik-values.yaml
+```
+
+### 3. Start Tilt
 
 ```bash
 tilt up
@@ -65,13 +77,13 @@ Tilt will:
 - Set up port forwards so you can access the app locally
 - Watch for code changes and automatically rebuild/redeploy
 
-### 3. Access the app
+### 4. Access the app
 
 - **Tilt dashboard**: http://localhost:10350
 - **Frontend**: http://localhost:8080
 - **Backend API**: http://localhost:3001/api/health
 
-### 4. Clean up
+### 5. Clean up
 
 ```bash
 tilt down
@@ -94,6 +106,34 @@ k8s_yaml(kustomize('k8s/overlays/development'))
 k8s_resource('chat-backend', port_forwards='3001:3001')
 k8s_resource('chat-frontend', port_forwards='8080:80')
 k8s_resource('postgres', port_forwards='5432:5432')
+```
+
+### k8s/base/ingress.yaml
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: chat-ingress
+spec:
+  ingressClassName: traefik
+  rules:
+    - http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: chat-backend
+                port:
+                  number: 80
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: chat-frontend
+                port:
+                  number: 80
 ```
 
 ### k8s/base/backend-deployment.yaml
@@ -197,7 +237,7 @@ Change a value in `k8s/base/configmap.yaml` and apply it. What happens to the ru
 
 ### 3. Production Overlay
 
-Create a production overlay that sets 3 backend replicas and changes `LOG_LEVEL` to `"warn"`. Apply it with `kubectl apply -k k8s/overlays/production`.
+Apply the production overlay that sets 3 backend replicas and changes `LOG_LEVEL` to `"warn"`: `kubectl apply -k k8s/overlays/production`.
 
 ### 4. Inspect the Network
 

@@ -271,12 +271,25 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Serve
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
+FROM caddy:2-alpine
+COPY Caddyfile /etc/caddy/Caddyfile
+COPY --from=build /app/dist /srv
 EXPOSE 80
 ```
 
-**Stage 1** installs all dependencies (including dev) and builds the app. **Stage 2** copies only the built files into a lightweight nginx image. The final image is tiny — just nginx and your static files, no Node.js, no source code, no `node_modules`.
+**Stage 1** installs all dependencies (including dev) and builds the app. **Stage 2** copies only the built files into a lightweight Caddy image. The final image is tiny — just Caddy and your static files, no Node.js, no source code, no `node_modules`.
+
+Caddy needs a minimal config file (`Caddyfile`) for SPA routing:
+
+```
+:80 {
+	root * /srv
+	try_files {path} /index.html
+	file_server
+}
+```
+
+`try_files` ensures that client-side routes (like `/chat/room/1`) serve `index.html` instead of returning 404.
 
 ---
 
@@ -315,25 +328,39 @@ This is tedious, error-prone, and hard to reproduce. Docker Compose solves it.
 
 ```yaml
 services:
+  traefik:
+    image: traefik:v3.2
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "8080:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
   frontend:
     build:
       context: ./client
-      dockerfile: Dockerfile
-    ports:
-      - "8080:80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.frontend.priority=1"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
     depends_on:
       - backend
 
   backend:
     build:
       context: ./server
-      dockerfile: Dockerfile
-    ports:
-      - "3001:3001"
     environment:
       NODE_ENV: production
       DATABASE_URL: postgresql://postgres:secret@db:5432/chat
-      CORS_ORIGIN: http://localhost:8080
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=PathPrefix(`/api`)"
+      - "traefik.http.routers.backend.priority=2"
+      - "traefik.http.services.backend.loadbalancer.server.port=3001"
     depends_on:
       - db
 
@@ -350,6 +377,8 @@ services:
 volumes:
   pgdata:
 ```
+
+Traefik acts as a reverse proxy, using Docker labels to discover services and route traffic. Requests to `/api/*` go to the backend (priority 2), everything else goes to the frontend (priority 1). The frontend uses `/api` as its API base URL — same origin, no CORS needed.
 
 ### Running the Full Stack
 
@@ -664,7 +693,7 @@ spec:
                   number: 80
 ```
 
-**How it works**: An Ingress Controller (like nginx or Traefik) reads these rules and configures routing. `chat.example.com/api/*` goes to your backend Service, everything else goes to your frontend Service.
+**How it works**: An Ingress Controller (like Traefik, which is built into k3s) reads these rules and configures routing. `chat.example.com/api/*` goes to your backend Service, everything else goes to your frontend Service.
 
 ### ConfigMap
 
@@ -930,8 +959,8 @@ Write a multi-stage Dockerfile for the React frontend.
 
 **Requirements:**
 1. Stage 1 (`build`): Install dependencies and run `npm run build`
-2. Stage 2: Copy built files into an `nginx:alpine` image
-3. The final image should contain only nginx and the static files
+2. Stage 2: Copy built files into a `caddy:2-alpine` image with a `Caddyfile` for SPA routing
+3. The final image should contain only Caddy and the static files
 
 **Test it:**
 ```bash
@@ -953,10 +982,19 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Serve
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
+FROM caddy:2-alpine
+COPY Caddyfile /etc/caddy/Caddyfile
+COPY --from=build /app/dist /srv
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+```
+
+And `Caddyfile`:
+```
+:80 {
+	root * /srv
+	try_files {path} /index.html
+	file_server
+}
 ```
 
 </details>
