@@ -46,6 +46,14 @@ const sidebars: SidebarsConfig = {
             },
           ],
         },
+        {
+          type: 'category',
+          label: 'Part V: Infrastructure & Operations',
+          collapsed: false,
+          items: [
+            'curriculum/part-5-infrastructure/containerization-and-orchestration',
+          ],
+        },
       ],
     },
     {
@@ -60,6 +68,8 @@ const sidebars: SidebarsConfig = {
         'examples/chat-react/index',
         'examples/chat-fullstack/index',
         'examples/chat-realtime/index',
+        'examples/chat-docker-compose/index',
+        'examples/chat-kubernetes/index',
       ],
     },
     {

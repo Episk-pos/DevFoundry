@@ -40,12 +40,15 @@ jobs:
             --timeout 30000 \
             --retry \
             --concurrency 5 \
-            --skip 'analytics.episkopos.community' \
+            --skip 'analytics.episkopos.community|dev.episkopos.community' \
             --format json > linkinator-report.json || true
 
-          # Parse results for summary
+          # Parse results — only count external broken links (skip internal
+          # relative paths that fail because linkinator can't resolve
+          # extensionless Docusaurus URLs from the filesystem; Docusaurus
+          # validates internal links at build time)
           if [ -f linkinator-report.json ]; then
-            BROKEN=$(jq '[.links[] | select(.status >= 400 or .status == 0)] | length' linkinator-report.json)
+            BROKEN=$(jq '[.links[] | select((.status >= 400 or .status == 0) and (.url | startswith("http")))] | length' linkinator-report.json)
             TOTAL=$(jq '.links | length' linkinator-report.json)
             echo "broken_count=$BROKEN" >> $GITHUB_OUTPUT
             echo "total_count=$TOTAL" >> $GITHUB_OUTPUT
@@ -58,7 +61,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
 
           if [ -f linkinator-report.json ]; then
-            BROKEN=$(jq '[.links[] | select(.status >= 400 or .status == 0)]' linkinator-report.json)
+            BROKEN=$(jq '[.links[] | select((.status >= 400 or .status == 0) and (.url | startswith("http")))]' linkinator-report.json)
             BROKEN_COUNT=$(echo "$BROKEN" | jq 'length')
 
             if [ "$BROKEN_COUNT" -gt 0 ]; then

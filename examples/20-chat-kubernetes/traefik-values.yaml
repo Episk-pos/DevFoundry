@@ -1,0 +1,13 @@
+# Helm values for Traefik ingress controller on kind clusters
+# Install with: helm install traefik traefik/traefik -f traefik-values.yaml
+service:
+  type: NodePort
+ports:
+  web:
+    nodePort: 80
+  websecure:
+    nodePort: 443
+tolerations:
+  - key: "node-role.kubernetes.io/control-plane"
+    operator: "Equal"
+    effect: "NoSchedule"

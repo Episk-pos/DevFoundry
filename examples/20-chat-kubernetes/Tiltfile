@@ -1,0 +1,11 @@
+# Build images
+docker_build('chat-backend', './server')
+docker_build('chat-frontend', './client')
+
+# Apply K8s manifests via Kustomize
+k8s_yaml(kustomize('k8s/overlays/development'))
+
+# Port forwards for local access
+k8s_resource('chat-backend', port_forwards='3001:3001')
+k8s_resource('chat-frontend', port_forwards='8080:80')
+k8s_resource('postgres', port_forwards='5432:5432')

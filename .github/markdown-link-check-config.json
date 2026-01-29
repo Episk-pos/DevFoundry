@@ -2,6 +2,12 @@
   "ignorePatterns": [
     {
       "pattern": "^https://analytics.episkopos.community"
+    },
+    {
+      "pattern": "^https://dev.episkopos.community"
+    },
+    {
+      "pattern": "^http://api-server"
     }
   ],
   "timeout": "20s",

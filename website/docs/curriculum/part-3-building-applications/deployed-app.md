@@ -476,10 +476,13 @@ Is it just frontend (static)?
     │   └── Railway, Render (free tiers)
     └── Production/scale needed?
         ├── Managed services → Heroku, Railway Pro
+        ├── Container-based → Docker + Kubernetes (Module 19)
         └── More control → AWS, GCP, DigitalOcean
 ```
 
 For learning: **Railway + Vercel** is a great free combination.
+
+For production applications with a backend and database: consider the **container-based approach** covered in [Module 19: Containerization & Orchestration](../part-5-infrastructure/containerization-and-orchestration) — Docker for packaging, Kubernetes for running at scale.
 
 ---
 
@@ -592,6 +595,7 @@ You've built:
 - Add features to your deployed app
 - Build your own project using these patterns
 - **[Explore Part IV: Historical Context](../part-4-historical-context/server-side-era)** — Understand why everything exists
+- **[Explore Part V: Infrastructure & Operations](../part-5-infrastructure/containerization-and-orchestration)** — Containerize your app with Docker and learn Kubernetes fundamentals
 - Join the DevFoundry community and build in public
 
 ---

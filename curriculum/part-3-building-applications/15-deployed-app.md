@@ -27,6 +27,10 @@ A production-deployed chat app with:
 
 4 exercises covering deployment setup, environment configuration, CI/CD pipelines, and health monitoring.
 
+## What's Next
+
+Want more control over your deployment? [Module 19: Containerization & Orchestration](../part-5-infrastructure-and-operations/19-containerization-and-orchestration.md) covers Docker and Kubernetes — the same tools used by teams at every scale.
+
 ---
 
 *See the full module for step-by-step deployment guides.*

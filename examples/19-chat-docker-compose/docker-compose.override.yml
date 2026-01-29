@@ -1,0 +1,20 @@
+# Development overrides — loaded automatically by `docker compose up`
+services:
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    # In dev, run the Vite dev server instead of Caddy
+    command: ["sh", "-c", "npm install && npm run dev -- --host"]
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    labels:
+      - "traefik.http.services.frontend.loadbalancer.server.port=5173"
+
+  backend:
+    volumes:
+      - ./server/src:/app/src
+    environment:
+      NODE_ENV: development
+    command: ["node", "--watch", "src/index.js"]
