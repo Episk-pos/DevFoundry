@@ -372,7 +372,7 @@ DevFoundry is more than a curriculum — it's a community of people building sof
 
 ## Ready to Begin?
 
-Start here: **[Part I, Module 01: What Software Is](curriculum/part-1-foundations/what-software-is)**
+Start here: **[Part I, Module 00: Terminal Basics](curriculum/part-1-foundations/terminal-basics)**
 
 Or continue exploring:
 - [How to Use This Repo](how-to-use-this-repo)

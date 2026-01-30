@@ -48,6 +48,39 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'Part II: Team Practices',
+          collapsed: false,
+          items: [
+            'curriculum/part-2-team-practices/git-and-collaboration',
+            'curriculum/part-2-team-practices/development-methodologies',
+            'curriculum/part-2-team-practices/ux-ui-fundamentals',
+            'curriculum/part-2-team-practices/architecture-decision-records',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Part III: Building Applications',
+          collapsed: false,
+          items: [
+            'curriculum/part-3-building-applications/static-website',
+            'curriculum/part-3-building-applications/interactive-ui',
+            'curriculum/part-3-building-applications/react-spa',
+            'curriculum/part-3-building-applications/fullstack-app',
+            'curriculum/part-3-building-applications/deployed-app',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Part IV: Historical Context',
+          collapsed: false,
+          items: [
+            'curriculum/part-4-historical-context/server-side-era',
+            'curriculum/part-4-historical-context/ajax-revolution',
+            'curriculum/part-4-historical-context/modern-frontend',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Part V: Infrastructure & Operations',
           collapsed: false,
           items: [
