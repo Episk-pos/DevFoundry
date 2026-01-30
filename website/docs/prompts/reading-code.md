@@ -243,6 +243,25 @@ Starting from [INPUT], show me step-by-step how data flows through to [OUTPUT].
 
 ---
 
+## Using a Terminal-Based AI Tool (TUI)
+
+If you are asking questions through a terminal-based assistant rather than a chat window, keep these tips in mind:
+
+- **Reference files by path instead of pasting.** Terminal screens are narrow and scrolling through large pastes is hard to follow. Point the tool to the file and let it read what it needs.
+- **Paste only the small piece you are confused about.** A five-line snippet is easier to discuss in a terminal than a two-hundred-line file.
+- **Be specific in one shot.** TUI tools work best when the full question fits in a single prompt, so include the file path, the line range, and your question together.
+
+### Example TUI Prompt
+
+```
+Look at src/hooks/useOrders.ts, lines 12-18.
+What does the useEffect dependency array [orders] do here?
+```
+
+This tells the tool exactly where to look and what to explain, without requiring you to paste the code yourself.
+
+---
+
 ## Reading Strategies
 
 ### Strategy 1: Top-Down

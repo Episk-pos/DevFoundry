@@ -14,6 +14,22 @@ These exercises help you internalize the [Minimal User Loop](/docs/mental-models
 
 Each exercise builds on the previous. Start with "Identify" exercises, then move to "Design" and "Diagnose."
 
+### Ask Better Questions
+
+When you get stuck on an exercise, pause and form a specific question before reaching for help. Good questions name what you tried and where you lost confidence.
+
+**Example questions you might ask yourself or a mentor:**
+
+- "I identified the user's action, but I'm not sure if the value is economic or emotional — how do I tell the difference?"
+- "My loop has five steps before the user gets feedback. Is that too many, or does it depend on context?"
+- "I wrote a loop for the habit app, but it feels like I'm describing features instead of user motivation. What's the difference?"
+
+**If you use AI to help, keep your prompt specific and grounded:**
+
+> I'm working through a minimal user loop exercise for [product type]. I defined the loop as [your loop]. I'm unsure about [specific part]. What questions should I ask myself to test whether that step is right?
+
+This keeps you in the driver's seat — you're asking AI to coach your thinking, not replace it.
+
 ---
 
 ## Exercise Set 1: SaaS Application

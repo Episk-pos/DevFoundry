@@ -99,6 +99,18 @@ Messages are stored in a JSON file, demonstrating how applications maintain stat
 
 ---
 
+## Ask Better Questions (Use AI as a Guide)
+
+When exploring this project, try asking your AI assistant specific questions that reference real files:
+
+- *"What does the `createMessage` function in `src/messages.js` return, and why does it include a timestamp?"*
+- *"In `src/index.js`, how does the app decide whether to run `send` or `read`?"*
+- *"How does `src/storage.js` make sure existing messages aren't lost when a new one is saved?"*
+
+Specific questions that name a file and a behavior get far better answers than vague ones. For a ready-made template you can copy and adapt, see the [Reading Code](/docs/prompts/reading-code) prompt guide.
+
+---
+
 ## Curriculum Alignment
 
 This example aligns with:
