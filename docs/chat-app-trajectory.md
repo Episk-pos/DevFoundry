@@ -1,5 +1,7 @@
 # Chat App Case Study: Learning Trajectory
 
+Canonical page: (missing) (suggest /docs/examples/chat-app-trajectory)
+
 This document visualizes how the chat app case study maps to curriculum modules and builds toward a cohort-owned communication network.
 
 ## The Vision
