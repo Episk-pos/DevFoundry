@@ -1,0 +1,31 @@
+name: Lint ASCII Blocks
+
+on:
+  pull_request:
+    paths:
+      - 'website/docs/**'
+      - 'docs/**'
+      - 'prompts/**'
+      - 'community/**'
+      - 'adr/**'
+      - 'exercises/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/lint-ascii.yml'
+  workflow_dispatch:
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Check ASCII block formatting
+        run: npm run lint:ascii
+      - name: Run tests
+        run: npm test
