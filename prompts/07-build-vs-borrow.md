@@ -1,5 +1,7 @@
 # Build vs. Borrow Evaluation
 
+Canonical page: https://dev.episkopos.community/docs/prompts/build-vs-borrow
+
 Use this prompt when you are deciding whether to implement a feature from scratch or leverage an existing library/service.
 
 ## Context

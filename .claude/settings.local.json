@@ -24,7 +24,20 @@
       "Bash(npm install:*)",
       "Bash(git commit:*)",
       "Bash(gh pr view:*)",
-      "Bash(gh pr edit:*)"
+      "Bash(gh pr edit:*)",
+      "Bash(gh run view:*)",
+      "Bash(ls:*)",
+      "Bash(gh issue view:*)",
+      "Bash(find:*)",
+      "Bash(npx linkinator:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(git push:*)",
+      "Bash(git -C /home/bwhite/Projects/DevFoundry log --oneline -15)",
+      "Bash(npx vitest run:*)",
+      "Bash(npm run lint:ascii:*)",
+      "Bash(npm run format:ascii:*)",
+      "Bash(npx tsx:*)",
+      "Bash(npm test:*)"
     ]
   }
 }

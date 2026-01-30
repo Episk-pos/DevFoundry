@@ -155,9 +155,9 @@ devfoundry/
 │
 ├── examples/                      # Working code with explanations
 │   ├── 00-hello-world-console/    # Simplest possible program
-│   ├── 01-chat-cli/               # Stage 1: Terminal app
-│   ├── 02-chat-static-web/        # Stage 2: HTML/CSS/JS
-│   └── 03-chat-cli-typescript/    # Stage 1 with types
+│   ├── 11-chat-cli/               # Stage 1: Terminal app
+│   ├── 12-chat-static-web/        # Stage 2: HTML/CSS/JS
+│   └── 13-chat-cli-typescript/    # Stage 1 with types
 │
 ├── exercises/                     # Hands-on practice
 │   ├── dom-basics.md
@@ -396,7 +396,7 @@ We welcome contributions! See CONTRIBUTING.md (coming soon) for guidelines.
 
 Choose your path:
 
-- **Total beginner**: [What Software Is](curriculum/part-1-foundations/what-software-is)
+- **Total beginner**: [Terminal Basics](curriculum/part-1-foundations/terminal-basics)
 - **Some experience**: Web Architecture (coming soon)
 - **Experienced dev**: [Architecture-First Thinking](mental-models/architecture-first)
 - **Educator**: [Overview](overview)

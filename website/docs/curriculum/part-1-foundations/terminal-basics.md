@@ -762,6 +762,24 @@ Many code editors (VS Code, WebStorm) have built-in terminals. These are the sam
 
 ---
 
+## Pause Before You Run
+
+It is normal to feel unsure about a command before running it -- even experienced developers pause and double-check. Building a habit of questioning commands protects you from mistakes and helps you learn faster.
+
+Before running any command you did not write yourself, walk through this checklist:
+
+1. **What is the goal?** What should this command accomplish?
+2. **What is the target?** Which files, folders, or systems will it affect?
+3. **Is it reversible?** Can you undo the result, or is it permanent (like `rm`)?
+
+If you cannot answer all three, stop and look it up first. You can paste the command into an AI assistant with a prompt like:
+
+> "Explain what this command does step by step. What files does it change, and can I undo it?"
+
+There is no penalty for pausing. The terminal will wait for you.
+
+---
+
 ## Going Further
 
 Once you're comfortable with the basics, there's more to explore:

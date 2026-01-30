@@ -26,7 +26,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Part I: Foundations',
-          collapsed: false,
+          collapsed: true,
           items: [
             'curriculum/part-1-foundations/terminal-basics',
             'curriculum/part-1-foundations/what-software-is',
@@ -48,8 +48,41 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'Part II: Team Practices',
+          collapsed: true,
+          items: [
+            'curriculum/part-2-team-practices/git-and-collaboration',
+            'curriculum/part-2-team-practices/development-methodologies',
+            'curriculum/part-2-team-practices/ux-ui-fundamentals',
+            'curriculum/part-2-team-practices/architecture-decision-records',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Part III: Building Applications',
+          collapsed: true,
+          items: [
+            'curriculum/part-3-building-applications/static-website',
+            'curriculum/part-3-building-applications/interactive-ui',
+            'curriculum/part-3-building-applications/react-spa',
+            'curriculum/part-3-building-applications/fullstack-app',
+            'curriculum/part-3-building-applications/deployed-app',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Part IV: Historical Context',
+          collapsed: true,
+          items: [
+            'curriculum/part-4-historical-context/server-side-era',
+            'curriculum/part-4-historical-context/ajax-revolution',
+            'curriculum/part-4-historical-context/modern-frontend',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Part V: Infrastructure & Operations',
-          collapsed: false,
+          collapsed: true,
           items: [
             'curriculum/part-5-infrastructure/containerization-and-orchestration',
           ],
@@ -59,7 +92,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Examples',
-      collapsed: false,
+      collapsed: true,
       items: [
         'examples/hello-world-console/index',
         'examples/chat-cli/index',
@@ -103,7 +136,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Mental Models',
-      collapsed: true,
+      collapsed: false,
       items: [
         'mental-models/evaluating-ai-tools',
         'mental-models/protocol-thinking',
@@ -153,7 +186,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Community',
-      collapsed: true,
+      collapsed: false,
       items: [
         'community/index',
         'community/problems/index',

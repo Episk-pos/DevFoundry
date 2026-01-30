@@ -1,5 +1,7 @@
 # Architecture Decision Records (ADRs)
 
+Canonical page: https://dev.episkopos.community/docs/adr
+
 **Documenting the "why" behind architectural choices**
 
 ---

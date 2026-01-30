@@ -1,5 +1,7 @@
 # DevFoundry Community
 
+Canonical page: https://dev.episkopos.community/docs/community
+
 **Building Software Together: Problems, Projects, and People**
 
 ---
