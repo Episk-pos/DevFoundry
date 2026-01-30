@@ -26,7 +26,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Part I: Foundations',
-          collapsed: false,
+          collapsed: true,
           items: [
             'curriculum/part-1-foundations/terminal-basics',
             'curriculum/part-1-foundations/what-software-is',
@@ -49,7 +49,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Part II: Team Practices',
-          collapsed: false,
+          collapsed: true,
           items: [
             'curriculum/part-2-team-practices/git-and-collaboration',
             'curriculum/part-2-team-practices/development-methodologies',
@@ -60,7 +60,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Part III: Building Applications',
-          collapsed: false,
+          collapsed: true,
           items: [
             'curriculum/part-3-building-applications/static-website',
             'curriculum/part-3-building-applications/interactive-ui',
@@ -72,7 +72,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Part IV: Historical Context',
-          collapsed: false,
+          collapsed: true,
           items: [
             'curriculum/part-4-historical-context/server-side-era',
             'curriculum/part-4-historical-context/ajax-revolution',
@@ -82,7 +82,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Part V: Infrastructure & Operations',
-          collapsed: false,
+          collapsed: true,
           items: [
             'curriculum/part-5-infrastructure/containerization-and-orchestration',
           ],
@@ -92,7 +92,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Examples',
-      collapsed: false,
+      collapsed: true,
       items: [
         'examples/hello-world-console/index',
         'examples/chat-cli/index',
@@ -136,7 +136,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Mental Models',
-      collapsed: true,
+      collapsed: false,
       items: [
         'mental-models/evaluating-ai-tools',
         'mental-models/protocol-thinking',
@@ -186,7 +186,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Community',
-      collapsed: true,
+      collapsed: false,
       items: [
         'community/index',
         'community/problems/index',
