@@ -24,7 +24,14 @@
       "Bash(npm install:*)",
       "Bash(git commit:*)",
       "Bash(gh pr view:*)",
-      "Bash(gh pr edit:*)"
+      "Bash(gh pr edit:*)",
+      "Bash(gh run view:*)",
+      "Bash(ls:*)",
+      "Bash(gh issue view:*)",
+      "Bash(find:*)",
+      "Bash(npx linkinator:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(git push:*)"
     ]
   }
 }
