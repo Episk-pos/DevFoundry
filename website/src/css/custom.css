@@ -52,3 +52,93 @@
   --df-text-muted: #94a3b8;
   --df-section-bg: linear-gradient(180deg, rgba(142, 163, 232, 0.03) 0%, rgba(139, 92, 246, 0.05) 50%, rgba(142, 163, 232, 0.03) 100%);
 }
+
+/* ── Footer ─────────────────────────────────────────────────────── */
+
+.footer--dark {
+  --ifm-footer-background-color: #0d0a1f;
+  position: relative;
+  border-top: none;
+  padding-top: 0;
+}
+
+/* Animated gradient top border */
+.footer--dark::before {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--df-gradient-start),
+    var(--df-gradient-mid),
+    var(--df-gradient-end),
+    var(--df-gradient-start)
+  );
+  background-size: 200% 100%;
+  animation: footerBorderSlide 7.3s linear infinite;
+}
+
+@keyframes footerBorderSlide {
+  0% { background-position: 200% 0; }
+  100% { background-position: 0% 0; }
+}
+
+.footer--dark .container {
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+}
+
+/* Column titles — uppercase tracking with gradient underline */
+.footer--dark .footer__title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  padding-bottom: 0.65rem;
+  margin-bottom: 0.85rem;
+  position: relative;
+}
+
+.footer--dark .footer__title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 28px;
+  height: 2px;
+  background: var(--df-gradient-horizontal);
+  border-radius: 1px;
+}
+
+/* Link items — softer, with smooth hover lift */
+.footer--dark .footer__link-item {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.88rem;
+  font-weight: 400;
+  transition: color 0.25s ease, transform 0.25s ease;
+  display: inline-block;
+}
+
+.footer--dark .footer__link-item:hover {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  transform: translateX(3px);
+}
+
+/* List spacing */
+.footer--dark .footer__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+/* Copyright — small, muted, with top separator */
+.footer--dark .footer__copyright {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.28);
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  letter-spacing: 0.02em;
+}
