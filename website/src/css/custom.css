@@ -16,6 +16,23 @@
   --ifm-color-primary-lightest: #b2c0ec;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* DevFoundry gradient palette */
+  --df-gradient-start: #4a7cf7;
+  --df-gradient-mid: #8b5cf6;
+  --df-gradient-end: #ec4899;
+  --df-gradient: linear-gradient(135deg, var(--df-gradient-start), var(--df-gradient-mid), var(--df-gradient-end));
+  --df-gradient-horizontal: linear-gradient(90deg, var(--df-gradient-start), var(--df-gradient-mid), var(--df-gradient-end));
+  --df-hero-bg-start: #0f0c29;
+  --df-hero-bg-end: #1a1040;
+  --df-card-bg: rgba(255, 255, 255, 0.7);
+  --df-card-border: rgba(107, 127, 214, 0.15);
+  --df-card-hover-border: rgba(107, 127, 214, 0.3);
+  --df-text-muted: #64748b;
+  --df-section-bg: linear-gradient(180deg, rgba(107, 127, 214, 0.04) 0%, rgba(139, 92, 246, 0.06) 50%, rgba(107, 127, 214, 0.04) 100%);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -28,4 +45,10 @@
   --ifm-color-primary-lighter: #bbc9f1;
   --ifm-color-primary-lightest: #e7ecfa;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  --df-card-bg: rgba(30, 27, 55, 0.7);
+  --df-card-border: rgba(142, 163, 232, 0.12);
+  --df-card-hover-border: rgba(142, 163, 232, 0.25);
+  --df-text-muted: #94a3b8;
+  --df-section-bg: linear-gradient(180deg, rgba(142, 163, 232, 0.03) 0%, rgba(139, 92, 246, 0.05) 50%, rgba(142, 163, 232, 0.03) 100%);
 }
