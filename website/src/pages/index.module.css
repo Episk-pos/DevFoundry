@@ -113,10 +113,13 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   margin-bottom: 0.75rem;
-  background: linear-gradient(135deg, #4a7cf7 0%, #8b5cf6 40%, #e07bad 100%);
+  background: linear-gradient(135deg, #5a8fff 0%, #a078ff 40%, #f08abf 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter:
+    drop-shadow(0 0 20px rgba(139, 92, 246, 0.35))
+    drop-shadow(0 0 60px rgba(74, 124, 247, 0.15));
 }
 
 .heroSubtitle {

@@ -62,6 +62,10 @@
   padding-top: 0;
 }
 
+[data-theme='light'] .footer--dark {
+  --ifm-footer-background-color: #2a2745;
+}
+
 /* Animated gradient top border */
 .footer--dark::before {
   content: '';
