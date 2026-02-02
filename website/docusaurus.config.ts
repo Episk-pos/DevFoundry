@@ -86,12 +86,6 @@ const config: Config = {
         src: 'img/logo--no-text.png',
       },
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'docsSidebar',
-          position: 'left',
-          label: 'Docs',
-        },
         { type: 'search', position: 'right' },
         {
           href: 'https://github.com/episk-pos/devfoundry',
