@@ -20,7 +20,7 @@
   /* DevFoundry gradient palette */
   --df-gradient-start: #4a7cf7;
   --df-gradient-mid: #8b5cf6;
-  --df-gradient-end: #ec4899;
+  --df-gradient-end: #d97cdb;
   --df-gradient: linear-gradient(135deg, var(--df-gradient-start), var(--df-gradient-mid), var(--df-gradient-end));
   --df-gradient-horizontal: linear-gradient(90deg, var(--df-gradient-start), var(--df-gradient-mid), var(--df-gradient-end));
   --df-hero-bg-start: #0f0c29;

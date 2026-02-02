@@ -23,7 +23,7 @@
   background:
     radial-gradient(circle at 30% 40%, rgba(74, 124, 247, 0.22) 0%, transparent 50%),
     radial-gradient(circle at 70% 60%, rgba(139, 92, 246, 0.18) 0%, transparent 45%),
-    radial-gradient(circle at 50% 25%, rgba(236, 72, 153, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 25%, rgba(217, 124, 219, 0.12) 0%, transparent 50%),
     radial-gradient(circle at 80% 30%, rgba(74, 124, 247, 0.08) 0%, transparent 40%);
   animation: nebulaOrbs 25s ease-in-out infinite;
   pointer-events: none;
@@ -113,7 +113,7 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   margin-bottom: 0.75rem;
-  background: linear-gradient(135deg, #4a7cf7 0%, #8b5cf6 40%, #ec4899 100%);
+  background: linear-gradient(135deg, #4a7cf7 0%, #8b5cf6 40%, #d97cdb 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -143,10 +143,12 @@
   font-weight: 600;
   font-size: 1rem;
   color: #fff;
-  background: var(--df-gradient);
+  background: linear-gradient(90deg, var(--df-gradient-start), var(--df-gradient-mid), var(--df-gradient-end), var(--df-gradient-start));
+  background-size: 200% 100%;
   text-decoration: none;
   transition: transform 0.2s, box-shadow 0.2s;
   border: none;
+  animation: btnSlide 6.6s linear infinite;
 }
 
 .btnPrimary:hover {
@@ -164,13 +166,19 @@
   font-weight: 600;
   font-size: 1rem;
   color: #fff;
-  background: transparent;
   text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
   border: 2px solid transparent;
-  background-image: linear-gradient(var(--df-hero-bg-end), var(--df-hero-bg-end)), var(--df-gradient);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
+  background:
+    linear-gradient(var(--df-hero-bg-end), var(--df-hero-bg-end)) padding-box,
+    linear-gradient(90deg, var(--df-gradient-start), var(--df-gradient-mid), var(--df-gradient-end), var(--df-gradient-start)) border-box;
+  background-size: 100% 100%, 200% 100%;
+  animation: btnBorderSlide 6.6s linear infinite;
+}
+
+@keyframes btnBorderSlide {
+  0%   { background-position: 0 0, 200% 0; }
+  100% { background-position: 0 0, 0% 0; }
 }
 
 .btnSecondary:hover {
@@ -178,6 +186,11 @@
   box-shadow: 0 8px 24px rgba(139, 92, 246, 0.2);
   color: #fff;
   text-decoration: none;
+}
+
+@keyframes btnSlide {
+  0%   { background-position: 200% 0; }
+  100% { background-position: 0% 0; }
 }
 
 @media screen and (max-width: 996px) {
@@ -249,7 +262,7 @@
   overflow: hidden;
 }
 
-/* Gradient accent top line on hover */
+/* Gradient accent top line on hover — slides sideways */
 .featureCard::before {
   content: '';
   position: absolute;
@@ -257,9 +270,20 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--df-gradient-horizontal);
+  background: linear-gradient(90deg, var(--df-gradient-start), var(--df-gradient-mid), var(--df-gradient-end), var(--df-gradient-start));
+  background-size: 200% 100%;
   opacity: 0;
   transition: opacity 0.25s;
+  animation: accentSlide 6.6s linear infinite paused;
+}
+
+.featureCard:hover::before {
+  animation-play-state: running;
+}
+
+@keyframes accentSlide {
+  0%   { background-position: 200% 0; }
+  100% { background-position: 0% 0; }
 }
 
 .featureCard:hover {
