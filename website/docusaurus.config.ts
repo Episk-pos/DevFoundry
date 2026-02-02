@@ -40,7 +40,21 @@ const config: Config = {
   markdown: {
     mermaid: true,
   },
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: [
+    '@docusaurus/theme-mermaid',
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        indexDocs: true,
+        indexBlog: false,
+        indexPages: false,
+        language: 'en',
+        highlightSearchTermsOnTargetPage: true,
+        searchBarShortcutHint: true,
+        docsRouteBasePath: '/docs',
+      },
+    ],
+  ],
 
   presets: [
     [
@@ -78,6 +92,7 @@ const config: Config = {
           position: 'left',
           label: 'Docs',
         },
+        { type: 'search', position: 'right' },
         {
           href: 'https://github.com/episk-pos/devfoundry',
           label: 'GitHub',
