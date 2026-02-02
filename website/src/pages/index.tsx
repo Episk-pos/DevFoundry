@@ -122,7 +122,10 @@ function Feature({title, icon, description, link}: FeatureItem) {
     <Link to={link} className={styles.featureLink}>
       <div className={styles.featureCard}>
         <div className={styles.featureIconWrapper}>
-          <img src={iconUrl} alt="" className={styles.featureIcon} />
+          <span
+            className={styles.featureIcon}
+            style={{WebkitMaskImage: `url(${iconUrl})`, maskImage: `url(${iconUrl})`}}
+          />
         </div>
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
@@ -205,7 +208,10 @@ function NavCard({title, description, icon, link}: NavItem) {
   return (
     <Link to={link} className={styles.navCard}>
       <div className={styles.navIconWrapper}>
-        <img src={iconUrl} alt="" className={styles.navIcon} />
+        <span
+          className={styles.navIcon}
+          style={{WebkitMaskImage: `url(${iconUrl})`, maskImage: `url(${iconUrl})`}}
+        />
       </div>
       <div className={styles.navContent}>
         <h3>{title}</h3>

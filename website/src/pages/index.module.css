@@ -222,12 +222,14 @@
 .featureIcon {
   width: 24px;
   height: 24px;
-  color: var(--ifm-color-primary);
-}
-
-/* Use mask-image so the SVG inherits color */
-.featureIcon {
   display: block;
+  background-color: var(--ifm-color-primary);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
 .featureCard h3 {
@@ -444,7 +446,14 @@
 .navIcon {
   width: 20px;
   height: 20px;
-  color: var(--ifm-color-primary);
+  display: block;
+  background-color: var(--ifm-color-primary);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
 .navContent h3 {
