@@ -4,6 +4,9 @@ title: "Module 00: Terminal Basics"
 description: Getting comfortable with the command line before diving into code
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Module 00: Terminal Basics
 
 **Getting comfortable with the command line before diving into code**
@@ -23,6 +26,8 @@ By the end of this module, you will:
 - Feel comfortable enough to follow along with the rest of this curriculum
 
 **Time**: 1-2 hours (reading + practice)
+
+> **Pick your OS** — Select your operating system in any tabbed section below. Your choice syncs across the entire page.
 
 ---
 
@@ -65,9 +70,28 @@ These terms are often used interchangeably, but they're technically different:
 
 The **window** that displays text. It's the application you open.
 
-- **macOS**: Terminal.app or iTerm2
-- **Windows**: Git Bash, PowerShell, Command Prompt
-- **Linux**: GNOME Terminal, Konsole, xterm
+<Tabs groupId="os" queryString="os">
+<TabItem value="windows" label="Windows" default>
+
+- **Git Bash** (recommended) — comes with Git for Windows
+- **PowerShell** — pre-installed on all Windows systems
+- **Command Prompt (CMD)** — legacy Windows terminal
+
+</TabItem>
+<TabItem value="macos" label="macOS">
+
+- **Terminal.app** — built-in, found in Applications > Utilities
+- **iTerm2** — popular third-party alternative
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+- **GNOME Terminal** — default on GNOME-based desktops (Ubuntu, Fedora)
+- **Konsole** — default on KDE-based desktops
+- **xterm** — lightweight, available everywhere
+
+</TabItem>
+</Tabs>
 
 ### Shell
 
@@ -92,23 +116,30 @@ An older term, often used interchangeably with "terminal." Originally referred t
 
 ### What Should You Use?
 
-- **macOS**: Use the built-in Terminal app. Your shell is likely Zsh.
-- **Windows**: Use Git Bash (comes with [Git for Windows](https://git-scm.com/downloads)) — commands match macOS/Linux tutorials. PowerShell works but has different syntax.
-- **Linux**: Use your distro's terminal. Your shell is likely Bash.
+<Tabs groupId="os" queryString="os">
+<TabItem value="windows" label="Windows" default>
+
+Use **Git Bash** (comes with [Git for Windows](https://git-scm.com/downloads)) — commands match macOS/Linux tutorials. PowerShell works but has different syntax.
+
+</TabItem>
+<TabItem value="macos" label="macOS">
+
+Use the built-in **Terminal** app. Your shell is likely Zsh.
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+Use your distro's terminal. Your shell is likely Bash.
+
+</TabItem>
+</Tabs>
 
 ---
 
 ## Opening Your Terminal
 
-### macOS
-
-1. Press `Cmd + Space` to open Spotlight
-2. Type "Terminal"
-3. Press Enter
-
-Or find it in: `Applications → Utilities → Terminal`
-
-### Windows
+<Tabs groupId="os" queryString="os">
+<TabItem value="windows" label="Windows" default>
 
 **Git Bash (recommended)** — install [Git for Windows](https://git-scm.com/downloads) first:
 1. Press `Win` key
@@ -125,10 +156,23 @@ Or find it in: `Applications → Utilities → Terminal`
 2. Type `cmd`
 3. Press Enter
 
-### Linux
+</TabItem>
+<TabItem value="macos" label="macOS">
+
+1. Press `Cmd + Space` to open Spotlight
+2. Type "Terminal"
+3. Press Enter
+
+Or find it in: `Applications > Utilities > Terminal`
+
+</TabItem>
+<TabItem value="linux" label="Linux">
 
 - Press `Ctrl + Alt + T` (most distros)
 - Or find "Terminal" in your applications menu
+
+</TabItem>
+</Tabs>
 
 ---
 
@@ -137,6 +181,29 @@ Or find it in: `Applications → Utilities → Terminal`
 Once your terminal is open, try these commands:
 
 ### See Where You Are: `pwd`
+
+<Tabs groupId="os" queryString="os">
+<TabItem value="windows" label="Windows" default>
+
+In **Git Bash** (recommended):
+```bash
+pwd
+```
+
+Example output:
+```
+/c/Users/yourname
+```
+
+In **PowerShell**, the same command works via an alias, or you can use the native cmdlet:
+```powershell
+Get-Location
+# Or the alias:
+pwd
+```
+
+</TabItem>
+<TabItem value="macos" label="macOS">
 
 ```bash
 pwd
@@ -149,14 +216,42 @@ Example output:
 /Users/yourname
 ```
 
-On Windows PowerShell, use:
-```powershell
-Get-Location
-# Or the alias:
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+```bash
 pwd
 ```
 
+**P**rint **W**orking **D**irectory. Shows your current location in the file system.
+
+Example output:
+```
+/home/yourname
+```
+
+</TabItem>
+</Tabs>
+
 ### See What's Here: `ls`
+
+<Tabs groupId="os" queryString="os">
+<TabItem value="windows" label="Windows" default>
+
+In **Git Bash** (recommended):
+```bash
+ls
+```
+
+Example output:
+```
+Desktop    Documents    Downloads    Pictures
+```
+
+In **CMD**, use `dir` instead. In **PowerShell**, `ls` works as an alias for `Get-ChildItem`.
+
+</TabItem>
+<TabItem value="macos" label="macOS">
 
 ```bash
 ls
@@ -169,7 +264,22 @@ Example output:
 Desktop    Documents    Downloads    Pictures
 ```
 
-On Windows CMD, use `dir` instead.
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+```bash
+ls
+```
+
+**L**i**s**t files and folders in the current directory.
+
+Example output:
+```
+Desktop    Documents    Downloads    Pictures
+```
+
+</TabItem>
+</Tabs>
 
 ### Move Around: `cd`
 
@@ -199,13 +309,42 @@ Go to the root of the file system.
 
 ### Clear the Screen: `clear`
 
+<Tabs groupId="os" queryString="os">
+<TabItem value="windows" label="Windows" default>
+
+In **Git Bash** (recommended):
 ```bash
 clear
 ```
 
-Clears all the text from your terminal. On Windows, use `cls` in CMD.
+In **CMD**, use `cls` instead. In **PowerShell**, both `clear` and `cls` work.
+
+**Keyboard shortcut**: `Ctrl + L` works in most terminals, including Git Bash.
+
+</TabItem>
+<TabItem value="macos" label="macOS">
+
+```bash
+clear
+```
+
+Clears all the text from your terminal.
 
 **Keyboard shortcut**: `Ctrl + L` works in most terminals.
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+```bash
+clear
+```
+
+Clears all the text from your terminal.
+
+**Keyboard shortcut**: `Ctrl + L` works in most terminals.
+
+</TabItem>
+</Tabs>
 
 ---
 
@@ -227,13 +366,41 @@ projects/myapp/index.js
 
 ### Special Path Symbols
 
+<Tabs groupId="os" queryString="os">
+<TabItem value="windows" label="Windows" default>
+
 | Symbol | Meaning | Example |
 |--------|---------|---------|
-| `/` | Root directory (macOS/Linux) | `cd /` |
-| `C:\` | Root of C drive (Windows) | `cd C:\` |
+| `C:\` | Root of C drive | `cd C:\` |
+| `/` | Root (in Git Bash) | `cd /` |
 | `~` | Home directory | `cd ~` |
 | `.` | Current directory | `./run.sh` |
 | `..` | Parent directory | `cd ..` |
+
+In Git Bash, paths use forward slashes (`/c/Users/yourname`). In CMD and PowerShell, paths use backslashes (`C:\Users\yourname`).
+
+</TabItem>
+<TabItem value="macos" label="macOS">
+
+| Symbol | Meaning | Example |
+|--------|---------|---------|
+| `/` | Root directory | `cd /` |
+| `~` | Home directory | `cd ~` |
+| `.` | Current directory | `./run.sh` |
+| `..` | Parent directory | `cd ..` |
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+| Symbol | Meaning | Example |
+|--------|---------|---------|
+| `/` | Root directory | `cd /` |
+| `~` | Home directory | `cd ~` |
+| `.` | Current directory | `./run.sh` |
+| `..` | Parent directory | `cd ..` |
+
+</TabItem>
+</Tabs>
 
 ### Path Examples
 
@@ -264,7 +431,31 @@ You didn't type the full path like `/usr/local/bin/node`. You just typed `node`.
 
 ### Viewing Your PATH
 
-**macOS/Linux (Bash/Zsh)**:
+<Tabs groupId="os" queryString="os">
+<TabItem value="windows" label="Windows" default>
+
+In **Git Bash** (recommended):
+```bash
+echo $PATH
+```
+
+Output (example):
+```
+/c/Users/yourname/bin:/mingw64/bin:/usr/local/bin:/usr/bin:/bin
+```
+
+Each directory is separated by `:` (colon).
+
+In **PowerShell**:
+```powershell
+$env:PATH
+```
+
+Directories are separated by `;` (semicolon).
+
+</TabItem>
+<TabItem value="macos" label="macOS">
+
 ```bash
 echo $PATH
 ```
@@ -276,12 +467,22 @@ Output (example):
 
 Each directory is separated by `:` (colon).
 
-**Windows PowerShell**:
-```powershell
-$env:PATH
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+```bash
+echo $PATH
 ```
 
-Directories are separated by `;` (semicolon).
+Output (example):
+```
+/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+```
+
+Each directory is separated by `:` (colon).
+
+</TabItem>
+</Tabs>
 
 ### What This Means
 
@@ -308,17 +509,48 @@ When you type `node` or `git` or `npm`, what exactly are you running?
 
 Every command you run is a **file** stored somewhere on your computer. These files contain instructions that your computer can execute.
 
+<Tabs groupId="os" queryString="os">
+<TabItem value="windows" label="Windows" default>
+
+In **Git Bash** (recommended):
 ```bash
 # Find where a program lives
 which git
-# Output: /usr/bin/git
+# Output: /mingw64/bin/git
+```
 
-# On Windows PowerShell:
+In **PowerShell**:
+```powershell
 Get-Command git
 # Output: C:\Program Files\Git\cmd\git.exe
 ```
 
+That file *is* the Git program. When you type `git`, your shell finds and runs that file.
+
+</TabItem>
+<TabItem value="macos" label="macOS">
+
+```bash
+# Find where a program lives
+which git
+# Output: /usr/bin/git
+```
+
 That file at `/usr/bin/git` *is* the Git program. When you type `git`, your shell finds and runs that file.
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+```bash
+# Find where a program lives
+which git
+# Output: /usr/bin/git
+```
+
+That file at `/usr/bin/git` *is* the Git program. When you type `git`, your shell finds and runs that file.
+
+</TabItem>
+</Tabs>
 
 ### Binary vs Script
 
@@ -349,7 +581,24 @@ node my-script.js
 
 An **executable** is any file that can be run as a program. Both binaries and scripts can be executable.
 
-On macOS/Linux, a file needs "execute permission" to run:
+<Tabs groupId="os" queryString="os">
+<TabItem value="windows" label="Windows" default>
+
+On Windows, the file extension (`.exe`, `.bat`, `.ps1`) determines if a file is executable.
+
+In **Git Bash**, you can also use Unix-style execute permissions:
+```bash
+# Make a script executable
+chmod +x my-script.sh
+
+# Now you can run it
+./my-script.sh
+```
+
+</TabItem>
+<TabItem value="macos" label="macOS">
+
+On macOS, a file needs "execute permission" to run:
 
 ```bash
 # Make a script executable
@@ -359,7 +608,21 @@ chmod +x my-script.sh
 ./my-script.sh
 ```
 
-On Windows, the file extension (`.exe`, `.bat`, `.ps1`) determines if it's executable.
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+On Linux, a file needs "execute permission" to run:
+
+```bash
+# Make a script executable
+chmod +x my-script.sh
+
+# Now you can run it
+./my-script.sh
+```
+
+</TabItem>
+</Tabs>
 
 ### Why This Matters
 
@@ -394,22 +657,22 @@ command [options] [arguments]
 
 ```bash
 ls -la Documents
-#  ↑  ↑   ↑
-#  │  │   └── argument: the directory to list
-#  │  └────── options: -l (long format) and -a (show all)
-#  └───────── command: list files
+#  ^  ^   ^
+#  |  |   +-- argument: the directory to list
+#  |  +------ options: -l (long format) and -a (show all)
+#  +--------- command: list files
 
 git commit -m "Fix login bug"
-#   ↑      ↑   ↑
-#   │      │   └── argument: the commit message
-#   │      └────── option: -m means "message follows"
-#   └───────────── command: git (with subcommand "commit")
+#   ^      ^   ^
+#   |      |   +-- argument: the commit message
+#   |      +------ option: -m means "message follows"
+#   +------------- command: git (with subcommand "commit")
 
 npm install express --save-dev
-#    ↑       ↑        ↑
-#    │       │        └── option: save as dev dependency
-#    │       └─────────── argument: package to install
-#    └─────────────────── command: npm (with subcommand "install")
+#    ^       ^        ^
+#    |       |        +-- option: save as dev dependency
+#    |       +----------- argument: package to install
+#    +------------------- command: npm (with subcommand "install")
 ```
 
 ### Options (Flags)
@@ -516,21 +779,21 @@ Now you can parse any command:
 
 ```bash
 docker run -d -p 8080:80 --name myapp nginx:latest
-#      ↑    ↑  ↑          ↑              ↑
-#      │    │  │          │              └── argument: image to run
-#      │    │  │          └───────────────── option: container name
-#      │    │  └──────────────────────────── option: port mapping
-#      │    └─────────────────────────────── option: detached mode
-#      └──────────────────────────────────── command (with subcommand)
+#      ^    ^  ^          ^              ^
+#      |    |  |          |              +-- argument: image to run
+#      |    |  |          +----------------- option: container name
+#      |    |  +---------------------------- option: port mapping
+#      |    +------------------------------- option: detached mode
+#      +------------------------------------ command (with subcommand)
 ```
 
 ```bash
 find . -name "*.js" -type f -exec wc -l {} \;
-#    ↑  ↑            ↑       ↑
-#    │  │            │       └── option with complex argument
-#    │  │            └────────── option: files only
-#    │  └─────────────────────── option: name pattern
-#    └────────────────────────── argument: where to search
+#    ^  ^            ^       ^
+#    |  |            |       +-- option with complex argument
+#    |  |            +---------- option: files only
+#    |  +----------------------- option: name pattern
+#    +-------------------------- argument: where to search
 ```
 
 Don't worry about understanding what every command does yet. The point is that you can now see the *structure*.
@@ -636,8 +899,38 @@ mkdir -p my-first-project/src my-first-project/tests && touch my-first-project/s
 
 ### Exercise 3: Explore Your PATH
 
-1. View your PATH: `echo $PATH` (or `$env:PATH` on Windows)
-2. Find where `node` is installed: `which node` (or `Get-Command node` on Windows)
+<Tabs groupId="os" queryString="os">
+<TabItem value="windows" label="Windows" default>
+
+1. View your PATH:
+   - In **Git Bash**: `echo $PATH`
+   - In **PowerShell**: `$env:PATH`
+2. Find where `node` is installed:
+   - In **Git Bash**: `which node`
+   - In **PowerShell**: `Get-Command node`
+3. List what's in that directory
+
+<details>
+<summary>Solution (Git Bash)</summary>
+
+```bash
+echo $PATH
+which node
+# Outputs something like: /c/Program Files/nodejs/node
+
+ls "/c/Program Files/nodejs"
+# Shows all programs in that directory
+```
+
+If `node` isn't found, it means Node.js isn't installed yet — we'll cover that in later modules.
+
+</details>
+
+</TabItem>
+<TabItem value="macos" label="macOS">
+
+1. View your PATH: `echo $PATH`
+2. Find where `node` is installed: `which node`
 3. List what's in that directory
 
 <details>
@@ -655,6 +948,32 @@ ls /usr/local/bin
 If `node` isn't found, it means Node.js isn't installed yet — we'll cover that in later modules.
 
 </details>
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+1. View your PATH: `echo $PATH`
+2. Find where `node` is installed: `which node`
+3. List what's in that directory
+
+<details>
+<summary>Solution</summary>
+
+```bash
+echo $PATH
+which node
+# Outputs something like: /usr/local/bin/node
+
+ls /usr/local/bin
+# Shows all programs in that directory
+```
+
+If `node` isn't found, it means Node.js isn't installed yet — we'll cover that in later modules.
+
+</details>
+
+</TabItem>
+</Tabs>
 
 ---
 
@@ -694,24 +1013,22 @@ For each command below, identify the command, options/flags, and arguments:
 
 ---
 
-## Windows-Specific Notes
+## A Note for Windows Users
 
-If you're on Windows, you have choices:
+Throughout this module, tabbed sections show Windows-specific instructions alongside macOS and Linux. Here's a summary of why we recommend Git Bash and how the alternatives compare.
 
-### Git Bash (Recommended)
+### Why Git Bash?
 
-Comes bundled with [Git for Windows](https://git-scm.com/downloads). This is what we recommend for this curriculum because:
+[Git Bash](https://git-scm.com/downloads) comes bundled with Git for Windows and is what we recommend for this curriculum because:
 
 - Commands match macOS/Linux tutorials exactly (`ls`, `cd`, `grep`, `cat`, etc.)
 - No system restart or admin permissions required
 - Lightweight — just install and go
 - You'll need Git anyway, so you get two essential tools in one
 
-**This is what you should use to follow along with this curriculum.**
+### PowerShell Comparison
 
-### PowerShell
-
-Pre-installed on all Windows systems. Powerful, but has different syntax:
+PowerShell is pre-installed on all Windows systems. It's powerful, but has different syntax. Here's a quick reference:
 
 | Bash/Git Bash | PowerShell |
 |---------------|------------|
@@ -726,14 +1043,7 @@ PowerShell is great for Windows-specific automation, but most online tutorials u
 
 ### WSL (Windows Subsystem for Linux)
 
-Runs a full Linux environment inside Windows. More heavyweight than Git Bash, but useful if you need Linux-specific tools:
-
-1. Open PowerShell as Administrator
-2. Run: `wsl --install`
-3. Restart your computer
-4. You now have Ubuntu (Linux) available!
-
-For this curriculum, Git Bash is sufficient. Consider WSL later if you need full Linux capabilities.
+WSL runs a full Linux environment inside Windows. More heavyweight than Git Bash, but useful if you need Linux-specific tools. For this curriculum, Git Bash is sufficient. Consider WSL later if you need full Linux capabilities.
 
 ---
 
@@ -791,7 +1101,7 @@ Once you're comfortable with the basics, there's more to explore:
 
 None of this is required to continue with the curriculum. When you're ready to level up:
 
-👉 [Terminal: Going Further](extracurricular/terminal-going-further) (Extracurricular)
+[Terminal: Going Further](extracurricular/terminal-going-further) (Extracurricular)
 
 For more on system-level commands, see [Elevated Privileges and User Switching](extracurricular/elevated-privileges) (Extracurricular).
 
@@ -852,7 +1162,7 @@ A list of directories your shell searches when you type a command name.
 
 Now that you're comfortable in the terminal, you're ready to understand what software actually is and run your first program.
 
-👉 [Module 01: What Software Is](what-software-is)
+[Module 01: What Software Is](what-software-is)
 
 ---
 
