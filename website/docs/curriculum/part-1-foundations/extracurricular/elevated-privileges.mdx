@@ -4,6 +4,9 @@ title: "Elevated Privileges and User Switching"
 description: "Understanding sudo, su (macOS/Linux) and Run as Admin (Windows) for safe system access"
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Extracurricular: Elevated Privileges and User Switching
 
 **When and how to run commands with higher permissions—use sparingly to avoid risks.**
@@ -23,45 +26,10 @@ Most daily development doesn't require elevated privileges, but you'll encounter
 
 ---
 
-## macOS and Linux: sudo and su
+## Elevation Tools by Operating System
 
-These tools allow you to temporarily run commands as the root user, bypassing normal protections to enable system-level changes.
-
-### sudo (Recommended: Safer and More Common)
-- **What it does**: Prefixes a command to run it as root (e.g., `sudo ls /root`). Prompts for your user password (not root's).
-- **When to use**: System installs/updates, like `sudo apt update` (Ubuntu/Debian) or `sudo brew install git` (macOS).
-- **Example**:
-  ```bash
-  sudo npm install -g create-react-app  # Global install; enter password when prompted
-  # But prefer: npx create-react-app my-app  # No elevation needed
-  ```
-- **Flags**:
-  - `sudo -u otheruser command` — Run as specific user.
-  - `sudo !!` — Re-run last command with sudo (handy in history).
-- **Risks/Warnings**:
-  - Never `sudo rm -rf /` (deletes entire system).
-  - Avoid `sudo` in home directories—use `chown` if permissions are wrong.
-  - On macOS: Use for Homebrew; on Linux: For package managers like apt/yum.
-- **Help**: `man sudo` or `sudo --help`.
-
-### su (Switch User: Less Common)
-- **What it does**: Switches to another user account (e.g., `su -` for root shell, or `su - username` for others). Requires that user's password.
-- **When to use**: Rare for devs; full root sessions (e.g., `su -` then `apt update`). Prefer `sudo`—it's audited and doesn't keep you as root.
-- **Example**:
-  ```bash
-  su -  # Become root (enter root password; may need setup first)
-  exit  # Switch back
-  ```
-- **Risks/Warnings**: Stays elevated until `exit`; easy to forget and cause damage. Modern systems discourage it.
-- **Help**: `man su`.
-
-**Platform Note**: These are Unix-like (Bash/Zsh). In WSL (Windows Linux), same as Linux.
-
----
-
-## Windows: Run as Administrator and runas
-
-Windows uses User Account Control (UAC) to prompt for elevation. No direct `sudo` equivalent, but similar concepts.
+<Tabs groupId="os" queryString="os">
+<TabItem value="windows" label="Windows" default>
 
 ### Run as Administrator (Primary Method)
 - **What it does**: Launches a terminal (PowerShell/CMD) with admin rights for system changes.
@@ -117,6 +85,77 @@ If using WSL (recommended for Linux-like dev on Windows), elevation works as on 
 
 **Platform Note**: In Git Bash (recommended for this curriculum), elevation is trickier—use Windows Terminal/PowerShell for admin tasks. For WSL in Git Bash, launch via `wsl` command.
 
+</TabItem>
+<TabItem value="macos" label="macOS">
+
+These tools allow you to temporarily run commands as the root user, bypassing normal protections to enable system-level changes.
+
+### sudo (Recommended: Safer and More Common)
+- **What it does**: Prefixes a command to run it as root (e.g., `sudo ls /root`). Prompts for your user password (not root's).
+- **When to use**: System installs/updates, like `sudo brew install git` or `sudo softwareupdate -i -a`.
+- **Example**:
+  ```bash
+  sudo npm install -g create-react-app  # Global install; enter password when prompted
+  # But prefer: npx create-react-app my-app  # No elevation needed
+  ```
+- **Flags**:
+  - `sudo -u otheruser command` — Run as specific user.
+  - `sudo !!` — Re-run last command with sudo (handy in history).
+- **Risks/Warnings**:
+  - Never `sudo rm -rf /` (deletes entire system).
+  - Avoid `sudo` in home directories—use `chown` if permissions are wrong.
+  - Commonly used for Homebrew installs.
+- **Help**: `man sudo` or `sudo --help`.
+
+### su (Switch User: Less Common)
+- **What it does**: Switches to another user account (e.g., `su -` for root shell, or `su - username` for others). Requires that user's password.
+- **When to use**: Rare for devs; full root sessions (e.g., `su -` then run admin commands). Prefer `sudo`—it's audited and doesn't keep you as root.
+- **Example**:
+  ```bash
+  su -  # Become root (enter root password; may need setup first)
+  exit  # Switch back
+  ```
+- **Risks/Warnings**: Stays elevated until `exit`; easy to forget and cause damage. Modern systems discourage it.
+- **Help**: `man su`.
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+These tools allow you to temporarily run commands as the root user, bypassing normal protections to enable system-level changes.
+
+### sudo (Recommended: Safer and More Common)
+- **What it does**: Prefixes a command to run it as root (e.g., `sudo ls /root`). Prompts for your user password (not root's).
+- **When to use**: System installs/updates, like `sudo apt update` (Ubuntu/Debian) or `sudo dnf install git` (Fedora).
+- **Example**:
+  ```bash
+  sudo npm install -g create-react-app  # Global install; enter password when prompted
+  # But prefer: npx create-react-app my-app  # No elevation needed
+  ```
+- **Flags**:
+  - `sudo -u otheruser command` — Run as specific user.
+  - `sudo !!` — Re-run last command with sudo (handy in history).
+- **Risks/Warnings**:
+  - Never `sudo rm -rf /` (deletes entire system).
+  - Avoid `sudo` in home directories—use `chown` if permissions are wrong.
+  - For package managers like apt/yum/dnf.
+- **Help**: `man sudo` or `sudo --help`.
+
+### su (Switch User: Less Common)
+- **What it does**: Switches to another user account (e.g., `su -` for root shell, or `su - username` for others). Requires that user's password.
+- **When to use**: Rare for devs; full root sessions (e.g., `su -` then `apt update`). Prefer `sudo`—it's audited and doesn't keep you as root.
+- **Example**:
+  ```bash
+  su -  # Become root (enter root password; may need setup first)
+  exit  # Switch back
+  ```
+- **Risks/Warnings**: Stays elevated until `exit`; easy to forget and cause damage. Modern systems discourage it.
+- **Help**: `man su`.
+
+**Platform Note**: These are Unix-like (Bash/Zsh). In WSL (Windows Linux), same as Linux.
+
+</TabItem>
+</Tabs>
+
 ---
 
 ## Cross-Platform Best Practices
@@ -131,5 +170,4 @@ If using WSL (recommended for Linux-like dev on Windows), elevation works as on 
 
 ---
 
-👈 [Back to Terminal Basics](/docs/curriculum/part-1-foundations/terminal-basics)
-
+Back to [Terminal Basics](/docs/curriculum/part-1-foundations/terminal-basics)
